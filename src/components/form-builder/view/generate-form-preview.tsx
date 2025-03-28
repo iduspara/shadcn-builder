@@ -111,7 +111,7 @@ export function GenerateFormPreview() {
                   <FormField
                     key={comp.id}
                     control={form.control}
-                    name={comp.id}
+                    name={comp.id as never}
                     render={({ field }) => (
                       <FormItem
                         className={cn(
