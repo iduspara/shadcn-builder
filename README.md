@@ -1,4 +1,4 @@
-# Form Builder
+# Shadcn Form Builder
 
 I'm building a modern form builder application that allows you to create complex forms with a drag-and-drop interface. This is a fun side project I work on in my free time, and while I'm not full-time on it, I'm actively developing new features and improvements when I can.
 
@@ -14,9 +14,9 @@ I'm building a modern form builder application that allows you to create complex
 
 ## Tech Stack
 
-- Next.js 14
+- Next.js 15
 - TypeScript
-- Tailwind CSS
+- Tailwind CSS v4
 - shadcn/ui
 - DND Kit for drag-and-drop
 - React Hook Form
