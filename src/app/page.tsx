@@ -1,113 +1,144 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { DndContext } from "@dnd-kit/core";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { FormBuilderLeft } from "@/components/form-builder/sidebar-left";
+import { FormBuilderRight } from "@/components/form-builder/sidebar-right";
+import { FormCanvas } from "@/components/form-builder/form-canvas";
+import {
+  EyeIcon,
+  Monitor,
+  Tablet,
+  Smartphone,
+  BlocksIcon,
+  CodeIcon,
+} from "lucide-react";
+import { PencilRulerIcon } from "lucide-react";
+import { useFormBuilderStore } from "@/stores/form-builder-store";
+import { Button } from "@/components/ui/button";
+import { ToggleGroupNav } from "@/components/editor/ui/toggle-group-nav";
+import { useMemo, useState } from "react";
+import {
+  DependenciesImports,
+  generateFormCode,
+} from "@/components/form-builder/helpers/generate-react-code";
+import { GenerateCodeDialog } from "@/components/form-builder/dialogs/generate-code-dialog";
+
+export default function FormBuilderPage() {
+  // Split the store selectors to only subscribe to what we need
+  const viewport = useFormBuilderStore((state) => state.viewport);
+  const mode = useFormBuilderStore((state) => state.mode);
+  const showJson = useFormBuilderStore((state) => state.showJson);
+  const rows = useFormBuilderStore((state) => state.rows);
+  const updateViewport = useFormBuilderStore((state) => state.updateViewport);
+  const updateMode = useFormBuilderStore((state) => state.updateMode);
+  const toggleJsonPreview = useFormBuilderStore(
+    (state) => state.toggleJsonPreview
+  );
+
+  const [showCodeDialog, setShowCodeDialog] = useState(false);
+  const [generatedCode, setGeneratedCode] = useState<{
+    code: string;
+    dependenciesImports: DependenciesImports;
+  }>({ code: "", dependenciesImports: {} });
+
+  // Memoize static values
+  const viewportItems = useMemo(
+    () => [
+      { value: "lg", icon: Monitor },
+      { value: "md", icon: Tablet },
+      { value: "sm", icon: Smartphone },
+    ],
+    []
+  );
+
+  const modeItems = useMemo(
+    () => [
+      { value: "editor", icon: PencilRulerIcon },
+      { value: "preview", icon: EyeIcon },
+    ],
+    []
+  );
+
+  const handleGenerateCode = async () => {
+    const generatedCode = await generateFormCode(rows);
+    setGeneratedCode(generatedCode);
+    setShowCodeDialog(true);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <div>
+      <div className="fixed top-0 w-full flex flex-row gap-2 justify-between bg-white border-b z-10">
+        <div className="flex flex-row gap-2 items-center p-2 px-4 border-r w-[300px]">
+          <BlocksIcon className="h-6 w-6" strokeWidth={2} />
+          <h2 className="text-lg font-semibold">
+            shadcn/ui <span className="font-normal">Builder</span>
+            <sup className="text-xs text-muted-foreground font-normal ml-1">
+              Beta
+            </sup>
+          </h2>
+        </div>
+        <div className="p-2 flex-1 grid grid-cols-3">
+          <div className="col-span-1"></div>
+          <div className="col-span-1 text-center">
+            <h2 className="text-lg font-semibold">My New Form</h2>
+          </div>
+          <div className="col-span-1 flex justify-end gap-4 ">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleJsonPreview}
+              className={showJson ? "bg-slate-100" : ""}
+            >
+              <CodeIcon className="h-4 w-4" />
+            </Button>
+            <ToggleGroupNav
+              items={viewportItems}
+              defaultValue={viewport}
+              onValueChange={(value) =>
+                updateViewport(value as "sm" | "md" | "lg")
+              }
             />
-          </a>
+            <ToggleGroupNav
+              items={modeItems}
+              defaultValue={mode}
+              onValueChange={(value) =>
+                updateMode(value as "editor" | "preview")
+              }
+            />
+          </div>
+        </div>
+        <div className="flex flex-row gap-2 justify-between border-l py-2 px-4 w-[300px]">
+          <Button
+            variant="default"
+            size="sm"
+            className="w-full cursor-pointer"
+            onClick={handleGenerateCode}
+          >
+            Generate Code
+          </Button>
         </div>
       </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <SidebarProvider
+        className="relative"
+        style={{ "--sidebar-width": "300px" } as React.CSSProperties}
+        open={mode === "editor"}
+      >
+        <DndContext>
+          <div className="flex w-full h-screen justify-between">
+            <FormBuilderLeft />
+            <main className="flex-1 overflow-auto relative bg-slate-50 bg-dotted pt-14">
+              <FormCanvas />
+            </main>
+            <FormBuilderRight />
+          </div>
+        </DndContext>
+      </SidebarProvider>
+      <GenerateCodeDialog
+        open={showCodeDialog}
+        onOpenChange={setShowCodeDialog}
+        generatedCode={generatedCode}
+      />
+    </div>
   );
 }
