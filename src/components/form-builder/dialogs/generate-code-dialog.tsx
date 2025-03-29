@@ -31,7 +31,7 @@ const getShadcnInstallInstructions = (
 
   if (shadcnComponents.length === 0) return "";
 
-  return `npx shadcn-ui@latest add ${shadcnComponents.join(" ")}`;
+  return `npx shadcn@latest add ${shadcnComponents.join(" ")}`;
 };
 
 export function GenerateCodeDialog({
