@@ -84,7 +84,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       "@/components/ui/button": ["Button"], 
       "@/components/ui/calendar": ["Calendar"],
       "@/components/ui/popover": ["Popover", "PopoverContent", "PopoverTrigger"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
       "date-fns": ["format"],
       "lucide-react": ["CalendarIcon"],
     },    

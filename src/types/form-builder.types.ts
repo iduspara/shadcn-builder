@@ -41,9 +41,11 @@ export interface FormBuilderStore {
   mode: 'editor' | 'preview';
   viewport: Viewports;
   showJson: boolean;
+  formTitle: string;
   updateMode: (mode: 'editor' | 'preview') => void;
   updateViewport: (viewport: Viewports) => void;
   toggleJsonPreview: () => void;
+  updateFormTitle: (title: string) => void;
   rows: FormRow[];
   selectedComponent: FormComponentModel | null;
   selectedRow: FormRow | null;

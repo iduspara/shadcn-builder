@@ -38,7 +38,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   `,
     dependencies: {
       "@/components/ui/button": ["Button"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }

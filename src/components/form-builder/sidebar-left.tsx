@@ -13,16 +13,12 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarMenuSub,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "../ui/collapsible";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { useState } from "react";
 import { ComponentIcon } from "./helpers/component-icon";
-import * as Icons from "lucide-react";
+import { SiGithub, SiBuymeacoffee } from '@icons-pack/react-simple-icons';
+import { LinkedinIcon } from "lucide-react";
 
 export function FormBuilderLeft() {
   const { addRow, rows, selectComponent, mode } = useFormBuilderStore();
@@ -46,7 +42,8 @@ export function FormBuilderLeft() {
   );
 
   return (
-    <Sidebar className="bg-white top-14">
+    <Sidebar className="bg-white top-14 bottom-14">
+      <div className="flex flex-col h-[calc(100%-56px)]">
       <SidebarContent className="gap-0">
         <SidebarGroup>
           <SidebarGroupLabel>Typography</SidebarGroupLabel>
@@ -118,6 +115,26 @@ export function FormBuilderLeft() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="border-t">
+        <div className="flex flex-row gap-4 py-3 px-2">
+        <a
+          className="flex items-center gap-2 text-sm hover:text-slate-500"
+          target="_blank"
+          href="https://github.com/iduspara/shadcn-builder"
+        >
+          <SiGithub className="w-6 h-6" />
+        </a>
+        <a
+          className="flex items-center gap-2 text-sm hover:text-slate-500"
+          target="_blank"
+          href="https://buymeacoffee.com/igorduspara"
+        >
+          <SiBuymeacoffee className="w-6 h-6" />
+        </a>
+        </div>
+      </SidebarFooter>
+      </div>
+
     </Sidebar>
   );
 }

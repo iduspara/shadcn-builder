@@ -40,7 +40,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     `,
     dependencies: {
       "@/components/ui/textarea": ["Textarea"], 
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }

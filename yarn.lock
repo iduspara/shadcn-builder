@@ -239,6 +239,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@icons-pack/react-simple-icons@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "@icons-pack/react-simple-icons@npm:12.3.0"
+  peerDependencies:
+    react: ^16.13 || ^17 || ^18 || ^19
+  checksum: 10c0/fa5b2723611a0d47cd5afe106cc8d3c6361b6122d2b88fd52f8e87f72f99f793a1d45db053e29bd3ed71bd5bc467e421adabf4d7d2cc3c1a608b5d8da7c79cb5
+  languageName: node
+  linkType: hard
+
 "@img/sharp-darwin-arm64@npm:0.33.5":
   version: 0.33.5
   resolution: "@img/sharp-darwin-arm64@npm:0.33.5"
@@ -3511,6 +3520,7 @@ __metadata:
     "@dnd-kit/sortable": "npm:^8.0.0"
     "@dnd-kit/utilities": "npm:^3.2.2"
     "@hookform/resolvers": "npm:^4.1.2"
+    "@icons-pack/react-simple-icons": "npm:^12.3.0"
     "@prettier/sync": "npm:^0.5.5"
     "@radix-ui/react-avatar": "npm:^1.1.1"
     "@radix-ui/react-checkbox": "npm:^1.1.4"
@@ -3556,6 +3566,7 @@ __metadata:
     react-dom: "npm:19.0.0"
     react-frame-component: "npm:^5.2.7"
     react-hook-form: "npm:^7.54.2"
+    simple-icons: "npm:^14.11.1"
     tailwind-merge: "npm:^3.0.2"
     tailwindcss: "npm:^4.0.9"
     tailwindcss-animate: "npm:^1.0.7"
@@ -5782,6 +5793,13 @@ __metadata:
     side-channel-map: "npm:^1.0.1"
     side-channel-weakmap: "npm:^1.0.2"
   checksum: 10c0/cb20dad41eb032e6c24c0982e1e5a24963a28aa6122b4f05b3f3d6bf8ae7fd5474ef382c8f54a6a3ab86e0cac4d41a23bd64ede3970e5bfb50326ba02a7996e6
+  languageName: node
+  linkType: hard
+
+"simple-icons@npm:^14.11.1":
+  version: 14.11.1
+  resolution: "simple-icons@npm:14.11.1"
+  checksum: 10c0/7b8fec84b739fe08a40834afb093dae8b67d032b63490792e9e687c3b472e02964ae5d538f4d94b316867043065ca1cbc686ae079da695901af5c3f8b9d60025
   languageName: node
   linkType: hard
 

@@ -56,7 +56,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     dependencies: {
       "@/components/ui/switch": ["Switch"],
       "@/components/ui/label": ["Label"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }

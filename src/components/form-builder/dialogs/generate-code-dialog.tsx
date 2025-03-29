@@ -15,6 +15,7 @@ import * as prettier from "prettier/standalone";
 import * as parserTypescript from "prettier/parser-typescript";
 import { DependenciesImports } from "../helpers/generate-react-code";
 import * as prettierPluginEstree from "prettier/plugins/estree";
+import { useFormBuilderStore } from "@/stores/form-builder-store";
 
 interface GenerateCodeDialogProps {
   open: boolean;
@@ -41,6 +42,7 @@ export function GenerateCodeDialog({
 }: GenerateCodeDialogProps) {
   const [formattedCode, setFormattedCode] = useState(generatedCode.code);
   const [copied, setCopied] = useState(false);
+  const formTitle = useFormBuilderStore.getState().formTitle.replace(/\s+/g, "");
 
   useEffect(() => {
     prettier
@@ -58,7 +60,7 @@ export function GenerateCodeDialog({
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "generated-form.tsx";
+    a.download = `${formTitle}.tsx`;
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
@@ -105,15 +107,13 @@ export function GenerateCodeDialog({
           </Button>
         </div>
         <div>
-          <h2 className="text-lg font-semibold mb-0">
-            2. React Code
-          </h2>
+          <h2 className="text-lg font-semibold mb-0">2. React Code</h2>
           <h3 className="text-sm text-muted-foreground">
-            Copy and paste the following code into your project.
+            Copy and paste the following code into your project or <a href="#" onClick={handleDownload} className="underline font-bold">download the file</a>.
           </h3>
         </div>
         <div className="relative overflow-auto rounded-md">
-          <Pre language="typescript" code={formattedCode}/>
+          <Pre language="typescript" code={formattedCode} />
           <Button
             variant="ghost"
             size="sm"
@@ -127,10 +127,22 @@ export function GenerateCodeDialog({
             )}
           </Button>
         </div>
+        <div>
+          <h2 className="text-lg font-semibold mb-0">3. Usage</h2>
+          <h3 className="text-sm text-muted-foreground">
+            Import the form component and use it in your project.
+          </h3>
+        </div>
+        <div className="relative overflow-auto rounded-md">
+          <Pre
+            language="typescript"
+            code={`import ${formTitle} from "./${formTitle}";
+<${formTitle} />`}
+          />
+        </div>
         <DialogFooter>
-          <Button variant="outline" onClick={handleDownload}>
-            <Download className="h-4 w-4 mr-2" />
-            Download
+          <Button variant="outline" onClick={() => onOpenChange(false)}>
+            Close
           </Button>
         </DialogFooter>
       </DialogContent>

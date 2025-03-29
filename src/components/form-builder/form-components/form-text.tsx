@@ -42,7 +42,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     </div>
     `,
     dependencies: {
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }

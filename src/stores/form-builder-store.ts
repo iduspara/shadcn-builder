@@ -25,9 +25,11 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
       selectedComponent: null,    
       viewport: 'sm',
       showJson: false,
+      formTitle: 'generatedForm',
       updateMode: (mode: 'editor' | 'preview') => set({ mode }),
       updateViewport: (viewport: Viewports) => set({ viewport }),
       toggleJsonPreview: () => set((state) => ({ showJson: !state.showJson })),
+      updateFormTitle: (title: string) => set({ formTitle: title }),
       addRow: (component: FormComponentModel, after?: number, before?: number) => 
         set((state) => {
           const newComponent = new FormComponentModel({...component});
@@ -221,7 +223,7 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
     }),
     {
       name: 'form-builder-storage',
-      partialize: (state) => ({ rows: state.rows, viewport: state.viewport }),
+      partialize: (state) => ({ rows: state.rows, viewport: state.viewport, formTitle: state.formTitle }),
       onRehydrateStorage: () => (state) => {
         if (state?.rows) {
 

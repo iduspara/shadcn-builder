@@ -12,6 +12,8 @@ import {
   Smartphone,
   BlocksIcon,
   CodeIcon,
+  PencilIcon,
+  FilePenLineIcon,
 } from "lucide-react";
 import { PencilRulerIcon } from "lucide-react";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
@@ -30,8 +32,10 @@ export default function FormBuilderPage() {
   const mode = useFormBuilderStore((state) => state.mode);
   const showJson = useFormBuilderStore((state) => state.showJson);
   const rows = useFormBuilderStore((state) => state.rows);
+  const formTitle = useFormBuilderStore((state) => state.formTitle);
   const updateViewport = useFormBuilderStore((state) => state.updateViewport);
   const updateMode = useFormBuilderStore((state) => state.updateMode);
+  const updateFormTitle = useFormBuilderStore((state) => state.updateFormTitle);
   const toggleJsonPreview = useFormBuilderStore(
     (state) => state.toggleJsonPreview
   );
@@ -80,8 +84,19 @@ export default function FormBuilderPage() {
         </div>
         <div className="p-2 flex-1 grid grid-cols-3">
           <div className="col-span-1"></div>
-          <div className="col-span-1 text-center">
-            <h2 className="text-lg font-semibold">My New Form</h2>
+          <div className="col-span-1 flex justify-center">
+            <div className=" text-center flex flex-row items-center justify-center gap-1 border rounded-md h-9 px-4">
+            <div
+              className="max-w-80 overflow-y-hidden whitespace-nowrap text-sm outline-none scrollbar-hide"
+              contentEditable
+              suppressContentEditableWarning
+              onBlur={(e) => updateFormTitle(e.target.innerText)}
+            >
+              {formTitle}
+            </div>
+            <span className="text-muted-foreground text-xs">.tsx</span>
+            </div>
+
           </div>
           <div className="col-span-1 flex justify-end gap-4 ">
             <Button

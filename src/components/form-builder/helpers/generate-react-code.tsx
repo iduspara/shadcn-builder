@@ -2,6 +2,7 @@ import { FormRow } from "@/types/form-builder.types";
 import { FormComponentModel } from "../Models/FormComponent";
 import { getComponentViews } from "@/config/available-components";
 import { cn, generateTWClassesForAllViewports } from "@/lib/utils";
+import { useFormBuilderStore } from "@/stores/form-builder-store";
 
 export type DependenciesImports = Record<string, string[]>;
 
@@ -53,6 +54,7 @@ const generateImports = (): string => {
 
 
 const generateFormCode = async (rows: FormRow[]): Promise<{ code: string; dependenciesImports: DependenciesImports;  }> => {
+  const formTitle = useFormBuilderStore.getState().formTitle;
   const formCode = rows
     .map((row) => {
       const components = row.components
@@ -147,7 +149,7 @@ ${components}
 "use client";
 ${imports}
 
-export default function GeneratedForm() {
+export default function ${formTitle.replace(/\s+/g, '')}() {
   const formSchema = z.object({
     ${rows
       .map((row) => {

@@ -39,7 +39,6 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     `,
     dependencies: {
       "@/components/ui/input": ["Input"],
-      "@/lib/utils": ["cn"],
     },
   };
 }

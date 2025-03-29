@@ -59,7 +59,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     dependencies: {
       "@/components/ui/radio-group": ["RadioGroup", "RadioGroupItem"],  
       "@/components/ui/label": ["Label"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }

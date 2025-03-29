@@ -64,7 +64,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     `,
     dependencies: {
       "@/components/ui/select": ["Select", "SelectTrigger", "SelectContent", "SelectItem", "SelectValue"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },  
   };
 }

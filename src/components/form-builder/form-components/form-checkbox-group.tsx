@@ -60,7 +60,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     dependencies: {
       "@/components/ui/checkbox": ["Checkbox"],
       "@/components/ui/label": ["Label"],
-      "@/lib/utils": ["cn", "escapeHtml"],
+
     },
   };
 }
