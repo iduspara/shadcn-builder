@@ -2,7 +2,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { fontVariables } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/react";
-import { PostHogProvider } from "@/components/PostHogProvider";
+import { PostHogProvider } from "@/providers/PostHogProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

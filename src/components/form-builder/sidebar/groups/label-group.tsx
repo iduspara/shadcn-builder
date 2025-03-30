@@ -8,9 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ToggleGroupNav } from "@/components/editor/ui/toggle-group-nav";
+import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
 import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
-import { ViewportOverrideIndicator } from "@/components/helpers/ViewportOverrideIndicator";
+import { ViewportOverrideIndicator } from "@/components/form-builder/helpers/ViewportOverrideIndicator";
 
 type propertiesWhitelist = "label" | "label_description" | "labelPosition" | "labelAlign" | "showLabel";
 

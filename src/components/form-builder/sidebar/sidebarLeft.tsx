@@ -6,25 +6,18 @@ import { AVAILABLE_COMPONENTS } from "@/config/available-components";
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarMenuSub,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { useState } from "react";
-import { ComponentIcon } from "./helpers/component-icon";
+import { ComponentIcon } from "../helpers/component-icon";
 import { SiGithub, SiBuymeacoffee } from '@icons-pack/react-simple-icons';
-import { LinkedinIcon } from "lucide-react";
 
-export function FormBuilderLeft() {
-  const { addRow, rows, selectComponent, mode } = useFormBuilderStore();
-  const [openRows, setOpenRows] = useState<Record<string, boolean>>({});
-  const tabsTriggerClass =
-    "relative cursor-pointer rounded-none border-b-2 p-0 pb-2 border-b-transparent bg-transparent shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none";
+export function SidebarLeft() {
+  const { addRow } = useFormBuilderStore();
 
   // Group components by purpose
   const typographyComponents = AVAILABLE_COMPONENTS.filter(comp => comp.category === "content");

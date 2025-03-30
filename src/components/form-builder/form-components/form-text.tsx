@@ -5,8 +5,8 @@ import {
 } from "@/lib/utils";
 import { DesignPropertiesViews, FormRow } from "@/types/form-builder.types";
 import { FormComponentModel } from "../Models/FormComponent";
-import { HtmlGroup } from "../editor/properties/groups/html-group";
-import { GridGroup } from "../editor/properties/groups/grid-group";
+import { HtmlGroup } from "../sidebar/groups/html-group";
+import { GridGroup } from "../sidebar/groups/grid-group";
 export function Text(component: FormComponentModel, row?: FormRow) {
   const colSpanClasses = generateTWClassesForAllViewports(component, "colSpan", row);
   const colStartClasses = generateTWClassesForAllViewports(

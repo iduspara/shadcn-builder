@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { DesignPropertiesViews } from "@/types/form-builder.types";
 import { FormComponentModel } from "../Models/FormComponent";
-import { GridGroup } from "../editor/properties/groups/grid-group";
-import { HtmlGroup } from "../editor/properties/groups/html-group";
-import { ButtonGroup } from "../editor/properties/groups/button-group";
+import { GridGroup } from "../sidebar/groups/grid-group";
+import { HtmlGroup } from "../sidebar/groups/html-group";
+import { ButtonGroup } from "../sidebar/groups/button-group";
 import { cn, escapeHtml } from "@/lib/utils";
 
 export function FormButton(component: FormComponentModel) {

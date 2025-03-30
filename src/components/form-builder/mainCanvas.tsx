@@ -1,10 +1,8 @@
 "use client";
 
 import { useFormBuilderStore } from "@/stores/form-builder-store";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEffect, useRef, useState, useMemo, memo } from "react";
-import { Smartphone, Tablet, Monitor } from "lucide-react";
-import GenerateEditorMode from "./view/generate-editor-mode";
+import { useEffect, useRef, useMemo, memo } from "react";
+import GenerateEditorMode from "./canvas/generate-editor-mode";
 import { IFrame } from "./helpers/iframe";
 import { Pre } from "@/components/ui/pre";
 import { generateJsonSchema } from "./helpers/generate-json";
@@ -31,7 +29,7 @@ const JsonPreview = memo(({ rows }: { rows: any[] }) => {
 
 JsonPreview.displayName = "JsonPreview";
 
-export function FormCanvas() {
+export function MainCanvas() {
   // Split store selectors to minimize re-renders
   const rows = useFormBuilderStore((state) => state.rows);
   const mode = useFormBuilderStore((state) => state.mode);

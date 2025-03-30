@@ -1,12 +1,14 @@
 "use client";
 
+import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
+
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { ChevronDown } from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../../../ui/collapsible";
+} from "@/components/ui/collapsible";
 import { getComponentViews } from "@/config/available-components";
 import { ReactNode } from "react";
 
@@ -39,35 +41,53 @@ const PROPERTY_SECTIONS = [
   { key: "html", title: "HTML" },
 ] as const;
 
-export function FormComponentConfig() {
-  const { selectedComponent, selectedRow } = useFormBuilderStore();
+export function SidebarRight() {
+  const { selectedComponent } = useFormBuilderStore();
+
+  let sidebarContent;
 
   if (!selectedComponent) {
-    return (
+    sidebarContent = (
       <div className="p-4">
         <p className="text-sm text-muted-foreground">
           Select a component to configure its properties
         </p>
       </div>
     );
+  } else {
+    const componentViews = getComponentViews(selectedComponent);
+
+    if (!componentViews) {
+      sidebarContent = (
+        <div className="p-4">
+          <p className="text-sm text-muted-foreground">
+            No properties available for this component
+          </p>
+        </div>
+      );
+    } else {
+      sidebarContent = (
+        <div>
+          <div className="p-4 border-b">Properties</div>
+
+          {PROPERTY_SECTIONS.map(({ key, title }) => {
+            const content = componentViews.renderDesignProperties[key];
+            if (!content) return null;
+
+            return (
+              <PropertySection key={key} title={title}>
+                {content}
+              </PropertySection>
+            );
+          })}
+        </div>
+      );
+    }
   }
 
-  const componentViews = getComponentViews(selectedComponent);
-
-  return componentViews && (
-    <div>
-      <div className="p-4 border-b">Properties</div>
-
-      {PROPERTY_SECTIONS.map(({ key, title }) => {
-        const content = componentViews.renderDesignProperties[key];
-        if (!content) return null;
-
-        return (
-          <PropertySection key={key} title={title}>
-            {content}
-          </PropertySection>
-        );
-      })}
-    </div>
+  return (
+    <Sidebar side="right" className="border-l top-14">
+      <SidebarContent>{sidebarContent}</SidebarContent>
+    </Sidebar>
   );
 }

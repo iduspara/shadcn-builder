@@ -13,10 +13,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { DesignPropertiesViews } from "@/types/form-builder.types"
-import { GridGroup } from "../editor/properties/groups/grid-group"
-import { HtmlGroup } from "../editor/properties/groups/html-group"
-import { LabelGroup } from "../editor/properties/groups/label-group"
-import { InputGroup } from "../editor/properties/groups/input-group"    
+import { GridGroup } from "../sidebar/groups/grid-group"
+import { HtmlGroup } from "../sidebar/groups/html-group"
+import { LabelGroup } from "../sidebar/groups/label-group"
+import { InputGroup } from "../sidebar/groups/input-group"    
 import { FormComponentModel } from "../Models/FormComponent"
 
 export function FormDatePicker(component: FormComponentModel) {

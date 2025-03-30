@@ -2,9 +2,9 @@
 
 import { DndContext } from "@dnd-kit/core";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { FormBuilderLeft } from "@/components/form-builder/sidebar-left";
-import { FormBuilderRight } from "@/components/form-builder/sidebar-right";
-import { FormCanvas } from "@/components/form-builder/form-canvas";
+import { SidebarLeft } from "@/components/form-builder/sidebar/sidebarLeft";
+import { SidebarRight } from "@/components/form-builder/sidebar/sidebarRight";
+import { MainCanvas } from "@/components/form-builder/mainCanvas";
 import {
   EyeIcon,
   Monitor,
@@ -12,13 +12,11 @@ import {
   Smartphone,
   BlocksIcon,
   CodeIcon,
-  PencilIcon,
-  FilePenLineIcon,
 } from "lucide-react";
 import { PencilRulerIcon } from "lucide-react";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { Button } from "@/components/ui/button";
-import { ToggleGroupNav } from "@/components/editor/ui/toggle-group-nav";
+import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
 import { useMemo, useState } from "react";
 import {
   DependenciesImports,
@@ -143,11 +141,11 @@ export default function FormBuilderPage() {
       >
         <DndContext>
           <div className="flex w-full h-screen justify-between">
-            <FormBuilderLeft />
+            <SidebarLeft />
             <main className="flex-1 overflow-auto relative bg-slate-50 bg-dotted pt-14">
-              <FormCanvas />
+              <MainCanvas />
             </main>
-            <FormBuilderRight />
+            <SidebarRight />
           </div>
         </DndContext>
       </SidebarProvider>

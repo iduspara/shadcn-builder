@@ -2,10 +2,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { DesignPropertiesViews } from "@/types/form-builder.types";
 import { FormComponentModel } from "../Models/FormComponent";
-import { GridGroup } from "../editor/properties/groups/grid-group";
-import { HtmlGroup } from "../editor/properties/groups/html-group";
-import { LabelGroup } from "../editor/properties/groups/label-group";
-import { InputGroup } from "../editor/properties/groups/input-group";
+import { GridGroup } from "../sidebar/groups/grid-group";
+import { HtmlGroup } from "../sidebar/groups/html-group";
+import { LabelGroup } from "../sidebar/groups/label-group";
+import { InputGroup } from "../sidebar/groups/input-group";
 import { cn, generateTWClassesForAllViewports, escapeHtml } from "@/lib/utils";
 
 export function FormCheckbox(component: FormComponentModel) {

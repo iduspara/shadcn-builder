@@ -7,8 +7,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ViewportOverrideIndicator } from "@/components/helpers/ViewportOverrideIndicator";
-import { ToggleGroupNav } from "@/components/editor/ui/toggle-group-nav";
+import { ViewportOverrideIndicator } from "@/components/form-builder/helpers/ViewportOverrideIndicator";
+import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
 
 export function GridGroup() {
   const { updateComponent, selectedComponent, viewport } =

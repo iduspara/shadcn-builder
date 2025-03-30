@@ -6,10 +6,8 @@ import {
   KeyboardSensor,
   PointerSensor,
   useSensor,
-  useSensors,
 } from "@dnd-kit/core";
-import { SortableRow } from "@/components/form-builder/editor/sortable-row";
-import { Card, CardContent } from "@/components/ui/card";
+import { SortableRow } from "@/components/form-builder/canvas/sortable-row";
 import {
   arrayMove,
   sortableKeyboardCoordinates,
@@ -20,7 +18,6 @@ import { SortableContext } from "@dnd-kit/sortable";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useForm } from "react-hook-form";
 import { useMemo, memo, useCallback, useEffect } from "react";
-import { FormComponentModel } from "@/components/form-builder/Models/FormComponent";
 import { FormRow } from "@/types/form-builder.types";
 import { Geist } from "next/font/google";
 // Memoize the empty state component
