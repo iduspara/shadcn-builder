@@ -99,14 +99,16 @@ export default function FormBuilderPage() {
 
           </div>
           <div className="col-span-1 flex justify-end gap-4 ">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleJsonPreview}
-              className={showJson ? "bg-slate-100" : ""}
-            >
-              <CodeIcon className="h-4 w-4" />
-            </Button>
+            {process.env.NODE_ENV === "development" && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleJsonPreview}
+                className={showJson ? "bg-slate-100" : ""}
+              >
+                <CodeIcon className="h-4 w-4" />
+              </Button>
+            )}
             <ToggleGroupNav
               items={viewportItems}
               defaultValue={viewport}
