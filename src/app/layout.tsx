@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Igor Duspara" }],
   creator: "Igor Duspara",
   publisher: "Shadcn Builder",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+  },
   robots: {
     index: true,
     follow: true,
@@ -26,10 +32,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  metadataBase: new URL('https://www.shadcn-builder.com'),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://shadcn-builder.com",
+    url: "https://www.shadcn-builder.com",
     siteName: "Shadcn Builder",
     title: "Shadcn Builder - Create Beautiful Forms",
     description: "Create beautiful, responsive forms with our easy-to-use form builder and generate React code using shadcn/ui components.",
@@ -41,11 +48,6 @@ export const metadata: Metadata = {
         alt: "Shadcn Builder Preview",
       },
     ],
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
   },
 };
 
