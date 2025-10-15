@@ -19,10 +19,11 @@ import { UseFormReturn, FieldValues } from "react-hook-form";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
 
 export function FormSelect(component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) {
+  const componentId = component.getField("attributes.id") || component.id;
   return (
     <Select key={component.id} {...field} onValueChange={field.onChange}>
       <SelectTrigger
-        id={component.getField("attributes.id")}
+        id={componentId}
         {...field}
         className={cn(component.getField("attributes.class"), "w-full")}
       >
@@ -41,11 +42,12 @@ export function FormSelect(component: FormComponentModel, form: UseFormReturn<Fi
 
 
 export function getReactCode(component: FormComponentModel): ReactCode {
+  const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
     <Select
       key="${component.id}"
-      id="${escapeHtml(component.getField("attributes.id"))}"
+      id="${escapeHtml(componentId)}"
       className="${escapeHtml(component.getField("attributes.class"))}"
       {...field}
       onValueChange={field.onChange}

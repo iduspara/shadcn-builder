@@ -70,6 +70,7 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
                 mode === "editor" && "cursor-pointer",
                 !showLabel && visible && "hidden"
               )}
+              htmlFor={component.getField("attributes.id") || component.id}
             >
               {showLabel && component.getField("label", viewport)}
               {!visible && (

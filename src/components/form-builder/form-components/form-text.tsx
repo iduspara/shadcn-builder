@@ -31,7 +31,7 @@ export function Text(component: FormComponentModel, form: UseFormReturn<FieldVal
 
 
 export function getReactCode(component: FormComponentModel): ReactCode {
-
+  const componentId = component.getField("attributes.id") || component.id;
   let content = replaceStyleStringWithObject(component.content || "");
   content = replaceBrTags(content);
   content = replaceClassWithClassName(content);
@@ -46,7 +46,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     template: `
     <div
       key="${component.id}"
-      id="${component.getField("attributes.id")}"
+      id="${componentId}"
       className="${customClasses} ${colSpanClasses} ${colStartClasses}">
       ${content}
     </div>

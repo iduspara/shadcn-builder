@@ -26,12 +26,12 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import * as LucideIcons from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { ComponentPreview } from "@/components/form-builder/ui/component-preview";
 
 type ViewMode = "grid" | "list";
 type FilterCategory = "all" | "form" | "content";
 
 export default function ComponentsPage() {
-  const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filterCategory, setFilterCategory] = useState<FilterCategory>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -53,8 +53,6 @@ export default function ComponentsPage() {
     });
   };
 
-  const filteredFormComponents = filterComponents(formComponents);
-  const filteredContentComponents = filterComponents(contentComponents);
   const allFilteredComponents = filterComponents(AVAILABLE_COMPONENTS);
 
   const ComponentIcon = ({ iconName }: { iconName: string }) => {
@@ -62,8 +60,10 @@ export default function ComponentsPage() {
     return Icon ? <Icon className="h-5 w-5" /> : <div className="h-5 w-5 bg-muted rounded" />;
   };
 
-  const ComponentCard = ({ component }: { component: FormComponentModel }) => (
-    <Card className="group hover:shadow-md transition-all duration-200 hover:border-primary/20">
+  const ComponentCard = ({ component }: { component: FormComponentModel }) => {
+    const isComponentNew = NEW_COMPONENTS.includes(component.type);
+    return (
+    <Card className={cn("group hover:shadow-md transition-all duration-200 hover:border-primary/20 md:pb-0 overflow-hidden", isComponentNew ? "ring-primary ring-1 relative overflow-visible" : "")}>
       <CardHeader className="">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
@@ -75,89 +75,26 @@ export default function ComponentsPage() {
               <CardDescription className="text-sm">{component.label_info}</CardDescription>
             </div>
           </div>
-          {NEW_COMPONENTS.includes(component.type) && (
-            <Badge variant="default" className="">
+          {isComponentNew && (
+            <Badge variant="default" className="absolute -top-3 left-1/2 -translate-x-1/2">
               New
             </Badge>
           )}
         </div>
       </CardHeader>
-      <CardContent className="pt-0 flex-1 gap-2 flex flex-col justify-between">
-          <div className="text-sm text-muted-foreground">
-            <strong>Type:</strong> <code className="text-xs bg-muted px-1 py-0.5 rounded">{component.type}</code>
-          </div>
-          
-          {component.attributes && Object.keys(component.attributes).length > 0 && (
-            <div className="text-sm text-muted-foreground">
-              <strong>Default Attributes:</strong>
-              <div className="mt-1 space-y-1">
-                {Object.entries(component.attributes).map(([key, value]) => (
-                  <div key={key} className="text-xs">
-                    <code className="bg-muted px-1 py-0.5 rounded mr-1">{key}</code>
-                    <span>{String(value)}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {component.options && component.options.length > 0 && (
-            <div className="text-sm text-muted-foreground">
-              <strong>Default Options:</strong>
-              <div className="mt-1 space-y-1">
-                {component.options.slice(0, 3).map((option, idx) => (
-                  <div key={idx} className="text-xs flex items-center gap-2">
-                    <code className="bg-muted px-1 py-0.5 rounded">{option.value}</code>
-                    <span>{option.label}</span>
-                  </div>
-                ))}
-                {component.options.length > 3 && (
-                  <div className="text-xs text-muted-foreground">
-                    +{component.options.length - 3} more options
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          <div className="flex gap-2 pt-2">
-            <Button size="sm" variant="outline" className="flex-1" asChild>
-              <a href="/builder">
-                <Eye className="h-4 w-4 mr-1" />
-                Try in Builder
-              </a>
-            </Button>
+      <CardContent className="p-0 flex-1 border-t">
+          {/* Component Preview */}
+          <div className="p-4 bg-dotted h-full flex flex-col justify-center rounded-b-lg">
+            <Card className="box-shadow-none">
+                <CardContent>
+                <ComponentPreview component={component} />
+              </CardContent>
+            </Card>
           </div>
       </CardContent>
     </Card>
   );
-
-  const ComponentListItem = ({ component }: { component: FormComponentModel }) => (
-    <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
-      <div className="flex items-center gap-4">
-        <div className="bg-slate-100 p-2 rounded-md text-slate-500">
-          <ComponentIcon iconName={component.icon} />
-        </div>
-        <div className="flex flex-col gap-1">
-          <h3 className="font-semibold">{component.label}</h3>
-          <p className="text-sm text-muted-foreground">{component.label_info}</p>
-          <div className="flex items-center gap-2 mt-1">
-            {NEW_COMPONENTS.includes(component.type) && (
-              <Badge variant="default" className="">
-                New
-              </Badge>
-            )}
-            <code className="text-xs bg-muted px-1 py-0.5 rounded">{component.type}</code>
-          </div>
-        </div>
-      </div>
-      <Button size="sm" variant="outline" asChild>
-        <a href="/builder">
-          Try <ArrowRight className="h-4 w-4 ml-1" />
-        </a>
-      </Button>
-    </div>
-  );
+  }
 
   return (
     <div>
@@ -224,23 +161,6 @@ export default function ComponentsPage() {
                 </TabsList>
               </Tabs>
             </div>
-
-            <div className="flex gap-2">
-              <Button
-                variant={viewMode === "grid" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("grid")}
-              >
-                <Grid className="h-4 w-4" />
-              </Button>
-              <Button
-                variant={viewMode === "list" ? "default" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("list")}
-              >
-                <List className="h-4 w-4" />
-              </Button>
-            </div>
           </div>
 
           {/* Results */}
@@ -251,61 +171,7 @@ export default function ComponentsPage() {
           )}
 
           {/* Components by Category */}
-          {filterCategory === "all" ? (
-            <Tabs defaultValue="form" className="space-y-6">
-              <TabsList className="grid w-full max-w-md grid-cols-2">
-                <TabsTrigger value="form">Form Components ({filteredFormComponents.length})</TabsTrigger>
-                <TabsTrigger value="content">Content Components ({filteredContentComponents.length})</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="form" className="space-y-6">
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-semibold">Form Components</h2>
-                  <p className="text-muted-foreground">
-                    Interactive form inputs and controls for collecting user data
-                  </p>
-                </div>
-                
-                {viewMode === "grid" ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredFormComponents.map((component) => (
-                      <ComponentCard key={component.id} component={component} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {filteredFormComponents.map((component) => (
-                      <ComponentListItem key={component.id} component={component} />
-                    ))}
-                  </div>
-                )}
-              </TabsContent>
-
-              <TabsContent value="content" className="space-y-6">
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-semibold">Content Components</h2>
-                  <p className="text-muted-foreground">
-                    Rich content elements for enhancing your forms with text, media, and formatting
-                  </p>
-                </div>
-                
-                {viewMode === "grid" ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filteredContentComponents.map((component) => (
-                      <ComponentCard key={component.id} component={component} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {filteredContentComponents.map((component) => (
-                      <ComponentListItem key={component.id} component={component} />
-                    ))}
-                  </div>
-                )}
-              </TabsContent>
-            </Tabs>
-          ) : (
-            <div className="space-y-6">
+          <div className="space-y-6">
               <div className="space-y-4">
                 <h2 className="text-2xl font-semibold">
                   {filterCategory === "form" ? "Form Components" : "Content Components"}
@@ -318,21 +184,12 @@ export default function ComponentsPage() {
                 </p>
               </div>
               
-              {viewMode === "grid" ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {(filterCategory === "form" ? filteredFormComponents : filteredContentComponents).map((component) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {(allFilteredComponents).map((component) => (
                     <ComponentCard key={component.id} component={component} />
                   ))}
                 </div>
-              ) : (
-                <div className="space-y-3">
-                  {(filterCategory === "form" ? filteredFormComponents : filteredContentComponents).map((component) => (
-                    <ComponentListItem key={component.id} component={component} />
-                  ))}
-                </div>
-              )}
             </div>
-          )}
 
           {/* Empty State */}
           {allFilteredComponents.length === 0 && (

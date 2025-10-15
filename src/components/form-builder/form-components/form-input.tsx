@@ -10,6 +10,7 @@ import { ValidationGroup } from "../sidebar/groups/validation-group";
 import { ControllerRenderProps } from "react-hook-form";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 import { Icon } from "../helpers/icon-render";
+
 export function FormInput(
   component: FormComponentModel,
   form: UseFormReturn<FieldValues, undefined>,
@@ -20,7 +21,7 @@ export function FormInput(
     "properties.style.iconStrokeWidth"
   );
   const IconPosition = component.getField("properties.style.iconPosition");
-
+  
   return (
     <div className="relative w-full">
       <Input

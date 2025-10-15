@@ -22,6 +22,7 @@ export function FormCheckbox(
   field: ControllerRenderProps
 ) {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
+  const componentId = component.getField("attributes.id") || component.id;
 
   return (
     <FormLabel
@@ -30,17 +31,17 @@ export function FormCheckbox(
         asCardClasses,
         "w-full flex items-start has-[[data-state=checked]]:border-primary",
       )}
-      htmlFor={component.getField("attributes.id")}
+      htmlFor={componentId}
     >
       <Checkbox
-        id={component.getField("attributes.id")}
+        id={componentId}
         className={cn(component.getField("attributes.class"))}
         {...field}
         checked={field.value}
         onCheckedChange={field.onChange}
       />
       <div className="grid gap-1.5 leading-none">
-        <FormLabel htmlFor={component.getField("attributes.id")}>{component.getField("label")}</FormLabel>
+        <FormLabel htmlFor={componentId}>{component.getField("label")}</FormLabel>
         <p className="text-sm text-muted-foreground">
           {component.getField("label_description")}
         </p>
@@ -52,14 +53,15 @@ export function FormCheckbox(
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
+  const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
     <FormLabel
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-state=checked]]:border-primary"))}"
-      htmlFor="${escapeHtml(component.getField("attributes.id"))}"
+      htmlFor="${escapeHtml(componentId)}"
     >
-      <Checkbox id="${escapeHtml(component.getField("attributes.id"))}" className="${escapeHtml(component.getField("attributes.class"))}" {...field} checked={field.value} onCheckedChange={field.onChange} />
+      <Checkbox id="${escapeHtml(componentId)}" className="${escapeHtml(component.getField("attributes.class"))}" {...field} checked={field.value} onCheckedChange={field.onChange} />
       <div className="grid gap-1.5 leading-none">
         <FormLabel>
           ${escapeHtml(component.getField("label"))}
