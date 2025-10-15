@@ -25,8 +25,10 @@ export type DesignPropertiesViews = {
 };
 
 export type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
+  template: string;
+  logic?: string;
+  dependencies: Record<string, string[] | string>;  
+  thirdPartyDependencies?: string[];
 };
 
 export type TemplateData = {

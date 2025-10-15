@@ -20,7 +20,8 @@ export type FormComponentTypes =
   | "switch"
   | "button"
   | "submit-button"
-  | "reset-button";
+  | "reset-button"
+  | "credit-card";
 export interface FormComponentModelInput {
   id: string;
   label: string;

@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { HtmlGroup } from "../sidebar/groups/html-group";
 import { LabelGroup } from "../sidebar/groups/label-group";
@@ -51,11 +51,6 @@ export function FormInput(
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
-
 export function getReactCode(component: FormComponentModel): ReactCode {
   const IconName = component.getField("properties.style.icon");
   const IconStrokeWidth = component.getField(
@@ -63,7 +58,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   );
   const IconPosition = component.getField("properties.style.iconPosition");
   return {
-    code: `
+    template: `
     <div className="relative w-full">
     <Input
       key="${component.id}"

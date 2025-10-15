@@ -1,5 +1,6 @@
 // Form Input Components
 export { FormInput } from "./form-input";
+export { FormCreditCard } from "./form-credit-card";
 export { FormTextarea } from "./form-textarea";
 export { FormSelect } from "./form-select";
 export { FormCheckbox } from "./form-checkbox";
@@ -26,6 +27,7 @@ export { TextDesignProperties } from "./form-text";
 
 // React Code
 export { getReactCode as getReactCodeInput } from "./form-input";
+export { getReactCode as getReactCodeCreditCard } from "./form-credit-card";
 export { getReactCode as getReactCodeTextarea } from "./form-textarea";
 export { getReactCode as getReactCodeSelect } from "./form-select";
 export { getReactCode as getReactCodeCheckbox } from "./form-checkbox";

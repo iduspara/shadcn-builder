@@ -5,7 +5,7 @@ import {
   replaceClassWithClassName,
   replaceStyleStringWithObject,
 } from "@/lib/utils";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { HtmlGroup } from "../sidebar/groups/html-group";
 import { GridGroup } from "../sidebar/groups/grid-group";
@@ -29,10 +29,6 @@ export function Text(component: FormComponentModel, form: UseFormReturn<FieldVal
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
 
@@ -47,7 +43,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const customClasses = component.getField("attributes.class") || "";
 
   return {
-    code: `
+    template: `
     <div
       key="${component.id}"
       id="${component.getField("attributes.id")}"

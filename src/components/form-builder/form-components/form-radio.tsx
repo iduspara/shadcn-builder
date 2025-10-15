@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { DesignPropertiesViews, Viewports } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { HtmlGroup } from "../sidebar/groups/html-group";
 import { GridGroup } from "../sidebar/groups/grid-group";
@@ -68,10 +68,6 @@ export function FormRadio(
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   const oneOptionHasLabelDescription = component.options?.some(
@@ -80,7 +76,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
   return {
-    code: `
+    template: `
     <RadioGroup
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"

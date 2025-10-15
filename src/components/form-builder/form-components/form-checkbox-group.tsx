@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { HtmlGroup } from "../sidebar/groups/html-group";
@@ -78,18 +78,13 @@ export function FormCheckboxGroup(
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
-
 export function getReactCode(component: FormComponentModel): ReactCode {
   const oneOptionHasLabelDescription = component.options?.some((option) => option.labelDescription);
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
 
   return {
-    code: `
+    template: `
     <div className="${escapeHtml(cn("grid w-full gap-2", cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2"))}">
       ${component.options
         ?.map(

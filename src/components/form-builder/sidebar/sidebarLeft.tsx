@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormBuilderStore } from "@/stores/form-builder-store";
-import { AVAILABLE_COMPONENTS } from "@/config/available-components";
+import { AVAILABLE_COMPONENTS, NEW_COMPONENTS } from "@/config/available-components";
 
 import {
   Sidebar,
@@ -17,11 +17,13 @@ import { ComponentIcon } from "../helpers/component-icon";
 import { DragOverlay, useDraggable } from "@dnd-kit/core";
 import { SidebarUser } from "./sidebarUser";
 import { useAuthState } from "@/hooks/use-auth";
+import { Badge } from "@/components/ui/badge";
 
 interface ComponentGroup {
   label: string;
   components: typeof AVAILABLE_COMPONENTS;
 }
+
 
 export function SidebarLeft() {
   const { addComponent } = useFormBuilderStore();
@@ -45,6 +47,7 @@ export function SidebarLeft() {
           "tel",
           "url",
           "file",
+          "credit-card",
         ].includes(comp.type)
       ),
     },
@@ -73,9 +76,11 @@ export function SidebarLeft() {
   const ComponentItem = ({
     component,
     index,
+    isNew,
   }: {
     component: (typeof AVAILABLE_COMPONENTS)[0];
     index: number;
+    isNew: boolean;
   }) => {
     const {
       attributes: columnAttributes,
@@ -99,19 +104,25 @@ export function SidebarLeft() {
           <div
             {...columnAttributes}
             {...columnListeners}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 w-full"
           >
             <div className="bg-slate-100 p-2 rounded-md text-slate-500">
               <ComponentIcon icon={component.icon} className="w-5 h-5" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col flex-1">
               <span className="text-sm font-medium text-slate-800">
                 {component.label}
               </span>
               <span className="text-xs text-gray-500">
                 {component.label_info}
               </span>
+
             </div>
+            {isNew && (
+                <Badge variant="default" className="">
+                  New
+                </Badge>
+              )}
           </div>
         </SidebarMenuButton>
       </SidebarMenuItem>
@@ -131,6 +142,7 @@ export function SidebarLeft() {
                     key={component.id}
                     component={component}
                     index={index}
+                    isNew={NEW_COMPONENTS.includes(component.type)}
                   />
                 ))}
               </SidebarMenu>

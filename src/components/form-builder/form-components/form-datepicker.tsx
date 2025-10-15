@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { DesignPropertiesViews } from "@/types/form-builder.types"
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types"
 import { GridGroup } from "../sidebar/groups/grid-group"
 import { HtmlGroup } from "../sidebar/groups/html-group"
 import { LabelGroup } from "../sidebar/groups/label-group"
@@ -52,14 +52,11 @@ export function FormDatePicker(component: FormComponentModel, form: UseFormRetur
   )
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
+
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   return {
-    code: `
+    template: `
       <Popover>
       <PopoverTrigger asChild>
         <Button
