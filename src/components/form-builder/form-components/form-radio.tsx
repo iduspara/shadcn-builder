@@ -27,11 +27,11 @@ export function FormRadio(
   );
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
-
+  const componentId = component.getField("attributes.id") || component.id;
   return (
     <RadioGroup
       key={component.id}
-      id={component.getField("attributes.id")}
+      id={componentId}
       className={cn("w-full", component.getField("attributes.class"), cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2")}
       {...field}
       onValueChange={field.onChange}
@@ -40,15 +40,15 @@ export function FormRadio(
         <FormLabel
           key={option.value}
           className={cn(asCardClasses, "flex items-start has-[[data-state=checked]]:border-primary")}
-          htmlFor={`${component.getField("attributes.id")}-${option.value}`}
+          htmlFor={`${componentId}-${option.value}`}
         >
           <RadioGroupItem
             value={option.value}
-            id={`${component.getField("attributes.id")}-${option.value}`}
+            id={`${componentId}-${option.value}`}
           />
           <div className="grid gap-1 leading-none">
             <FormLabel
-              htmlFor={`${component.getField("attributes.id")}-${option.value}`}
+              htmlFor={`${componentId}-${option.value}`}
               className={cn(
                 "font-normal",
                 oneOptionHasLabelDescription && "font-medium"
@@ -75,11 +75,12 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   );
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
+  const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
     <RadioGroup
       key="${component.id}"
-      id="${escapeHtml(component.getField("attributes.id"))}"
+      id="${escapeHtml(componentId)}"
       className="${escapeHtml(cn("w-full", component.getField("attributes.class"), cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2"))}"
       {...field}
       onValueChange={field.onChange}

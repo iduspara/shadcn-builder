@@ -55,6 +55,7 @@ export function FormDatePicker(component: FormComponentModel, form: UseFormRetur
 
 
 export function getReactCode(component: FormComponentModel): ReactCode {
+  const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
       <Popover>
@@ -65,7 +66,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
             "justify-start text-left font-normal w-full",
             component.getField("attributes.class")
           ))}"
-          id="${escapeHtml(component.getField("attributes.id"))}"
+          id="${escapeHtml(componentId)}"
           name="${escapeHtml(component.getField("attributes.name"))}"
         >
           <CalendarIcon className="mr-2 h-4 w-4" />

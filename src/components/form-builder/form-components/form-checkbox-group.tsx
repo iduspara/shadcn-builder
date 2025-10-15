@@ -40,15 +40,15 @@ export function FormCheckboxGroup(
           control={form.control}
           render={({ field: OptionField }) => {
             return (
-              <FormLabel key={option.value} className={cn(asCardClasses, "flex items-start has-[[data-state=checked]]:border-primary")} htmlFor={`${component.getField("attributes.id")}-${option.value}`}>
+              <FormLabel key={option.value} className={cn(asCardClasses, "flex items-start has-[[data-state=checked]]:border-primary")} htmlFor={`${component.getField("attributes.id") || component.id}-${option.value}`}>
                 <FormControl>
                   <Checkbox
-                    id={`${component.getField("attributes.id")}-${option.value}`}
+                    id={`${component.getField("attributes.id") || component.id}-${option.value}`}
                     checked={OptionField.value?.includes(option.value)}
                     onCheckedChange={(checked) => {
                       return checked
                         ? OptionField.onChange([
-                            ...OptionField.value,
+                            ...OptionField.value || [],
                             option.value,
                           ])
                         : OptionField.onChange(
@@ -60,7 +60,7 @@ export function FormCheckboxGroup(
                   />
                 </FormControl>
                 <div className="grid gap-1 leading-none">
-                  <FormLabel htmlFor={`${component.getField("attributes.id")}-${option.value}`} className={cn("text-sm leading-tight font-normal", oneOptionHasLabelDescription && "font-medium")}>
+                  <FormLabel htmlFor={`${component.getField("attributes.id") || component.id}-${option.value}`} className={cn("text-sm leading-tight font-normal", oneOptionHasLabelDescription && "font-medium")}>
                     {option.label}
                   </FormLabel>
                   {option.labelDescription && (
