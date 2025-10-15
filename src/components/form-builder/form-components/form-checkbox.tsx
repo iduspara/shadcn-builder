@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { HtmlGroup } from "../sidebar/groups/html-group";
@@ -49,15 +49,11 @@ export function FormCheckbox(
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   return {
-    code: `
+    template: `
     <FormLabel
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-state=checked]]:border-primary"))}"

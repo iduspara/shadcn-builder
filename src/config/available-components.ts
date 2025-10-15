@@ -38,9 +38,12 @@ import {
   getReactCodeDatePicker,
   getReactCodeText,
   getReactCodeCheckboxGroup,
+  getReactCodeCreditCard,
+  FormCreditCard,
   } from "@/components/form-builder/form-components";
 import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
+import { CreditCardDesignProperties } from "@/components/form-builder/form-components/form-credit-card";
 
 const typographyComponents: FormComponentModel[] = [
   new FormComponentModel({
@@ -125,6 +128,17 @@ const formComponents: FormComponentModel[] = [
     category: "form",
     icon: "Link",
     attributes: { type: "url" },
+  }),
+  new FormComponentModel({
+    id: "credit-card-input",
+    label: "Credit Card",
+    label_info: "Input field for credit card",
+    type: "credit-card",
+    category: "form",
+    icon: "CreditCard",
+    validations: {
+      required: "yes",
+    },
   }),
   new FormComponentModel({
     id: "select",
@@ -236,12 +250,15 @@ const formComponents: FormComponentModel[] = [
 
 export const AVAILABLE_COMPONENTS: FormComponentModel[] = [...typographyComponents, ...formComponents];
 
+export const NEW_COMPONENTS: string[] = ["credit-card"];
+
 const typographyViews = {
   text: { render: (component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) => Text(component, form, field), renderDesignProperties: TextDesignProperties, reactCode: getReactCodeText },
 };
 
 const formViews = {
   input: { render: FormInput, renderDesignProperties: InputDesignProperties, reactCode: getReactCodeInput },
+  "credit-card": { render: FormCreditCard, renderDesignProperties: CreditCardDesignProperties, reactCode: getReactCodeCreditCard },
   textarea: { render: FormTextarea, renderDesignProperties: TextareaDesignProperties, reactCode: getReactCodeTextarea },
   select: { render: FormSelect, renderDesignProperties: SelectDesignProperties, reactCode: getReactCodeSelect },
   checkbox: { render: FormCheckbox, renderDesignProperties: CheckboxDesignProperties, reactCode: getReactCodeCheckbox },

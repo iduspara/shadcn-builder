@@ -1,6 +1,6 @@
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { HtmlGroup } from "../sidebar/groups/html-group";
 import { GridGroup } from "../sidebar/groups/grid-group";
@@ -34,15 +34,11 @@ export function FormSwitch(component: FormComponentModel, form: UseFormReturn<Fi
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   return {
-    code: `
+    template: `
     <FormLabel
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"))}"

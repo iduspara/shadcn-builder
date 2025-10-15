@@ -1,5 +1,5 @@
 import { Textarea } from "@/components/ui/textarea";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { InputGroup } from "../sidebar/groups/input-group";
 import { HtmlGroup } from "../sidebar/groups/html-group";
@@ -24,14 +24,10 @@ export function FormTextarea(component: FormComponentModel, form: UseFormReturn<
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   return {
-    code: `
+    template: `
     <Textarea
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"

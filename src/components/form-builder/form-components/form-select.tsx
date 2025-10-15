@@ -6,7 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import React from "react";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { HtmlGroup } from "../sidebar/groups/html-group";
@@ -39,14 +39,10 @@ export function FormSelect(component: FormComponentModel, form: UseFormReturn<Fi
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   return {
-    code: `
+    template: `
     <Select
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"

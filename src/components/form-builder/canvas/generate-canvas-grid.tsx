@@ -49,6 +49,7 @@ export default function GenerateCanvasGrid({
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
     setFormData(values);
     setIsDialogOpen(true);
   }

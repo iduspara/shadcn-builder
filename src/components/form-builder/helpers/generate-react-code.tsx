@@ -4,7 +4,7 @@ import { cn, generateTWClassesForAllViewports } from "@/lib/utils";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { getZodDefaultValuesAsString, getZodSchemaForComponents } from "./zod";
 
-export type DependenciesImports = Record<string, string[]>;
+export type DependenciesImports = Record<string, string[] | string>;
 
 const dependenciesImports: DependenciesImports = {
   "@/components/ui/form": [
@@ -19,7 +19,11 @@ const dependenciesImports: DependenciesImports = {
   "@hookform/resolvers/zod": ["zodResolver"],
   zod: ["z"],
   "react-hook-form": ["useForm"],
+  "react": ["useState", "useEffect"],
 };
+
+const thirdPartyDependenciesImports: string[] = []
+
 
 const generateComponentCode = (component: FormComponentModel): string => {
   const reactCode = getComponentReactCode(component);
@@ -27,12 +31,19 @@ const generateComponentCode = (component: FormComponentModel): string => {
   if (reactCode?.dependencies) {
     Object.entries(reactCode.dependencies).forEach(([key, values]) => {
       if (dependenciesImports[key]) {
+
+        if (Array.isArray(values)) {
         // Add new values that don't already exist
         values.forEach((value) => {
-          if (!dependenciesImports[key].includes(value)) {
-            dependenciesImports[key].push(value);
+          if (!dependenciesImports[key].includes(value) && Array.isArray(dependenciesImports[key])) {
+              dependenciesImports[key].push(value);
+            }
+          });
+        } else {
+          if (!dependenciesImports[key].includes(values) && Array.isArray(dependenciesImports[key])) {
+            dependenciesImports[key].push(values);
           }
-        });
+        }
       } else {
         // Create new key with values
         dependenciesImports[key] = values;
@@ -40,38 +51,58 @@ const generateComponentCode = (component: FormComponentModel): string => {
     });
   }
 
-  return reactCode?.code || "";
+  if (reactCode?.thirdPartyDependencies) {
+    reactCode.thirdPartyDependencies.forEach((dependency) => {
+      if (!thirdPartyDependenciesImports.includes(dependency)) {
+        thirdPartyDependenciesImports.push(dependency);
+      }
+    });
+
+  }
+
+  return reactCode?.template || "";
 };
+
 
 const generateImports = (): string => {
   return Object.entries(dependenciesImports)
-    .map(([key, values]) => `import { ${values.join(", ")} } from "${key}";`)
+    .map(([key, values]) => {
+      if (Array.isArray(values)) {
+        return `import { ${values.join(", ")} } from "${key}";`
+      } else {
+        return `import ${values} from "${key}";`
+      }
+    })
     .join("\n");
 };
 
+const generateComponentLogic = (components: FormComponentModel[]): string => {
+  const componentLogic = components.map((comp) => {
+    const reactCode = getComponentReactCode(comp);
+    if (reactCode?.logic) {
+      return reactCode.logic;
+    }
+  });
+  return componentLogic.join("\n");
+};
 
 const generateFormCode = async (
   components: FormComponentModel[]
-): Promise<{ code: string; dependenciesImports: DependenciesImports }> => {
+): Promise<{ code: string; dependenciesImports: DependenciesImports; thirdPartyDependenciesImports: string[] }> => {
   const formTitle = useFormBuilderStore.getState().formTitle;
+  const componentLogic = generateComponentLogic(components);
 
   const componentsMap = components
     .map((comp) => {
       const componentCode = generateComponentCode(comp);
 
-      const colSpanClasses = generateTWClassesForAllViewports(
-        comp,
-        "colSpan",
-      );
+      const colSpanClasses = generateTWClassesForAllViewports(comp, "colSpan");
       const colStartClasses = generateTWClassesForAllViewports(
         comp,
-        "colStart",
+        "colStart"
       );
 
-      const labelClasses = generateTWClassesForAllViewports(
-        comp,
-        "showLabel",
-      );
+      const labelClasses = generateTWClassesForAllViewports(comp, "showLabel");
 
       const labelPositionClasses = generateTWClassesForAllViewports(
         comp,
@@ -132,8 +163,7 @@ const generateFormCode = async (
     })
     .join("\n");
 
-
-  const formCode = `        <div className="grid grid-cols-12 gap-4">
+  const formCode = `<div className="grid grid-cols-12 gap-4">
 ${componentsMap}
         </div>`;
 
@@ -153,6 +183,8 @@ export default function ${formTitle.replace(/\s+/g, "").charAt(0).toUpperCase() 
     },
   });
 
+  ${componentLogic}
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
@@ -171,7 +203,7 @@ ${formCode}
   );
 }`;
 
-  return { code, dependenciesImports };
+  return { code, dependenciesImports, thirdPartyDependenciesImports };
 };
 
 export { generateFormCode };

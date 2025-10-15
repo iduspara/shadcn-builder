@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AVAILABLE_COMPONENTS } from "@/config/available-components";
+import { AVAILABLE_COMPONENTS, NEW_COMPONENTS } from "@/config/available-components";
 import { FormComponentModel } from "@/models/FormComponent";
 import Header from "@/components/landingpage/header";
 import Footer from "@/components/landingpage/footer";
@@ -75,9 +75,11 @@ export default function ComponentsPage() {
               <CardDescription className="text-sm">{component.label_info}</CardDescription>
             </div>
           </div>
-          <Badge variant={component.category === "form" ? "default" : "secondary"}>
-            {component.category}
-          </Badge>
+          {NEW_COMPONENTS.includes(component.type) && (
+            <Badge variant="default" className="">
+              New
+            </Badge>
+          )}
         </div>
       </CardHeader>
       <CardContent className="pt-0 flex-1 gap-2 flex flex-col justify-between">
@@ -140,9 +142,11 @@ export default function ComponentsPage() {
           <h3 className="font-semibold">{component.label}</h3>
           <p className="text-sm text-muted-foreground">{component.label_info}</p>
           <div className="flex items-center gap-2 mt-1">
-            <Badge variant={component.category === "form" ? "default" : "secondary"} className="text-xs">
-              {component.category}
-            </Badge>
+            {NEW_COMPONENTS.includes(component.type) && (
+              <Badge variant="default" className="">
+                New
+              </Badge>
+            )}
             <code className="text-xs bg-muted px-1 py-0.5 rounded">{component.type}</code>
           </div>
         </div>

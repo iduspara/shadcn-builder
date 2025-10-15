@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { DesignPropertiesViews } from "@/types/form-builder.types";
+import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { HtmlGroup } from "../sidebar/groups/html-group";
@@ -34,10 +34,7 @@ export function FormButton(component: FormComponentModel, form: UseFormReturn<Fi
   );
 }
 
-type ReactCode = {
-  code: string;
-  dependencies: Record<string, string[]>;
-};
+
 
 export function getReactCode(component: FormComponentModel): ReactCode {
   const IconName = component.getField("properties.style.icon");
@@ -48,7 +45,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   let IconEl = `<${IconName} className="size-4" strokeWidth="${IconStrokeWidth}" />`;
 
   return {
-    code: `
+    template: `
     <Button
       key="${component.id}"
       id="${escapeHtml(component.getField("attributes.id"))}"
