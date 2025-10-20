@@ -96,7 +96,7 @@
     "@types/react-payment-inputs": "^1.1.4",
     "eslint": "^8",
     "eslint-config-next": "15.1.7",
-    "playwright": "^1.52.0",
+    "playwright": "^1.55.1",
     "postcss": "^8",
     "tailwindcss": "^4.0.9",
     "typescript": "^5"
