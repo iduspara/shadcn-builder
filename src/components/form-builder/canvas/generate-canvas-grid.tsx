@@ -27,9 +27,7 @@ export default function GenerateCanvasGrid({
   const mode = useFormBuilderStore((state) => state.mode);
 
   // Create a new form schema whenever components change
-  const formSchema = getZodSchemaForComponents(components) as z.ZodType<
-    Record<string, any>
-  >;
+  const formSchema = getZodSchemaForComponents(components, false) as z.ZodObject<Record<string, z.ZodTypeAny>>;
   const defaultValues = getZodDefaultValues(components);
 
   const form = useForm<z.infer<typeof formSchema>>({

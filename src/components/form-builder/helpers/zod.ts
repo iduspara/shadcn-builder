@@ -29,7 +29,7 @@ export const shouldForceRequired = (
 const createNumberSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   if (!isRequired) {
     return z.coerce.number().optional();
   }
@@ -100,7 +100,7 @@ const createNumberSchema = (
 const createStringSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   let schema: z.ZodString = z.string();
 
   if (isRequired) {
@@ -175,7 +175,7 @@ const createStringSchema = (
 const createDateSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   if (!isRequired) {
     return z.date().optional();
   }
@@ -188,7 +188,7 @@ const createDateSchema = (
 const createCheckboxGroupSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   if (!isRequired) {
     return z.array(z.string()).optional();
   }
@@ -201,7 +201,7 @@ const createCheckboxGroupSchema = (
 const createCheckboxSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   if (!isRequired) {
     return z.boolean().default(false).optional();
   }
@@ -218,7 +218,7 @@ const createCheckboxSchema = (
 const createEmailSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   let schema: z.ZodString = z.string();
 
   if (isRequired) {
@@ -447,7 +447,7 @@ const createUrlSchemaAsString = (
 const createUrlSchema = (
   validations: FormComponentValidationTypes,
   isRequired: boolean
-): z.ZodType => {
+): z.ZodTypeAny => {
   let schema: z.ZodString = z.string();
 
   if (isRequired) {
@@ -529,7 +529,7 @@ const createSchemaForComponent = (
   validations: FormComponentValidationTypes,
   isRequired: boolean,
   asString?: boolean
-): z.ZodType | string => {
+): z.ZodTypeAny | string => {
   if (component.type === "number") {
     return asString
       ? createNumberSchemaAsString(validations, isRequired)
@@ -574,8 +574,8 @@ const createSchemaForComponent = (
 export const getZodSchemaForComponents = (
   components: FormComponentModel[],
   asString: boolean = false
-) => {
-  const schema: Record<string, z.ZodSchema | string> = {};
+): z.ZodObject<Record<string, z.ZodTypeAny>> | string => {
+  const schema: Record<string, z.ZodTypeAny> = {};
 
   components.forEach((component) => {
     const validations = component.getField("validations");
@@ -591,7 +591,7 @@ export const getZodSchemaForComponents = (
       validations,
       isRequired,
       asString
-    );
+    ) as z.ZodTypeAny;
   });
 
   if (asString) {
@@ -604,5 +604,5 @@ export const getZodSchemaForComponents = (
     return `z.object({${stringSchema}})`;
   }
 
-  return z.object(schema as Record<string, z.ZodType>);
+  return z.object(schema);
 };
