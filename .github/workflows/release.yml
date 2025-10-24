@@ -24,6 +24,10 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+        
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         with:
