@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/iduspara/shadcn-builder/compare/v1.0.0...v1.1.0) (2025-10-24)
+
+
+### Features
+
+* Added inital Changelog page ([78eb440](https://github.com/iduspara/shadcn-builder/commit/78eb440a2a616ae0dfdac1837b514cef2594b40a))
+
 ## 1.0.0 (2025-10-24)
 
 
