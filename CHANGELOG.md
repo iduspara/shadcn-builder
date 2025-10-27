@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/iduspara/shadcn-builder/compare/v1.2.0...v1.2.1) (2025-10-27)
+
+
+### Bug Fixes
+
+* removed vercely analytics tracking ([ff1a992](https://github.com/iduspara/shadcn-builder/commit/ff1a992dff7af41a48c7133fbcc392d01fe5a8e7))
+
 ## [1.2.0](https://github.com/iduspara/shadcn-builder/compare/v1.1.0...v1.2.0) (2025-10-27)
 
 
