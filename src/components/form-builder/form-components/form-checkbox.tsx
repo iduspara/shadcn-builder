@@ -13,8 +13,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
-import { FormLabel } from "@/components/ui/form";
-import { useFormBuilderStore } from "@/stores/form-builder-store";
+import { FieldLabel } from "@/components/ui/field";
 
 export function FormCheckbox(
   component: FormComponentModel,
@@ -23,13 +22,15 @@ export function FormCheckbox(
 ) {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? FieldLabel : "div" as React.ElementType;
 
   return (
-    <FormLabel
+    <WrapperComponent
       key={component.id}
       className={cn(
+        "w-full flex items-start has-[[data-state=checked]]:border-primary space-x-3",
         asCardClasses,
-        "w-full flex items-start has-[[data-state=checked]]:border-primary",
       )}
       htmlFor={componentId}
     >
@@ -41,12 +42,12 @@ export function FormCheckbox(
         onCheckedChange={field.onChange}
       />
       <div className="grid gap-1.5 leading-none">
-        <FormLabel htmlFor={componentId}>{component.getField("label")}</FormLabel>
+        <FieldLabel htmlFor={componentId}>{component.getField("label")}</FieldLabel>
         <p className="text-sm text-muted-foreground">
           {component.getField("label_description")}
         </p>
       </div>
-    </FormLabel>
+    </WrapperComponent>
   );
 }
 
@@ -54,27 +55,28 @@ export function FormCheckbox(
 export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? 'FieldLabel' : "div";
   return {
     template: `
-    <FormLabel
+    <${WrapperComponent}
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-state=checked]]:border-primary"))}"
-      htmlFor="${escapeHtml(componentId)}"
+      ${isCard ? `htmlFor="${escapeHtml(componentId)}"` : ""}
     >
       <Checkbox id="${escapeHtml(componentId)}" className="${escapeHtml(component.getField("attributes.class"))}" {...field} checked={field.value} onCheckedChange={field.onChange} />
       <div className="grid gap-1.5 leading-none">
-        <FormLabel>
+        <FieldLabel>
           ${escapeHtml(component.getField("label"))}
-        </FormLabel>
+        </FieldLabel>
         <p className="text-sm text-muted-foreground">
           ${escapeHtml(component.getField("label_description"))}
         </p>
       </div>
-    </FormLabel>
+    </${WrapperComponent}>
     `,
     dependencies: {
       "@/components/ui/checkbox": ["Checkbox"],
-      "@/components/ui/form": ["FormLabel"],
     },
   };
 }

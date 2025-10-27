@@ -14,8 +14,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
-import { FormLabel } from "@/components/ui/form";
-import { useFormBuilderStore } from "@/stores/form-builder-store";
+import { FieldLabel } from "@/components/ui/field";
 
 export function FormRadio(
   component: FormComponentModel,
@@ -28,6 +27,8 @@ export function FormRadio(
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? FieldLabel : "div" as React.ElementType;
   return (
     <RadioGroup
       key={component.id}
@@ -37,9 +38,9 @@ export function FormRadio(
       onValueChange={field.onChange}
     >
       {component.options?.map((option) => (
-        <FormLabel
+        <WrapperComponent
           key={option.value}
-          className={cn(asCardClasses, "flex items-start has-[[data-state=checked]]:border-primary")}
+          className={cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses)}
           htmlFor={`${componentId}-${option.value}`}
         >
           <RadioGroupItem
@@ -47,7 +48,7 @@ export function FormRadio(
             id={`${componentId}-${option.value}`}
           />
           <div className="grid gap-1 leading-none">
-            <FormLabel
+            <FieldLabel
               htmlFor={`${componentId}-${option.value}`}
               className={cn(
                 "font-normal",
@@ -55,14 +56,14 @@ export function FormRadio(
               )}
             >
               {option.label}
-            </FormLabel>
+            </FieldLabel>
             {option.labelDescription && (
               <p className="text-sm text-muted-foreground">
                 {option.labelDescription}
               </p>
             )}
           </div>
-        </FormLabel>
+        </WrapperComponent>
       ))}
     </RadioGroup>
   );
@@ -76,6 +77,8 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? 'FieldLabel' : "div";
   return {
     template: `
     <RadioGroup
@@ -88,15 +91,15 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       ${component.options
         ?.map(
           (option) => `
-        <FormLabel key="${escapeHtml(option.value)}" className="${escapeHtml(cn(asCardClasses, "flex items-center has-[[data-state=checked]]:border-primary"))}" htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}">
+        <${WrapperComponent} key="${escapeHtml(option.value)}" className="${escapeHtml(cn("flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}" htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}">
           <RadioGroupItem value="${escapeHtml(option.value)}" id="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" />
           <div className="grid gap-2 leading-none">
-            <FormLabel htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}">
+            <FieldLabel htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}">
               ${escapeHtml(option.label)}
-            </FormLabel>  
+            </FieldLabel>  
             ${option.labelDescription ? `<p className="text-sm text-muted-foreground">${escapeHtml(option.labelDescription)}</p>` : ""}
           </div>
-        </FormLabel>
+        </${WrapperComponent}>
       `
         )
         .join("\n")}
@@ -104,7 +107,6 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     `,
     dependencies: {
       "@/components/ui/radio-group": ["RadioGroup", "RadioGroupItem"],
-      "@/components/ui/form": ["FormLabel"],
     },
   };
 }

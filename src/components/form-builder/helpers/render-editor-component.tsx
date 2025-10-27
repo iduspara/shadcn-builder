@@ -4,15 +4,14 @@ import { useFormBuilderStore } from "@/stores/form-builder-store";
 
 import { Button } from "@/components/ui/button";
 import * as Icons from "lucide-react";
+import { Controller, FieldValues, UseFormReturn } from "react-hook-form";
 import {
-  FormField,
-  FormItem,
-  FormControl,
-  FormDescription,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { FieldValues, UseFormReturn } from "react-hook-form";
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldLabel,
+  FieldError,
+} from "@/components/ui/field";
 import { cn, generateTWClassesForAllViewports } from "@/lib/utils";
 import { renderComponent } from "@/config/available-components";
 import { FormComponentModel } from "@/models/FormComponent";
@@ -48,14 +47,14 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
   const visible = component.getField("properties.style.visible", viewport) === "yes";
 
   return component.category === "form" ? (
-    <FormField
+    <Controller
       key={component.id}
       control={form.control}
       name={component.id}
-      render={({ field }) => {
+      render={({ field, fieldState }) => {
         const renderedComponent = renderComponent(component, form, field);
         return (
-          <FormItem
+          <Field
             className={cn(
               mode === "editor" && "group/component",
               "flex flex-col",
@@ -63,8 +62,9 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
               labelAlignClasses
             )}
             data-item-id={component.id}
+            data-invalid={fieldState.invalid}
           >
-            <FormLabel
+            <FieldLabel
               className={cn(
                 "shrink-0 flex items-center gap-2 ",
                 mode === "editor" && "cursor-pointer",
@@ -76,13 +76,13 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
               {!visible && (
                 <span className="text-xs text-muted-foreground">Hidden</span>
               )}
-            </FormLabel>
-            <FormControl>{renderedComponent}</FormControl>
+            </FieldLabel>
+            {renderedComponent}
             {component.description && (
-              <FormDescription>{component.description}</FormDescription>
+              <FieldDescription>{component.description}</FieldDescription>
             )}
-            <FormMessage />
-          </FormItem>
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
         );
       }}
     />

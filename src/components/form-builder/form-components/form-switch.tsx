@@ -10,27 +10,27 @@ import { cn, generateTWClassesForAllViewports, escapeHtml } from "@/lib/utils";
 import { ControllerRenderProps } from "react-hook-form";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
-import { FormLabel } from "@/components/ui/form";
+import { FieldLabel } from "@/components/ui/field";
 
 export function FormSwitch(component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const componentId = component.getField("attributes.id") || component.id;
   return (
-    <FormLabel
+    <FieldLabel
       key={component.id}
       className={cn(asCardClasses, "flex justify-between items-center w-full has-[[data-state=checked]]:border-primary")}
       htmlFor={componentId}
     >
       <div className="grid gap-1 leading-none">
-        <FormLabel>
+        <FieldLabel>
           {component.getField("label")}
-        </FormLabel>
+        </FieldLabel>
         <p className="text-sm text-muted-foreground">
           {component.getField("label_description")}
         </p>
       </div>
       <Switch id={componentId} {...field} checked={field.value} onCheckedChange={field.onChange} />
-    </FormLabel>
+    </FieldLabel>
   );
 }
 
@@ -40,26 +40,24 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
-    <FormLabel
+    <FieldLabel
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"))}"
       htmlFor="${escapeHtml(componentId)}"
     >
       <div className="grid gap-1.5 leading-none">
-        <FormLabel>
+        <FieldLabel>
           ${escapeHtml(component.getField("label"))}
-        </FormLabel>
+        </FieldLabel>
         <p className="text-sm text-muted-foreground">
           ${escapeHtml(component.getField("label_description"))}
         </p>
       </div>
       <Switch id="${escapeHtml(componentId)}" {...field} checked={field.value} onCheckedChange={field.onChange} />
-    </FormLabel>
+    </FieldLabel>
     `,
     dependencies: {
-      "@/components/ui/switch": ["Switch"],
-      "@/components/ui/form": ["FormLabel"],
-
+      "@/components/ui/switch": ["Switch"]
     },
   };
 }

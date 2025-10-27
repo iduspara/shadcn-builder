@@ -460,8 +460,8 @@ const createUrlSchema = (
 
 export const getZodDefaultValues = (
   components: FormComponentModel[]
-): Record<string, string | number | undefined> => {
-  const defaultValues: Record<string, string | number | undefined> = {};
+): Record<string, string | number | undefined | Date | object> => {
+  const defaultValues: Record<string, string | number | undefined | Date | object> = {};
 
   components.forEach((component) => {
     if (
@@ -491,6 +491,10 @@ export const getZodDefaultValues = (
       defaultValue = +defaultValue;
     }
 
+    if (component.type === "date") {
+      defaultValue = new Date();
+    }
+
     defaultValues[componentId] = defaultValue;
   });
 
@@ -514,6 +518,9 @@ export const getZodDefaultValuesAsString = (
       }
 
       if (typeof value === "object") {
+        if (value instanceof Date) {
+          return `"${key}": new Date("${value.toISOString()}")`;
+        }
         return `"${key}": ${JSON.stringify(value)}`;
       }
 
@@ -548,7 +555,7 @@ const createSchemaForComponent = (
       : createCheckboxGroupSchema(validations, isRequired);
   }
 
-  if (component.type === "checkbox") {
+  if (component.type === "checkbox" || component.type === "switch") {
     return asString
       ? createCheckboxSchemaAsString(validations, isRequired)
       : createCheckboxSchema(validations, isRequired);

@@ -37,7 +37,7 @@ export function FormDatePicker(component: FormComponentModel, form: UseFormRetur
           {...field}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {field.value ? format(field.value, "PPP") : <span className="text-muted-foreground">{component.getField("attributes.placeholder")}</span>}
+          {field.value ? field.value.toLocaleDateString() : <span className="text-muted-foreground">{component.getField("attributes.placeholder")}</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
