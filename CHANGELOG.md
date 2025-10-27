@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/iduspara/shadcn-builder/compare/v1.1.0...v1.2.0) (2025-10-27)
+
+
+### Features
+
+* update to the new shadcn Field component ([fc216ee](https://github.com/iduspara/shadcn-builder/commit/fc216ee2148e0a4763938feac62793c3ff74cbcb))
+
 ## [1.1.0](https://github.com/iduspara/shadcn-builder/compare/v1.0.0...v1.1.0) (2025-10-24)
 
 
