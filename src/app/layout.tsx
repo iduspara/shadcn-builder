@@ -1,7 +1,6 @@
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { fontVariables } from "@/lib/fonts";
-import { Analytics } from "@vercel/analytics/react";
 import { PostHogProvider } from "@/providers/PostHogProvider";
 import ConvexClientProvider from "@/providers/ConvexClientProvider";
 import { SubscriptionProvider } from "@/providers/SubscriptionProvider";
@@ -66,7 +65,6 @@ export default function RootLayout({
             <PostHogProvider>
               <SubscriptionProvider>
                 {children}
-                <Analytics />
                 <Toaster position="top-center" />
               </SubscriptionProvider>
             </PostHogProvider>
