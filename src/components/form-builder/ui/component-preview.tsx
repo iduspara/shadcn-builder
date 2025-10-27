@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useForm, Controller, FormProvider } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { FormComponentModel } from "@/models/FormComponent";
 import { renderComponent } from "@/config/available-components";
 import { cn } from "@/lib/utils";
@@ -34,7 +34,6 @@ export function ComponentPreview({ component }: ComponentPreviewProps) {
   const labelDescription = component.getField("label_description") || component.label_description;
 
   return (
-    <FormProvider {...form}>
       <div className="space-y-2">
         {showLabel && label && (
           <div className="space-y-1">
@@ -56,7 +55,6 @@ export function ComponentPreview({ component }: ComponentPreviewProps) {
           render={() => (renderedComponent as React.ReactElement) || <div>Preview not available</div>}
         />
       </div>
-    </FormProvider>
   );
 }
 

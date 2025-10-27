@@ -1,7 +1,6 @@
 "use client";
 
 import { RowColumn } from "@/components/form-builder/canvas/sortable-row";
-import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useForm } from "react-hook-form";
@@ -59,8 +58,7 @@ export default function GenerateCanvasGrid({
 
   return (
     <>
-      <Form {...form}>
-        <form
+      <form
           onSubmit={form.handleSubmit(onSubmit)}
           onReset={onReset}
           className="space-y-8 @container"
@@ -79,7 +77,6 @@ export default function GenerateCanvasGrid({
             ))}
           </div>
         </form>
-      </Form>
       <FormDataDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}

@@ -23,7 +23,7 @@ export function FormInput(
   const IconPosition = component.getField("properties.style.iconPosition");
   
   return (
-    <div className="relative w-full">
+    <>
       <Input
         key={component.id}
         placeholder={component.getField("attributes.placeholder")}
@@ -48,7 +48,7 @@ export function FormInput(
           />
         </div>
       )}
-    </div>
+    </>
   );
 }
 
@@ -60,7 +60,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const IconPosition = component.getField("properties.style.iconPosition");
   return {
     template: `
-    <div className="relative w-full">
+    <>
     <Input
       key="${component.id}"
       placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
@@ -79,7 +79,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     </div>`
         : ""
     }
-    </div>
+    </>
     `,
     dependencies: {
       "@/components/ui/input": ["Input"],

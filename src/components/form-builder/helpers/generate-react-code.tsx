@@ -7,18 +7,15 @@ import { getZodDefaultValuesAsString, getZodSchemaForComponents } from "./zod";
 export type DependenciesImports = Record<string, string[] | string>;
 
 const dependenciesImports: DependenciesImports = {
-  "@/components/ui/form": [
-    "Form",
-    "FormControl",
-    "FormDescription",
-    "FormField",
-    "FormItem",
-    "FormLabel",
-    "FormMessage",
+  "@/components/ui/field": [
+    "Field",
+    "FieldDescription",
+    "FieldLabel",
+    "FieldError",
   ],
   "@hookform/resolvers/zod": ["zodResolver"],
   zod: ["z"],
-  "react-hook-form": ["useForm"],
+  "react-hook-form": ["useForm", "Controller"],
   "react": ["useState", "useEffect"],
 };
 
@@ -119,44 +116,41 @@ const generateFormCode = async (
         "visible"
       );
       return comp.category === "form"
-        ? `          <FormField
+        ? `          <Controller
             control={form.control}
             name="${comp.getField("attributes.id")}"
-            render={({ field }) => (
-              <FormItem className="${cn(
+            render={({ field, fieldState }) => (
+              <Field className="${cn(
                 colSpanClasses,
                 colStartClasses,
                 visibilityClasses,
                 "flex flex-col self-end",
                 labelPositionClasses,
                 labelAlignClasses
-              )}"
-              >
-                <FormLabel className="${cn(
+              )}" data-invalid={fieldState.invalid}>
+                <FieldLabel className="${cn(
                   labelClasses,
                   "shrink-0"
-                )}">${comp.getField("label")}</FormLabel>
+                )}">${comp.getField("label")}</FieldLabel>
                 ${
                   comp.type === "checkbox-group" && comp.label_description
-                    ? `<FormDescription className="-mt-2 mb-2.5">
+                    ? `<FieldDescription className="-mt-2 mb-2.5">
                     ${comp.label_description}
-                  </FormDescription>`
+                  </FieldDescription>`
                     : ""
                 }
                 <div className="w-full">
-                  <FormControl>
-                    ${componentCode}
-                  </FormControl>
+                  ${componentCode}
                   ${
                     comp.description
-                      ? `<FormDescription>
+                      ? `<FieldDescription>
                       ${comp.description}
-                    </FormDescription>`
+                    </FieldDescription>`
                       : ""
                   }
-                  <FormMessage />
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </div>
-              </FormItem>
+              </Field>
             )}
           />`
         : componentCode;
@@ -195,11 +189,9 @@ export default function ${formTitle.replace(/\s+/g, "").charAt(0).toUpperCase() 
   }
 
   return (
-    <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} onReset={onReset} className="space-y-8 @container">
 ${formCode}
       </form>
-    </Form>
   );
 }`;
 

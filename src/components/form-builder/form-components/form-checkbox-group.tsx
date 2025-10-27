@@ -14,13 +14,8 @@ import {
   ControllerRenderProps,
 } from "react-hook-form";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
-import {
-  FormField,
-  FormLabel,
-  FormItem,
-  FormControl,
-} from "@/components/ui/form";
-import { useFormBuilderStore } from "@/stores/form-builder-store";
+import { Controller } from "react-hook-form";
+import { FieldLabel } from "@/components/ui/field";
 
 export function FormCheckboxGroup(
   component: FormComponentModel,
@@ -30,46 +25,46 @@ export function FormCheckboxGroup(
   const oneOptionHasLabelDescription = component.options?.some((option) => option.labelDescription);
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
-
+  const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? FieldLabel : "div" as React.ElementType;
   return (
     <div className={cn("grid w-full gap-2", cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2")}>
       {component.options?.map((option) => (
-        <FormField
+        <Controller
           name={component.id}
           key={option.value}
           control={form.control}
           render={({ field: OptionField }) => {
             return (
-              <FormLabel key={option.value} className={cn(asCardClasses, "flex items-start has-[[data-state=checked]]:border-primary")} htmlFor={`${component.getField("attributes.id") || component.id}-${option.value}`}>
-                <FormControl>
-                  <Checkbox
-                    id={`${component.getField("attributes.id") || component.id}-${option.value}`}
-                    checked={OptionField.value?.includes(option.value)}
-                    onCheckedChange={(checked) => {
-                      return checked
-                        ? OptionField.onChange([
-                            ...OptionField.value || [],
-                            option.value,
-                          ])
-                        : OptionField.onChange(
-                            OptionField.value?.filter(
-                              (value: string) => value !== option.value
-                            )
-                          );
-                    }}
-                  />
-                </FormControl>
+              <WrapperComponent key={option.value} className={cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses)}>
+                <Checkbox
+                  id={`${componentId}-${option.value}`}
+                  checked={OptionField.value?.includes(option.value)}
+                  onCheckedChange={(checked) => {
+                    return checked
+                      ? OptionField.onChange([
+                          ...(OptionField.value || []),
+                          option.value,
+                        ])
+                      : OptionField.onChange(
+                          OptionField.value?.filter(
+                            (value: string) => value !== option.value
+                          )
+                        );
+                  }}
+                />
                 <div className="grid gap-1 leading-none">
-                  <FormLabel htmlFor={`${component.getField("attributes.id") || component.id}-${option.value}`} className={cn("text-sm leading-tight font-normal", oneOptionHasLabelDescription && "font-medium")}>
+                  <FieldLabel className={cn("text-sm leading-tight font-normal", oneOptionHasLabelDescription && "font-medium")} htmlFor={`${componentId}-${option.value}`}>
                     {option.label}
-                  </FormLabel>
+                  </FieldLabel>
                   {option.labelDescription && (
                     <p className="text-sm text-muted-foreground">
                       {option.labelDescription}
                     </p>
                   )}
                 </div>
-              </FormLabel>
+              </WrapperComponent>
             );
           }}
         />
@@ -82,21 +77,22 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   const oneOptionHasLabelDescription = component.options?.some((option) => option.labelDescription);
   const cardLayoutClasses = component.getField("properties.style.cardLayout");
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
-
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? 'FieldLabel' : "div";
   return {
     template: `
     <div className="${escapeHtml(cn("grid w-full gap-2", cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2"))}">
       ${component.options
         ?.map(
           (option) => `
-        <FormField
+        <Controller
           name="${component.id}"
           control={form.control}
           render={({ field: OptionField }) => {
             return (
-              <FormItem key="${option.value}" className="${escapeHtml(cn(asCardClasses, "flex items-start"))}">
-                <FormControl>
+              <${WrapperComponent} key="${option.value}" className="${escapeHtml(cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}">
                   <Checkbox
+                    id="${component.getField("attributes.id")}-${escapeHtml(option.value)}"
                     checked={OptionField.value?.includes("${option.value}")}
                     onCheckedChange={(checked) => {
                       return checked
@@ -111,14 +107,13 @@ export function getReactCode(component: FormComponentModel): ReactCode {
                           );
                     }}
                   />
-                </FormControl>
                 <div className="grid gap-2 leading-none">
-                  <FormLabel className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}">
+                  <FieldLabel className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}" htmlFor="${component.getField("attributes.id")}-${escapeHtml(option.value)}">
                     ${option.label}
-                  </FormLabel>
+                  </FieldLabel>
                   ${option.labelDescription ? `<p className="text-sm text-muted-foreground">${escapeHtml(option.labelDescription)}</p>` : ""}
                 </div>
-              </FormItem>
+              </${WrapperComponent}>
             );
           }}
         />
@@ -127,7 +122,6 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     `,
     dependencies: {
       "@/components/ui/checkbox": ["Checkbox"],
-      "@/components/ui/form": ["FormLabel"],
     },
   };
 }
