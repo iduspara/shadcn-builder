@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/iduspara/shadcn-builder/compare/v1.3.0...v1.4.0) (2025-10-30)
+
+
+### Features
+
+* usage to the new shadcn InputGroup component ([6376317](https://github.com/iduspara/shadcn-builder/commit/6376317fb4d4ed5f12e0d8afd43f649eb99c69d7))
+
 ## [1.3.0](https://github.com/iduspara/shadcn-builder/compare/v1.2.1...v1.3.0) (2025-10-30)
 
 
