@@ -3,13 +3,18 @@ import { DesignPropertiesViews, ReactCode } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
 import { HtmlGroup } from "../sidebar/groups/html-group";
 import { LabelGroup } from "../sidebar/groups/label-group";
-import { InputGroup } from "../sidebar/groups/input-group";
+import { InputGroup as SidebarInputGroup } from "../sidebar/groups/input-group";
 import { GridGroup } from "../sidebar/groups/grid-group";
 import { cn, escapeHtml } from "@/lib/utils";
 import { ValidationGroup } from "../sidebar/groups/validation-group";
 import { ControllerRenderProps } from "react-hook-form";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 import { Icon } from "../helpers/icon-render";
+import {
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroup,
+} from "@/components/ui/input-group";
 
 export function FormInput(
   component: FormComponentModel,
@@ -21,34 +26,36 @@ export function FormInput(
     "properties.style.iconStrokeWidth"
   );
   const IconPosition = component.getField("properties.style.iconPosition");
-  
-  return (
-    <>
-      <Input
+
+  return IconName ? (
+    <InputGroup>
+      <InputGroupInput
         key={component.id}
         placeholder={component.getField("attributes.placeholder")}
         type={component.getField("attributes.type")}
-        className={cn(
-          component.getField("attributes.class"),
-          IconName ? (IconPosition === "left" ? "ps-9" : "pe-9") : ""
-        )}
+        className={cn(component.getField("attributes.class"))}
         {...field}
       />
       {IconName && (
-        <div
-          className={cn(
-            "text-muted-foreground pointer-events-none absolute inset-y-0 flex items-center justify-center  peer-disabled:opacity-50",
-            IconPosition === "left" ? "start-0 ps-3" : "end-0 pe-3"
-          )}
+        <InputGroupAddon
+          align={IconPosition === "left" ? "inline-start" : "inline-end"}
         >
           <Icon
             name={IconName}
             className="size-4"
             strokeWidth={IconStrokeWidth}
           />
-        </div>
+        </InputGroupAddon>
       )}
-    </>
+    </InputGroup>
+  ) : (
+    <Input
+      key={component.id}
+      placeholder={component.getField("attributes.placeholder")}
+      type={component.getField("attributes.type")}
+      className={cn(component.getField("attributes.class"))}
+      {...field}
+    />
   );
 }
 
@@ -59,32 +66,37 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   );
   const IconPosition = component.getField("properties.style.iconPosition");
   return {
-    template: `
-    <>
-    <Input
-      key="${component.id}"
-      placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
-      type="${escapeHtml(component.getField("attributes.type"))}"
-      id="${escapeHtml(component.getField("attributes.id"))}"
-      className="${escapeHtml(component.getField("attributes.class"))} ${IconName ? (IconPosition === "left" ? "ps-9" : "pe-9") : ""}"
-      {...field}
-    />  
-    ${
-      IconName
-        ? `<div className={"text-muted-foreground pointer-events-none absolute inset-y-0 flex items-center justify-center  peer-disabled:opacity-50 ${IconPosition === "left" ? "start-0 ps-3" : "end-0 pe-3"}"}>
-          <${IconName}
+    template: IconName ? `
+      <InputGroup>
+        <InputGroupInput
+          key="${component.id}"
+          placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
+          type="${escapeHtml(component.getField("attributes.type"))}"
+          className="${escapeHtml(cn(
+            component.getField("attributes.class")
+          ))}"
+          {...field}
+        />
+        <InputGroupAddon align="${IconPosition === "left" ? "inline-start" : "inline-end"}">
+          <${IconName}Icon
             className="size-4"
             strokeWidth={${IconStrokeWidth}}
           />
-    </div>`
-        : ""
-    }
-    </>
-    `,
+        </InputGroupAddon>
+      </InputGroup>`
+      : `
+      <Input
+        key="${component.id}"
+        placeholder="${escapeHtml(component.getField("attributes.placeholder"))}"
+        type="${escapeHtml(component.getField("attributes.type"))}"
+        className="${escapeHtml(cn(component.getField("attributes.class")))}"
+        {...field}
+      />
+      `,
     dependencies: {
       "@/components/ui/input": ["Input"],
       ...(IconName && {
-        [`lucide-react`]: [IconName],
+        [`lucide-react`]: [`${IconName}Icon`],
       }),
     },
   };
@@ -99,7 +111,7 @@ export const InputDesignProperties: DesignPropertiesViews = {
       whitelist={["label", "labelPosition", "labelAlign", "showLabel"]}
     />
   ),
-  input: <InputGroup />,
+  input: <SidebarInputGroup />,
   options: null,
   button: null,
   validation: <ValidationGroup />,

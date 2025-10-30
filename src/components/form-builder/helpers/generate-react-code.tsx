@@ -13,6 +13,11 @@ const dependenciesImports: DependenciesImports = {
     "FieldLabel",
     "FieldError",
   ],
+  "@/components/ui/input-group": [
+    "InputGroup",
+    "InputGroupInput",
+    "InputGroupAddon",
+  ],
   "@hookform/resolvers/zod": ["zodResolver"],
   zod: ["z"],
   "react-hook-form": ["useForm", "Controller"],
@@ -139,7 +144,6 @@ const generateFormCode = async (
                   </FieldDescription>`
                     : ""
                 }
-                <div className="w-full">
                   ${componentCode}
                   ${
                     comp.description
@@ -149,7 +153,6 @@ const generateFormCode = async (
                       : ""
                   }
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                </div>
               </Field>
             )}
           />`
