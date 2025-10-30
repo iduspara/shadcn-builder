@@ -3,6 +3,7 @@
   ---break---
 */
 @plugin 'tailwindcss-animate';
+@plugin "@tailwindcss/typography";
 /*
   ---break---
 */

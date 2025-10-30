@@ -1,120 +1,107 @@
 import Header from "@/components/landingpage/header";
 import Footer from "@/components/landingpage/footer";
-import { Badge } from "@/components/ui/badge";
+import type { ComponentProps } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Link, ArrowRight } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 
-export type ChangelogEntry = {
-  version: string;
-  date: string;
-  title: string;
-  description: string;
-  items?: string[];
-  image?: string;
-  button?: {
-    url: string;
-    text: string;
-  };
-};
-
-const changelogEntries: ChangelogEntry[] = [
-  {
-    version: "Version 1.0.0",
-    date: "24 October 2025",
-    title: "Initial Release - Form Builder Platform",
-    description: "We're excited to announce the launch of our comprehensive form builder platform. This initial release includes all the core features needed to create beautiful, responsive forms with drag-and-drop simplicity.",
-    items: [
-      "Drag-and-drop form builder with intuitive interface",
-      "Comprehensive form component library (inputs, selects, checkboxes, etc.)",
-      "WYSIWYG text editor with rich formatting options",
-      "Icon picker with extensive icon library",
-      "Form validation system with real-time feedback",
-      "Template system with pre-designed form templates",
-      "User authentication and form management",
-      "Code generation for React components",
-      "Responsive design with container queries",
-      "JSON import/export functionality",
-      "Form examples and best practices",
-      "Mobile-optimized interface"
-    ],
-    button: {
-      url: "/builder",
-      text: "Try the Builder"
-    }
+async function fetchChangelog(): Promise<string> {
+  // Use raw GitHub URL to fetch plain Markdown content
+  const res = await fetch(
+    "https://raw.githubusercontent.com/iduspara/shadcn-builder/refs/heads/main/CHANGELOG.md",
+    { next: { revalidate: 60 } }
+  );
+  if (!res.ok) {
+    return "Failed to load changelog.";
   }
-];
+  return res.text();
+}
 
-export default function ChangelogPage() {
+export default async function ChangelogPage() {
+  const markdown = await fetchChangelog();
   return (
-    <div className="min-h-screen bg-background">
+    <div>
       <Header />
-      
-      <main className="pt-20">
-        <section className="py-32">
-          <div className="container">
-            <div className="mx-auto max-w-3xl">
-              <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl">
-                Changelog
-              </h1>
-              <p className="text-muted-foreground mb-6 text-base md:text-lg">
-                Get the latest updates and improvements to our platform.
-              </p>
-            </div>
-            <div className="mx-auto mt-16 max-w-3xl space-y-16 md:mt-24 md:space-y-24">
-              {changelogEntries.map((entry, index) => (
-                <div
-                  key={index}
-                  className="relative flex flex-col gap-4 md:flex-row md:gap-16"
-                >
-                  <div className="top-8 flex h-min w-64 shrink-0 items-center gap-4 md:sticky">
-                    <Badge variant="secondary" className="text-xs">
-                      {entry.version}
-                    </Badge>
-                    <span className="text-muted-foreground text-xs font-medium">
-                      {entry.date}
-                    </span>
-                  </div>
-                  <div className="flex flex-col">
-                    <h2 className="text-foreground/90 mb-3 text-lg font-bold leading-tight md:text-2xl">
-                      {entry.title}
-                    </h2>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                      {entry.description}
-                    </p>
-                    {entry.items && entry.items.length > 0 && (
-                      <ul className="text-muted-foreground ml-4 mt-4 space-y-1.5 text-sm md:text-base">
-                        {entry.items.map((item, itemIndex) => (
-                          <li key={itemIndex} className="list-disc">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    {entry.image && (
-                      <Image
-                        src={entry.image}
-                        alt={`${entry.version} visual`}
-                        width={800}
-                        height={400}
-                        className="mt-8 w-full rounded-lg object-cover"
-                      />
-                    )}
-                    {entry.button && (
-                      <Button variant="link" className="mt-4 self-end" asChild>
-                        <a href={entry.button.url}>
-                          {entry.button.text} <ArrowUpRight className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    )}
-                  </div>
+      <main className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
+        <div className="space-y-8">
+          {/* Header */}
+          <div className="space-y-4">
+            <Breadcrumb className="mb-4">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/changelog">Changelog</BreadcrumbLink>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div>
+                  <h1 className="text-4xl font-bold tracking-tight">
+                    Changelog
+                  </h1>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </section>
+
+          <Separator />
+
+          <section className="space-y-6">
+            <article className="prose">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  a(props: ComponentProps<"a">) {
+                    return (
+                      <a
+                        {...props}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:opacity-80"
+                      />
+                    );
+                  },
+                }}
+              >
+                {markdown}
+              </ReactMarkdown>
+            </article>
+          </section>
+
+          <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
+            <h3 className="text-2xl font-semibold">Ready to start building?</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Take these components for a spin in our interactive form builder. 
+              Drag, drop, and customize to create the perfect form for your needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <a href="/builder">
+                  Open Form Builder <ArrowRight className="h-4 w-4 ml-2" />
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/templates">
+                  Browse Templates
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
       </main>
-      
       <Footer />
     </div>
   );
