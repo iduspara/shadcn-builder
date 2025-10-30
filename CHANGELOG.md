@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/iduspara/shadcn-builder/compare/v1.2.1...v1.3.0) (2025-10-30)
+
+
+### Features
+
+* added changelog to the header ([e07985a](https://github.com/iduspara/shadcn-builder/commit/e07985ad8c46224a26c1428a2336ad5bb01afab0))
+
 ## [1.2.1](https://github.com/iduspara/shadcn-builder/compare/v1.2.0...v1.2.1) (2025-10-27)
 
 
