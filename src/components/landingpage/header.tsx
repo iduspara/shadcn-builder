@@ -34,6 +34,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/components", label: "Components" },
     { href: "/templates", label: "Templates" },
+    { href: "/changelog", label: "Changelog" },
     { href: "/faq", label: "FAQ" },
     { href: "/about", label: "About" },
   ];
