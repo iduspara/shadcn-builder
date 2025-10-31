@@ -15,8 +15,11 @@ import { FieldLabel } from "@/components/ui/field";
 export function FormSwitch(component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? FieldLabel : "div" as React.ElementType;
+
   return (
-    <FieldLabel
+    <WrapperComponent
       key={component.id}
       className={cn(asCardClasses, "flex justify-between items-center w-full has-[[data-state=checked]]:border-primary")}
       htmlFor={componentId}
@@ -30,7 +33,7 @@ export function FormSwitch(component: FormComponentModel, form: UseFormReturn<Fi
         </p>
       </div>
       <Switch id={componentId} {...field} checked={field.value} onCheckedChange={field.onChange} />
-    </FieldLabel>
+    </WrapperComponent>
   );
 }
 
@@ -38,9 +41,11 @@ export function FormSwitch(component: FormComponentModel, form: UseFormReturn<Fi
 export function getReactCode(component: FormComponentModel): ReactCode {
   const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
   const componentId = component.getField("attributes.id") || component.id;
+  const isCard = component.getField("properties.style.asCard") === "yes";
+  const WrapperComponent = isCard ? 'FieldLabel' : "div";
   return {
     template: `
-    <FieldLabel
+    <${WrapperComponent}
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"))}"
       htmlFor="${escapeHtml(componentId)}"
@@ -54,7 +59,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
         </p>
       </div>
       <Switch id="${escapeHtml(componentId)}" {...field} checked={field.value} onCheckedChange={field.onChange} />
-    </FieldLabel>
+    </${WrapperComponent}>
     `,
     dependencies: {
       "@/components/ui/switch": ["Switch"]
