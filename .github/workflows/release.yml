@@ -26,6 +26,13 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Git diagnostics (before)
+        run: |
+          git remote -v
+          git fetch --tags --prune
+          git describe --tags --always || true
+          git status
         
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
@@ -37,6 +44,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Git diagnostics (after)
+        if: always()
+        run: |
+            git fetch --tags --prune
+            git tag -ln --sort=-creatordate | head -n 10
       - name: Rebase released onto main
         if: success()
         run: |
