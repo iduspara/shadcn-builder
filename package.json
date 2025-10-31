@@ -108,7 +108,7 @@
     "playwright": "^1.52.0",
     "postcss": "^8",
     "semantic-release": "^22.0.12",
-    "shadcn": "^3.4.2",
+    "shadcn": "^3.5.0",
     "tailwindcss": "^4.0.9",
     "typescript": "^5"
   },

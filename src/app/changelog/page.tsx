@@ -10,7 +10,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Link, ArrowRight } from "lucide-react";
+import { Link, ArrowRight, Github } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
@@ -84,8 +84,7 @@ export default async function ChangelogPage() {
           <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
             <h3 className="text-2xl font-semibold">Ready to start building?</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Take these components for a spin in our interactive form builder. 
-              Drag, drop, and customize to create the perfect form for your needs.
+              Check out the latest updates and improvements to Shadcn Builder.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -94,9 +93,10 @@ export default async function ChangelogPage() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/templates">
-                  Browse Templates
-                </Link>
+                <a href="https://github.com/iduspara/shadcn-builder" target="_blank" rel="noopener noreferrer">
+                  View on GitHub
+                  <Github className="h-4 w-4 ml-2" />
+                </a>
               </Button>
             </div>
           </div>
