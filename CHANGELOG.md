@@ -16,6 +16,26 @@
 * fixed background for switch component when selected ([c04e6a6](https://github.com/iduspara/shadcn-builder/commit/c04e6a60c3c2ab2c0c6a4fa502a26e099e4abdd5))
 * fixed issue with label position ([9edb8a1](https://github.com/iduspara/shadcn-builder/commit/9edb8a14b656f75b92bb119ab2b1bd7538b0b57e))
 * improved ui of the template page ([911b4fa](https://github.com/iduspara/shadcn-builder/commit/911b4fa90022854092ac48809071ecbad3aecdc9))
+* upgrade zod to 4 ([b07e8f8](https://github.com/iduspara/shadcn-builder/commit/b07e8f8cc3bc4fe5f5a403549dba754548bb8ae3))
+
+## [1.5.0](https://github.com/iduspara/shadcn-builder/compare/v1.4.0...v1.5.0) (2025-10-31)
+
+
+### Features
+
+* added native select component ([92fc5c2](https://github.com/iduspara/shadcn-builder/commit/92fc5c23bebaa15ccdc42bb8eaa8ac03b289efc2))
+
+
+### Bug Fixes
+
+* added cli script to generate code files for all templates ([285f8c9](https://github.com/iduspara/shadcn-builder/commit/285f8c9b302c2eafbda4baa6aa82294f29b83ea0))
+* added code copy to clipboard feature ([9be85a2](https://github.com/iduspara/shadcn-builder/commit/9be85a23c4b9a2f7719a9accb1ffae9052e8b829))
+* debug workflow ([3ddac47](https://github.com/iduspara/shadcn-builder/commit/3ddac4715d8ec2d47e1aa815eb64a9413e3e8099))
+* debug workflow ([b3d5d48](https://github.com/iduspara/shadcn-builder/commit/b3d5d48cda9e39d592aee94e1a8f81f4abba8c97))
+* fix semantic release branch ([8f70bb8](https://github.com/iduspara/shadcn-builder/commit/8f70bb851dc073f2200e6fc158aa9fabc0e78474))
+* fixed background for switch component when selected ([c04e6a6](https://github.com/iduspara/shadcn-builder/commit/c04e6a60c3c2ab2c0c6a4fa502a26e099e4abdd5))
+* fixed issue with label position ([9edb8a1](https://github.com/iduspara/shadcn-builder/commit/9edb8a14b656f75b92bb119ab2b1bd7538b0b57e))
+* improved ui of the template page ([911b4fa](https://github.com/iduspara/shadcn-builder/commit/911b4fa90022854092ac48809071ecbad3aecdc9))
 
 ## [1.4.0](https://github.com/iduspara/shadcn-builder/compare/v1.3.0...v1.4.0) (2025-10-30)
 
