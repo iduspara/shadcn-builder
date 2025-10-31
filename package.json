@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "commitlint": "commitlint --edit",
+    "generate:template-code": "tsx scripts/generate-template-code.ts",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
@@ -110,6 +111,7 @@
     "semantic-release": "^22.0.12",
     "shadcn": "^3.4.2",
     "tailwindcss": "^4.0.9",
+    "tsx": "^4.17.0",
     "typescript": "^5"
   },
   "resolutions": {

@@ -93,9 +93,10 @@ const generateComponentLogic = (components: FormComponentModel[]): string => {
 };
 
 const generateFormCode = async (
-  components: FormComponentModel[]
+  components: FormComponentModel[],
+  formName?: string
 ): Promise<{ code: string; dependenciesImports: DependenciesImports; thirdPartyDependenciesImports: string[] }> => {
-  const formTitle = useFormBuilderStore.getState().formTitle;
+  const formTitle = useFormBuilderStore.getState().formTitle || formName || "Generated Form";
   const componentLogic = generateComponentLogic(components);
 
   const componentsMap = components
