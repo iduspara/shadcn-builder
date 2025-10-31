@@ -43,17 +43,18 @@ export default function AssignmentSubmission() {
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
     "file-input-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -64,7 +65,7 @@ export default function AssignmentSubmission() {
       "text-input-1": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.469Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.660Z"),
       "textarea-0": "",
       "file-input-0": "",
       "checkbox-0": false,
@@ -105,7 +106,7 @@ export default function AssignmentSubmission() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -127,7 +128,7 @@ export default function AssignmentSubmission() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -149,7 +150,7 @@ export default function AssignmentSubmission() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Course Code</FieldLabel>
+              <FieldLabel className="flex w-auto!">Course Code</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -171,9 +172,7 @@ export default function AssignmentSubmission() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Assignment Title
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Assignment Title</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -195,7 +194,7 @@ export default function AssignmentSubmission() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Due Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Due Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -234,7 +233,7 @@ export default function AssignmentSubmission() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Assignment Description
               </FieldLabel>
 
@@ -258,9 +257,7 @@ export default function AssignmentSubmission() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Assignment Files
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Assignment Files</FieldLabel>
 
               <Input
                 key="file-input-0"
@@ -282,7 +279,7 @@ export default function AssignmentSubmission() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I confirm this is my original work
               </FieldLabel>
 
@@ -293,7 +290,6 @@ export default function AssignmentSubmission() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -315,7 +311,7 @@ export default function AssignmentSubmission() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

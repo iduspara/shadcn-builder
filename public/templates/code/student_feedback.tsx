@@ -46,6 +46,7 @@ export default function StudentFeedback() {
     "textarea-0": z.string(),
     "textarea-1": z.string(),
     "textarea-2": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -97,7 +98,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -119,7 +120,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -141,7 +142,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Grade Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Grade Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -184,7 +185,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Subject Area</FieldLabel>
+              <FieldLabel className="flex w-auto!">Subject Area</FieldLabel>
 
               <Select
                 key="select-1"
@@ -239,7 +240,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Overall Experience
               </FieldLabel>
 
@@ -321,7 +322,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 What did you enjoy most?
               </FieldLabel>
 
@@ -345,7 +346,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 What could be improved?
               </FieldLabel>
 
@@ -369,7 +370,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -393,7 +394,7 @@ export default function StudentFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

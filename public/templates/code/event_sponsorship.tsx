@@ -51,6 +51,7 @@ export default function EventSponsorship() {
       .min(1, { message: "This field is required" })
       .min(50, { message: "Must be at least 50 characters" }),
     "textarea-1": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -101,7 +102,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Company Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Company Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -123,7 +124,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Person</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Person</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -145,7 +146,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -167,7 +168,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -189,7 +190,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Sponsorship Level
               </FieldLabel>
 
@@ -238,7 +239,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Company Description
               </FieldLabel>
 
@@ -262,7 +263,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Sponsorship Goals
               </FieldLabel>
 
@@ -286,7 +287,7 @@ export default function EventSponsorship() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

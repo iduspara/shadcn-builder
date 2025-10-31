@@ -41,14 +41,14 @@ export default function TravelInsuranceApplication() {
     "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-1": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "date-input-2": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "checkbox-group-0": z
       .array(z.string())
@@ -56,6 +56,7 @@ export default function TravelInsuranceApplication() {
         message: "You have to select at least one item.",
       }),
     "text-input-2": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,10 +64,10 @@ export default function TravelInsuranceApplication() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.085Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.331Z"),
       "text-input-1": "",
-      "date-input-1": new Date("2025-10-31T11:39:31.085Z"),
-      "date-input-2": new Date("2025-10-31T11:39:31.085Z"),
+      "date-input-1": new Date("2025-10-31T14:00:25.331Z"),
+      "date-input-2": new Date("2025-10-31T14:00:25.331Z"),
       "checkbox-group-0": [],
       "text-input-2": "",
     },
@@ -108,7 +109,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Traveler Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Traveler Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -130,7 +131,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -169,7 +170,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Destination</FieldLabel>
+              <FieldLabel className="flex w-auto!">Destination</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -191,7 +192,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Travel Start Date
               </FieldLabel>
 
@@ -232,7 +233,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Travel End Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Travel End Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -271,9 +272,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Coverage Options
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Coverage Options</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -482,7 +481,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Trip Cost</FieldLabel>
+              <FieldLabel className="flex w-auto!">Trip Cost</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -504,7 +503,7 @@ export default function TravelInsuranceApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

@@ -46,16 +46,17 @@ export default function MembershipCancellation() {
       .min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "textarea-0": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -66,7 +67,7 @@ export default function MembershipCancellation() {
       "text-input-1": "",
       "email-input-0": "",
       "radio-group-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.780Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.003Z"),
       "textarea-0": "",
       "checkbox-0": false,
     },
@@ -108,7 +109,7 @@ export default function MembershipCancellation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Member Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Member Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -130,7 +131,7 @@ export default function MembershipCancellation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Membership Number
               </FieldLabel>
 
@@ -154,7 +155,7 @@ export default function MembershipCancellation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -176,7 +177,7 @@ export default function MembershipCancellation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Reason for Cancellation
               </FieldLabel>
 
@@ -286,7 +287,7 @@ export default function MembershipCancellation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Cancellation Date
               </FieldLabel>
 
@@ -327,7 +328,7 @@ export default function MembershipCancellation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -351,7 +352,7 @@ export default function MembershipCancellation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I understand the cancellation policy
               </FieldLabel>
 
@@ -362,7 +363,6 @@ export default function MembershipCancellation() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -384,7 +384,7 @@ export default function MembershipCancellation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

@@ -56,6 +56,7 @@ export default function MaintenanceRequest() {
       .min(50, { message: "Must be at least 50 characters" }),
     "select-2": z.string().min(1, { message: "This field is required" }),
     "checkbox-0": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -110,7 +111,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Tenant/Owner Name
               </FieldLabel>
 
@@ -134,7 +135,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -156,7 +157,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -178,9 +179,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Property Address
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Address</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -202,7 +201,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Unit/Apartment Number
               </FieldLabel>
 
@@ -226,7 +225,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Issue Category</FieldLabel>
+              <FieldLabel className="flex w-auto!">Issue Category</FieldLabel>
 
               <Select
                 key="select-0"
@@ -285,7 +284,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Priority Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Priority Level</FieldLabel>
 
               <Select
                 key="select-1"
@@ -328,7 +327,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Issue Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Issue Title</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -350,7 +349,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Detailed Description
               </FieldLabel>
 
@@ -374,7 +373,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Contact Time
               </FieldLabel>
 
@@ -419,7 +418,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I authorize entry to my property for maintenance
               </FieldLabel>
 
@@ -430,7 +429,6 @@ export default function MaintenanceRequest() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -454,7 +452,7 @@ export default function MaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

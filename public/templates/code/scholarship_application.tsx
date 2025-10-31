@@ -53,6 +53,7 @@ export default function ScholarshipApplication() {
       .min(100, { message: "Must be at least 100 characters" }),
     "file-input-0": z.string().min(1, { message: "This field is required" }),
     "file-input-1": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -107,7 +108,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -129,7 +130,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -151,7 +152,7 @@ export default function ScholarshipApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -173,7 +174,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Academic Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Academic Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -216,7 +217,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">GPA</FieldLabel>
+              <FieldLabel className="flex w-auto!">GPA</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -238,7 +239,7 @@ export default function ScholarshipApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Family Income</FieldLabel>
+              <FieldLabel className="flex w-auto!">Family Income</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -260,7 +261,7 @@ export default function ScholarshipApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Personal Statement
               </FieldLabel>
 
@@ -284,7 +285,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Transcript</FieldLabel>
+              <FieldLabel className="flex w-auto!">Transcript</FieldLabel>
 
               <Input
                 key="file-input-0"
@@ -306,7 +307,7 @@ export default function ScholarshipApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Recommendation Letters
               </FieldLabel>
 
@@ -330,7 +331,7 @@ export default function ScholarshipApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

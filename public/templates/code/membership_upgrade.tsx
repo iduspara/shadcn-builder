@@ -48,7 +48,7 @@ export default function MembershipUpgrade() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-2": z.string().min(1, { message: "This field is required" }),
     "select-3": z.string().min(1, { message: "This field is required" }),
@@ -58,11 +58,12 @@ export default function MembershipUpgrade() {
     "textarea-1": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -75,11 +76,11 @@ export default function MembershipUpgrade() {
       "tel-input-0": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.769Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.991Z"),
       "select-2": "",
       "select-3": "",
       "radio-0": "",
-      "date-input-1": new Date("2025-10-31T11:39:30.769Z"),
+      "date-input-1": new Date("2025-10-31T14:00:24.991Z"),
       "textarea-0": "",
       "textarea-1": "",
       "checkbox-0": false,
@@ -120,7 +121,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Member Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Member Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -142,7 +143,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Member ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Member ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -164,7 +165,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -186,7 +187,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -208,7 +209,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Membership Type
               </FieldLabel>
 
@@ -249,7 +250,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Desired Upgrade</FieldLabel>
+              <FieldLabel className="flex w-auto!">Desired Upgrade</FieldLabel>
 
               <Select
                 key="select-1"
@@ -288,7 +289,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Expiry Date
               </FieldLabel>
 
@@ -329,7 +330,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Payment Plan</FieldLabel>
+              <FieldLabel className="flex w-auto!">Payment Plan</FieldLabel>
 
               <Select
                 key="select-2"
@@ -372,7 +373,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Payment Method</FieldLabel>
+              <FieldLabel className="flex w-auto!">Payment Method</FieldLabel>
 
               <Select
                 key="select-3"
@@ -419,7 +420,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Upgrade Timing</FieldLabel>
+              <FieldLabel className="flex w-auto!">Upgrade Timing</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -495,7 +496,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Upgrade Date
               </FieldLabel>
 
@@ -536,7 +537,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Reason for Upgrade
               </FieldLabel>
 
@@ -560,7 +561,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -584,7 +585,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I understand the upgrade terms and pricing
               </FieldLabel>
 
@@ -595,7 +596,6 @@ export default function MembershipUpgrade() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -619,7 +619,7 @@ export default function MembershipUpgrade() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

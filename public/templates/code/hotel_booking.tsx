@@ -47,16 +47,17 @@ export default function HotelBooking() {
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "date-input-1": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "select-2": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,8 +68,8 @@ export default function HotelBooking() {
       "email-input-0": "",
       "tel-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.047Z"),
-      "date-input-1": new Date("2025-10-31T11:39:31.047Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.290Z"),
+      "date-input-1": new Date("2025-10-31T14:00:25.290Z"),
       "select-0": "",
       "select-1": "",
       "select-2": "",
@@ -111,7 +112,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Guest Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Guest Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -133,7 +134,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -155,7 +156,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -177,7 +178,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Hotel Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Hotel Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -199,7 +200,7 @@ export default function HotelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Check-in Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Check-in Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -238,7 +239,7 @@ export default function HotelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Check-out Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Check-out Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -277,7 +278,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Room Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Room Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -328,9 +329,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Number of Guests
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Number of Guests</FieldLabel>
 
               <Select
                 key="select-1"
@@ -381,7 +380,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Room Preference</FieldLabel>
+              <FieldLabel className="flex w-auto!">Room Preference</FieldLabel>
 
               <Select
                 key="select-2"
@@ -428,9 +427,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Special Requests
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Special Requests</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -714,7 +711,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Requests
               </FieldLabel>
 
@@ -738,7 +735,7 @@ export default function HotelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

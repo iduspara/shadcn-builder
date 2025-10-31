@@ -53,6 +53,7 @@ export default function HomeValuationRequest() {
     "text-input-5": z.string(),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -110,9 +111,7 @@ export default function HomeValuationRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Property Address
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Address</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -134,7 +133,7 @@ export default function HomeValuationRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Owner Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Owner Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -156,7 +155,7 @@ export default function HomeValuationRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -178,7 +177,7 @@ export default function HomeValuationRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -200,7 +199,7 @@ export default function HomeValuationRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Property Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -251,7 +250,7 @@ export default function HomeValuationRequest() {
               className="col-span-4 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Square Footage</FieldLabel>
+              <FieldLabel className="flex w-auto!">Square Footage</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -273,7 +272,7 @@ export default function HomeValuationRequest() {
               className="col-span-4 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Bedrooms</FieldLabel>
+              <FieldLabel className="flex w-auto!">Bedrooms</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -295,7 +294,7 @@ export default function HomeValuationRequest() {
               className="col-span-4 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Bathrooms</FieldLabel>
+              <FieldLabel className="flex w-auto!">Bathrooms</FieldLabel>
 
               <Input
                 key="text-input-4"
@@ -317,7 +316,7 @@ export default function HomeValuationRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Year Built</FieldLabel>
+              <FieldLabel className="flex w-auto!">Year Built</FieldLabel>
 
               <Input
                 key="text-input-5"
@@ -339,7 +338,7 @@ export default function HomeValuationRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Reason for Valuation
               </FieldLabel>
 
@@ -452,7 +451,7 @@ export default function HomeValuationRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Property Details
               </FieldLabel>
 
@@ -476,7 +475,7 @@ export default function HomeValuationRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

@@ -45,9 +45,10 @@ export default function ServiceUpgradeRequest() {
     "select-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,7 +60,7 @@ export default function ServiceUpgradeRequest() {
       "select-0": "",
       "select-1": "",
       "checkbox-group-0": [],
-      "date-input-0": new Date("2025-10-31T11:39:30.942Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.180Z"),
       "textarea-0": "",
     },
   });
@@ -100,7 +101,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Account Holder</FieldLabel>
+              <FieldLabel className="flex w-auto!">Account Holder</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -122,7 +123,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Account Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Account Number</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -144,7 +145,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Current Plan</FieldLabel>
+              <FieldLabel className="flex w-auto!">Current Plan</FieldLabel>
 
               <Select
                 key="select-0"
@@ -191,7 +192,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Desired Plan</FieldLabel>
+              <FieldLabel className="flex w-auto!">Desired Plan</FieldLabel>
 
               <Select
                 key="select-1"
@@ -234,7 +235,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Features
               </FieldLabel>
 
@@ -484,7 +485,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Upgrade Date
               </FieldLabel>
 
@@ -525,7 +526,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Special Requirements
               </FieldLabel>
 
@@ -549,7 +550,7 @@ export default function ServiceUpgradeRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

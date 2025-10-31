@@ -41,13 +41,14 @@ export default function VehicleDamageReport() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
     "file-input-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-0": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +57,7 @@ export default function VehicleDamageReport() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.312Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.482Z"),
       "text-input-2": "",
       "select-0": "",
       "textarea-0": "",
@@ -99,7 +100,7 @@ export default function VehicleDamageReport() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Rental Agreement Number
               </FieldLabel>
 
@@ -123,7 +124,7 @@ export default function VehicleDamageReport() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Vehicle License Plate
               </FieldLabel>
 
@@ -147,9 +148,7 @@ export default function VehicleDamageReport() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Date of Incident
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Incident</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -188,7 +187,7 @@ export default function VehicleDamageReport() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Location of Incident
               </FieldLabel>
 
@@ -212,7 +211,7 @@ export default function VehicleDamageReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Type of Damage</FieldLabel>
+              <FieldLabel className="flex w-auto!">Type of Damage</FieldLabel>
 
               <Select
                 key="select-0"
@@ -263,7 +262,7 @@ export default function VehicleDamageReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Description of Damage
               </FieldLabel>
 
@@ -287,7 +286,7 @@ export default function VehicleDamageReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Damage Photos</FieldLabel>
+              <FieldLabel className="flex w-auto!">Damage Photos</FieldLabel>
 
               <Input
                 key="file-input-0"
@@ -309,7 +308,7 @@ export default function VehicleDamageReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 Police report filed
               </FieldLabel>
 
@@ -320,7 +319,6 @@ export default function VehicleDamageReport() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -342,7 +340,7 @@ export default function VehicleDamageReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

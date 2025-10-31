@@ -41,7 +41,7 @@ export default function EventPhotographyRequest() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z
@@ -50,6 +50,7 @@ export default function EventPhotographyRequest() {
         message: "You have to select at least one item.",
       }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,7 +59,7 @@ export default function EventPhotographyRequest() {
       "text-0": "",
       "text-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.590Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.782Z"),
       "text-input-1": "",
       "checkbox-group-0": [],
       "textarea-0": "",
@@ -101,7 +102,7 @@ export default function EventPhotographyRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -123,7 +124,7 @@ export default function EventPhotographyRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -174,7 +175,7 @@ export default function EventPhotographyRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -213,9 +214,7 @@ export default function EventPhotographyRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Duration (hours)
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Duration (hours)</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -237,7 +236,7 @@ export default function EventPhotographyRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Services Needed</FieldLabel>
+              <FieldLabel className="flex w-auto!">Services Needed</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -481,7 +480,7 @@ export default function EventPhotographyRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Special Requirements
               </FieldLabel>
 
@@ -505,7 +504,7 @@ export default function EventPhotographyRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

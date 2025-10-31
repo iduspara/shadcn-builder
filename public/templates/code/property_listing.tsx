@@ -59,6 +59,7 @@ export default function PropertyListingForm() {
       .email({ message: "Invalid email address" })
       .min(1, { message: "This field is required" }),
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -116,7 +117,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Property Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Title</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -138,7 +139,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Property Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -193,7 +194,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Listing Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Listing Type</FieldLabel>
 
               <Select
                 key="select-1"
@@ -232,7 +233,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Price</FieldLabel>
+              <FieldLabel className="flex w-auto!">Price</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -254,7 +255,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Address</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -276,7 +277,7 @@ export default function PropertyListingForm() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Bedrooms</FieldLabel>
+              <FieldLabel className="flex w-auto!">Bedrooms</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -298,7 +299,7 @@ export default function PropertyListingForm() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Bathrooms</FieldLabel>
+              <FieldLabel className="flex w-auto!">Bathrooms</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -320,7 +321,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Square Footage</FieldLabel>
+              <FieldLabel className="flex w-auto!">Square Footage</FieldLabel>
 
               <Input
                 key="text-input-4"
@@ -342,7 +343,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Description</FieldLabel>
+              <FieldLabel className="flex w-auto!">Description</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -364,7 +365,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Amenities</FieldLabel>
+              <FieldLabel className="flex w-auto!">Amenities</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -684,7 +685,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Property Photos</FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Photos</FieldLabel>
 
               <Input
                 key="file-input-0"
@@ -706,7 +707,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Name</FieldLabel>
 
               <Input
                 key="text-input-5"
@@ -728,7 +729,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -750,7 +751,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -772,7 +773,7 @@ export default function PropertyListingForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

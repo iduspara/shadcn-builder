@@ -43,6 +43,7 @@ export default function PushNotificationSettings() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -92,7 +93,7 @@ export default function PushNotificationSettings() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Device Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Device Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -114,7 +115,7 @@ export default function PushNotificationSettings() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Device Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Device Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -157,7 +158,7 @@ export default function PushNotificationSettings() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Notification Categories
               </FieldLabel>
 
@@ -403,7 +404,7 @@ export default function PushNotificationSettings() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Quiet Hours</FieldLabel>
+              <FieldLabel className="flex w-auto!">Quiet Hours</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -489,7 +490,7 @@ export default function PushNotificationSettings() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

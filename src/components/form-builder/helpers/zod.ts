@@ -181,7 +181,7 @@ const createDateSchema = (
   }
 
   return z.date({
-    required_error: "This field is required.",
+    error: "This field is required.",
   });
 };
 
@@ -208,7 +208,7 @@ const createCheckboxSchema = (
 
   return z
     .boolean({
-      required_error: "This field is required.",
+      error: "This field is required.",
     })
     .refine((value) => value === true, {
       message: "This field is required.",
@@ -309,7 +309,7 @@ const createDateSchemaAsString = (
   }
 
   return `z.date({
-    required_error: "This field is required.",
+    error: "This field is required.",
   })`;
 };
 
@@ -402,7 +402,7 @@ const createCheckboxSchemaAsString = (
   }
 
   return `z.boolean({
-    required_error: "This field is required.",
+    error: "This field is required.",
   }).refine((value) => value === true, {
     message: "This field is required.",
   })`;
@@ -573,6 +573,12 @@ const createSchemaForComponent = (
       : createUrlSchema(validations, isRequired);
   }
 
+  if (component.type === "button" || component.type === "submit-button" || component.type === "reset-button") {
+    return asString
+      ? `z.string().optional()`
+      : z.string().optional();
+  }
+
   return asString
     ? createStringSchemaAsString(validations, isRequired)
     : createStringSchema(validations, isRequired);
@@ -588,10 +594,6 @@ export const getZodSchemaForComponents = (
     const validations = component.getField("validations");
     const isRequired = shouldForceRequired(validations);
     const componentId = component.getField("attributes.id");
-
-    if (component.type === "button" || component.type === "submit-button" || component.type === "reset-button") {
-      return;
-    }
 
     schema[componentId] = createSchemaForComponent(
       component,

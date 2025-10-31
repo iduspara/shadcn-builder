@@ -47,6 +47,7 @@ export default function SpeakerApplication() {
     "textarea-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-1": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -96,7 +97,7 @@ export default function SpeakerApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Speaker Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Speaker Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -118,7 +119,7 @@ export default function SpeakerApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -140,7 +141,7 @@ export default function SpeakerApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Talk Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Talk Title</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -162,7 +163,7 @@ export default function SpeakerApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Talk Abstract</FieldLabel>
+              <FieldLabel className="flex w-auto!">Talk Abstract</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -184,7 +185,7 @@ export default function SpeakerApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Talk Duration</FieldLabel>
+              <FieldLabel className="flex w-auto!">Talk Duration</FieldLabel>
 
               <Select
                 key="select-0"
@@ -227,7 +228,7 @@ export default function SpeakerApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Speaker Bio</FieldLabel>
+              <FieldLabel className="flex w-auto!">Speaker Bio</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -249,7 +250,7 @@ export default function SpeakerApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

@@ -54,6 +54,7 @@ export default function PartnershipInquiry() {
       .string()
       .min(1, { message: "This field is required" })
       .min(100, { message: "Must be at least 100 characters" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -105,7 +106,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Company Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Company Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -127,7 +128,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -149,7 +150,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Job Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Job Title</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -171,7 +172,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -193,7 +194,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -215,9 +216,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Partnership Type
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Partnership Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -268,7 +267,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Company Description
               </FieldLabel>
 
@@ -292,7 +291,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Partnership Proposal
               </FieldLabel>
 
@@ -316,7 +315,7 @@ export default function PartnershipInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

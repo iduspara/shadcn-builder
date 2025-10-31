@@ -53,6 +53,7 @@ export default function CourseRegistration() {
       }),
     "select-2": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -104,7 +105,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student ID</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -126,7 +127,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Full Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Full Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -148,7 +149,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -170,7 +171,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Academic Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Academic Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -213,7 +214,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Major/Program</FieldLabel>
+              <FieldLabel className="flex w-auto!">Major/Program</FieldLabel>
 
               <Select
                 key="select-1"
@@ -264,9 +265,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Course Selection
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Course Selection</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -510,7 +509,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Semester</FieldLabel>
+              <FieldLabel className="flex w-auto!">Semester</FieldLabel>
 
               <Select
                 key="select-2"
@@ -549,9 +548,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -573,7 +570,7 @@ export default function CourseRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

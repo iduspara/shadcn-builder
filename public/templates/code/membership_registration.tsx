@@ -46,7 +46,7 @@ export default function MembershipRegistration() {
       .min(1, { message: "This field is required" }),
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
@@ -55,12 +55,13 @@ export default function MembershipRegistration() {
     "textarea-1": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
     "checkbox-1": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -71,7 +72,7 @@ export default function MembershipRegistration() {
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.732Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.950Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",
@@ -118,7 +119,7 @@ export default function MembershipRegistration() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">First Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">First Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -140,7 +141,7 @@ export default function MembershipRegistration() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Last Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Last Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -162,7 +163,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -184,7 +185,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -206,7 +207,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -245,7 +246,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Membership Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Membership Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -288,7 +289,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Payment Plan</FieldLabel>
+              <FieldLabel className="flex w-auto!">Payment Plan</FieldLabel>
 
               <Select
                 key="select-1"
@@ -331,7 +332,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Address</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -353,7 +354,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Interests</FieldLabel>
+              <FieldLabel className="flex w-auto!">Interests</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -597,7 +598,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 How did you hear about us?
               </FieldLabel>
 
@@ -621,7 +622,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I agree to the terms and conditions
               </FieldLabel>
 
@@ -632,7 +633,6 @@ export default function MembershipRegistration() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -654,7 +654,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I would like to receive promotional emails
               </FieldLabel>
 
@@ -665,7 +665,6 @@ export default function MembershipRegistration() {
                 <Checkbox
                   id="checkbox-1"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -689,7 +688,7 @@ export default function MembershipRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

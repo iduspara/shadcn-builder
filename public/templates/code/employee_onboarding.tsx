@@ -47,10 +47,11 @@ export default function EmployeeOnboarding() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "tel-input-1": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,7 +64,7 @@ export default function EmployeeOnboarding() {
       "tel-input-0": "",
       "select-0": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.239Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.405Z"),
       "text-input-3": "",
       "tel-input-1": "",
     },
@@ -103,7 +104,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Full Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Full Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -125,7 +126,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Employee ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Employee ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -147,7 +148,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Work Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Work Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -169,7 +170,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -191,7 +192,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Department</FieldLabel>
+              <FieldLabel className="flex w-auto!">Department</FieldLabel>
 
               <Select
                 key="select-0"
@@ -242,7 +243,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Job Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Job Title</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -264,7 +265,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Start Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Start Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -303,7 +304,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Emergency Contact
               </FieldLabel>
 
@@ -327,7 +328,7 @@ export default function EmployeeOnboarding() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Emergency Contact Phone
               </FieldLabel>
 
@@ -351,7 +352,7 @@ export default function EmployeeOnboarding() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

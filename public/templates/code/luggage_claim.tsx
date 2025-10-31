@@ -44,6 +44,7 @@ export default function LostLuggageClaim() {
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -92,7 +93,7 @@ export default function LostLuggageClaim() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Passenger Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Passenger Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -114,7 +115,7 @@ export default function LostLuggageClaim() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Flight Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Flight Number</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -136,7 +137,7 @@ export default function LostLuggageClaim() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Baggage Tag Number
               </FieldLabel>
 
@@ -160,7 +161,7 @@ export default function LostLuggageClaim() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Issue Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Issue Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -203,7 +204,7 @@ export default function LostLuggageClaim() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Luggage Description
               </FieldLabel>
 
@@ -227,7 +228,7 @@ export default function LostLuggageClaim() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

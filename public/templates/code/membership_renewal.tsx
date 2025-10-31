@@ -47,7 +47,7 @@ export default function MembershipRenewal() {
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "select-2": z.string().min(1, { message: "This field is required" }),
@@ -55,11 +55,12 @@ export default function MembershipRenewal() {
     "textarea-0": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -71,7 +72,7 @@ export default function MembershipRenewal() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.744Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.963Z"),
       "select-1": "",
       "select-2": "",
       "radio-0": "",
@@ -114,7 +115,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Member Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Member Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -136,7 +137,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Member ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Member ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -158,7 +159,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -180,7 +181,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -202,7 +203,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Membership Type
               </FieldLabel>
 
@@ -247,7 +248,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Expiry Date
               </FieldLabel>
 
@@ -288,7 +289,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Renewal Period</FieldLabel>
+              <FieldLabel className="flex w-auto!">Renewal Period</FieldLabel>
 
               <Select
                 key="select-1"
@@ -335,7 +336,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Payment Method</FieldLabel>
+              <FieldLabel className="flex w-auto!">Payment Method</FieldLabel>
 
               <Select
                 key="select-2"
@@ -382,7 +383,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Auto-Renewal</FieldLabel>
+              <FieldLabel className="flex w-auto!">Auto-Renewal</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -430,7 +431,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -454,7 +455,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I confirm that my information is accurate
               </FieldLabel>
 
@@ -465,7 +466,6 @@ export default function MembershipRenewal() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -489,7 +489,7 @@ export default function MembershipRenewal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

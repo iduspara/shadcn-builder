@@ -48,7 +48,7 @@ export default function TourReservation() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "select-2": z.string().min(1, { message: "This field is required" }),
@@ -56,6 +56,7 @@ export default function TourReservation() {
     "radio-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -67,7 +68,7 @@ export default function TourReservation() {
       "tel-input-0": "",
       "select-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.061Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.302Z"),
       "select-1": "",
       "select-2": "",
       "select-3": "",
@@ -111,9 +112,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Participant Name
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Participant Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -135,7 +134,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -157,7 +156,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -179,7 +178,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Tour Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Tour Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -238,7 +237,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Tour Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Tour Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -260,7 +259,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -299,7 +298,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Time</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Time</FieldLabel>
 
               <Select
                 key="select-1"
@@ -346,7 +345,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Number of Participants
               </FieldLabel>
 
@@ -403,7 +402,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Tour Duration</FieldLabel>
+              <FieldLabel className="flex w-auto!">Tour Duration</FieldLabel>
 
               <Select
                 key="select-3"
@@ -454,7 +453,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Transportation</FieldLabel>
+              <FieldLabel className="flex w-auto!">Transportation</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -521,7 +520,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Special Requirements
               </FieldLabel>
 
@@ -767,7 +766,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Information
               </FieldLabel>
 
@@ -791,7 +790,7 @@ export default function TourReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

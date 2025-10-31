@@ -48,6 +48,7 @@ export default function EventVendorApplication() {
     "text-input-2": z.string(),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
     "file-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -99,7 +100,7 @@ export default function EventVendorApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Business Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Business Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -121,7 +122,7 @@ export default function EventVendorApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Person</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Person</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -143,7 +144,7 @@ export default function EventVendorApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Vendor Category</FieldLabel>
+              <FieldLabel className="flex w-auto!">Vendor Category</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -388,7 +389,7 @@ export default function EventVendorApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Years in Business
               </FieldLabel>
 
@@ -412,7 +413,7 @@ export default function EventVendorApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Products/Services Description
               </FieldLabel>
 
@@ -436,9 +437,7 @@ export default function EventVendorApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Business License
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Business License</FieldLabel>
 
               <Input
                 key="file-input-0"
@@ -460,7 +459,7 @@ export default function EventVendorApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

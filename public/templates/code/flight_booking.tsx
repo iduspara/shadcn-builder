@@ -49,7 +49,7 @@ export default function FlightBooking() {
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "date-input-1": z.date().optional(),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -58,11 +58,12 @@ export default function FlightBooking() {
     "textarea-0": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -75,8 +76,8 @@ export default function FlightBooking() {
       "tel-input-0": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.036Z"),
-      "date-input-1": new Date("2025-10-31T11:39:31.036Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.279Z"),
+      "date-input-1": new Date("2025-10-31T14:00:25.279Z"),
       "select-0": "",
       "select-1": "",
       "radio-0": "",
@@ -119,7 +120,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">First Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">First Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -141,7 +142,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Last Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Last Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -163,7 +164,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -185,7 +186,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -207,7 +208,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">From</FieldLabel>
+              <FieldLabel className="flex w-auto!">From</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -229,7 +230,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">To</FieldLabel>
+              <FieldLabel className="flex w-auto!">To</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -251,7 +252,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Departure Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Departure Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -290,7 +291,7 @@ export default function FlightBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Return Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Return Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -329,7 +330,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Passengers</FieldLabel>
+              <FieldLabel className="flex w-auto!">Passengers</FieldLabel>
 
               <Select
                 key="select-0"
@@ -380,7 +381,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Class</FieldLabel>
+              <FieldLabel className="flex w-auto!">Class</FieldLabel>
 
               <Select
                 key="select-1"
@@ -423,7 +424,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Trip Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Trip Type</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -493,9 +494,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Special Requests
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Special Requests</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -517,7 +516,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I agree to the terms and conditions
               </FieldLabel>
 
@@ -528,7 +527,6 @@ export default function FlightBooking() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -550,7 +548,7 @@ export default function FlightBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

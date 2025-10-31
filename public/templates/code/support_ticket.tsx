@@ -53,6 +53,7 @@ export default function SupportTicket() {
       .email({ message: "Invalid email address" })
       .min(1, { message: "This field is required" }),
     "tel-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -104,7 +105,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Subject</FieldLabel>
+              <FieldLabel className="flex w-auto!">Subject</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -126,7 +127,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Ticket Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Ticket Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -173,7 +174,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Priority</FieldLabel>
+              <FieldLabel className="flex w-auto!">Priority</FieldLabel>
 
               <Select
                 key="select-1"
@@ -216,7 +217,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Description</FieldLabel>
+              <FieldLabel className="flex w-auto!">Description</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -238,7 +239,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Account ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Account ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -260,7 +261,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Attachments</FieldLabel>
+              <FieldLabel className="flex w-auto!">Attachments</FieldLabel>
 
               <Input
                 key="file-0"
@@ -282,7 +283,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -304,7 +305,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -326,7 +327,7 @@ export default function SupportTicket() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"
