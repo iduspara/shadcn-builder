@@ -140,7 +140,7 @@ const generateFormCode = async (
               )}" data-invalid={fieldState.invalid}>
                 <FieldLabel className="${cn(
                   labelClasses,
-                  "shrink-0"
+                  "w-auto!"
                 )}">${comp.getField("label")}</FieldLabel>
                 ${
                   comp.type === "checkbox-group" && comp.label_description

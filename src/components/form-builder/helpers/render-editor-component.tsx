@@ -66,7 +66,7 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
           >
             <FieldLabel
               className={cn(
-                "shrink-0 flex items-center gap-2 ",
+                "w-auto! flex items-center gap-2 ",
                 mode === "editor" && "cursor-pointer",
                 !showLabel && visible && "hidden"
               )}
