@@ -5,6 +5,7 @@ import {
   FormInput,
   FormTextarea,
   FormSelect,
+  FormNativeSelect,
   FormCheckbox,
   FormRadio,
   FormSwitch,
@@ -19,6 +20,7 @@ import {
   InputDesignProperties,
   TextareaDesignProperties,
   SelectDesignProperties,
+  NativeSelectDesignProperties,
   CheckboxDesignProperties,
   RadioDesignProperties,
   SwitchDesignProperties,
@@ -31,6 +33,7 @@ import {
   getReactCodeInput,
   getReactCodeTextarea,
   getReactCodeSelect,
+  getReactCodeNativeSelect,
   getReactCodeCheckbox,
   getReactCodeRadio,
   getReactCodeSwitch,
@@ -153,6 +156,26 @@ const formComponents: FormComponentModel[] = [
     ],
   }),
   new FormComponentModel({
+    id: "native-select",
+    label: "Native Select",
+    label_info: "Browser select element",
+    type: "native-select",
+    category: "form",
+    icon: "ChevronsUpDown",
+    options: [
+      {
+        value: "option1",
+        label: "Option 1",
+        labelDescription: "Option 1 Description",
+      },
+      {
+        value: "option2",
+        label: "Option 2",
+        labelDescription: "Option 2 Description",
+      },
+    ],
+  }),
+  new FormComponentModel({
     id: "checkbox",
     label: "Checkbox",
     label_info: "Checkbox input",
@@ -250,7 +273,7 @@ const formComponents: FormComponentModel[] = [
 
 export const AVAILABLE_COMPONENTS: FormComponentModel[] = [...typographyComponents, ...formComponents];
 
-export const NEW_COMPONENTS: string[] = ["credit-card"];
+export const NEW_COMPONENTS: string[] = ["credit-card", "native-select"];
 
 const typographyViews = {
   text: { render: (component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) => Text(component, form, field), renderDesignProperties: TextDesignProperties, reactCode: getReactCodeText },
@@ -261,6 +284,7 @@ const formViews = {
   "credit-card": { render: FormCreditCard, renderDesignProperties: CreditCardDesignProperties, reactCode: getReactCodeCreditCard },
   textarea: { render: FormTextarea, renderDesignProperties: TextareaDesignProperties, reactCode: getReactCodeTextarea },
   select: { render: FormSelect, renderDesignProperties: SelectDesignProperties, reactCode: getReactCodeSelect },
+  "native-select": { render: FormNativeSelect, renderDesignProperties: NativeSelectDesignProperties, reactCode: getReactCodeNativeSelect },
   checkbox: { render: FormCheckbox, renderDesignProperties: CheckboxDesignProperties, reactCode: getReactCodeCheckbox },
   "checkbox-group": { render: FormCheckboxGroup, renderDesignProperties: CheckboxGroupDesignProperties, reactCode: getReactCodeCheckboxGroup },
   radio: { render: FormRadio, renderDesignProperties: RadioDesignProperties, reactCode: getReactCodeRadio },

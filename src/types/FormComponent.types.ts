@@ -13,6 +13,7 @@ export type FormComponentTypes =
   | "tel"
   | "url"
   | "select"
+  | "native-select"
   | "checkbox"
   | "checkbox-group"
   | "radio"
