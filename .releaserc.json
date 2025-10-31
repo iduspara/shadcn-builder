@@ -1,6 +1,8 @@
 {
   "branches": [
-    "main"
+    {
+      "name": "released"
+    }
   ],
   "plugins": [
     [
