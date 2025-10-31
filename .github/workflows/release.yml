@@ -33,6 +33,12 @@ jobs:
           git fetch --tags --prune
           git describe --tags --always || true
           git status
+
+      - name: Git diagnostics (before)
+        if: always()
+        run: |
+              git fetch --tags --prune
+              git tag -ln --sort=-creatordate | head -n 10
         
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
