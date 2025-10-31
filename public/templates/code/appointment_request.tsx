@@ -54,6 +54,7 @@ export default function AppointmentRequest() {
       .min(1, { message: "This field is required" })
       .min(20, { message: "Must be at least 20 characters" }),
     "textarea-1": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -107,7 +108,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -129,7 +130,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -151,7 +152,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -173,7 +174,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Patient ID (if applicable)
               </FieldLabel>
 
@@ -197,7 +198,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Department/Specialty
               </FieldLabel>
 
@@ -262,9 +263,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Appointment Type
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Appointment Type</FieldLabel>
 
               <Select
                 key="select-1"
@@ -315,7 +314,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Select
                 key="select-2"
@@ -362,7 +361,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Time</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Time</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -448,9 +447,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Reason for Visit
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Reason for Visit</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -472,9 +469,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -496,7 +491,7 @@ export default function AppointmentRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

@@ -51,6 +51,7 @@ export default function BugReport() {
     "text-input-1": z.string(),
     "file-0": z.string(),
     "email-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -103,7 +104,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Title</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -125,7 +126,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Issue Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Issue Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -172,7 +173,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Severity</FieldLabel>
+              <FieldLabel className="flex w-auto!">Severity</FieldLabel>
 
               <Select
                 key="select-1"
@@ -215,7 +216,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Description</FieldLabel>
+              <FieldLabel className="flex w-auto!">Description</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -237,7 +238,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Steps to Reproduce
               </FieldLabel>
 
@@ -263,7 +264,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Environment</FieldLabel>
+              <FieldLabel className="flex w-auto!">Environment</FieldLabel>
 
               <Select
                 key="select-2"
@@ -314,7 +315,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Browser/App Version
               </FieldLabel>
 
@@ -338,9 +339,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Screenshots/Logs
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Screenshots/Logs</FieldLabel>
 
               <Input
                 key="file-0"
@@ -362,7 +361,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Email (for follow-up)
               </FieldLabel>
 
@@ -386,7 +385,7 @@ export default function BugReport() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

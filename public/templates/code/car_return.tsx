@@ -43,6 +43,7 @@ export default function CarReturn() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -91,9 +92,7 @@ export default function CarReturn() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Agreement Number
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Agreement Number</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -115,7 +114,7 @@ export default function CarReturn() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Current Mileage</FieldLabel>
+              <FieldLabel className="flex w-auto!">Current Mileage</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -137,7 +136,7 @@ export default function CarReturn() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Fuel Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Fuel Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -180,7 +179,7 @@ export default function CarReturn() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Vehicle Condition
               </FieldLabel>
 
@@ -271,7 +270,7 @@ export default function CarReturn() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Notes</FieldLabel>
+              <FieldLabel className="flex w-auto!">Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -293,7 +292,7 @@ export default function CarReturn() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

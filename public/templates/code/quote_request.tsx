@@ -51,6 +51,7 @@ export default function RequestaQuote() {
       .min(1, { message: "This field is required" })
       .min(100, { message: "Must be at least 100 characters" }),
     "textarea-1": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -102,7 +103,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Company Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Company Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -124,7 +125,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -146,7 +147,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -168,7 +169,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -190,7 +191,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Service Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Service Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -241,9 +242,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Project Timeline
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Project Timeline</FieldLabel>
 
               <Select
                 key="select-1"
@@ -282,7 +281,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Project Requirements
               </FieldLabel>
 
@@ -306,7 +305,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Budget Range</FieldLabel>
+              <FieldLabel className="flex w-auto!">Budget Range</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -328,7 +327,7 @@ export default function RequestaQuote() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

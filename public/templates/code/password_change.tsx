@@ -50,6 +50,7 @@ export default function ChangePassword() {
       .string()
       .min(1, { message: "This field is required" })
       .min(8, { message: "Must be at least 8 characters" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -96,9 +97,7 @@ export default function ChangePassword() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Current Password
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Current Password</FieldLabel>
 
               <Input
                 key="password-input-0"
@@ -120,7 +119,7 @@ export default function ChangePassword() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">New Password</FieldLabel>
+              <FieldLabel className="flex w-auto!">New Password</FieldLabel>
 
               <Input
                 key="password-input-1"
@@ -142,7 +141,7 @@ export default function ChangePassword() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Confirm New Password
               </FieldLabel>
 
@@ -166,7 +165,7 @@ export default function ChangePassword() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

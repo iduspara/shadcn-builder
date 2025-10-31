@@ -42,7 +42,7 @@ export default function RentalApplication() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "email-input-0": z
       .string()
@@ -57,16 +57,17 @@ export default function RentalApplication() {
     "text-input-6": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-1": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "textarea-1": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -75,7 +76,7 @@ export default function RentalApplication() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.910Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.140Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
@@ -85,7 +86,7 @@ export default function RentalApplication() {
       "text-input-5": "",
       "text-input-6": "",
       "select-0": "",
-      "date-input-1": new Date("2025-10-31T11:39:30.910Z"),
+      "date-input-1": new Date("2025-10-31T14:00:25.140Z"),
       "textarea-1": "",
       "checkbox-0": false,
     },
@@ -126,7 +127,7 @@ export default function RentalApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">First Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">First Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -148,7 +149,7 @@ export default function RentalApplication() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Last Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Last Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -170,7 +171,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -209,7 +210,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -231,7 +232,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -253,7 +254,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Current Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Current Address</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -275,7 +276,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Social Security Number
               </FieldLabel>
 
@@ -299,7 +300,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Employer</FieldLabel>
+              <FieldLabel className="flex w-auto!">Employer</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -321,7 +322,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Job Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Job Title</FieldLabel>
 
               <Input
                 key="text-input-4"
@@ -343,7 +344,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Monthly Income</FieldLabel>
+              <FieldLabel className="flex w-auto!">Monthly Income</FieldLabel>
 
               <Input
                 key="text-input-5"
@@ -365,9 +366,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Property Address
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Property Address</FieldLabel>
 
               <Input
                 key="text-input-6"
@@ -389,7 +388,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Lease Term</FieldLabel>
+              <FieldLabel className="flex w-auto!">Lease Term</FieldLabel>
 
               <Select
                 key="select-0"
@@ -436,7 +435,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Desired Move-in Date
               </FieldLabel>
 
@@ -477,7 +476,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Information
               </FieldLabel>
 
@@ -501,7 +500,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I authorize a credit and background check
               </FieldLabel>
 
@@ -512,7 +511,6 @@ export default function RentalApplication() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -536,7 +534,7 @@ export default function RentalApplication() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

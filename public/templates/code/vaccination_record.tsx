@@ -40,7 +40,7 @@ export default function VaccinationRecordRequest() {
     "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "checkbox-group-0": z
       .array(z.string())
@@ -50,6 +50,7 @@ export default function VaccinationRecordRequest() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,7 +58,7 @@ export default function VaccinationRecordRequest() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.714Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.924Z"),
       "checkbox-group-0": [],
       "select-0": "",
       "radio-group-0": "",
@@ -102,7 +103,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -124,7 +125,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -163,7 +164,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Records Needed</FieldLabel>
+              <FieldLabel className="flex w-auto!">Records Needed</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -407,7 +408,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Purpose of Request
               </FieldLabel>
 
@@ -460,7 +461,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Delivery Method</FieldLabel>
+              <FieldLabel className="flex w-auto!">Delivery Method</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -546,7 +547,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Information
               </FieldLabel>
 
@@ -570,7 +571,7 @@ export default function VaccinationRecordRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

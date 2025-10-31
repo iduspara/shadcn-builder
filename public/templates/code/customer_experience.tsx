@@ -43,6 +43,7 @@ export default function CustomerExperienceSurvey() {
     "checkbox-group-0": z.array(z.string()).optional(),
     "checkbox-group-1": z.array(z.string()).optional(),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -93,7 +94,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Overall Satisfaction
               </FieldLabel>
 
@@ -197,7 +198,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Likelihood to Recommend
               </FieldLabel>
 
@@ -317,7 +318,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Which aspects impressed you most?
               </FieldLabel>
 
@@ -570,7 +571,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Areas for improvement
               </FieldLabel>
 
@@ -823,7 +824,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -847,7 +848,7 @@ export default function CustomerExperienceSurvey() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

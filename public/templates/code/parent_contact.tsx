@@ -53,6 +53,7 @@ export default function ParentContactForm() {
       .min(1, { message: "This field is required" })
       .min(20, { message: "Must be at least 20 characters" }),
     "checkbox-0": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -105,7 +106,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Parent Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Parent Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -127,7 +128,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -149,7 +150,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -171,7 +172,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -193,7 +194,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Grade</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Grade</FieldLabel>
 
               <Select
                 key="select-0"
@@ -272,7 +273,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Contact Reason</FieldLabel>
+              <FieldLabel className="flex w-auto!">Contact Reason</FieldLabel>
 
               <Select
                 key="select-1"
@@ -327,7 +328,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Contact Method
               </FieldLabel>
 
@@ -372,7 +373,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Message</FieldLabel>
+              <FieldLabel className="flex w-auto!">Message</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -394,7 +395,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I would like to receive updates about my child's progress
               </FieldLabel>
 
@@ -405,7 +406,6 @@ export default function ParentContactForm() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -430,7 +430,7 @@ export default function ParentContactForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

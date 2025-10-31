@@ -49,6 +49,7 @@ export default function SystemAccessRequest() {
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -98,7 +99,7 @@ export default function SystemAccessRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Employee Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Employee Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -120,7 +121,7 @@ export default function SystemAccessRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Employee ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Employee ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -142,7 +143,7 @@ export default function SystemAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Systems/Applications
               </FieldLabel>
 
@@ -388,7 +389,7 @@ export default function SystemAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Access Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Access Level</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -474,7 +475,7 @@ export default function SystemAccessRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Manager/Supervisor
               </FieldLabel>
 
@@ -498,7 +499,7 @@ export default function SystemAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Business Justification
               </FieldLabel>
 
@@ -522,7 +523,7 @@ export default function SystemAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

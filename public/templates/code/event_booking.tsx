@@ -50,11 +50,12 @@ export default function EventBooking() {
     "textarea-0": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -106,7 +107,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Full Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Full Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -128,7 +129,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -150,7 +151,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -172,7 +173,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Number of Tickets
               </FieldLabel>
 
@@ -225,7 +226,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Ticket Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Ticket Type</FieldLabel>
 
               <Select
                 key="select-1"
@@ -272,7 +273,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Special Requirements
               </FieldLabel>
 
@@ -442,9 +443,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -466,7 +465,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I agree to the terms and conditions
               </FieldLabel>
 
@@ -477,7 +476,6 @@ export default function EventBooking() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -499,7 +497,7 @@ export default function EventBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

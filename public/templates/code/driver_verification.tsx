@@ -42,11 +42,12 @@ export default function AdditionalDriverVerification() {
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "file-input-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +57,7 @@ export default function AdditionalDriverVerification() {
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.319Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.489Z"),
       "text-input-3": "",
       "select-0": "",
       "file-input-0": "",
@@ -99,7 +100,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Primary Renter Name
               </FieldLabel>
 
@@ -123,7 +124,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Rental Agreement Number
               </FieldLabel>
 
@@ -147,7 +148,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Driver Name
               </FieldLabel>
 
@@ -171,7 +172,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -210,7 +211,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Driver License Number
               </FieldLabel>
 
@@ -234,7 +235,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 License State/Country
               </FieldLabel>
 
@@ -287,7 +288,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Driver License Copy
               </FieldLabel>
 
@@ -311,7 +312,7 @@ export default function AdditionalDriverVerification() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

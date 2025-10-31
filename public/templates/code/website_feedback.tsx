@@ -44,6 +44,7 @@ export default function WebsiteFeedback() {
     "checkbox-group-0": z.array(z.string()).optional(),
     "textarea-0": z.string(),
     "radio-group-2": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -94,7 +95,7 @@ export default function WebsiteFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Page/Section</FieldLabel>
+              <FieldLabel className="flex w-auto!">Page/Section</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -116,7 +117,7 @@ export default function WebsiteFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Ease of Use</FieldLabel>
+              <FieldLabel className="flex w-auto!">Ease of Use</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -227,7 +228,7 @@ export default function WebsiteFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Visual Design</FieldLabel>
+              <FieldLabel className="flex w-auto!">Visual Design</FieldLabel>
 
               <RadioGroup
                 key="radio-group-1"
@@ -335,7 +336,7 @@ export default function WebsiteFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Issues Encountered
               </FieldLabel>
 
@@ -588,7 +589,7 @@ export default function WebsiteFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Suggestions for Improvement
               </FieldLabel>
 
@@ -612,7 +613,7 @@ export default function WebsiteFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Were you able to complete your task?
               </FieldLabel>
 
@@ -709,7 +710,7 @@ export default function WebsiteFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

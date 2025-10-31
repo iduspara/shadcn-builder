@@ -49,6 +49,7 @@ export default function APIDocumentationFeedback() {
     "textarea-1": z.string(),
     "text-input-1": z.string(),
     "email-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -101,7 +102,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">API Endpoint</FieldLabel>
+              <FieldLabel className="flex w-auto!">API Endpoint</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -123,7 +124,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Documentation Section
               </FieldLabel>
 
@@ -176,7 +177,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Issue Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Issue Type</FieldLabel>
 
               <Select
                 key="select-1"
@@ -227,7 +228,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Description</FieldLabel>
+              <FieldLabel className="flex w-auto!">Description</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -249,7 +250,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Expected vs Actual
               </FieldLabel>
 
@@ -273,7 +274,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Code Example</FieldLabel>
+              <FieldLabel className="flex w-auto!">Code Example</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -295,7 +296,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -317,7 +318,7 @@ export default function APIDocumentationFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

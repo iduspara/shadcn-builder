@@ -43,6 +43,7 @@ export default function InventoryRestockRequest() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date().optional(),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -52,7 +53,7 @@ export default function InventoryRestockRequest() {
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.414Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.589Z"),
       "textarea-0": "",
     },
   });
@@ -93,9 +94,7 @@ export default function InventoryRestockRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Product Name/SKU
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Product Name/SKU</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -117,7 +116,7 @@ export default function InventoryRestockRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Requested Quantity
               </FieldLabel>
 
@@ -141,7 +140,7 @@ export default function InventoryRestockRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Priority Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Priority Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -184,7 +183,7 @@ export default function InventoryRestockRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Needed By Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Needed By Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -223,9 +222,7 @@ export default function InventoryRestockRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -247,7 +244,7 @@ export default function InventoryRestockRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

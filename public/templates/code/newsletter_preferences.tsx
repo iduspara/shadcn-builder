@@ -47,6 +47,7 @@ export default function NewsletterPreferences() {
     "radio-group-1": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -98,7 +99,7 @@ export default function NewsletterPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -120,7 +121,7 @@ export default function NewsletterPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Subscription Status
               </FieldLabel>
 
@@ -195,7 +196,7 @@ export default function NewsletterPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Content Preferences
               </FieldLabel>
 
@@ -365,7 +366,7 @@ export default function NewsletterPreferences() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Delivery Frequency
               </FieldLabel>
 
@@ -437,7 +438,7 @@ export default function NewsletterPreferences() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Language</FieldLabel>
+              <FieldLabel className="flex w-auto!">Language</FieldLabel>
 
               <Select
                 key="select-0"
@@ -480,7 +481,7 @@ export default function NewsletterPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Feedback</FieldLabel>
+              <FieldLabel className="flex w-auto!">Feedback</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -502,7 +503,7 @@ export default function NewsletterPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

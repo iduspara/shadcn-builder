@@ -52,6 +52,7 @@ export default function APIAccessRequest() {
       }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -101,7 +102,7 @@ export default function APIAccessRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Developer Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Developer Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -123,7 +124,7 @@ export default function APIAccessRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -145,7 +146,7 @@ export default function APIAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Company/Organization
               </FieldLabel>
 
@@ -169,7 +170,7 @@ export default function APIAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 API Endpoints Needed
               </FieldLabel>
 
@@ -416,7 +417,7 @@ export default function APIAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Expected Request Volume
               </FieldLabel>
 
@@ -461,7 +462,7 @@ export default function APIAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Use Case Description
               </FieldLabel>
 
@@ -485,7 +486,7 @@ export default function APIAccessRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

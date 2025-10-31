@@ -41,7 +41,7 @@ export default function PatientRegistration() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "email-input-0": z
       .string()
@@ -53,6 +53,7 @@ export default function PatientRegistration() {
     "tel-input-1": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-3": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -61,7 +62,7 @@ export default function PatientRegistration() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.652Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.850Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
@@ -107,7 +108,7 @@ export default function PatientRegistration() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">First Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">First Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -129,7 +130,7 @@ export default function PatientRegistration() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Last Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Last Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -151,7 +152,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -190,7 +191,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -212,7 +213,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -234,7 +235,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Address</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -256,7 +257,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Emergency Contact Name
               </FieldLabel>
 
@@ -280,7 +281,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Emergency Contact Phone
               </FieldLabel>
 
@@ -304,7 +305,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Insurance Provider
               </FieldLabel>
 
@@ -361,7 +362,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Insurance ID Number
               </FieldLabel>
 
@@ -385,7 +386,7 @@ export default function PatientRegistration() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

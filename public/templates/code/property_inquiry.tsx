@@ -54,6 +54,7 @@ export default function PropertyInquiry() {
       .min(1, { message: "This field is required" })
       .min(20, { message: "Must be at least 20 characters" }),
     "checkbox-0": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -106,7 +107,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Property ID/Address
               </FieldLabel>
 
@@ -130,7 +131,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Your Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Your Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -152,7 +153,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -174,7 +175,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -196,7 +197,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Inquiry Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Inquiry Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -243,7 +244,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Preferred Contact Method
               </FieldLabel>
 
@@ -284,7 +285,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Timeline</FieldLabel>
+              <FieldLabel className="flex w-auto!">Timeline</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -373,7 +374,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Specific Questions
               </FieldLabel>
 
@@ -397,7 +398,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I would like to receive updates about similar properties
               </FieldLabel>
 
@@ -408,7 +409,6 @@ export default function PropertyInquiry() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -432,7 +432,7 @@ export default function PropertyInquiry() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

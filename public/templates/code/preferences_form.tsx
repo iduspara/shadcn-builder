@@ -43,6 +43,7 @@ export default function UserPreferences() {
     "select-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "radio-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -90,7 +91,7 @@ export default function UserPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Theme</FieldLabel>
+              <FieldLabel className="flex w-auto!">Theme</FieldLabel>
 
               <Select
                 key="select-0"
@@ -129,7 +130,7 @@ export default function UserPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Font Size</FieldLabel>
+              <FieldLabel className="flex w-auto!">Font Size</FieldLabel>
 
               <Select
                 key="select-1"
@@ -168,7 +169,7 @@ export default function UserPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Accessibility Options
               </FieldLabel>
 
@@ -305,7 +306,7 @@ export default function UserPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Notification Sound
               </FieldLabel>
 
@@ -371,7 +372,7 @@ export default function UserPreferences() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

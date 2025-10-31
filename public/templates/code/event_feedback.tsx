@@ -42,12 +42,13 @@ export default function EventFeedback() {
     "email-input-0": z.string(),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "radio-0": z.string().min(1, { message: "This field is required" }),
     "radio-1": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
     "textarea-1": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -57,7 +58,7 @@ export default function EventFeedback() {
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.538Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.722Z"),
       "radio-0": "",
       "radio-1": "",
       "textarea-0": "",
@@ -99,7 +100,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Attendee Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Attendee Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -121,7 +122,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -143,7 +144,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -165,7 +166,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -204,7 +205,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Overall Experience
               </FieldLabel>
 
@@ -302,7 +303,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Would you attend again?
               </FieldLabel>
 
@@ -409,7 +410,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 What did you enjoy most?
               </FieldLabel>
 
@@ -433,7 +434,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 What could be improved?
               </FieldLabel>
 
@@ -457,7 +458,7 @@ export default function EventFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

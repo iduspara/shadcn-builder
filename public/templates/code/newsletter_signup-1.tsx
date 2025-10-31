@@ -49,18 +49,19 @@ export default function NewsletterSignup() {
     "radio-group-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
     "checkbox-1": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -113,7 +114,7 @@ export default function NewsletterSignup() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Address</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -135,7 +136,7 @@ export default function NewsletterSignup() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">First Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">First Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -157,7 +158,7 @@ export default function NewsletterSignup() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Last Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Last Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -179,7 +180,7 @@ export default function NewsletterSignup() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Topics of Interest
               </FieldLabel>
 
@@ -425,7 +426,7 @@ export default function NewsletterSignup() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Email Frequency Preference
               </FieldLabel>
 
@@ -516,7 +517,7 @@ export default function NewsletterSignup() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email Format</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email Format</FieldLabel>
 
               <RadioGroup
                 key="radio-group-1"
@@ -570,7 +571,7 @@ export default function NewsletterSignup() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I agree to receive newsletters and marketing communications
               </FieldLabel>
 
@@ -581,7 +582,6 @@ export default function NewsletterSignup() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -605,7 +605,7 @@ export default function NewsletterSignup() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I have read and agree to the Privacy Policy
               </FieldLabel>
 
@@ -616,7 +616,6 @@ export default function NewsletterSignup() {
                 <Checkbox
                   id="checkbox-1"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -640,7 +639,7 @@ export default function NewsletterSignup() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

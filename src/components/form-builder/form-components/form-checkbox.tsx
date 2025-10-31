@@ -64,7 +64,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-state=checked]]:border-primary"))}"
       ${isCard ? `htmlFor="${escapeHtml(componentId)}"` : ""}
     >
-      <Checkbox id="${escapeHtml(componentId)}" className="${escapeHtml(component.getField("attributes.class"))}" {...field} checked={field.value} onCheckedChange={field.onChange} />
+      <Checkbox id="${escapeHtml(componentId)}" className="${escapeHtml(component.getField("attributes.class"))}" checked={field.value} onCheckedChange={field.onChange} />
       <div className="grid gap-1.5 leading-none">
         <FieldLabel>
           ${escapeHtml(component.getField("label"))}

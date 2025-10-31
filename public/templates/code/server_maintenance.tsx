@@ -42,10 +42,11 @@ export default function ServerMaintenanceRequest() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -54,7 +55,7 @@ export default function ServerMaintenanceRequest() {
       "text-0": "",
       "text-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.025Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.267Z"),
       "text-input-1": "",
       "textarea-0": "",
     },
@@ -96,7 +97,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Server Name/ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Server Name/ID</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -118,9 +119,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Maintenance Type
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Maintenance Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -167,7 +166,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -206,7 +205,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Downtime Window</FieldLabel>
+              <FieldLabel className="flex w-auto!">Downtime Window</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -228,7 +227,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Maintenance Details
               </FieldLabel>
 
@@ -252,7 +251,7 @@ export default function ServerMaintenanceRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

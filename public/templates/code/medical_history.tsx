@@ -40,7 +40,7 @@ export default function MedicalHistoryForm() {
     "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-1": z.string(),
     "textarea-0": z.string(),
@@ -51,6 +51,7 @@ export default function MedicalHistoryForm() {
     "radio-0": z.string().min(1, { message: "This field is required" }),
     "radio-1": z.string().min(1, { message: "This field is required" }),
     "textarea-4": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,7 +59,7 @@ export default function MedicalHistoryForm() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.670Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.873Z"),
       "text-input-1": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -105,7 +106,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -127,7 +128,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -166,7 +167,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -188,7 +189,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Medications
               </FieldLabel>
 
@@ -212,7 +213,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Allergies</FieldLabel>
+              <FieldLabel className="flex w-auto!">Allergies</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -234,7 +235,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Past Medical History
               </FieldLabel>
 
@@ -258,7 +259,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Family Medical History
               </FieldLabel>
 
@@ -282,7 +283,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Current Health Status
               </FieldLabel>
 
@@ -567,7 +568,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Smoking Status</FieldLabel>
+              <FieldLabel className="flex w-auto!">Smoking Status</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -634,7 +635,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Alcohol Consumption
               </FieldLabel>
 
@@ -716,9 +717,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-4"
@@ -740,7 +739,7 @@ export default function MedicalHistoryForm() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

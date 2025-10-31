@@ -49,6 +49,7 @@ export default function GradeAppeal() {
       .min(1, { message: "This field is required" })
       .min(50, { message: "Must be at least 50 characters" }),
     "file-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -100,7 +101,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -122,7 +123,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Student ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Student ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -144,7 +145,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Course Code</FieldLabel>
+              <FieldLabel className="flex w-auto!">Course Code</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -166,7 +167,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Instructor Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Instructor Name</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -188,7 +189,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Assignment/Exam</FieldLabel>
+              <FieldLabel className="flex w-auto!">Assignment/Exam</FieldLabel>
 
               <Input
                 key="text-input-4"
@@ -210,7 +211,7 @@ export default function GradeAppeal() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Grade Received</FieldLabel>
+              <FieldLabel className="flex w-auto!">Grade Received</FieldLabel>
 
               <Input
                 key="text-input-5"
@@ -232,7 +233,7 @@ export default function GradeAppeal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Reason for Appeal
               </FieldLabel>
 
@@ -256,7 +257,7 @@ export default function GradeAppeal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Supporting Documentation
               </FieldLabel>
 
@@ -280,7 +281,7 @@ export default function GradeAppeal() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

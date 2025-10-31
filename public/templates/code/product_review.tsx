@@ -50,11 +50,12 @@ export default function ProductReview() {
     "text-input-3": z.string(),
     "checkbox-0": z
       .boolean({
-        required_error: "This field is required.",
+        error: "This field is required.",
       })
       .refine((value) => value === true, {
         message: "This field is required.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -110,7 +111,7 @@ export default function ProductReview() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Product Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Product Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -132,7 +133,7 @@ export default function ProductReview() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Order Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Order Number</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -154,7 +155,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Overall Rating</FieldLabel>
+              <FieldLabel className="flex w-auto!">Overall Rating</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -256,7 +257,7 @@ export default function ProductReview() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Product Quality</FieldLabel>
+              <FieldLabel className="flex w-auto!">Product Quality</FieldLabel>
 
               <RadioGroup
                 key="radio-group-1"
@@ -358,7 +359,7 @@ export default function ProductReview() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Value for Money</FieldLabel>
+              <FieldLabel className="flex w-auto!">Value for Money</FieldLabel>
 
               <RadioGroup
                 key="radio-group-2"
@@ -460,7 +461,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Review Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Review Title</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -482,7 +483,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Your Review</FieldLabel>
+              <FieldLabel className="flex w-auto!">Your Review</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -504,7 +505,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Pros and Cons</FieldLabel>
+              <FieldLabel className="flex w-auto!">Pros and Cons</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -526,7 +527,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Would you recommend this product?
               </FieldLabel>
 
@@ -598,7 +599,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Your Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Your Name</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -620,7 +621,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 I confirm this is a verified purchase
               </FieldLabel>
 
@@ -631,7 +632,6 @@ export default function ProductReview() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -653,7 +653,7 @@ export default function ProductReview() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

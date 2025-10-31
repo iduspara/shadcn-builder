@@ -49,6 +49,7 @@ export default function FeatureRequest() {
     "radio-0": z.string().min(1, { message: "This field is required" }),
     "file-0": z.string(),
     "email-input-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -99,7 +100,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Feature Title</FieldLabel>
+              <FieldLabel className="flex w-auto!">Feature Title</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -121,9 +122,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Feature Category
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Feature Category</FieldLabel>
 
               <Select
                 key="select-0"
@@ -170,7 +169,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Feature Description
               </FieldLabel>
 
@@ -194,7 +193,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Use Case</FieldLabel>
+              <FieldLabel className="flex w-auto!">Use Case</FieldLabel>
 
               <Textarea
                 key="textarea-1"
@@ -216,7 +215,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Priority Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Priority Level</FieldLabel>
 
               <RadioGroup
                 key="radio-0"
@@ -280,9 +279,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Mockups/Examples
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Mockups/Examples</FieldLabel>
 
               <Input
                 key="file-0"
@@ -304,7 +301,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Email (for follow-up)
               </FieldLabel>
 
@@ -328,7 +325,7 @@ export default function FeatureRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

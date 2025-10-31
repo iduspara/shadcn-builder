@@ -43,6 +43,7 @@ export default function DatabaseBackupRequest() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -92,7 +93,7 @@ export default function DatabaseBackupRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Database Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Database Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -114,7 +115,7 @@ export default function DatabaseBackupRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Request Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Request Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -157,7 +158,7 @@ export default function DatabaseBackupRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Priority Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Priority Level</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -246,7 +247,7 @@ export default function DatabaseBackupRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Technical Details
               </FieldLabel>
 
@@ -270,7 +271,7 @@ export default function DatabaseBackupRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

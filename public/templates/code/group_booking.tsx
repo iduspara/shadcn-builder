@@ -45,13 +45,14 @@ export default function GroupTravelBooking() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "checkbox-group-0": z
       .array(z.string())
       .refine((value) => value.some((item) => item), {
         message: "You have to select at least one item.",
       }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,7 +64,7 @@ export default function GroupTravelBooking() {
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T11:39:31.101Z"),
+      "date-input-0": new Date("2025-10-31T14:00:25.348Z"),
       "checkbox-group-0": [],
     },
   });
@@ -102,7 +103,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Group Leader Name
               </FieldLabel>
 
@@ -126,7 +127,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Organization/Company
               </FieldLabel>
 
@@ -150,7 +151,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Number of Travelers
               </FieldLabel>
 
@@ -174,7 +175,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Travel Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Travel Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -221,7 +222,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Destination</FieldLabel>
+              <FieldLabel className="flex w-auto!">Destination</FieldLabel>
 
               <Input
                 key="text-input-3"
@@ -243,7 +244,7 @@ export default function GroupTravelBooking() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Departure Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Departure Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -282,7 +283,7 @@ export default function GroupTravelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Services Needed</FieldLabel>
+              <FieldLabel className="flex w-auto!">Services Needed</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -492,7 +493,7 @@ export default function GroupTravelBooking() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

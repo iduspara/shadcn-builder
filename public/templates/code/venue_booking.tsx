@@ -44,10 +44,11 @@ export default function VenueBookingRequest() {
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-3": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "text-input-4": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,7 +60,7 @@ export default function VenueBookingRequest() {
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.560Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.748Z"),
       "text-input-4": "",
       "checkbox-group-0": [],
     },
@@ -99,7 +100,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Organizer</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Organizer</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -121,7 +122,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Organization</FieldLabel>
+              <FieldLabel className="flex w-auto!">Organization</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -143,7 +144,7 @@ export default function VenueBookingRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Name</FieldLabel>
 
               <Input
                 key="text-input-2"
@@ -165,7 +166,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -216,7 +217,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Expected Attendees
               </FieldLabel>
 
@@ -240,7 +241,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Event Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -279,7 +280,7 @@ export default function VenueBookingRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Start Time</FieldLabel>
+              <FieldLabel className="flex w-auto!">Start Time</FieldLabel>
 
               <Input
                 key="text-input-4"
@@ -301,7 +302,7 @@ export default function VenueBookingRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Required Equipment
               </FieldLabel>
 
@@ -547,7 +548,7 @@ export default function VenueBookingRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

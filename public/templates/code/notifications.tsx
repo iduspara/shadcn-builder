@@ -46,6 +46,7 @@ export default function Notifications() {
     "switch-2": z.boolean().default(false).optional(),
     "switch-3": z.boolean().default(false).optional(),
     "checkbox-0": z.boolean().default(false).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -96,7 +97,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Notify me about...
               </FieldLabel>
 
@@ -169,7 +170,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 Communication emails
               </FieldLabel>
 
@@ -204,7 +205,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 Marketing emails
               </FieldLabel>
 
@@ -239,7 +240,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Social Emails</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Social Emails</FieldLabel>
 
               <FieldLabel
                 key="switch-2"
@@ -272,7 +273,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 Security Emails
               </FieldLabel>
 
@@ -307,7 +308,7 @@ export default function Notifications() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">
+              <FieldLabel className="hidden w-auto!">
                 Use different settings for my mobile devices
               </FieldLabel>
 
@@ -318,7 +319,6 @@ export default function Notifications() {
                 <Checkbox
                   id="checkbox-0"
                   className=""
-                  {...field}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -345,7 +345,7 @@ export default function Notifications() {
               className="col-span-12 @3xl:col-span-3 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

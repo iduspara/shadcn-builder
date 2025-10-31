@@ -40,11 +40,12 @@ export default function VehicleReservation() {
     "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -52,7 +53,7 @@ export default function VehicleReservation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.292Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.459Z"),
       "radio-group-0": "",
       "text-input-1": "",
       "tel-input-0": "",
@@ -93,7 +94,7 @@ export default function VehicleReservation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Pickup Location</FieldLabel>
+              <FieldLabel className="flex w-auto!">Pickup Location</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -115,7 +116,7 @@ export default function VehicleReservation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Pickup Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Pickup Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -154,7 +155,7 @@ export default function VehicleReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Vehicle Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Vehicle Type</FieldLabel>
 
               <RadioGroup
                 key="radio-group-0"
@@ -240,7 +241,7 @@ export default function VehicleReservation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Driver Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Driver Name</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -262,7 +263,7 @@ export default function VehicleReservation() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -284,7 +285,7 @@ export default function VehicleReservation() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

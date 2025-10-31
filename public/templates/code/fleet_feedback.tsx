@@ -44,6 +44,7 @@ export default function FleetVehicleFeedback() {
     "radio-group-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -95,7 +96,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Rental Agreement Number
               </FieldLabel>
 
@@ -119,7 +120,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Vehicle Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Vehicle Type</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -141,7 +142,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Overall Vehicle Condition
               </FieldLabel>
 
@@ -232,7 +233,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Cleanliness Rating
               </FieldLabel>
 
@@ -326,7 +327,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Issues Encountered
               </FieldLabel>
 
@@ -572,7 +573,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Additional Comments
               </FieldLabel>
 
@@ -596,7 +597,7 @@ export default function FleetVehicleFeedback() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

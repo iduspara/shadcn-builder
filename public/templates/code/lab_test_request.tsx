@@ -47,9 +47,10 @@ export default function LabTestRequest() {
       }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -60,7 +61,7 @@ export default function LabTestRequest() {
       "text-input-1": "",
       "checkbox-group-0": [],
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.704Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.913Z"),
       "textarea-0": "",
     },
   });
@@ -99,7 +100,7 @@ export default function LabTestRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -121,7 +122,7 @@ export default function LabTestRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Patient ID</FieldLabel>
+              <FieldLabel className="flex w-auto!">Patient ID</FieldLabel>
 
               <Input
                 key="text-input-1"
@@ -143,7 +144,7 @@ export default function LabTestRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Requested Tests</FieldLabel>
+              <FieldLabel className="flex w-auto!">Requested Tests</FieldLabel>
 
               <div className="grid w-full gap-2">
                 <Controller
@@ -387,7 +388,7 @@ export default function LabTestRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Urgency Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Urgency Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -426,7 +427,7 @@ export default function LabTestRequest() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -465,7 +466,7 @@ export default function LabTestRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Clinical Notes</FieldLabel>
+              <FieldLabel className="flex w-auto!">Clinical Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -487,7 +488,7 @@ export default function LabTestRequest() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

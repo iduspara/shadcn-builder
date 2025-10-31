@@ -41,7 +41,7 @@ export default function StudentEnrollment() {
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -53,6 +53,7 @@ export default function StudentEnrollment() {
     "textarea-0": z.string().min(1, { message: "This field is required" }),
     "file-input-0": z.string(),
     "checkbox-group-0": z.array(z.string()).optional(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -61,7 +62,7 @@ export default function StudentEnrollment() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T11:39:30.420Z"),
+      "date-input-0": new Date("2025-10-31T14:00:24.598Z"),
       "select-0": "",
       "text-input-2": "",
       "email-input-0": "",
@@ -106,7 +107,7 @@ export default function StudentEnrollment() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Student First Name
               </FieldLabel>
 
@@ -130,7 +131,7 @@ export default function StudentEnrollment() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Student Last Name
               </FieldLabel>
 
@@ -154,7 +155,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Date of Birth</FieldLabel>
+              <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -193,7 +194,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Grade Level</FieldLabel>
+              <FieldLabel className="flex w-auto!">Grade Level</FieldLabel>
 
               <Select
                 key="select-0"
@@ -272,7 +273,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Parent/Guardian Name
               </FieldLabel>
 
@@ -296,7 +297,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Parent Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Parent Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -318,7 +319,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Parent Phone</FieldLabel>
+              <FieldLabel className="flex w-auto!">Parent Phone</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -340,7 +341,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Address</FieldLabel>
+              <FieldLabel className="flex w-auto!">Address</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -362,7 +363,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Previous School Records
               </FieldLabel>
 
@@ -386,7 +387,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
+              <FieldLabel className="flex w-auto!">
                 Special Requirements
               </FieldLabel>
 
@@ -594,7 +595,7 @@ export default function StudentEnrollment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"

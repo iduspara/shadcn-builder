@@ -47,10 +47,11 @@ export default function BookanAppointment() {
     "tel-input-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-0": z.date({
-      required_error: "This field is required.",
+      error: "This field is required.",
     }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z.string(),
+    "submit-button-0": z.string().optional(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -61,7 +62,7 @@ export default function BookanAppointment() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-0": new Date("2025-10-31T11:39:30.929Z"),
+      "date-0": new Date("2025-10-31T14:00:25.161Z"),
       "select-1": "",
       "textarea-0": "",
     },
@@ -101,7 +102,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Full Name</FieldLabel>
+              <FieldLabel className="flex w-auto!">Full Name</FieldLabel>
 
               <Input
                 key="text-input-0"
@@ -123,7 +124,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Email</FieldLabel>
+              <FieldLabel className="flex w-auto!">Email</FieldLabel>
 
               <Input
                 key="email-input-0"
@@ -145,7 +146,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Phone Number</FieldLabel>
+              <FieldLabel className="flex w-auto!">Phone Number</FieldLabel>
 
               <Input
                 key="tel-input-0"
@@ -167,7 +168,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Service Type</FieldLabel>
+              <FieldLabel className="flex w-auto!">Service Type</FieldLabel>
 
               <Select
                 key="select-0"
@@ -210,7 +211,7 @@ export default function BookanAppointment() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Date</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
                 <PopoverTrigger asChild>
@@ -249,7 +250,7 @@ export default function BookanAppointment() {
               className="col-span-6 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">Preferred Time</FieldLabel>
+              <FieldLabel className="flex w-auto!">Preferred Time</FieldLabel>
 
               <Select
                 key="select-1"
@@ -288,9 +289,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="flex shrink-0">
-                Additional Notes
-              </FieldLabel>
+              <FieldLabel className="flex w-auto!">Additional Notes</FieldLabel>
 
               <Textarea
                 key="textarea-0"
@@ -312,7 +311,7 @@ export default function BookanAppointment() {
               className="col-span-12 col-start-auto flex self-end flex-col gap-2 space-y-0 items-start"
               data-invalid={fieldState.invalid}
             >
-              <FieldLabel className="hidden shrink-0">Submit</FieldLabel>
+              <FieldLabel className="hidden w-auto!">Submit</FieldLabel>
 
               <Button
                 key="submit-button-0"
