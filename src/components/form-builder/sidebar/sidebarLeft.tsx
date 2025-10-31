@@ -54,7 +54,7 @@ export function SidebarLeft() {
     {
       label: "Selection Fields",
       components: AVAILABLE_COMPONENTS.filter((comp) =>
-        ["select", "checkbox", "checkbox-group", "radio", "switch"].includes(
+        ["select", "native-select", "checkbox", "checkbox-group", "radio", "switch"].includes(
           comp.type
         )
       ),

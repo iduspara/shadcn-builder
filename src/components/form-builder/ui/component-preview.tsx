@@ -6,6 +6,7 @@ import { FormComponentModel } from "@/models/FormComponent";
 import { renderComponent } from "@/config/available-components";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import { Field } from "@/components/ui/field";
 
 interface ComponentPreviewProps {
   component: FormComponentModel;
@@ -34,7 +35,7 @@ export function ComponentPreview({ component }: ComponentPreviewProps) {
   const labelDescription = component.getField("label_description") || component.label_description;
 
   return (
-      <div className="space-y-2">
+      <Field>
         {showLabel && label && (
           <div className="space-y-1">
             <Label className="text-sm font-medium" htmlFor={component.getField("attributes.id") || component.id}>
@@ -54,7 +55,7 @@ export function ComponentPreview({ component }: ComponentPreviewProps) {
           control={form.control}
           render={() => (renderedComponent as React.ReactElement) || <div>Preview not available</div>}
         />
-      </div>
+      </Field>
   );
 }
 
