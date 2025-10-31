@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useMemo } from "react";
+import { use, useEffect, useMemo, useState } from "react";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import GenerateCanvasGrid from "@/components/form-builder/canvas/generate-canvas-grid";
 import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
@@ -20,6 +20,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Separator } from "@/components/ui/separator";
+import { generateFormCode } from "@/components/form-builder/helpers/generate-react-code";
+import { Pre } from "@/components/ui/pre";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const viewportEditorStyles = {
   sm: "w-[370px]",
@@ -48,11 +51,19 @@ export default function PreviewPage({
   const updateViewport = useFormBuilderStore((state) => state.updateViewport);
   const viewport = useFormBuilderStore((state) => state.viewport);
   const components = useFormBuilderStore((state) => state.components);
+  const [formattedCode, setFormattedCode] = useState("");
   const { category, key } = use(params);
-
   // Store the components types used in the form
   const componentsTypesUsedInForm = useMemo(() => {
     return components.map((component) => component.type);
+  }, [components]);
+
+  useEffect(() => {
+    const generateCode = async () => {
+      const code = await generateFormCode(components);
+      setFormattedCode(code.code);
+    };
+    generateCode();
   }, [components]);
 
   useEffect(() => {
@@ -95,41 +106,54 @@ export default function PreviewPage({
         </BreadcrumbList>
       </Breadcrumb>
       <main className="container max-w-7xl mx-auto flex flex-col md:flex-row gap-6 items-start mb-24 px-4">
-        <div className="flex flex-col md:max-w-3/4 w-full gap-4">
-          <div className="flex flex-col items-center border rounded-lg w-full">
-            <div className="w-full border-b flex justify-between items-center p-2.5 px-4">
-              <span className="text-slate text-muted-foreground">
-                Form preview
-              </span>
-              <ToggleGroupNav
-                name="viewport"
-                items={viewportItems}
-                defaultValue={viewport}
-                onValueChange={(value) =>
-                  updateViewport(value as "sm" | "md" | "lg")
-                }
-              />
-            </div>
-            <div className="bg-dotted p-10 w-full max-h-[700px] overflow-y-auto">
-              <Card
-                className={cn(
-                  "transition-all duration-300",
-                  `${viewportEditorStyles[viewport]}`,
-                  "mx-auto scrollbar-hide"
-                )}
-              >
-                <CardContent>
-                  <GenerateCanvasGrid components={components} />
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+        <div className="flex flex-col md:max-w-3/4 w-full">
+          <Tabs defaultValue="preview" className="">
+            <TabsList>
+              <TabsTrigger value="preview">Preview</TabsTrigger>
+              <TabsTrigger value="code">Code</TabsTrigger>
+            </TabsList>
+            <TabsContent value="preview">
+              <div className="bg-dotted w-full max-h-[700px] overflow-y-auto rounded-lg border px-4 pb-4 md:px-10 md:pb-10">
+                <ToggleGroupNav
+                  name="viewport"
+                  items={viewportItems}
+                  defaultValue={viewport}
+                  onValueChange={(value) =>
+                    updateViewport(value as "sm" | "md" | "lg")
+                  }
+                  className="mx-auto my-4 shadow"
+                />
+                <Card
+                  className={cn(
+                    "transition-all duration-300",
+                    `${viewportEditorStyles[viewport]}`,
+                    "mx-auto scrollbar-hide"
+                  )}
+                >
+                  <CardContent>
+                    <GenerateCanvasGrid components={components} />
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+            <TabsContent value="code">
+            <div className="p-0 w-full max-h-[700px] overflow-y-auto rounded-lg border">
+                  {components && components.length > 0 ? (
+                    <Pre
+                      language="tsx"
+                      code={formattedCode}
+                      className="rounded-none"
+                    />
+                  ) : null}
+                </div>
+            </TabsContent>
+          </Tabs>
         </div>
-        <div className="md:w-1/4 border rounded-lg p-4">
-          <h1 className="text-2xl font-bold mb-2">{loadedTemplate?.formTitle}</h1>
-          <p className="text-sm mb-2">
-            Form description:
-          </p>
+        <div className="md:w-1/4 border rounded-lg p-4 md:mt-11">
+          <h1 className="text-2xl font-bold mb-2">
+            {loadedTemplate?.formTitle}
+          </h1>
+          <p className="text-sm mb-2">Form description:</p>
           <p className="text-sm text-muted-foreground mb-4">
             {loadedTemplate?.formDescription}
           </p>
@@ -165,7 +189,7 @@ export default function PreviewPage({
             </div>
           )}
           <Separator className="my-4" />
-                    <a
+          <a
             href={`/builder?template=${category}&key=${key}`}
             className={cn(buttonVariants({ variant: "default" }), "w-full")}
           >

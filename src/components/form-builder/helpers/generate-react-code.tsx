@@ -3,6 +3,10 @@ import { getComponentReactCode } from "@/config/available-components";
 import { cn, generateTWClassesForAllViewports } from "@/lib/utils";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { getZodDefaultValuesAsString, getZodSchemaForComponents } from "./zod";
+import * as prettier from "prettier/standalone";
+import * as parserTypescript from "prettier/parser-typescript";
+import * as prettierPluginEstree from "prettier/plugins/estree";
+import { Plugin } from "prettier";
 
 export type DependenciesImports = Record<string, string[] | string>;
 
@@ -198,7 +202,16 @@ ${formCode}
   );
 }`;
 
-  return { code, dependenciesImports, thirdPartyDependenciesImports };
+
+const formattedCode = await prettier.format(code, {
+  parser: "typescript",
+  plugins: [parserTypescript, prettierPluginEstree as Plugin],
+  semi: true,
+  singleQuote: false,
+})
+
+
+  return { code: formattedCode, dependenciesImports, thirdPartyDependenciesImports };
 };
 
 export { generateFormCode };

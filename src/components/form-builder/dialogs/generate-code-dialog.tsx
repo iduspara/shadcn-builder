@@ -4,12 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Pre } from "@/components/ui/pre";
 import { Copy, Check } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import * as prettier from "prettier/standalone";
-import * as parserTypescript from "prettier/parser-typescript";
 import { generateFormCode } from "../helpers/generate-react-code";
-import * as prettierPluginEstree from "prettier/plugins/estree";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
-import type { Plugin } from "prettier";
 import { ReactCode } from "@/types/form-builder.types";
 import { DependenciesImports } from "../helpers/generate-react-code";
 
@@ -49,25 +45,13 @@ export function MainExport() {
     generateCode();
   }, [components]);
 
-  const [formattedCode, setFormattedCode] = useState(generatedCode.code);
   const [copied, setCopied] = useState(false);
   const formTitle = useFormBuilderStore
     .getState()
     .formTitle.replace(/\s+/g, "");
 
-  useEffect(() => {
-    prettier
-      .format(generatedCode.code, {
-        parser: "typescript",
-        plugins: [parserTypescript, prettierPluginEstree as Plugin],
-        semi: true,
-        singleQuote: false,
-      })
-      .then(setFormattedCode);
-  }, [generatedCode.code]);
-
   const handleDownload = () => {
-    const blob = new Blob([formattedCode], { type: "text/plain" });
+    const blob = new Blob([generatedCode.code], { type: "text/plain" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -165,7 +149,7 @@ export function MainExport() {
           variant="ghost"
           size="sm"
           className="absolute top-2 right-2 text-muted-foreground"
-          onClick={() => handleCopy(formattedCode)}
+          onClick={() => handleCopy(generatedCode.code)}
         >
           {copied ? (
             <Check className="h-4 w-4" />
@@ -176,7 +160,7 @@ export function MainExport() {
       </div>
 
       <div className="flex-1 overflow-y-auto relative">
-        <Pre language="typescript" code={formattedCode} className="" />
+        <Pre language="typescript" code={generatedCode.code} className="" />
       </div>
 
       <div className="relative">
