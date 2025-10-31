@@ -4,13 +4,13 @@ import { use, useEffect, useMemo, useState } from "react";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import GenerateCanvasGrid from "@/components/form-builder/canvas/generate-canvas-grid";
 import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
-import { ArrowRight, Monitor, Smartphone, Tablet } from "lucide-react";
+import { ArrowRight, Check, Copy, Monitor, Smartphone, Tablet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Header from "@/components/landingpage/header";
 import Footer from "@/components/landingpage/footer";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -52,6 +52,7 @@ export default function PreviewPage({
   const viewport = useFormBuilderStore((state) => state.viewport);
   const components = useFormBuilderStore((state) => state.components);
   const [formattedCode, setFormattedCode] = useState("");
+  const [copied, setCopied] = useState(false);
   const { category, key } = use(params);
   // Store the components types used in the form
   const componentsTypesUsedInForm = useMemo(() => {
@@ -86,6 +87,13 @@ export default function PreviewPage({
         window.location.href = "/";
       });
   }, [loadTemplate, category, key, updateMode]);
+
+
+  const handleCopy = async (text: string) => {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div>
@@ -139,11 +147,25 @@ export default function PreviewPage({
             <TabsContent value="code">
             <div className="p-0 w-full max-h-[700px] overflow-y-auto rounded-lg border">
                   {components && components.length > 0 ? (
+                    <div className="relative">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="absolute top-2 right-2 text-muted-foreground"
+                        onClick={() => handleCopy(formattedCode)}
+                      >
+                        {copied ? (
+                          <Check className="h-4 w-4" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </Button>
                     <Pre
                       language="tsx"
                       code={formattedCode}
                       className="rounded-none"
                     />
+                    </div>
                   ) : null}
                 </div>
             </TabsContent>
