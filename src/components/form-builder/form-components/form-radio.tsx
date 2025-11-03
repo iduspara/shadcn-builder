@@ -34,7 +34,8 @@ export function FormRadio(
       key={component.id}
       id={componentId}
       className={cn("w-full", component.getField("attributes.class"), cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2")}
-      {...field}
+      value={field.value}
+      name={field.name}
       onValueChange={field.onChange}
     >
       {component.options?.map((option) => (
@@ -85,13 +86,14 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       key="${component.id}"
       id="${escapeHtml(componentId)}"
       className="${escapeHtml(cn("w-full", component.getField("attributes.class"), cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2"))}"
-      {...field}
+      value={field.value}
+      name={field.name}
       onValueChange={field.onChange}
     > 
       ${component.options
         ?.map(
           (option) => `
-        <${WrapperComponent} key="${escapeHtml(option.value)}" className="${escapeHtml(cn("flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}" htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}">
+        <${WrapperComponent} key="${escapeHtml(option.value)}" className="${escapeHtml(cn("flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}" ${WrapperComponent === 'FieldLabel' ? `htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}"` : ""}>
           <RadioGroupItem value="${escapeHtml(option.value)}" id="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" />
           <div className="grid gap-2 leading-none">
             <FieldLabel htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}">

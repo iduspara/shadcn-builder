@@ -60,7 +60,7 @@ export default function VenueBookingRequest() {
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.748Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.039Z"),
       "text-input-4": "",
       "checkbox-group-0": [],
     },
@@ -170,9 +170,8 @@ export default function VenueBookingRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

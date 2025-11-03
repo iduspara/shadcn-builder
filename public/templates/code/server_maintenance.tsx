@@ -55,7 +55,7 @@ export default function ServerMaintenanceRequest() {
       "text-0": "",
       "text-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.267Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.509Z"),
       "text-input-1": "",
       "textarea-0": "",
     },
@@ -123,9 +123,8 @@ export default function ServerMaintenanceRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

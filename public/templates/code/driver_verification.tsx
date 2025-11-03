@@ -57,7 +57,7 @@ export default function AdditionalDriverVerification() {
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.489Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.799Z"),
       "text-input-3": "",
       "select-0": "",
       "file-input-0": "",
@@ -241,9 +241,8 @@ export default function AdditionalDriverVerification() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

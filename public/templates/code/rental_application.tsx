@@ -76,7 +76,7 @@ export default function RentalApplication() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.140Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.393Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
@@ -86,7 +86,7 @@ export default function RentalApplication() {
       "text-input-5": "",
       "text-input-6": "",
       "select-0": "",
-      "date-input-1": new Date("2025-10-31T14:00:25.140Z"),
+      "date-input-1": new Date("2025-11-03T08:00:30.393Z"),
       "textarea-1": "",
       "checkbox-0": false,
     },
@@ -392,9 +392,8 @@ export default function RentalApplication() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -510,6 +509,7 @@ export default function RentalApplication() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

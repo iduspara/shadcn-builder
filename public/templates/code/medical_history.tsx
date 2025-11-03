@@ -59,7 +59,7 @@ export default function MedicalHistoryForm() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.873Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.148Z"),
       "text-input-1": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -574,7 +574,8 @@ export default function MedicalHistoryForm() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -643,7 +644,8 @@ export default function MedicalHistoryForm() {
                 key="radio-1"
                 id="radio-1"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

@@ -57,7 +57,7 @@ export default function InsuranceClaimForm() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.897Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.172Z"),
       "text-input-2": "",
       "text-input-3": "",
       "select-0": "",
@@ -231,9 +231,8 @@ export default function InsuranceClaimForm() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

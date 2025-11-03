@@ -34,9 +34,9 @@ const createNumberSchema = (
     return z.coerce.number().optional();
   }
 
-  let schema: z.ZodNumber = z.coerce
+  let schema = z.coerce
     .number({
-      invalid_type_error: "This field must be a number",
+      error: "This field must be a number",
     })
     .min(1, { message: "This field is required" });
 

@@ -56,7 +56,7 @@ export default function EventCateringRequest() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.770Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.061Z"),
       "select-0": "",
       "checkbox-group-0": [],
       "text-input-2": "",
@@ -187,9 +187,8 @@ export default function EventCateringRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

@@ -58,7 +58,7 @@ export default function EventFeedback() {
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.722Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.017Z"),
       "radio-0": "",
       "radio-1": "",
       "textarea-0": "",
@@ -213,7 +213,8 @@ export default function EventFeedback() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -311,7 +312,8 @@ export default function EventFeedback() {
                 key="radio-1"
                 id="radio-1"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

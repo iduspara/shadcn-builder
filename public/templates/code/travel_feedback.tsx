@@ -64,7 +64,7 @@ export default function TravelFeedback() {
       "email-input-0": "",
       "select-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.318Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.597Z"),
       "radio-0": "",
       "radio-1": "",
       "radio-2": "",
@@ -157,9 +157,8 @@ export default function TravelFeedback() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -275,7 +274,8 @@ export default function TravelFeedback() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -371,7 +371,8 @@ export default function TravelFeedback() {
                 key="radio-1"
                 id="radio-1"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -469,7 +470,8 @@ export default function TravelFeedback() {
                 key="radio-2"
                 id="radio-2"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -650,6 +652,7 @@ export default function TravelFeedback() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

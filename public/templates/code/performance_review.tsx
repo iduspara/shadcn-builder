@@ -58,7 +58,7 @@ export default function PerformanceReview() {
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.449Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.756Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -213,7 +213,8 @@ export default function PerformanceReview() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

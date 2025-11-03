@@ -62,7 +62,7 @@ export default function StudentEnrollment() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.598Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.905Z"),
       "select-0": "",
       "text-input-2": "",
       "email-input-0": "",
@@ -198,9 +198,8 @@ export default function StudentEnrollment() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

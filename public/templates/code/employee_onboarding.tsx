@@ -64,7 +64,7 @@ export default function EmployeeOnboarding() {
       "tel-input-0": "",
       "select-0": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.405Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.718Z"),
       "text-input-3": "",
       "tel-input-1": "",
     },
@@ -196,9 +196,8 @@ export default function EmployeeOnboarding() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

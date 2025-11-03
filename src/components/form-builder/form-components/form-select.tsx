@@ -21,10 +21,9 @@ import { ValidationGroup } from "../sidebar/groups/validation-group";
 export function FormSelect(component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) {
   const componentId = component.getField("attributes.id") || component.id;
   return (
-    <Select key={component.id} {...field} onValueChange={field.onChange}>
+    <Select key={component.id} value={field.value} name={field.name} onValueChange={field.onChange}>
       <SelectTrigger
         id={componentId}
-        {...field}
         className={cn(component.getField("attributes.class"), "w-full")}
       >
         <SelectValue placeholder={component.getField("attributes.placeholder")} />
@@ -47,9 +46,8 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     template: `
     <Select
       key="${component.id}"
-      id="${escapeHtml(componentId)}"
-      className="${escapeHtml(component.getField("attributes.class"))}"
-      {...field}
+      value={field.value}
+      name={field.name}
       onValueChange={field.onChange}
       >
       <SelectTrigger className="w-full ${escapeHtml(component.getField("attributes.class"))}">

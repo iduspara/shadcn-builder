@@ -57,7 +57,7 @@ export default function VehicleDamageReport() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.482Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.791Z"),
       "text-input-2": "",
       "select-0": "",
       "textarea-0": "",
@@ -215,9 +215,8 @@ export default function VehicleDamageReport() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -318,6 +317,7 @@ export default function VehicleDamageReport() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}
