@@ -68,8 +68,8 @@ export default function HotelBooking() {
       "email-input-0": "",
       "tel-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.290Z"),
-      "date-input-1": new Date("2025-10-31T14:00:25.290Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.572Z"),
+      "date-input-1": new Date("2025-11-03T08:00:30.572Z"),
       "select-0": "",
       "select-1": "",
       "select-2": "",
@@ -282,9 +282,8 @@ export default function HotelBooking() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -333,9 +332,8 @@ export default function HotelBooking() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -384,9 +382,8 @@ export default function HotelBooking() {
 
               <Select
                 key="select-2"
-                id="select-2"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

@@ -167,7 +167,8 @@ export default function AccountDeletionRequest() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -309,6 +310,7 @@ export default function AccountDeletionRequest() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}
@@ -344,6 +346,7 @@ export default function AccountDeletionRequest() {
               >
                 <Checkbox
                   id="checkbox-1"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

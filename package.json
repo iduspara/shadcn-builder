@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "yarn generate:template-code && next build",
     "start": "next start",
     "lint": "next lint",
     "commitlint": "commitlint --edit",

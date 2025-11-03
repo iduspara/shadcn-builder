@@ -105,13 +105,13 @@ export default function Notifications() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <div
                   key="all"
                   className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
-                  htmlFor="radio-0-all"
                 >
                   <RadioGroupItem value="all" id="radio-0-all" />
                   <div className="grid gap-2 leading-none">
@@ -124,7 +124,6 @@ export default function Notifications() {
                 <div
                   key="direct"
                   className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
-                  htmlFor="radio-0-direct"
                 >
                   <RadioGroupItem value="direct" id="radio-0-direct" />
                   <div className="grid gap-2 leading-none">
@@ -140,7 +139,6 @@ export default function Notifications() {
                 <div
                   key="none"
                   className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
-                  htmlFor="radio-0-none"
                 >
                   <RadioGroupItem value="none" id="radio-0-none" />
                   <div className="grid gap-2 leading-none">
@@ -187,7 +185,7 @@ export default function Notifications() {
                 </div>
                 <Switch
                   id="switch-0"
-                  {...field}
+                  name={field.name}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -222,7 +220,7 @@ export default function Notifications() {
                 </div>
                 <Switch
                   id="switch-1"
-                  {...field}
+                  name={field.name}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -255,7 +253,7 @@ export default function Notifications() {
                 </div>
                 <Switch
                   id="switch-2"
-                  {...field}
+                  name={field.name}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -290,7 +288,7 @@ export default function Notifications() {
                 </div>
                 <Switch
                   id="switch-3"
-                  {...field}
+                  name={field.name}
                   checked={field.value}
                   onCheckedChange={field.onChange}
                 />
@@ -318,6 +316,7 @@ export default function Notifications() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

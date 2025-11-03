@@ -58,7 +58,7 @@ export default function VaccinationRecordRequest() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.924Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.195Z"),
       "checkbox-group-0": [],
       "select-0": "",
       "radio-group-0": "",
@@ -414,9 +414,8 @@ export default function VaccinationRecordRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -467,7 +466,8 @@ export default function VaccinationRecordRequest() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

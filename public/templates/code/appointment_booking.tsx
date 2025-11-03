@@ -62,7 +62,7 @@ export default function BookanAppointment() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-0": new Date("2025-10-31T14:00:25.161Z"),
+      "date-0": new Date("2025-11-03T08:00:30.412Z"),
       "select-1": "",
       "textarea-0": "",
     },
@@ -172,9 +172,8 @@ export default function BookanAppointment() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -254,9 +253,8 @@ export default function BookanAppointment() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

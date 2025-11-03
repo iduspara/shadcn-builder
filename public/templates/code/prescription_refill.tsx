@@ -70,7 +70,7 @@ export default function PrescriptionRefillRequest() {
       "text-input-3": "",
       "text-input-4": "",
       "text-input-5": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.887Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.162Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",
@@ -334,9 +334,8 @@ export default function PrescriptionRefillRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -379,9 +378,8 @@ export default function PrescriptionRefillRequest() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

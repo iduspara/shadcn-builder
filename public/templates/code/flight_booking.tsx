@@ -76,8 +76,8 @@ export default function FlightBooking() {
       "tel-input-0": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.279Z"),
-      "date-input-1": new Date("2025-10-31T14:00:25.279Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.559Z"),
+      "date-input-1": new Date("2025-11-03T08:00:30.559Z"),
       "select-0": "",
       "select-1": "",
       "radio-0": "",
@@ -334,9 +334,8 @@ export default function FlightBooking() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -385,9 +384,8 @@ export default function FlightBooking() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -430,7 +428,8 @@ export default function FlightBooking() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -526,6 +525,7 @@ export default function FlightBooking() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

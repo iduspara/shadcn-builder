@@ -140,9 +140,8 @@ export default function CarReturn() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -187,7 +186,8 @@ export default function CarReturn() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

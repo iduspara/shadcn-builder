@@ -65,7 +65,7 @@ export default function AssignmentSubmission() {
       "text-input-1": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.660Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.955Z"),
       "textarea-0": "",
       "file-input-0": "",
       "checkbox-0": false,
@@ -289,6 +289,7 @@ export default function AssignmentSubmission() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

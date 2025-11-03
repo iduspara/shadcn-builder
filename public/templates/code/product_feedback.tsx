@@ -122,7 +122,8 @@ export default function ProductFeedback() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -286,7 +287,8 @@ export default function ProductFeedback() {
                 key="radio-group-1"
                 id="radio-group-1"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

@@ -76,11 +76,11 @@ export default function MembershipUpgrade() {
       "tel-input-0": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.991Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.252Z"),
       "select-2": "",
       "select-3": "",
       "radio-0": "",
-      "date-input-1": new Date("2025-10-31T14:00:24.991Z"),
+      "date-input-1": new Date("2025-11-03T08:00:30.252Z"),
       "textarea-0": "",
       "textarea-1": "",
       "checkbox-0": false,
@@ -215,9 +215,8 @@ export default function MembershipUpgrade() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -254,9 +253,8 @@ export default function MembershipUpgrade() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -334,9 +332,8 @@ export default function MembershipUpgrade() {
 
               <Select
                 key="select-2"
-                id="select-2"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -377,9 +374,8 @@ export default function MembershipUpgrade() {
 
               <Select
                 key="select-3"
-                id="select-3"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -426,7 +422,8 @@ export default function MembershipUpgrade() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -595,6 +592,7 @@ export default function MembershipUpgrade() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

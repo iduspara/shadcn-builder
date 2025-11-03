@@ -61,7 +61,7 @@ export default function ServiceCancellation() {
       "text-input-1": "",
       "email-input-0": "",
       "radio-group-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.174Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.418Z"),
       "textarea-0": "",
     },
   });
@@ -174,7 +174,8 @@ export default function ServiceCancellation() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

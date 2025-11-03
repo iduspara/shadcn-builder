@@ -63,9 +63,9 @@ export default function TelemedicineConsultation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.906Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.178Z"),
       "select-0": "",
-      "date-input-1": new Date("2025-10-31T14:00:24.906Z"),
+      "date-input-1": new Date("2025-11-03T08:00:30.178Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "checkbox-0": false,
@@ -175,9 +175,8 @@ export default function TelemedicineConsultation() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -263,7 +262,8 @@ export default function TelemedicineConsultation() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -364,6 +364,7 @@ export default function TelemedicineConsultation() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

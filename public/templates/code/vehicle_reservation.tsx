@@ -53,7 +53,7 @@ export default function VehicleReservation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.459Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.768Z"),
       "radio-group-0": "",
       "text-input-1": "",
       "tel-input-0": "",
@@ -161,7 +161,8 @@ export default function VehicleReservation() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

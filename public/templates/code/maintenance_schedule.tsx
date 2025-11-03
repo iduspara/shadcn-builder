@@ -59,7 +59,7 @@ export default function MaintenanceScheduleRequest() {
       "text-input-1": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:25.190Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.435Z"),
       "radio-group-0": "",
       "textarea-0": "",
     },
@@ -149,9 +149,8 @@ export default function MaintenanceScheduleRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -200,9 +199,8 @@ export default function MaintenanceScheduleRequest() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -288,7 +286,8 @@ export default function MaintenanceScheduleRequest() {
                 key="radio-group-0"
                 id="radio-group-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel

@@ -72,7 +72,7 @@ export default function MembershipRenewal() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.963Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.226Z"),
       "select-1": "",
       "select-2": "",
       "radio-0": "",
@@ -209,9 +209,8 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -293,9 +292,8 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-1"
-                id="select-1"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -340,9 +338,8 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-2"
-                id="select-2"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">
@@ -389,7 +386,8 @@ export default function MembershipRenewal() {
                 key="radio-0"
                 id="radio-0"
                 className="w-full"
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <FieldLabel
@@ -465,6 +463,7 @@ export default function MembershipRenewal() {
               >
                 <Checkbox
                   id="checkbox-0"
+                  name={field.name}
                   className=""
                   checked={field.value}
                   onCheckedChange={field.onChange}

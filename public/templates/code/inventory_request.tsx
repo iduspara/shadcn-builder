@@ -53,7 +53,7 @@ export default function InventoryRestockRequest() {
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.589Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.899Z"),
       "textarea-0": "",
     },
   });
@@ -144,9 +144,8 @@ export default function InventoryRestockRequest() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

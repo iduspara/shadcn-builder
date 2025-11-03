@@ -62,7 +62,7 @@ export default function PatientRegistration() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.850Z"),
+      "date-input-0": new Date("2025-11-03T08:00:30.131Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
@@ -311,9 +311,8 @@ export default function PatientRegistration() {
 
               <Select
                 key="select-0"
-                id="select-0"
-                className=""
-                {...field}
+                value={field.value}
+                name={field.name}
                 onValueChange={field.onChange}
               >
                 <SelectTrigger className="w-full ">

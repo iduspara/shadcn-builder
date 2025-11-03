@@ -59,7 +59,7 @@ export default function InvoiceRequest() {
       "text-input-1": "",
       "email-input-0": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-10-31T14:00:24.344Z"),
+      "date-input-0": new Date("2025-11-03T08:00:29.659Z"),
       "textarea-0": "",
     },
   });
