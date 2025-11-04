@@ -204,7 +204,7 @@ export function SaveFormDialog({ children, forceSave }: SaveFormDialogProps) {
                 <div className="border rounded-lg p-4 bg-background">
                   <GenerateCanvasGrid components={previewComponents} />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-muted to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-muted dark:from-black to-transparent pointer-events-none" />
               </>
             ) : (
               <div className="flex items-center justify-center h-full text-muted-foreground">

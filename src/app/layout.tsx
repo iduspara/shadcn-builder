@@ -59,7 +59,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={cn(fontVariables, "font-sans")}>
           <ConvexClientProvider>
             <PostHogProvider>

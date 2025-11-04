@@ -181,7 +181,7 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
       {mode === "editor" && (
         <span
           className={cn(
-            "absolute -top-6.5 -left-1.75 py-0.5 px-1 text-xs opacity-0 bg-primary text-white",
+            "absolute -top-6.5 -left-1.75 py-0.5 px-1 text-xs opacity-0 bg-primary text-accent",
             component.id === selectedComponent?.id && "opacity-100"
           )}
         >
@@ -194,7 +194,7 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
         variant="link"
         size="icon"
         className={cn(
-          "h-4 w-4 absolute -right-1.75 -top-5.5 m-0! hover:bg-primary/50 group-hover/component:opacity-100 opacity-0 cursor-pointer bg-primary text-white rounded-none",
+          "h-4 w-4 absolute -right-1.75 -top-5.5 m-0! hover:bg-primary/50 group-hover/component:opacity-100 opacity-0 cursor-pointer bg-primary text-accent rounded-none",
           component.id === selectedComponent?.id && "opacity-100"
         )}
         onClick={(e) => {
@@ -202,7 +202,7 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
           handleDelete(component.id);
         }}
       >
-        <Icons.Trash2Icon className="size-3" />
+        <Icons.X className="size-3" />
       </Button>
 
       <RenderEditorComponent

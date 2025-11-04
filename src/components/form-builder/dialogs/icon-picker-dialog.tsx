@@ -193,11 +193,6 @@ export function IconPickerDialog({
             setOpen={setOpen}
             selectedIcon={selectedIcon}
           />
-          <div
-            className={cn(
-              "absolute inset-x-0 bottom-0 h-12 z-10 bg-gradient-from-transparent bg-gradient-to-t from-popover to-transparent"
-            )}
-          />
         </Suspense>
       </DialogContent>
     </Dialog>
