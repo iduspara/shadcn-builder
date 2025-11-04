@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/iduspara/shadcn-builder/compare/v1.6.0...v1.6.1) (2025-11-04)
+
+
+### Bug Fixes
+
+* improve dark mode ([36753e8](https://github.com/iduspara/shadcn-builder/commit/36753e8dab7743bd39f7556d0ddb001570bdb657))
+
 ## [1.6.0](https://github.com/iduspara/shadcn-builder/compare/v1.5.1...v1.6.0) (2025-11-04)
 
 
