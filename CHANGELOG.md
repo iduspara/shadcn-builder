@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/iduspara/shadcn-builder/compare/v1.5.1...v1.6.0) (2025-11-04)
+
+
+### Features
+
+* added dark/light theme toggle ([f4e36c0](https://github.com/iduspara/shadcn-builder/commit/f4e36c0d6f6cd2b8c18ce1dc1f160a7eac06115e))
+
 ## [1.5.0](https://github.com/iduspara/shadcn-builder/compare/v1.4.0...v1.5.0) (2025-10-31)
 
 
