@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/iduspara/shadcn-builder/compare/v1.6.1...v1.6.2) (2025-11-04)
+
+
+### Bug Fixes
+
+* added social icons to the header ([732a862](https://github.com/iduspara/shadcn-builder/commit/732a862bec6deb2bd5385c0ba9eb1c2a16953cbe))
+
 ## [1.6.1](https://github.com/iduspara/shadcn-builder/compare/v1.6.0...v1.6.1) (2025-11-04)
 
 
