@@ -47,7 +47,7 @@ const EmptyState = memo(() => {
     <div
       ref={setNodeRef}
       className={cn(
-        "p-6 mt-6 text-center text-sm text-muted-foreground bg-black/5 rounded-lg max-w-md mx-auto border-dashed border-2 border-slate-300",
+        "p-6 mt-6 text-center text-sm text-muted-foreground bg-black/5 rounded-lg max-w-md mx-auto border-dashed border-2 border-slate-300 dark:bg-muted/50 dark:border-muted",
         isOver && "border-primary"
       )}
     >

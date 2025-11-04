@@ -234,7 +234,7 @@ export function LoadTemplateDialog({ children }: LoadTemplateDialogProps) {
                   <div className="border rounded-lg p-4 bg-background">
                     <GenerateCanvasGrid components={previewComponents} />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-muted to-transparent pointer-events-none" />
                 </>
               ) : (
                 <div className="flex items-center justify-center h-full text-muted-foreground">

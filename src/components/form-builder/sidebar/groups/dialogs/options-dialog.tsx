@@ -90,7 +90,6 @@ export function OptionsDialog({
       <div className="flex flex-col gap-2 relative">
         {component.options && component.options.length > 0 ? (
           <>
-            <div className={cn("absolute inset-x-0 bottom-0 h-12 bg-gradient-from-transparent bg-gradient-to-t from-white to-transparent hidden", component.options.length > 4 && "block")} />
             <div className="grid grid-cols-2 gap-2 items-center text-sm text-gray-400">
               <span className="font-medium">Label</span>
             <span className="font-medium">Value</span>

@@ -60,7 +60,7 @@ export default function VenueBookingRequest() {
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-11-03T08:00:30.039Z"),
+      "date-input-0": new Date("2025-11-04T16:20:12.041Z"),
       "text-input-4": "",
       "checkbox-group-0": [],
     },

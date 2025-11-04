@@ -98,7 +98,7 @@ export function SidebarLeft() {
       <SidebarMenuItem key={component.id} ref={setNodeRef}>
         <SidebarMenuButton
           onClick={() => addComponent(component)}
-          className="h-12 hover:bg-slate-100 cursor-pointer"
+          className="h-12 cursor-pointer"
           data-item-id={component.id}
         >
           <div
@@ -106,11 +106,11 @@ export function SidebarLeft() {
             {...columnListeners}
             className="flex items-center gap-2 w-full"
           >
-            <div className="bg-slate-100 p-2 rounded-md text-slate-500">
+            <div className="bg-muted p-2 rounded-md border ">
               <ComponentIcon icon={component.icon} className="w-5 h-5" />
             </div>
             <div className="flex flex-col flex-1">
-              <span className="text-sm font-medium text-slate-800">
+              <span className="text-sm font-medium">
                 {component.label}
               </span>
               <span className="text-xs text-gray-500">
@@ -130,7 +130,7 @@ export function SidebarLeft() {
   };
 
   return (
-    <Sidebar className="bg-white top-13 bottom-14 z-20">
+    <Sidebar className=" top-13 bottom-14 z-20">
       <div className="flex flex-col h-[calc(100%-56px)]">
         <SidebarContent className="gap-0 pb-5">
           {componentGroups.map((group) => (
@@ -150,7 +150,7 @@ export function SidebarLeft() {
           ))}
           
         </SidebarContent>
-        <div className="absolute bottom-30 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        <div className="absolute bottom-30 left-0 right-0 h-10 bg-gradient-to-t from-muted to-transparent pointer-events-none" />
         <SidebarFooter className="border-t flex flex-col gap-4 py-3 px-2 justify-center">
           <SidebarUser /> 
         </SidebarFooter>

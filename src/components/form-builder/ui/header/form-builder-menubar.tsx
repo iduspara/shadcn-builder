@@ -126,7 +126,7 @@ export function FormBuilderMenubar({ mode }: FormBuilderMenubarProps) {
   }
 
   return (
-    <Menubar className="border-none p-0 shadow-none">
+    <Menubar className="border-none p-0 shadow-none bg-sidebar">
       <MenubarMenu>
         <MenubarTrigger className="gap-2">File</MenubarTrigger>
         <MenubarContent align="start" className="w-48">

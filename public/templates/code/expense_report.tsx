@@ -56,7 +56,7 @@ export default function ExpenseReport() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-03T08:00:29.730Z"),
+      "date-input-0": new Date("2025-11-04T16:20:11.668Z"),
       "select-0": "",
       "text-input-2": "",
       "text-input-3": "",
