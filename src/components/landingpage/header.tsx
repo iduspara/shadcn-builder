@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowRight, BlocksIcon, ExternalLink, Menu, User, LogOut } from "lucide-react";
 import { Button, buttonVariants } from "../ui/button";
+import { SiBuymeacoffee } from "@icons-pack/react-simple-icons";
 import {
   Sheet,
   SheetContent,
@@ -26,6 +27,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
 import { Authenticated, Unauthenticated } from "convex/react";
+import { FaGithub } from "react-icons/fa6";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -91,26 +93,96 @@ export default function Header() {
                     </Link>
                   ))}
                 </div>
-                
+                <div className="flex flex-col gap-3 pt-4 border-t">
+                  <a
+                    href="https://buymeacoffee.com/igorduspara"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      buttonVariants({
+                        variant: "outline",
+                        className: "w-full justify-center",
+                      })
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <SiBuymeacoffee className="size-4" />
+                    Buy Me A Coffee
+                  </a>
+                  <a
+                    href="https://github.com/iduspara/shadcn-builder"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      buttonVariants({
+                        variant: "outline",
+                        className: "w-full justify-center",
+                      })
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <FaGithub className="size-4" />
+                    GitHub
+                  </a>
+                  <a
+                    href="/builder"
+                    className={cn(
+                      buttonVariants({
+                        variant: "default",
+                        className: "w-full",
+                      })
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Open Builder <ArrowRight className="size-4" />
+                  </a>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
         </div>
 
         {/* Desktop CTA Button & Auth */}
-        <div className="hidden md:flex flex-row gap-2 py-2 px-4 w-[250px] items-center justify-end">
+        <div className="hidden md:flex flex-row gap-2 py-2 pr-4 items-center justify-end">
         <a
-                href="/builder"
-                className={cn(
-                  buttonVariants({
-                    variant: "default",
-                    className: "rounded-full w-full",
-                  })
-                )}
-              >
-                Open Builder <ArrowRight className="size-4" />
-              </a>
-
+            href="https://buymeacoffee.com/igorduspara"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({
+                variant: "outline",
+                className: "rounded-full",
+                size: "icon",
+              })
+            )}
+          >
+            <SiBuymeacoffee className="size-4" />
+          </a>
+          <a
+            href="https://github.com/iduspara/shadcn-builder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(
+              buttonVariants({
+                variant: "outline",
+                className: "rounded-full mr-2",
+                size: "icon",
+              })
+            )}
+          >
+            <FaGithub className="size-4" />
+          </a>
+        <a
+            href="/builder"
+            className={cn(
+              buttonVariants({
+                variant: "default",
+                className: "rounded-full flex-1 w-[220px]",
+              })
+            )}
+          >
+            Open Builder <ArrowRight className="size-4" />
+          </a>
         </div>
       </div>
     </div>
