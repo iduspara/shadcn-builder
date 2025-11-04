@@ -57,7 +57,7 @@ export default function AdditionalDriverVerification() {
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-11-03T08:00:29.799Z"),
+      "date-input-0": new Date("2025-11-04T16:20:11.782Z"),
       "text-input-3": "",
       "select-0": "",
       "file-input-0": "",

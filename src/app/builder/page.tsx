@@ -25,6 +25,7 @@ import { useForm } from "react-hook-form";
 import { cn, getGridRows, updateColSpans } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { useAuthState } from "@/hooks/use-auth";
+import { ThemeProvider } from "next-themes";
 
 export default function FormBuilderPage() {
   const isMobile = useIsMobile();
@@ -257,9 +258,10 @@ export default function FormBuilderPage() {
   }
 
   return (
-    <div>
-      <FormBuilderHeader />
-      {isMobile ? (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <div>
+        <FormBuilderHeader />
+        {isMobile ? (
         <>
           <MobileNotification />
           <div className="fixed bottom-0 w-full p-4 border-t">
@@ -285,7 +287,7 @@ export default function FormBuilderPage() {
                 className={cn(
                   "flex-1 transition-all duration-300 overflow-auto relative bg-dotted pt-14 scrollbar-hide",
                   mode === "editor-preview" ||
-                    (mode === "export" && "bg-slate-50")
+                    (mode === "export" && "d")
                 )}
               >
                 {mode === "export" ? <MainExport /> : <MainCanvas />}
@@ -308,11 +310,12 @@ export default function FormBuilderPage() {
         </SidebarProvider>
       )}
 
-      {/* Welcome Dialog */}
-      <WelcomeDialog
-        open={showWelcomeDialog}
-        onOpenChange={setShowWelcomeDialog}
-      />
-    </div>
+        {/* Welcome Dialog */}
+        <WelcomeDialog
+          open={showWelcomeDialog}
+          onOpenChange={setShowWelcomeDialog}
+        />
+      </div>
+    </ThemeProvider>
   );
 }

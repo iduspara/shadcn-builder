@@ -173,7 +173,7 @@ export function IconPickerDialog({
           </div>
         )}
       </div>
-      <DialogContent className="sm:max-w-[480px]">
+      <DialogContent className="sm:max-w-[480px] pb-0">
         <DialogHeader>
           <DialogTitle>Pick an Icon</DialogTitle>
         </DialogHeader>
@@ -195,7 +195,7 @@ export function IconPickerDialog({
           />
           <div
             className={cn(
-              "absolute inset-x-0 bottom-6 h-12 z-10 bg-gradient-from-transparent bg-gradient-to-t from-white to-transparent"
+              "absolute inset-x-0 bottom-0 h-12 z-10 bg-gradient-from-transparent bg-gradient-to-t from-popover to-transparent"
             )}
           />
         </Suspense>

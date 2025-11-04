@@ -34,7 +34,7 @@ export function ToggleGroupNav({
       type="single"
       value={defaultValue}
       onValueChange={handleValueChange}
-      className={cn("flex bg-muted rounded-md p-0.5 h-auto", className)}
+      className={cn("flex border bg-accent dark:bg-transparent rounded-md h-auto shadow-xs", className)}
       size="sm"
     >
       {items.map((item) => {
@@ -44,7 +44,7 @@ export function ToggleGroupNav({
           key={item.value}
           value={item.value}
           name={toggleName}
-          className="h-auto p-1.5 flex-1 text-muted-foreground data-[state=on]:bg-white data-[state=on]:text-primary hover:bg-white hover:text-accent-foreground cursor-pointer"
+          className="h-auto p-1.5 flex-1 text-muted-foreground data-[state=on]:bg-white dark:data-[state=on]:bg-accent data-[state=on]:text-primary hover:bg-white dark:hover:bg-muted hover:text-accent-foreground cursor-pointer"
         >
           {item.icon && <item.icon className="h-4 w-4" />}
           
@@ -53,5 +53,6 @@ export function ToggleGroupNav({
         )
       })}
     </ToggleGroup>
+
   );
 } 

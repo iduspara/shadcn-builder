@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useMemo } from "react";
 import { UndoRedoButtons } from "../undo-redo-buttons";
+import { ThemeToggle } from "@/components/form-builder/ui/theme-toggle";
 
 export function FormBuilderHeader() {
   // Get state from store
@@ -49,24 +50,27 @@ export function FormBuilderHeader() {
   return (
     <header
       className={cn(
-        "fixed top-0 w-full flex flex-row gap-2 justify-between bg-white border-b z-30"
+        "fixed top-0 w-full flex flex-row gap-2 justify-between bg-sidebar border-b z-30"
       )}
     >
-      <Link
+      <a
         href="/"
         className="flex flex-row gap-2 items-center justify-center md:justify-start p-2 px-4 border-r w-full md:w-[300px]"
       >
         <Logo />
-      </Link>
+      </a>
       <div className="p-2 flex-1 grid grid-cols-3">
         {(mode === "editor" || mode === "preview") && (
           <>
             <div className={cn("col-span-1")}>
               {!editor && <FormBuilderMenubar mode={mode} />}
-              
             </div>
             <div className="col-span-1 2xl:col-start-2 flex justify-center items-center">
-              {editor ? <EditorToolbar editor={editor} isEditable={true} /> : <small>{formTitle}</small>}
+              {editor ? (
+                <EditorToolbar editor={editor} isEditable={true} />
+              ) : (
+                <small>{formTitle}</small>
+              )}
             </div>
           </>
         )}
@@ -78,23 +82,20 @@ export function FormBuilderHeader() {
               "justify-center col-span-7 2xl:col-span-3"
           )}
         >
-
           {mode !== "export" && !editor && (
             <>
-            {mode !== "editor-preview" && (
-              <UndoRedoButtons
-                size="sm"
-                variant="ghost"
-              />
-            )}
-            <ToggleGroupNav
-              name="viewport"
-              items={viewportItems}
-              defaultValue={viewport}
-              onValueChange={(value) =>
-                updateViewport(value as "sm" | "md" | "lg")
+              {mode !== "editor-preview" && (
+                <UndoRedoButtons size="sm" variant="ghost" />
+              )}
+              <ToggleGroupNav
+                name="viewport"
+                items={viewportItems}
+                defaultValue={viewport}
+                onValueChange={(value) =>
+                  updateViewport(value as "sm" | "md" | "lg")
                 }
               />
+              <ThemeToggle />
             </>
           )}
         </div>

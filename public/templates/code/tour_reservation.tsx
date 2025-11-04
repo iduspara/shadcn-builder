@@ -68,7 +68,7 @@ export default function TourReservation() {
       "tel-input-0": "",
       "select-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-03T08:00:30.584Z"),
+      "date-input-0": new Date("2025-11-04T16:20:12.578Z"),
       "select-1": "",
       "select-2": "",
       "select-3": "",

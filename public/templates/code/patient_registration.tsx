@@ -62,7 +62,7 @@ export default function PatientRegistration() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-03T08:00:30.131Z"),
+      "date-input-0": new Date("2025-11-04T16:20:12.138Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
