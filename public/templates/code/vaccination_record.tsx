@@ -58,7 +58,7 @@ export default function VaccinationRecordRequest() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-04T16:20:12.206Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.695Z"),
       "checkbox-group-0": [],
       "select-0": "",
       "radio-group-0": "",

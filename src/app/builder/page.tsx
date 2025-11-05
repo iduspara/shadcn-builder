@@ -21,7 +21,6 @@ import { MobileNotification } from "@/components/form-builder/ui/mobile-notifica
 import { useIsMobile } from "@/hooks/use-mobile";
 import SocialLinks from "@/components/form-builder/sidebar/socialLinks";
 import { WelcomeDialog } from "@/components/form-builder/dialogs/welcome-dialog";
-import { useForm } from "react-hook-form";
 import { cn, getGridRows, updateColSpans } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
 import { useAuthState } from "@/hooks/use-auth";
@@ -46,7 +45,6 @@ export default function FormBuilderPage() {
 
   const [draggingDOMElement, setDraggingDOMElement] =
     useState<HTMLElement | null>(null);
-  const form = useForm();
 
   // Check for template parameter in URL and load template
   useEffect(() => {
@@ -283,9 +281,7 @@ export default function FormBuilderPage() {
               <SidebarLeft />
               <main
                 className={cn(
-                  "flex-1 transition-all duration-300 overflow-auto relative bg-dotted pt-14 scrollbar-hide",
-                  mode === "editor-preview" ||
-                    (mode === "export" && "d")
+                  "flex-1 transition-all duration-300 overflow-auto relative bg-dotted pt-14 scrollbar-hide"
                 )}
               >
                 {mode === "export" ? <MainExport /> : <MainCanvas />}

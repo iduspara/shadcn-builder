@@ -63,9 +63,9 @@ export default function TelemedicineConsultation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-04T16:20:12.188Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.679Z"),
       "select-0": "",
-      "date-input-1": new Date("2025-11-04T16:20:12.188Z"),
+      "date-input-1": new Date("2025-11-05T14:41:36.679Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "checkbox-0": false,

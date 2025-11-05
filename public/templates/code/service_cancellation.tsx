@@ -61,7 +61,7 @@ export default function ServiceCancellation() {
       "text-input-1": "",
       "email-input-0": "",
       "radio-group-0": "",
-      "date-input-0": new Date("2025-11-04T16:20:12.456Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.915Z"),
       "textarea-0": "",
     },
   });

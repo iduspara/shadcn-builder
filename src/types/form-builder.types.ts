@@ -92,4 +92,18 @@ export interface FormBuilderStore {
   jumpToSnapshot: (index: number) => boolean;
   // Subscription methods
   updateSubscriptionInfo: (subscriptionInfo: SubscriptionInfo) => void;
+  // Theme methods
+  currentTheme: string | null;
+  themes: Array<{
+    _id: string;
+    userId: string;
+    name: string;
+    css: string;
+    isDefault: boolean;
+    createdAt: number;
+    updatedAt: number;
+  }>;
+  setCurrentTheme: (css: string | null) => void;
+  clearTheme: () => void;
+  updateThemes: (themes: FormBuilderStore['themes']) => void;
 } 

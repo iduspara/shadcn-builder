@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormBuilderStore } from "@/stores/form-builder-store";
-import { useMemo, memo, useState, useEffect, useCallback } from "react";
+import { useMemo, memo } from "react";
 import GenerateCanvasGrid from "./canvas/generate-canvas-grid";
 import { Pre } from "@/components/ui/pre";
 import { generateJsonSchema } from "./helpers/generate-json";
@@ -10,14 +10,13 @@ import { CardContent } from "../ui/card";
 import { Card } from "../ui/card";
 import { FormComponentModel } from "@/models/FormComponent";
 import { useDroppable } from "@dnd-kit/core";
-// Memoize static viewport styles
+
 const viewportEditorStyles = {
   sm: "w-[370px]",
   md: "w-[818px]",
   lg: "w-[1074px]",
 } as const;
 
-// Memoize the JSON preview component
 const JsonPreview = memo(
   ({ components }: { components: FormComponentModel[] }) => {
     const jsonString = useMemo(
@@ -26,7 +25,7 @@ const JsonPreview = memo(
     );
 
     return (
-      <div className={`absolute top-0 right-0 h-full w-full`}>
+      <div className="absolute top-0 right-0 h-full w-full">
         <Pre language="json" code={jsonString} />
       </div>
     );
@@ -59,7 +58,6 @@ const EmptyState = memo(() => {
 EmptyState.displayName = "EmptyState";
 
 export function MainCanvas() {
-  // Split store selectors to minimize re-renders
   const viewport = useFormBuilderStore((state) => state.viewport);
   const showJson = useFormBuilderStore((state) => state.showJson);
   const selectedComponent = useFormBuilderStore(
@@ -68,38 +66,27 @@ export function MainCanvas() {
   const selectComponent = useFormBuilderStore((state) => state.selectComponent);
   const components = useFormBuilderStore((state) => state.components);
   const enableDragging = useFormBuilderStore((state) => state.enableDragging);
-  const [currentComponents, setCurrentComponents] = useState<
-    FormComponentModel[]
-  >([]);
 
-  useEffect(() => {
-    setCurrentComponents(components);
-  }, [components]);
-
-  const GridCanvas = useCallback(() => {
-    return <GenerateCanvasGrid components={currentComponents} />;
-  }, [currentComponents]);
-
+  const handleCanvasClick = () => {
+    if (selectedComponent && enableDragging) {
+      selectComponent(null);
+    }
+  };
 
   return components.length > 0 ? (
-    <div className="flex gap-4 h-full flex-col 3xl:flex-row">
-      <div
-        className={`h-full w-full`}
-        onClick={() => {
-          if (selectedComponent && enableDragging) {
-            selectComponent(null);
-          }
-        }}
-      >
+    <div
+      className="flex gap-4 h-full flex-col 3xl:flex-row"
+    >
+      <div className="h-full w-full" onClick={handleCanvasClick}>
         <Card
           className={cn(
             "transition-all duration-300",
-            `${viewportEditorStyles[viewport]}`,
+            viewportEditorStyles[viewport],
             "mx-auto scrollbar-hide mt-6"
           )}
         >
           <CardContent>
-            <GridCanvas />
+            <GenerateCanvasGrid components={components} />
           </CardContent>
         </Card>
       </div>

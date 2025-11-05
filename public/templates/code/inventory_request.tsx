@@ -53,7 +53,7 @@ export default function InventoryRestockRequest() {
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
-      "date-input-0": new Date("2025-11-04T16:20:11.892Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.371Z"),
       "textarea-0": "",
     },
   });
