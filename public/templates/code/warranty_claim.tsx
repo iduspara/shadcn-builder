@@ -57,7 +57,7 @@ export default function WarrantyClaim() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-04T16:20:12.479Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.937Z"),
       "text-input-2": "",
       "select-0": "",
       "textarea-0": "",

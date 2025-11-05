@@ -72,7 +72,7 @@ export default function MembershipRenewal() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2025-11-04T16:20:12.238Z"),
+      "date-input-0": new Date("2025-11-05T14:41:36.728Z"),
       "select-1": "",
       "select-2": "",
       "radio-0": "",

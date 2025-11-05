@@ -70,6 +70,7 @@ const loadTemplate = async (templateName: string, templateKey?: string): Promise
 };
 
 export const useFormBuilderStore = create<FormBuilderStore>()(
+  persist(
     (set, get) => ({
       mode: "editor",
       components: [],
@@ -85,6 +86,8 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
       enableDragging: true,
       history: initializeHistory(),
       subscriptionInfo: null,
+      currentTheme: null,
+      themes: [],
       updateMode: (mode: FormBuilderStore['mode']) => set({ mode }),
       updateViewport: (viewport: Viewports) => set({ viewport }),
       toggleJsonPreview: () => set((state) => ({ showJson: !state.showJson })),
@@ -418,6 +421,17 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
             history: newHistory
           };
         });
-      }
-    })
+      },
+      // Theme methods
+      setCurrentTheme: (css: string | null) => set({ currentTheme: css }),
+      clearTheme: () => set({ currentTheme: null }),
+      updateThemes: (themes: FormBuilderStore['themes']) => set({ themes }),
+    }),
+    {
+      name: "form-builder-storage",
+      partialize: (state) => ({
+        currentTheme: state.currentTheme,
+      }),
+    }
+  )
 );

@@ -15,4 +15,14 @@ export default defineSchema({
     .index("by_user", ["userId"])
     .index("by_created_at", ["createdAt"])
     .index("by_category", ["category"]),
+  userThemes: defineTable({
+    userId: v.string(),
+    name: v.string(),
+    css: v.string(),
+    isDefault: v.boolean(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_user_default", ["userId", "isDefault"]),
 });
