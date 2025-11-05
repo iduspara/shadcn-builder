@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/iduspara/shadcn-builder/compare/v1.6.2...v1.7.0) (2025-11-05)
+
+
+### Features
+
+* implement Theme managment ([9c3ca0a](https://github.com/iduspara/shadcn-builder/commit/9c3ca0acdd522d0b5bb206594276388db593dad6))
+
 ## [1.6.2](https://github.com/iduspara/shadcn-builder/compare/v1.6.1...v1.6.2) (2025-11-04)
 
 
