@@ -17,7 +17,7 @@ import SocialLinks from "../form-builder/sidebar/socialLinks";
 export default function Footer() {
   return (
     <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-12 max-w-screen-xl">
+      <div className="max-w-8xl mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row gap-8 justify-between">
           {/* Brand Section */}
           <div className="space-y-4">
@@ -53,7 +53,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/templates"
+                  href="/template/business/job_application"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Templates

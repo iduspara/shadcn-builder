@@ -17,8 +17,8 @@ export default function Templates() {
   } = useLoadTemplates();
 
   return (
-    <section id="templates" className="relative w-full">
-      <div className="max-w-screen-xl mx-auto px-6">
+    <section id="templates" className="max-w-8xl mx-auto relative w-full">
+      <div className=" mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-medium tracking-tight">
             Over <span className="underline">100</span> pre-built Form templates
@@ -30,7 +30,7 @@ export default function Templates() {
           </p>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto px-4 py-20 md:px-6">
+      <div className="mx-auto px-4 py-20 md:px-6">
         <div className="relative">
           <div className="columns-1 gap-4 space-y-4 transition-all sm:columns-2 md:columns-3 lg:columns-4">
             {allTemplates["business"]?.map((template, index) => (
@@ -69,7 +69,7 @@ export default function Templates() {
         {/* View All Templates Button */}
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" asChild>
-            <Link href="/templates">
+            <Link href="/template/business/job_application">
               View All Templates
             </Link>
           </Button>

@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa6";
 import Image from "next/image";
 export default function Hero() {
   return (
-    <section className="relative container mt-4 max-w-screen-xl px-6">
+    <section className="relative max-w-8xl mx-auto mt-4 px-6">
       <div className="relative overflow-hidden">
         <div className="relative flex flex-col items-start justify-start rounded-xl  max-md:text-center">
           <div

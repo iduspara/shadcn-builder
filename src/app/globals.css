@@ -157,6 +157,10 @@
     background-image: radial-gradient(var(--color-stone-800) 1px, transparent 1px);
 
   }
+
+  .max-w-8xl {
+    max-width: 90rem;
+  }
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -166,15 +170,6 @@
 /*
   ---break---
 */
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
 
 @keyframes moveGradientLeft {
