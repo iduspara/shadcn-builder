@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/iduspara/shadcn-builder/compare/v1.7.0...v1.7.1) (2025-11-06)
+
+
+### Bug Fixes
+
+* redesign of the templates page ([c7343e1](https://github.com/iduspara/shadcn-builder/commit/c7343e1e84184467c2b56ffad80a994559deefa9))
+
 ## [1.7.0](https://github.com/iduspara/shadcn-builder/compare/v1.6.2...v1.7.0) (2025-11-05)
 
 
