@@ -54,8 +54,8 @@ export default function FeatureSteps() {
   }, [progress]);
 
   return (
-    <section className={'p-8 md:p-12'}>
-      <div className="mx-auto w-full max-w-7xl">
+    <section className={'max-w-8xl mx-auto p-8 md:p-12'}>
+      <div className="mx-auto w-full">
         <div className="relative mx-auto mb-12 max-w-2xl sm:text-center">
           <div className="relative z-10">
             <h2 className="font-geist text-3xl font-medium tracking-tighter md:text-4xl lg:text-5xl">

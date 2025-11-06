@@ -35,7 +35,7 @@ export default function Header() {
   const navigationLinks = [
     { href: "/", label: "Home" },
     { href: "/components", label: "Components" },
-    { href: "/templates", label: "Templates" },
+    { href: "/template/business/job_application", label: "Templates" },
     { href: "/changelog", label: "Changelog" },
     { href: "/faq", label: "FAQ" },
     { href: "/about", label: "About" },
@@ -47,7 +47,7 @@ export default function Header() {
         "fixed top-0 w-full flex flex-row gap-2 justify-between bg-white border-b z-30"
       )}
     >
-      <div className="flex flex-row gap-2 justify-between w-full max-w-screen-xl mx-auto">
+      <div className="max-w-8xl flex flex-row gap-2 justify-between w-full mx-auto">
         {/* Logo */}
         <Link
           href="/"

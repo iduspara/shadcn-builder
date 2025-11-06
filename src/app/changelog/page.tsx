@@ -10,9 +10,10 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Link, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 async function fetchChangelog(): Promise<string> {
   // Use raw GitHub URL to fetch plain Markdown content
@@ -31,7 +32,7 @@ export default async function ChangelogPage() {
   return (
     <div>
       <Header />
-      <main className="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
+      <main className="max-w-8xl mx-auto px-4 py-16 md:py-18">
         <div className="space-y-8">
           {/* Header */}
           <div className="space-y-4">
@@ -94,7 +95,7 @@ export default async function ChangelogPage() {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/templates">
+                <Link href="/template/business/job_application">
                   Browse Templates
                 </Link>
               </Button>
