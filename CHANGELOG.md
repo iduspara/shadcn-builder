@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/iduspara/shadcn-builder/compare/v1.7.1...v1.7.2) (2025-11-07)
+
+
+### Bug Fixes
+
+* added header to the loading layout ([caf8fe3](https://github.com/iduspara/shadcn-builder/commit/caf8fe351b24d71d5267237388e189cd7fc74424))
+
 ## [1.7.1](https://github.com/iduspara/shadcn-builder/compare/v1.7.0...v1.7.1) (2025-11-06)
 
 
