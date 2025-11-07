@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/iduspara/shadcn-builder/compare/v1.7.4...v1.7.5) (2025-11-07)
+
+
+### Bug Fixes
+
+* load only the business templates ([e85d424](https://github.com/iduspara/shadcn-builder/commit/e85d424a16882f2642f69fcc808caeb248085511))
+
 ## [1.7.4](https://github.com/iduspara/shadcn-builder/compare/v1.7.3...v1.7.4) (2025-11-07)
 
 
