@@ -10,11 +10,8 @@ export default function Templates() {
   const [hovered, setHovered] = useState<number | null>(null);
   const {
     allTemplates,
-    isLoading,
     error: loadError,
-    retry,
-    categoriesLoaded,
-  } = useLoadTemplates();
+  } = useLoadTemplates({ categories: ["business"] });
 
   return (
     <section id="templates" className="max-w-8xl mx-auto relative w-full">
