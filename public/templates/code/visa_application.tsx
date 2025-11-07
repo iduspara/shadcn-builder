@@ -59,7 +59,7 @@ export default function VisaApplicationAssistance() {
       "text-input-1": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2025-11-07T09:56:34.875Z"),
+      "date-input-0": new Date("2025-11-07T13:00:40.745Z"),
       "text-input-2": "",
       "textarea-0": "",
     },

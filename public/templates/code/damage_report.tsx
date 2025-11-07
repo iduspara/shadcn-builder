@@ -57,7 +57,7 @@ export default function VehicleDamageReport() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-07T09:56:34.071Z"),
+      "date-input-0": new Date("2025-11-07T13:00:39.932Z"),
       "text-input-2": "",
       "select-0": "",
       "textarea-0": "",
