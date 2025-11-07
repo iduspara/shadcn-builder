@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { TEMPLATE_CATEGORIES } from "@/lib/templates/constants";
 
 export type LoadedTemplate = {
@@ -44,6 +44,38 @@ export function useLoadTemplates(
   );
   const [error, setError] = useState<string | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
+
+  const requestIdRef = useRef(0);
+
+  const defaultCategories = useMemo(() => [...TEMPLATE_CATEGORIES], []);
+
+  const defaultCategoriesKey = useMemo(
+    () => JSON.stringify(defaultCategories),
+    [defaultCategories]
+  );
+
+  const categoriesKey = useMemo(() => {
+    if (!Array.isArray(categories) || categories.length === 0) {
+      return defaultCategoriesKey;
+    }
+    return JSON.stringify(categories);
+  }, [categories, defaultCategoriesKey]);
+
+  const normalizedCategories = useMemo(() => {
+    const parsedCategories = JSON.parse(categoriesKey) as string[];
+
+    const seen = new Set<string>();
+    const deduped: string[] = [];
+
+    parsedCategories.forEach((category) => {
+      if (typeof category === "string" && !seen.has(category)) {
+        seen.add(category);
+        deduped.push(category);
+      }
+    });
+
+    return deduped.length > 0 ? deduped : defaultCategories;
+  }, [categoriesKey, defaultCategories]);
 
   // Helper function to delay execution
   const delay = (ms: number) =>
@@ -108,36 +140,45 @@ export function useLoadTemplates(
 
   // Main loading function
   const loadTemplates = useCallback(async () => {
+    const requestId = requestIdRef.current + 1;
+    requestIdRef.current = requestId;
+
     try {
       setIsLoading(true);
       setError(null);
 
       // Load all categories in parallel for better performance
-      const loadPromises = categories.map((category) =>
-        loadCategory(category).then((templates) => ({ category, templates }))
-      );
-
-      const results = await Promise.allSettled(loadPromises);
-
-      const allTemplates: LoadedTemplatesByCategory = {};
-      const failedCategories: string[] = [];
-
-      results.forEach((result, index) => {
-        const category = categories[index];
-
-        if (result.status === "fulfilled") {
-          allTemplates[category] = result.value.templates;
-        } else {
-          failedCategories.push(category);
-          console.error(`Failed to load category ${category}:`, result.reason);
+      const loadPromises = normalizedCategories.map(async (category) => {
+        try {
+          const templates = await loadCategory(category);
+          return { category, templates, isError: false } as const;
+        } catch (loadError) {
+          console.error(`Failed to load category ${category}:`, loadError);
+          return { category, templates: [] as LoadedTemplate[], isError: true } as const;
         }
       });
 
-      setAllTemplates(allTemplates);
+      const results = await Promise.all(loadPromises);
 
-      // Set error if some categories failed to load
+      if (requestIdRef.current !== requestId) {
+        return;
+      }
+
+      const nextTemplates: LoadedTemplatesByCategory = {};
+      const failedCategories: string[] = [];
+
+      results.forEach(({ category, templates, isError }) => {
+        nextTemplates[category] = templates;
+
+        if (isError) {
+          failedCategories.push(category);
+        }
+      });
+
+      setAllTemplates(nextTemplates);
+
       if (failedCategories.length > 0) {
-        const successCount = categories.length - failedCategories.length;
+        const successCount = normalizedCategories.length - failedCategories.length;
         if (successCount === 0) {
           setError(
             "Failed to load any templates. Please check your internet connection and try again."
@@ -149,14 +190,20 @@ export function useLoadTemplates(
         }
       }
     } catch (error) {
+      if (requestIdRef.current !== requestId) {
+        return;
+      }
+
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       setError(`Failed to load templates: ${errorMessage}`);
       console.error("Failed to load templates:", error);
     } finally {
-      setIsLoading(false);
+      if (requestIdRef.current === requestId) {
+        setIsLoading(false);
+      }
     }
-  }, [categories, loadCategory]);
+  }, [normalizedCategories, loadCategory]);
 
   // Retry function
   const retry = useCallback(() => {
@@ -167,6 +214,13 @@ export function useLoadTemplates(
   useEffect(() => {
     loadTemplates();
   }, [loadTemplates, loadAttempt]);
+
+  useEffect(
+    () => () => {
+      requestIdRef.current += 1;
+    },
+    []
+  );
 
   // Computed values for better UX
   const hasData = useMemo(
