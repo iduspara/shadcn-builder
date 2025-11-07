@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/iduspara/shadcn-builder/compare/v1.7.3...v1.7.4) (2025-11-07)
+
+
+### Bug Fixes
+
+* fixed signup pages ([f0dbcdb](https://github.com/iduspara/shadcn-builder/commit/f0dbcdb2b4845e3c4738afdf0febc604ea0f7d03))
+
 ## [1.7.3](https://github.com/iduspara/shadcn-builder/compare/v1.7.2...v1.7.3) (2025-11-07)
 
 
