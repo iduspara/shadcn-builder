@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import { cn } from "@/lib/utils";
 import { fontVariables } from "@/lib/fonts";
 import { PostHogProvider } from "@/providers/PostHogProvider";
@@ -7,14 +7,37 @@ import { SubscriptionProvider } from "@/providers/SubscriptionProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
+import Header from "@/components/landingpage/header";
+import Footer from "@/components/landingpage/footer";
 
 export const metadata: Metadata = {
   title: {
     default: "Shadcn Builder - Create Beautiful Forms",
     template: "%s | Shadcn Builder",
   },
-  description: "Create beautiful, responsive forms with our easy-to-use form builder and generate React code using shadcn/ui components.",
-  keywords: ["form builder", "online forms", "form creator", "web forms", "form designer", "form templates", "shadcn/ui", "react components", "react form builder", "shadcn form builder", "shadcn builder", "shadcn builder form", "shadcn builder form builder", "shadcn builder form templates", "shadcn builder form designer", "shadcn builder form creator", "shadcn builder form templates", "shadcn builder form designer", "shadcn builder form creator"],
+  description:
+    "Create beautiful, responsive forms with our easy-to-use form builder and generate React code using shadcn/ui components.",
+  keywords: [
+    "form builder",
+    "online forms",
+    "form creator",
+    "web forms",
+    "form designer",
+    "form templates",
+    "shadcn/ui",
+    "react components",
+    "react form builder",
+    "shadcn form builder",
+    "shadcn builder",
+    "shadcn builder form",
+    "shadcn builder form builder",
+    "shadcn builder form templates",
+    "shadcn builder form designer",
+    "shadcn builder form creator",
+    "shadcn builder form templates",
+    "shadcn builder form designer",
+    "shadcn builder form creator",
+  ],
   authors: [{ name: "Igor Duspara" }],
   creator: "Igor Duspara",
   publisher: "Shadcn Builder",
@@ -35,14 +58,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  metadataBase: new URL('https://www.shadcn-builder.com'),
+  metadataBase: new URL("https://www.shadcn-builder.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://www.shadcn-builder.com",
     siteName: "Shadcn Builder",
     title: "Shadcn Builder - Create Beautiful Forms",
-    description: "Create beautiful, responsive forms with our easy-to-use form builder and generate React code using shadcn/ui components.",
+    description:
+      "Create beautiful, responsive forms with our easy-to-use form builder and generate React code using shadcn/ui components.",
     images: [
       {
         url: "/og-image.png",
@@ -64,7 +88,7 @@ export default function RootLayout({
           <ConvexClientProvider>
             <PostHogProvider>
               <SubscriptionProvider>
-                {children}
+              {children}
                 <Toaster position="top-center" />
               </SubscriptionProvider>
             </PostHogProvider>

@@ -53,7 +53,7 @@ export default function VehicleReservation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-05T14:41:36.251Z"),
+      "date-input-0": new Date("2025-11-07T09:56:34.043Z"),
       "radio-group-0": "",
       "text-input-1": "",
       "tel-input-0": "",

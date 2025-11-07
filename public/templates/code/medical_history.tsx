@@ -59,7 +59,7 @@ export default function MedicalHistoryForm() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-05T14:41:36.651Z"),
+      "date-input-0": new Date("2025-11-07T09:56:34.442Z"),
       "text-input-1": "",
       "textarea-0": "",
       "textarea-1": "",

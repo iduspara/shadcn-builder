@@ -62,7 +62,7 @@ export default function BookanAppointment() {
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-0": new Date("2025-11-05T14:41:36.909Z"),
+      "date-0": new Date("2025-11-07T09:56:34.717Z"),
       "select-1": "",
       "textarea-0": "",
     },

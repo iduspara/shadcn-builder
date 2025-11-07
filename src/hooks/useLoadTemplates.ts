@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { TEMPLATE_CATEGORIES } from "@/lib/templates/constants";
 
 export type LoadedTemplate = {
   formId: string;
@@ -28,29 +29,11 @@ export interface UseLoadTemplatesReturn {
   categoriesLoaded: string[];
 }
 
-const DEFAULT_CATEGORIES = [
-  "user-account",
-  "service",
-  "event",
-  "business",
-  "education",
-  "healthcare",
-  "real-estate",
-  "travel",
-  "membership",
-  "technical",
-  "feedback",
-  "notifications",
-  "e-commerce",
-  "car-rental",
-  "newsletter",
-];
-
 export function useLoadTemplates(
   options: UseLoadTemplatesOptions = {}
 ): UseLoadTemplatesReturn {
   const {
-    categories = DEFAULT_CATEGORIES,
+    categories = TEMPLATE_CATEGORIES,
     retryAttempts = 3,
     retryDelay = 1000,
   } = options;

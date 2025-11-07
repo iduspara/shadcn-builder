@@ -3,6 +3,8 @@ import { Editor } from "@tiptap/react";
 import { icons } from "lucide-react";
 import { HTMLAttributes, HTMLInputTypeAttribute } from 'react';
 import { SubscriptionInfo } from './subscription.types';
+import { TemplateDefinition } from "./template.types";
+import { FormComponentModelInput } from "./FormComponent.types";
 
 export type SelectableComponents = {
   id: string;
@@ -37,7 +39,15 @@ export type TemplateData = {
   formDescription: string;
   tags: string[];
   category: string;
+  image?: string;
 };
+
+export interface TemplateHydrationPayload extends Omit<TemplateDefinition, "components"> {
+  components: Array<FormComponentModelInput | FormComponentModel>;
+  templateId?: string | null;
+  mode?: 'editor' | 'editor-preview' | 'preview' | 'export';
+  resetHistory?: boolean;
+}
 
 export type HistorySnapshot = {
   components: FormComponentModel[];
