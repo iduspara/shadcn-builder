@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/iduspara/shadcn-builder/compare/v1.7.2...v1.7.3) (2025-11-07)
+
+
+### Bug Fixes
+
+* rerrange folder structure ([dac302a](https://github.com/iduspara/shadcn-builder/commit/dac302acd722d906e2e1c53d6bca9af540ea7f1c))
+
 ## [1.7.2](https://github.com/iduspara/shadcn-builder/compare/v1.7.1...v1.7.2) (2025-11-07)
 
 
