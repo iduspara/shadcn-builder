@@ -62,7 +62,7 @@ export default function StudentEnrollment() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-05T14:41:36.377Z"),
+      "date-input-0": new Date("2025-11-07T09:56:34.186Z"),
       "select-0": "",
       "text-input-2": "",
       "email-input-0": "",

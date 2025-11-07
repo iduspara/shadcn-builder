@@ -2,7 +2,7 @@
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { ThemeProvider } from "next-themes";
 
-export default function BuilderLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const currentTheme = useFormBuilderStore((state) => state.currentTheme);

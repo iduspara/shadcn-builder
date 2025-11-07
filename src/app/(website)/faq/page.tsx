@@ -225,172 +225,166 @@ export default function FAQPage() {
   };
 
   return (
-    <div>
-      <Header />
-      <main className="max-w-8xl mx-auto px-4 py-16 md:py-18">
-        <div className="space-y-8">
-          {/* Header */}
-          <div className="space-y-4">
-            <Breadcrumb className="mb-4">
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink href="/faq">FAQ</BreadcrumbLink>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <div>
-                  <h1 className="text-4xl font-bold tracking-tight">Frequently Asked Questions</h1>
-                  <p className="text-xl text-muted-foreground mt-2">
-                    Everything you need to know about shadcn/ui Builder
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Badge variant="secondary" className="flex items-center gap-1">
-                  <HelpCircle className="h-3 w-3" />
-                  {faqData.length} Questions
-                </Badge>
-                <span>•</span>
-                <span>Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
-              </div>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* Search and Filters */}
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search questions..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            
-            <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
-              <TabsList className="grid grid-cols-3 lg:grid-cols-6 w-full md:w-auto">
-                <TabsTrigger value="all">All ({getCategoryCount("all")})</TabsTrigger>
-                <TabsTrigger value="general">General ({getCategoryCount("general")})</TabsTrigger>
-                <TabsTrigger value="technical">Technical ({getCategoryCount("technical")})</TabsTrigger>
-                <TabsTrigger value="features">Features ({getCategoryCount("features")})</TabsTrigger>
-                <TabsTrigger value="pricing">Pricing ({getCategoryCount("pricing")})</TabsTrigger>
-                <TabsTrigger value="support">Support ({getCategoryCount("support")})</TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-
-          {/* Results */}
-          {searchQuery && (
-            <div className="text-sm text-muted-foreground">
-              Found <strong>{filteredFAQs.length}</strong> questions matching &quot;{searchQuery}&quot;
-            </div>
-          )}
-
-          {/* FAQ Content */}
-          {selectedCategory === "all" ? (
-            // Show all categories
-            <div className="space-y-12">
-              {Object.entries(faqsByCategory).map(([category, faqs]) => {
-                if (faqs.length === 0) return null;
-                
-                const label = categoryLabels[category as keyof typeof categoryLabels];
-                
-                return (
-                  <section key={category} className="space-y-6">
-                    <div className="flex items-center gap-3">
-                      <h2 className="text-2xl font-semibold">{label}</h2>
-                    </div>
-                    
-                    <Accordion type="single" collapsible className="w-full">
-                      {faqs.map((faq) => (
-                        <AccordionItem key={faq.id} value={faq.id}>
-                          <AccordionTrigger className="text-left hover:no-underline">
-                            <span className="text-base font-normal">{faq.question}</span>
-                          </AccordionTrigger>
-                          <AccordionContent className="text-muted-foreground leading-relaxed">
-                            {faq.answer}
-                            <div className="flex flex-wrap gap-1 mt-3">
-                              {faq.tags.map((tag) => (
-                                <Badge key={tag} variant="secondary" className="text-xs">
-                                  {tag}
-                                </Badge>
-                              ))}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                  </section>
-                );
-              })}
-            </div>
-          ) : (
-            // Show single category
-            <div className="space-y-6">
-              {filteredFAQs.length > 0 ? (
-                <Accordion type="single" collapsible className="w-full">
-                  {filteredFAQs.map((faq) => (
-                    <AccordionItem key={faq.id} value={faq.id}>
-                      <AccordionTrigger className="text-left hover:no-underline">
-                        <span className="font-medium">{faq.question}</span>
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground leading-relaxed">
-                        {faq.answer}
-                        <div className="flex flex-wrap gap-1 mt-3">
-                          {faq.tags.map((tag) => (
-                            <Badge key={tag} variant="secondary" className="text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              ) : (
-                <div className="text-center py-12">
-                  <div className="text-muted-foreground space-y-2">
-                    <Search className="h-12 w-12 mx-auto opacity-50" />
-                    <h3 className="text-lg font-semibold">No questions found</h3>
-                    <p>Try adjusting your search or filter criteria</p>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Contact Section */}
-          <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
-            <h3 className="text-2xl font-semibold">Still have questions?</h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Can`t find the answer you`re looking for? Feel free to reach out to the community.
+    <div className="space-y-8 max-w-8xl mx-auto px-4 w-full">
+    {/* Header */}
+    <div className="space-y-4">
+      <Breadcrumb className="mb-4">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/faq">FAQ</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="space-y-6">
+        <div className="flex items-center gap-3">
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight">Frequently Asked Questions</h1>
+            <p className="text-xl text-muted-foreground mt-2">
+              Everything you need to know about shadcn/ui Builder
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
-                <Link href="https://github.com/iduspara/shadcn-builder/discussions">
-                  Ask on GitHub <ArrowRight className="h-4 w-4 ml-2" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="/builder">
-                  Try the Builder
-                </a>
-              </Button>
-            </div>
           </div>
         </div>
-      </main>
-      <Footer />
+        
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <Badge variant="secondary" className="flex items-center gap-1">
+            <HelpCircle className="h-3 w-3" />
+            {faqData.length} Questions
+          </Badge>
+          <span>•</span>
+          <span>Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
+        </div>
+      </div>
     </div>
+
+    <Separator />
+
+    {/* Search and Filters */}
+    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+      <div className="relative flex-1 max-w-md">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Input
+          placeholder="Search questions..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-10"
+        />
+      </div>
+      
+      <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
+        <TabsList className="grid grid-cols-3 lg:grid-cols-6 w-full md:w-auto">
+          <TabsTrigger value="all">All ({getCategoryCount("all")})</TabsTrigger>
+          <TabsTrigger value="general">General ({getCategoryCount("general")})</TabsTrigger>
+          <TabsTrigger value="technical">Technical ({getCategoryCount("technical")})</TabsTrigger>
+          <TabsTrigger value="features">Features ({getCategoryCount("features")})</TabsTrigger>
+          <TabsTrigger value="pricing">Pricing ({getCategoryCount("pricing")})</TabsTrigger>
+          <TabsTrigger value="support">Support ({getCategoryCount("support")})</TabsTrigger>
+        </TabsList>
+      </Tabs>
+    </div>
+
+    {/* Results */}
+    {searchQuery && (
+      <div className="text-sm text-muted-foreground">
+        Found <strong>{filteredFAQs.length}</strong> questions matching &quot;{searchQuery}&quot;
+      </div>
+    )}
+
+    {/* FAQ Content */}
+    {selectedCategory === "all" ? (
+      // Show all categories
+      <div className="space-y-12">
+        {Object.entries(faqsByCategory).map(([category, faqs]) => {
+          if (faqs.length === 0) return null;
+          
+          const label = categoryLabels[category as keyof typeof categoryLabels];
+          
+          return (
+            <section key={category} className="space-y-6">
+              <div className="flex items-center gap-3">
+                <h2 className="text-2xl font-semibold">{label}</h2>
+              </div>
+              
+              <Accordion type="single" collapsible className="w-full">
+                {faqs.map((faq) => (
+                  <AccordionItem key={faq.id} value={faq.id}>
+                    <AccordionTrigger className="text-left hover:no-underline">
+                      <span className="text-base font-normal">{faq.question}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                      <div className="flex flex-wrap gap-1 mt-3">
+                        {faq.tags.map((tag) => (
+                          <Badge key={tag} variant="secondary" className="text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </section>
+          );
+        })}
+      </div>
+    ) : (
+      // Show single category
+      <div className="space-y-6">
+        {filteredFAQs.length > 0 ? (
+          <Accordion type="single" collapsible className="w-full">
+            {filteredFAQs.map((faq) => (
+              <AccordionItem key={faq.id} value={faq.id}>
+                <AccordionTrigger className="text-left hover:no-underline">
+                  <span className="font-medium">{faq.question}</span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                  <div className="flex flex-wrap gap-1 mt-3">
+                    {faq.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        ) : (
+          <div className="text-center py-12">
+            <div className="text-muted-foreground space-y-2">
+              <Search className="h-12 w-12 mx-auto opacity-50" />
+              <h3 className="text-lg font-semibold">No questions found</h3>
+              <p>Try adjusting your search or filter criteria</p>
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+
+    {/* Contact Section */}
+    <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
+      <h3 className="text-2xl font-semibold">Still have questions?</h3>
+      <p className="text-muted-foreground max-w-2xl mx-auto">
+        Can`t find the answer you`re looking for? Feel free to reach out to the community.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" asChild>
+          <Link href="https://github.com/iduspara/shadcn-builder/discussions">
+            Ask on GitHub <ArrowRight className="h-4 w-4 ml-2" />
+          </Link>
+        </Button>
+        <Button size="lg" variant="outline" asChild>
+          <a href="/builder">
+            Try the Builder
+          </a>
+        </Button>
+      </div>
+    </div>
+  </div>
   );
 }

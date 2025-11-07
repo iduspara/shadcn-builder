@@ -72,7 +72,7 @@ export default function MembershipRegistration() {
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
-      "date-input-0": new Date("2025-11-05T14:41:36.714Z"),
+      "date-input-0": new Date("2025-11-07T09:56:34.510Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",

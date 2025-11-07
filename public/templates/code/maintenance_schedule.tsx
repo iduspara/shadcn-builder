@@ -59,7 +59,7 @@ export default function MaintenanceScheduleRequest() {
       "text-input-1": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2025-11-05T14:41:36.930Z"),
+      "date-input-0": new Date("2025-11-07T09:56:34.741Z"),
       "radio-group-0": "",
       "textarea-0": "",
     },
