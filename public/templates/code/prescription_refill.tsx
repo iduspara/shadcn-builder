@@ -70,7 +70,7 @@ export default function PrescriptionRefillRequest() {
       "text-input-3": "",
       "text-input-4": "",
       "text-input-5": "",
-      "date-input-0": new Date("2025-11-07T09:56:34.455Z"),
+      "date-input-0": new Date("2025-11-07T13:00:40.299Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",

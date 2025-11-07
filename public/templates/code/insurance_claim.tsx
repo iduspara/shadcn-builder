@@ -55,7 +55,7 @@ export default function RentalInsuranceClaim() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-07T09:56:34.108Z"),
+      "date-input-0": new Date("2025-11-07T13:00:39.961Z"),
       "text-input-2": "",
       "textarea-0": "",
       "file-input-0": "",
