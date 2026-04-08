@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { useLoadTemplates } from "@/hooks/useLoadTemplates";
 import { Skeleton } from "@/components/ui/skeleton";
+import { CopyButton } from "@/components/form-builder/dialogs/copy-button";
 
 const viewportEditorStyles = {
   sm: "w-[370px]",
@@ -53,7 +54,6 @@ export default function TemplatePage({
   const updateMode = useFormBuilderStore((state) => state.updateMode);
   const { isLoading, error: loadError } = useLoadTemplates();
   const [formattedCode, setFormattedCode] = useState("");
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const template = category;
@@ -87,12 +87,6 @@ export default function TemplatePage({
     };
     generateCode();
   }, [components]);
-
-  const handleCopy = async (text: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const activeTemplate = loadedTemplate;
 
@@ -170,18 +164,7 @@ export default function TemplatePage({
           <div className="p-0 w-full overflow-y-auto rounded-lg border">
             {components && components.length > 0 ? (
               <div className="relative">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="absolute top-2 right-2 text-muted-foreground"
-                  onClick={() => handleCopy(formattedCode)}
-                >
-                  {copied ? (
-                    <Check className="h-4 w-4" />
-                  ) : (
-                    <Copy className="h-4 w-4" />
-                  )}
-                </Button>
+                <CopyButton content={formattedCode} />
                 <Pre
                   language="tsx"
                   code={formattedCode}
