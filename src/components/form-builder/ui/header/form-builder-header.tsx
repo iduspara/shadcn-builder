@@ -20,6 +20,7 @@ import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useMemo } from "react";
 import { UndoRedoButtons } from "../undo-redo-buttons";
 import { ThemeToggle } from "@/components/form-builder/ui/theme-toggle";
+import { FormTitleInput } from "./form-title-input";
 
 export function FormBuilderHeader() {
   // Get state from store
@@ -28,7 +29,6 @@ export function FormBuilderHeader() {
   const showJson = useFormBuilderStore((state) => state.showJson);
   const editor = useFormBuilderStore((state) => state.editor);
   const components = useFormBuilderStore((state) => state.components);
-  const formTitle = useFormBuilderStore((state) => state.formTitle);
 
   // Get actions from store
   const updateViewport = useFormBuilderStore((state) => state.updateViewport);
@@ -69,7 +69,7 @@ export function FormBuilderHeader() {
               {editor ? (
                 <EditorToolbar editor={editor} isEditable={true} />
               ) : (
-                <small>{formTitle}</small>
+                <FormTitleInput />
               )}
             </div>
           </>
@@ -158,3 +158,4 @@ export function FormBuilderHeader() {
     </header>
   );
 }
+
