@@ -185,7 +185,7 @@ export function EditorToolbar({
         >
           <Strikethrough />
         </ToolbarButton>
-        <ToolbarDropdownMenu options={textAlign} menuRef={menuRef} defaultIcon="AlignLeft" />
+        <ToolbarDropdownMenu options={textAlign} menuRef={menuRef} defaultIcon="TextAlignStart" />
         <ToolbarSeparator />
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}

@@ -24,7 +24,7 @@ export const useTextAlign = (editor: Editor) => {
     editor,
     selector: (ctx): TextAlignOptions => [
       {
-        icon: "AlignLeft",
+        icon: "TextAlignStart",
         onClick: () => ctx.editor.chain().focus().setTextAlign("left").run(),
         id: "alignLeft",
         disabled: () => !ctx.editor.can().setTextAlign("left"),
@@ -33,7 +33,7 @@ export const useTextAlign = (editor: Editor) => {
         type: "option",
       },
       {
-        icon: "AlignCenter",
+        icon: "TextAlignCenter",
         onClick: () => ctx.editor.chain().focus().setTextAlign("center").run(),
         id: "alignCenter",
         disabled: () => !ctx.editor.can().setTextAlign("center"),
@@ -42,7 +42,7 @@ export const useTextAlign = (editor: Editor) => {
         type: "option",
       },
       {
-        icon: "AlignRight",
+        icon: "TextAlignEnd",
         onClick: () => ctx.editor.chain().focus().setTextAlign("right").run(),
         id: "alignRight",
         disabled: () => !ctx.editor.can().setTextAlign("right"),
