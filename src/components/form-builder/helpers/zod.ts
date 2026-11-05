@@ -1,6 +1,15 @@
 import { FormComponentModel } from "@/models/FormComponent";
 import { FormComponentValidationTypes } from "@/types/FormComponent.types";
 import { z } from "zod";
+import {
+  getSliderConfig,
+  getSliderDefaultValue,
+} from "../form-components/form-slider";
+import { getInputOtpConfig } from "../form-components/form-input-otp";
+import {
+  getToggleGroupConfig,
+  getToggleGroupDefaultValue,
+} from "../form-components/form-toggle-group";
 
 export const shouldForceRequired = (
   validations: FormComponentValidationTypes
@@ -252,10 +261,11 @@ const createNumberSchemaAsString = (
   isRequired: boolean
 ): string => {
   if (!isRequired) {
-    return `z.coerce.number().optional()`;
+    // <number> pins the input type so it matches the output for useForm
+    return `z.coerce.number<number>().optional()`;
   }
 
-  let schema = `z.coerce.number({
+  let schema = `z.coerce.number<number>({
     invalid_type_error: "This field must be a number",
   }).min(1, { message: "This field is required" })`;
 
@@ -458,12 +468,71 @@ const createUrlSchema = (
 };
 
 
+const createSliderSchema = (component: FormComponentModel): z.ZodTypeAny => {
+  const { min, max, isRange } = getSliderConfig(component);
+  const value = z.number().min(min).max(max);
+  return isRange ? z.tuple([value, value]) : value;
+};
+
+const createSliderSchemaAsString = (component: FormComponentModel): string => {
+  const { min, max, isRange } = getSliderConfig(component);
+  const value = `z.number().min(${min}).max(${max})`;
+  return isRange ? `z.tuple([${value}, ${value}])` : value;
+};
+
+const getOtpMessage = (length: number) => `Enter all ${length} characters`;
+
+const UNSAFE_JS_CHAR_MAP: Record<string, string> = {
+  "<": "\\u003C",
+  ">": "\\u003E",
+  "/": "\\u002F",
+  "\\": "\\\\",
+  "\b": "\\b",
+  "\f": "\\f",
+  "\n": "\\n",
+  "\r": "\\r",
+  "\t": "\\t",
+  "\0": "\\0",
+  "\u2028": "\\u2028",
+  "\u2029": "\\u2029",
+};
+
+const escapeUnsafeChars = (value: string): string =>
+  value.replace(/[<>\/\\\b\f\n\r\t\0\u2028\u2029]/g, (char) => UNSAFE_JS_CHAR_MAP[char] ?? char);
+
+const createInputOtpSchema = (
+  component: FormComponentModel,
+  isRequired: boolean
+): z.ZodTypeAny => {
+  const { length } = getInputOtpConfig(component);
+  const message = getOtpMessage(length);
+  return isRequired
+    ? z.string().length(length, { message })
+    : z.string().refine((val) => val === "" || val.length === length, { message });
+};
+
+const createInputOtpSchemaAsString = (
+  component: FormComponentModel,
+  isRequired: boolean
+): string => {
+  const { length } = getInputOtpConfig(component);
+  const message = escapeUnsafeChars(JSON.stringify(getOtpMessage(length)));
+  return isRequired
+    ? `z.string().length(${length}, { message: ${message} })`
+    : `z.string().refine((val) => val === "" || val.length === ${length}, { message: ${message} })`;
+};
+
 export const getZodDefaultValues = (
   components: FormComponentModel[]
 ): Record<string, string | number | undefined | Date | object> => {
   const defaultValues: Record<string, string | number | undefined | Date | object> = {};
 
   components.forEach((component) => {
+    // Content components (text, alert, ...) are not form fields
+    if (component.category === "content") {
+      return;
+    }
+
     if (
       component.type === "button" ||
       component.type === "submit-button" ||
@@ -493,6 +562,14 @@ export const getZodDefaultValues = (
 
     if (component.type === "date") {
       defaultValue = new Date();
+    }
+
+    if (component.type === "slider") {
+      defaultValue = getSliderDefaultValue(component);
+    }
+
+    if (component.type === "toggle-group") {
+      defaultValue = getToggleGroupDefaultValue(component);
     }
 
     defaultValues[componentId] = defaultValue;
@@ -549,7 +626,23 @@ const createSchemaForComponent = (
       : createDateSchema(validations, isRequired);
   }
 
-  if (component.type === "checkbox-group") {
+  if (component.type === "slider") {
+    return asString
+      ? createSliderSchemaAsString(component)
+      : createSliderSchema(component);
+  }
+
+  if (component.type === "input-otp") {
+    return asString
+      ? createInputOtpSchemaAsString(component, isRequired)
+      : createInputOtpSchema(component, isRequired);
+  }
+
+  if (
+    component.type === "checkbox-group" ||
+    (component.type === "toggle-group" &&
+      getToggleGroupConfig(component).multiple)
+  ) {
     return asString
       ? createCheckboxGroupSchemaAsString(validations, isRequired)
       : createCheckboxGroupSchema(validations, isRequired);
@@ -591,6 +684,10 @@ export const getZodSchemaForComponents = (
   const schema: Record<string, z.ZodTypeAny> = {};
 
   components.forEach((component) => {
+    if (component.category === "content") {
+      return;
+    }
+
     const validations = component.getField("validations");
     const isRequired = shouldForceRequired(validations);
     const componentId = component.getField("attributes.id");

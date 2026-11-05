@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function NewsletterFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
@@ -48,7 +47,6 @@ export default function NewsletterFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "radio-group-0": "",
       "radio-group-1": "",
       "checkbox-group-0": [],
@@ -104,7 +102,7 @@ export default function NewsletterFeedback() {
               >
                 <FieldLabel
                   key="very-satisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-very-satisfied"
                 >
                   <RadioGroupItem
@@ -123,7 +121,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="satisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-satisfied"
                 >
                   <RadioGroupItem
@@ -142,7 +140,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="neutral"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-neutral"
                 >
                   <RadioGroupItem value="neutral" id="radio-group-0-neutral" />
@@ -158,7 +156,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="dissatisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-dissatisfied"
                 >
                   <RadioGroupItem
@@ -177,7 +175,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="very-dissatisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-very-dissatisfied"
                 >
                   <RadioGroupItem
@@ -219,7 +217,7 @@ export default function NewsletterFeedback() {
               >
                 <FieldLabel
                   key="too-often"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-too-often"
                 >
                   <RadioGroupItem
@@ -238,7 +236,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="just-right"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-just-right"
                 >
                   <RadioGroupItem
@@ -257,7 +255,7 @@ export default function NewsletterFeedback() {
 
                 <FieldLabel
                   key="not-enough"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-not-enough"
                 >
                   <RadioGroupItem
@@ -299,7 +297,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="industry-news"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-industry-news"
@@ -338,7 +336,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="tips"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-tips"
@@ -376,7 +374,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="case-studies"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-case-studies"
@@ -414,7 +412,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="product-updates"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-product-updates"
@@ -455,7 +453,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="events"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-events"
@@ -493,7 +491,7 @@ export default function NewsletterFeedback() {
                     return (
                       <FieldLabel
                         key="interviews"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-interviews"

@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function ServerMaintenanceRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -52,10 +51,9 @@ export default function ServerMaintenanceRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.371Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.597Z"),
       "text-input-1": "",
       "textarea-0": "",
     },
@@ -123,6 +121,13 @@ export default function ServerMaintenanceRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Routine Maintenance", value: "routine" },
+                  { label: "Security Updates", value: "security" },
+                  { label: "Hardware Upgrade", value: "hardware" },
+                  { label: "Software Updates", value: "software" },
+                  { label: "Emergency Repair", value: "emergency" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -168,23 +173,30 @@ export default function ServerMaintenanceRequest() {
               <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 

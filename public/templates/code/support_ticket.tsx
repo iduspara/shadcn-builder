@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function SupportTicket() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
@@ -59,7 +58,6 @@ export default function SupportTicket() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "select-1": "",
@@ -131,6 +129,13 @@ export default function SupportTicket() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Technical Issue", value: "technical" },
+                  { label: "Billing Question", value: "billing" },
+                  { label: "Account Issue", value: "account" },
+                  { label: "Feature Request", value: "feature" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -177,6 +182,12 @@ export default function SupportTicket() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Urgent", value: "urgent" },
+                  { label: "High", value: "high" },
+                  { label: "Medium", value: "medium" },
+                  { label: "Low", value: "low" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

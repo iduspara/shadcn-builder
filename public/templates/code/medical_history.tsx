@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function MedicalHistoryForm() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
       error: "This field is required.",
@@ -57,9 +56,8 @@ export default function MedicalHistoryForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.158Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.359Z"),
       "text-input-1": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -131,23 +129,30 @@ export default function MedicalHistoryForm() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -291,7 +296,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="diabetes"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-diabetes"
@@ -329,7 +334,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="hypertension"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-hypertension"
@@ -367,7 +372,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="heart-disease"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-heart-disease"
@@ -406,7 +411,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="asthma"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-asthma"
@@ -444,7 +449,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="depression"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-depression"
@@ -482,7 +487,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="cancer"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-cancer"
@@ -520,7 +525,7 @@ export default function MedicalHistoryForm() {
                     return (
                       <FieldLabel
                         key="none"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-none"
@@ -576,7 +581,7 @@ export default function MedicalHistoryForm() {
               >
                 <FieldLabel
                   key="never"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-never"
                 >
                   <RadioGroupItem value="never" id="radio-0-never" />
@@ -589,7 +594,7 @@ export default function MedicalHistoryForm() {
 
                 <FieldLabel
                   key="former"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-former"
                 >
                   <RadioGroupItem value="former" id="radio-0-former" />
@@ -605,7 +610,7 @@ export default function MedicalHistoryForm() {
 
                 <FieldLabel
                   key="current"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-current"
                 >
                   <RadioGroupItem value="current" id="radio-0-current" />
@@ -646,7 +651,7 @@ export default function MedicalHistoryForm() {
               >
                 <FieldLabel
                   key="none"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-none"
                 >
                   <RadioGroupItem value="none" id="radio-1-none" />
@@ -659,7 +664,7 @@ export default function MedicalHistoryForm() {
 
                 <FieldLabel
                   key="occasional"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-occasional"
                 >
                   <RadioGroupItem value="occasional" id="radio-1-occasional" />
@@ -675,7 +680,7 @@ export default function MedicalHistoryForm() {
 
                 <FieldLabel
                   key="moderate"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-moderate"
                 >
                   <RadioGroupItem value="moderate" id="radio-1-moderate" />
@@ -691,7 +696,7 @@ export default function MedicalHistoryForm() {
 
                 <FieldLabel
                   key="heavy"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-heavy"
                 >
                   <RadioGroupItem value="heavy" id="radio-1-heavy" />

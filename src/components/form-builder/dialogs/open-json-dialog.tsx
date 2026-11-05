@@ -43,10 +43,8 @@ export function OpenJsonDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          Load JSON
-        </Button>
+      <DialogTrigger render={<Button variant="outline" size="sm" />}>
+        Load JSON
       </DialogTrigger>
       <DialogContent className="w-full lg:max-w-4xl">
         <DialogHeader>

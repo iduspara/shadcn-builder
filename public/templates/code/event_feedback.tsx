@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function EventFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z.string(),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
@@ -54,11 +53,10 @@ export default function EventFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.079Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.276Z"),
       "radio-0": "",
       "radio-1": "",
       "textarea-0": "",
@@ -169,23 +167,30 @@ export default function EventFeedback() {
               <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -215,7 +220,7 @@ export default function EventFeedback() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-excellent"
                 >
                   <RadioGroupItem value="excellent" id="radio-0-excellent" />
@@ -231,7 +236,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-0-good" />
@@ -244,7 +249,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="average"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-average"
                 >
                   <RadioGroupItem value="average" id="radio-0-average" />
@@ -260,7 +265,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-0-poor" />
@@ -273,7 +278,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="terrible"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-terrible"
                 >
                   <RadioGroupItem value="terrible" id="radio-0-terrible" />
@@ -314,7 +319,7 @@ export default function EventFeedback() {
               >
                 <FieldLabel
                   key="definitely"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-definitely"
                 >
                   <RadioGroupItem value="definitely" id="radio-1-definitely" />
@@ -330,7 +335,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="probably"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-probably"
                 >
                   <RadioGroupItem value="probably" id="radio-1-probably" />
@@ -346,7 +351,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="maybe"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-maybe"
                 >
                   <RadioGroupItem value="maybe" id="radio-1-maybe" />
@@ -359,7 +364,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="probably-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-probably-not"
                 >
                   <RadioGroupItem
@@ -378,7 +383,7 @@ export default function EventFeedback() {
 
                 <FieldLabel
                   key="definitely-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-definitely-not"
                 >
                   <RadioGroupItem

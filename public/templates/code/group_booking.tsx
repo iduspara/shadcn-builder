@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function GroupTravelBooking() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string(),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -58,13 +57,12 @@ export default function GroupTravelBooking() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.418Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.646Z"),
       "checkbox-group-0": [],
     },
   });
@@ -179,6 +177,13 @@ export default function GroupTravelBooking() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Leisure/Vacation", value: "leisure" },
+                  { label: "Business/Corporate", value: "business" },
+                  { label: "Educational Tour", value: "educational" },
+                  { label: "Religious/Pilgrimage", value: "religious" },
+                  { label: "Sports Team", value: "sports" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -246,23 +251,30 @@ export default function GroupTravelBooking() {
               <FieldLabel className="flex w-auto!">Departure Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -288,7 +300,7 @@ export default function GroupTravelBooking() {
                     return (
                       <FieldLabel
                         key="flights"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-flights"
@@ -326,7 +338,7 @@ export default function GroupTravelBooking() {
                     return (
                       <FieldLabel
                         key="accommodation"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-accommodation"
@@ -365,7 +377,7 @@ export default function GroupTravelBooking() {
                     return (
                       <FieldLabel
                         key="transportation"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-transportation"
@@ -406,7 +418,7 @@ export default function GroupTravelBooking() {
                     return (
                       <FieldLabel
                         key="activities"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-activities"
@@ -444,7 +456,7 @@ export default function GroupTravelBooking() {
                     return (
                       <FieldLabel
                         key="meals"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-meals"

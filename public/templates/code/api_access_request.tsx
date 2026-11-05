@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function APIAccessRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -58,7 +57,6 @@ export default function APIAccessRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
@@ -182,7 +180,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="users"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-users"
@@ -220,7 +218,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="data"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-data"
@@ -258,7 +256,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="analytics"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-analytics"
@@ -296,7 +294,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="payments"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-payments"
@@ -334,7 +332,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="notifications"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-notifications"
@@ -373,7 +371,7 @@ export default function APIAccessRequest() {
                     return (
                       <FieldLabel
                         key="files"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-files"
@@ -423,6 +421,12 @@ export default function APIAccessRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Low (< 1,000/month)", value: "low" },
+                  { label: "Medium (1,000-10,000/month)", value: "medium" },
+                  { label: "High (10,000-100,000/month)", value: "high" },
+                  { label: "Enterprise (100,000+/month)", value: "enterprise" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

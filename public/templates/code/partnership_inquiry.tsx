@@ -36,7 +36,6 @@ import { CalendarIcon } from "lucide-react";
 
 export default function PartnershipInquiry() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -60,7 +59,6 @@ export default function PartnershipInquiry() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
@@ -220,6 +218,14 @@ export default function PartnershipInquiry() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Reseller Partnership", value: "reseller" },
+                  { label: "Affiliate Program", value: "affiliate" },
+                  { label: "Joint Venture", value: "joint-venture" },
+                  { label: "Technology Integration", value: "technology" },
+                  { label: "Marketing Partnership", value: "marketing" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

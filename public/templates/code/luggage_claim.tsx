@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function LostLuggageClaim() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -50,7 +49,6 @@ export default function LostLuggageClaim() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
@@ -165,6 +163,12 @@ export default function LostLuggageClaim() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Lost Luggage", value: "lost" },
+                  { label: "Delayed Luggage", value: "delayed" },
+                  { label: "Damaged Luggage", value: "damaged" },
+                  { label: "Missing Items", value: "missing-items" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

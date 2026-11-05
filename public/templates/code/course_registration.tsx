@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function CourseRegistration() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -59,7 +58,6 @@ export default function CourseRegistration() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -175,6 +173,12 @@ export default function CourseRegistration() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Undergraduate", value: "undergraduate" },
+                  { label: "Graduate", value: "graduate" },
+                  { label: "PhD", value: "phd" },
+                  { label: "Certificate Program", value: "certificate" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -217,6 +221,14 @@ export default function CourseRegistration() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Computer Science", value: "computer-science" },
+                  { label: "Engineering", value: "engineering" },
+                  { label: "Business Administration", value: "business" },
+                  { label: "Arts & Humanities", value: "arts" },
+                  { label: "Natural Sciences", value: "sciences" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -273,7 +285,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="math101"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-math101"
@@ -311,7 +323,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="cs201"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-cs201"
@@ -349,7 +361,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="eng101"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-eng101"
@@ -387,7 +399,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="hist101"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-hist101"
@@ -425,7 +437,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="sci101"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-sci101"
@@ -463,7 +475,7 @@ export default function CourseRegistration() {
                     return (
                       <FieldLabel
                         key="art101"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-art101"
@@ -511,6 +523,11 @@ export default function CourseRegistration() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Fall 2024", value: "fall2024" },
+                  { label: "Spring 2025", value: "spring2025" },
+                  { label: "Summer 2025", value: "summer2025" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

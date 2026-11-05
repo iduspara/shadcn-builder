@@ -1,8 +1,6 @@
 import { FormComponentStyles } from "@/types/FormComponent.types";
 import { Viewports } from "@/types/form-builder.types";
 import { FormComponentModel } from "@/models/FormComponent";
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 
 const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Record<string, string>>>> = {
   labelPosition: {
@@ -211,9 +209,7 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
   },
 };
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+export { cn } from "cn";
 
 export const transformStyleKeyToClassName = (
   styleKey: keyof FormComponentStyles

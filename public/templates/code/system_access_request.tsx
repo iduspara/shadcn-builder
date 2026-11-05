@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function SystemAccessRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z
@@ -55,7 +54,6 @@ export default function SystemAccessRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "checkbox-group-0": [],
@@ -155,7 +153,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="crm"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-crm"
@@ -193,7 +191,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="erp"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-erp"
@@ -231,7 +229,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="hr"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-hr"
@@ -269,7 +267,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="finance"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-finance"
@@ -307,7 +305,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="database"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-database"
@@ -345,7 +343,7 @@ export default function SystemAccessRequest() {
                     return (
                       <FieldLabel
                         key="admin"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-admin"
@@ -401,7 +399,7 @@ export default function SystemAccessRequest() {
               >
                 <FieldLabel
                   key="read"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-read"
                 >
                   <RadioGroupItem value="read" id="radio-group-0-read" />
@@ -417,7 +415,7 @@ export default function SystemAccessRequest() {
 
                 <FieldLabel
                   key="write"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-write"
                 >
                   <RadioGroupItem value="write" id="radio-group-0-write" />
@@ -433,7 +431,7 @@ export default function SystemAccessRequest() {
 
                 <FieldLabel
                   key="admin"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-admin"
                 >
                   <RadioGroupItem value="admin" id="radio-group-0-admin" />
@@ -449,7 +447,7 @@ export default function SystemAccessRequest() {
 
                 <FieldLabel
                   key="full"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-full"
                 >
                   <RadioGroupItem value="full" id="radio-group-0-full" />

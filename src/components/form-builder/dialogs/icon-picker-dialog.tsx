@@ -163,10 +163,11 @@ export function IconPickerDialog({
           "text-sm font-normal text-left"
         )}
       >
-        <DialogTrigger asChild>
-          <div className="flex items-center justify-between w-full">
-            {Icon ? <Icon className="size-4" /> : "Pick an Icon"}
-          </div>
+        <DialogTrigger
+          nativeButton={false}
+          render={<div className="flex items-center justify-between w-full" />}
+        >
+          {Icon ? <Icon className="size-4" /> : "Pick an Icon"}
         </DialogTrigger>
         {selectedIconText && (
           <div className="flex items-center justify-center" onClick={onIconDeselect}>

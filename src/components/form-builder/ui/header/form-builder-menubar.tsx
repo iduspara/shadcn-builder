@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Loader2,
   Save,
@@ -50,6 +51,14 @@ import { ThemeConfigDialog } from "../../dialogs/theme-config-dialog";
 import { useUserThemes, useApplyTheme } from "@/hooks/use-themes";
 import { ManageThemesDialog } from "../../dialogs/manage-themes-dialog";
 
+type MenubarDialog =
+  | "open"
+  | "open-template"
+  | "save"
+  | "save-as"
+  | "theme-import"
+  | "theme-manage";
+
 interface FormBuilderMenubarProps {
   mode: "editor" | "preview" | "editor-preview" | "export";
 }
@@ -60,9 +69,16 @@ export function FormBuilderMenubar({ mode }: FormBuilderMenubarProps) {
   const viewport = useFormBuilderStore((state) => state.viewport);
   const showJson = useFormBuilderStore((state) => state.showJson);
   const selectedComponent = useFormBuilderStore(
-    (state) => state.selectedComponent
+    (state) => state.selectedComponent,
   );
   const components = useFormBuilderStore((state) => state.components);
+  const formId = useFormBuilderStore((state) => state.formId);
+  const [activeDialog, setActiveDialog] = useState<MenubarDialog | null>(null);
+
+  const dialogProps = (dialog: MenubarDialog) => ({
+    open: activeDialog === dialog,
+    onOpenChange: (open: boolean) => setActiveDialog(open ? dialog : null),
+  });
   const { userForms, isLoading } = useSavedForms();
 
   // Get actions from store
@@ -90,6 +106,28 @@ export function FormBuilderMenubar({ mode }: FormBuilderMenubarProps) {
   const currentTheme = useFormBuilderStore((state) => state.currentTheme);
 
   // Save form handlers
+  const handleSave = async () => {
+    if (!canSave) return;
+
+    // Already-saved forms are saved in place; new forms go through the dialog
+    if (!formId) {
+      setActiveDialog("save");
+      return;
+    }
+
+    try {
+      const newFormId = await saveCurrentForm();
+      updateFormId(newFormId);
+      toast.success("Form saved successfully!");
+    } catch (error) {
+      console.error("Error saving form:", error);
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to save form. Please try again.",
+      );
+    }
+  };
 
   const handleLoadRecentForm = async (form: any) => {
     try {
@@ -155,231 +193,231 @@ export function FormBuilderMenubar({ mode }: FormBuilderMenubarProps) {
   }
 
   return (
-    <Menubar className="border-none p-0 shadow-none bg-sidebar">
-      <MenubarMenu>
-        <MenubarTrigger className="gap-2">File</MenubarTrigger>
-        <MenubarContent align="start" className="w-48">
-          <LoadFormDialog>
-            <MenubarItem onSelect={(e) => e.preventDefault()}>
+    <>
+      <Menubar className="border-none p-0 shadow-none bg-sidebar">
+        <MenubarMenu>
+          <MenubarTrigger className="gap-2">File</MenubarTrigger>
+          <MenubarContent align="start" className="w-48">
+            <MenubarItem onClick={() => setActiveDialog("open")}>
               <FolderOpen className="h-4 w-4" />
               Open
             </MenubarItem>
-          </LoadFormDialog>
-          <LoadTemplateDialog>
-            <MenubarItem onSelect={(e) => e.preventDefault()}>
+            <MenubarItem onClick={() => setActiveDialog("open-template")}>
               <FolderOpen className="h-4 w-4" />
               Open Template
             </MenubarItem>
-          </LoadTemplateDialog>
-          <MenubarSub>
-            <MenubarSubTrigger>
-              <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
-              Recent
-            </MenubarSubTrigger>
-            <MenubarSubContent>
-              {isLoading ? (
-                <MenubarItem disabled>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Loading...
-                </MenubarItem>
-              ) : recentForms.length === 0 ? (
-                <MenubarItem disabled>No recent forms</MenubarItem>
-              ) : (
-                recentForms.map((form, index) => (
-                  <div key={form._id}>
-                    <MenubarItem onClick={() => handleLoadRecentForm(form)}>
-                      <FileText className="h-4 w-4" />
-                      <span className="truncate max-w-[200px] flex-1 mr-4">
-                        {form.title}
-                      </span>
-                      <small className="text-xs text-muted-foreground self-end">
-                        {formatDate(form.createdAt)}
-                      </small>
-                    </MenubarItem>
-                  </div>
-                ))
-              )}
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSeparator />
-          <SaveFormDialog>
-            <MenubarItem
-              onSelect={(e) => e.preventDefault()}
-              disabled={isSaving || !canSave}
-            >
+            <MenubarSub>
+              <MenubarSubTrigger>
+                <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
+                Recent
+              </MenubarSubTrigger>
+              <MenubarSubContent>
+                {isLoading ? (
+                  <MenubarItem disabled>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Loading...
+                  </MenubarItem>
+                ) : recentForms.length === 0 ? (
+                  <MenubarItem disabled>No recent forms</MenubarItem>
+                ) : (
+                  recentForms.map((form, index) => (
+                    <div key={form._id}>
+                      <MenubarItem onClick={() => handleLoadRecentForm(form)}>
+                        <FileText className="h-4 w-4" />
+                        <span className="truncate max-w-[200px] flex-1 mr-4">
+                          {form.title}
+                        </span>
+                        <small className="text-xs text-muted-foreground self-end">
+                          {formatDate(form.createdAt)}
+                        </small>
+                      </MenubarItem>
+                    </div>
+                  ))
+                )}
+              </MenubarSubContent>
+            </MenubarSub>
+            <MenubarSeparator />
+            <MenubarItem onClick={handleSave} disabled={isSaving || !canSave}>
               <Save className="h-4 w-4" />
               Save
             </MenubarItem>
-          </SaveFormDialog>
 
-          <SaveFormDialog forceSave>
             <MenubarItem
-              onSelect={(e) => e.preventDefault()}
+              onClick={() => setActiveDialog("save-as")}
               disabled={isSaving || !canSave}
             >
               <Save className="h-4 w-4" />
               Save As
             </MenubarItem>
-          </SaveFormDialog>
-          <MenubarSeparator />
-          <MenubarItem onClick={() => updateMode("export")}>
-            <ExternalLink className="h-4 w-4" />
-            Export
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem onClick={() => (window.location.href = "/")}>
-            <LogOut className="h-4 w-4" />
-            Exit
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-      <MenubarMenu>
-        <MenubarTrigger className="gap-2">Edit</MenubarTrigger>
-        <MenubarContent align="start" className="w-48">
-          <MenubarItem onClick={undo} disabled={!canUndo}>
-            <Undo className="h-4 w-4" />
-            Undo
-          </MenubarItem>
-          <MenubarItem onClick={redo} disabled={!canRedo}>
-            <Redo className="h-4 w-4" />
-            Redo
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem onClick={handleDuplicate} disabled={!selectedComponent}>
-            <Copy className="h-4 w-4" />
-            Duplicate
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem onClick={clearForm} disabled={components.length === 0}>
-            <Trash2 className="h-4 w-4" />
-            Clear Form
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-      <MenubarMenu>
-        <MenubarTrigger className="gap-2">View</MenubarTrigger>
-        <MenubarContent align="start" className="w-48">
-          <MenubarItem
-            onClick={() => updateViewport("sm")}
-            className={viewport === "sm" ? "bg-accent" : ""}
-          >
-            <Smartphone className="h-4 w-4" />
-            Mobile
-            {viewport === "sm" && <span className="ml-auto text-xs">✓</span>}
-          </MenubarItem>
-          <MenubarItem
-            onClick={() => updateViewport("md")}
-            className={viewport === "md" ? "bg-accent" : ""}
-          >
-            <Tablet className="h-4 w-4" />
-            Tablet
-            {viewport === "md" && <span className="ml-auto text-xs">✓</span>}
-          </MenubarItem>
-          <MenubarItem
-            onClick={() => updateViewport("lg")}
-            className={viewport === "lg" ? "bg-accent" : ""}
-          >
-            <Monitor className="h-4 w-4" />
-            Desktop
-            {viewport === "lg" && <span className="ml-auto text-xs">✓</span>}
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem
-            onClick={() => updateMode("editor-preview")}
-            disabled={!components.length}
-          >
-            <Play className="h-4 w-4" />
-            Live Preview
-          </MenubarItem>
-          <MenubarItem
-            onClick={() => updateMode("export")}
-            disabled={!components.length}
-          >
-            <Code className="h-4 w-4" />
-            Generated Code
-          </MenubarItem>
-          <MenubarItem
-            onClick={toggleJsonPreview}
-            className={showJson ? "bg-accent" : ""}
-            disabled={!components.length}
-          >
-            <Braces className="h-4 w-4" />
-            Form JSON
-            {showJson && <span className="ml-auto text-xs">✓</span>}
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-      <MenubarMenu>
-        <MenubarTrigger className="gap-2">Theme</MenubarTrigger>
-        <MenubarContent align="start" className="w-48">
-          <ThemeConfigDialog>
-            <MenubarItem onSelect={(e) => e.preventDefault()}>
+            <MenubarSeparator />
+            <MenubarItem onClick={() => updateMode("export")}>
+              <ExternalLink className="h-4 w-4" />
+              Export
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem onClick={() => (window.location.href = "/")}>
+              <LogOut className="h-4 w-4" />
+              Exit
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger className="gap-2">Edit</MenubarTrigger>
+          <MenubarContent align="start" className="w-48">
+            <MenubarItem onClick={undo} disabled={!canUndo}>
+              <Undo className="h-4 w-4" />
+              Undo
+            </MenubarItem>
+            <MenubarItem onClick={redo} disabled={!canRedo}>
+              <Redo className="h-4 w-4" />
+              Redo
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem
+              onClick={handleDuplicate}
+              disabled={!selectedComponent}
+            >
+              <Copy className="h-4 w-4" />
+              Duplicate
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem onClick={clearForm} disabled={components.length === 0}>
+              <Trash2 className="h-4 w-4" />
+              Clear Form
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger className="gap-2">View</MenubarTrigger>
+          <MenubarContent align="start" className="w-48">
+            <MenubarItem
+              onClick={() => updateViewport("sm")}
+              className={viewport === "sm" ? "bg-accent" : ""}
+            >
+              <Smartphone className="h-4 w-4" />
+              Mobile
+              {viewport === "sm" && <span className="ml-auto text-xs">✓</span>}
+            </MenubarItem>
+            <MenubarItem
+              onClick={() => updateViewport("md")}
+              className={viewport === "md" ? "bg-accent" : ""}
+            >
+              <Tablet className="h-4 w-4" />
+              Tablet
+              {viewport === "md" && <span className="ml-auto text-xs">✓</span>}
+            </MenubarItem>
+            <MenubarItem
+              onClick={() => updateViewport("lg")}
+              className={viewport === "lg" ? "bg-accent" : ""}
+            >
+              <Monitor className="h-4 w-4" />
+              Desktop
+              {viewport === "lg" && <span className="ml-auto text-xs">✓</span>}
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem
+              onClick={() => updateMode("editor-preview")}
+              disabled={!components.length}
+            >
+              <Play className="h-4 w-4" />
+              Live Preview
+            </MenubarItem>
+            <MenubarItem
+              onClick={() => updateMode("export")}
+              disabled={!components.length}
+            >
+              <Code className="h-4 w-4" />
+              Generated Code
+            </MenubarItem>
+            <MenubarItem
+              onClick={toggleJsonPreview}
+              className={showJson ? "bg-accent" : ""}
+              disabled={!components.length}
+            >
+              <Braces className="h-4 w-4" />
+              Form JSON
+              {showJson && <span className="ml-auto text-xs">✓</span>}
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger className="gap-2">Theme</MenubarTrigger>
+          <MenubarContent align="start" className="w-48">
+            <MenubarItem onClick={() => setActiveDialog("theme-import")}>
               <Upload className="h-4 w-4" />
               Import
             </MenubarItem>
-          </ThemeConfigDialog>
 
-          <ManageThemesDialog>
-            <MenubarItem 
-              onSelect={(e) => e.preventDefault()}
+            <MenubarItem
+              onClick={() => setActiveDialog("theme-manage")}
               disabled={isLoadingThemes || themes.length === 0}
             >
               <Palette className="h-4 w-4" />
               Manage
             </MenubarItem>
-          </ManageThemesDialog>
-          <MenubarSeparator />
-          <MenubarItem onClick={handleResetTheme} disabled={isLoadingThemes || !currentTheme}>
-            <RotateCcw className="h-4 w-4" />
-            Reset to Default
-          </MenubarItem>
-          {isLoadingThemes ? (
-            <MenubarItem disabled>
-              <Loader2 className="h-4 w-4 animate-spin" />
-              Loading themes...
+            <MenubarSeparator />
+            <MenubarItem
+              onClick={handleResetTheme}
+              disabled={isLoadingThemes || !currentTheme}
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset to Default
             </MenubarItem>
-          ) : themes.length > 0 && (
-            themes.map((theme) => (
-              <MenubarItem
-                key={theme._id}
-                onClick={() => handleApplyTheme(theme.css)}
-                className={currentTheme === theme.css ? "bg-accent" : ""}
-              >
-                <Palette className="h-4 w-4" />
-                {theme.name}
-                {currentTheme === theme.css && (
-                  <span className="ml-auto text-xs">✓</span>
-                )}
+            {isLoadingThemes ? (
+              <MenubarItem disabled>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Loading themes...
               </MenubarItem>
-            ))
-          )}
-        </MenubarContent>
-      </MenubarMenu>
-      <MenubarMenu>
-        <MenubarTrigger className="gap-2">Help</MenubarTrigger>
-        <MenubarContent align="start" className="w-48">
-          <MenubarItem onClick={() => window.open("/faq", "_blank")}>
-            <BookOpen className="h-4 w-4" />
-            FAQ
-          </MenubarItem>
-          <MenubarItem
-            onClick={() =>
-              window.open(
-                "https://github.com/iduspara/shadcn-builder/issues/new",
-                "_blank"
-              )
-            }
-          >
-            <Bug className="h-4 w-4" />
-            Bug Report
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem onClick={() => window.open("/about", "_blank")}>
-            <Info className="h-4 w-4" />
-            About
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
+            ) : (
+              themes.length > 0 &&
+              themes.map((theme) => (
+                <MenubarItem
+                  key={theme._id}
+                  onClick={() => handleApplyTheme(theme.css)}
+                  className={currentTheme === theme.css ? "bg-accent" : ""}
+                >
+                  <Palette className="h-4 w-4" />
+                  {theme.name}
+                  {currentTheme === theme.css && (
+                    <span className="ml-auto text-xs">✓</span>
+                  )}
+                </MenubarItem>
+              ))
+            )}
+          </MenubarContent>
+        </MenubarMenu>
+        <MenubarMenu>
+          <MenubarTrigger className="gap-2">Help</MenubarTrigger>
+          <MenubarContent align="start" className="w-48">
+            <MenubarItem onClick={() => window.open("/faq", "_blank")}>
+              <BookOpen className="h-4 w-4" />
+              FAQ
+            </MenubarItem>
+            <MenubarItem
+              onClick={() =>
+                window.open(
+                  "https://github.com/iduspara/shadcn-builder/issues/new",
+                  "_blank",
+                )
+              }
+            >
+              <Bug className="h-4 w-4" />
+              Bug Report
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem onClick={() => window.open("/about", "_blank")}>
+              <Info className="h-4 w-4" />
+              About
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+      <LoadFormDialog {...dialogProps("open")} />
+      <LoadTemplateDialog {...dialogProps("open-template")} />
+      <SaveFormDialog {...dialogProps("save")} />
+      <SaveFormDialog forceSave {...dialogProps("save-as")} />
+      <ThemeConfigDialog {...dialogProps("theme-import")} />
+      <ManageThemesDialog {...dialogProps("theme-manage")} />
+    </>
   );
 }

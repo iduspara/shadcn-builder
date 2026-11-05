@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function AccountSettings() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "radio-0": z.string().min(1, { message: "This field is required" }),
@@ -49,7 +48,6 @@ export default function AccountSettings() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "select-0": "",
       "select-1": "",
       "radio-0": "",
@@ -95,6 +93,12 @@ export default function AccountSettings() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "English", value: "en" },
+                  { label: "Spanish", value: "es" },
+                  { label: "French", value: "fr" },
+                  { label: "German", value: "de" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -137,6 +141,12 @@ export default function AccountSettings() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "UTC", value: "utc" },
+                  { label: "Eastern Time", value: "est" },
+                  { label: "Pacific Time", value: "pst" },
+                  { label: "GMT", value: "gmt" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -187,7 +197,7 @@ export default function AccountSettings() {
               >
                 <FieldLabel
                   key="public"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-public"
                 >
                   <RadioGroupItem value="public" id="radio-0-public" />
@@ -203,7 +213,7 @@ export default function AccountSettings() {
 
                 <FieldLabel
                   key="friends"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-friends"
                 >
                   <RadioGroupItem value="friends" id="radio-0-friends" />
@@ -219,7 +229,7 @@ export default function AccountSettings() {
 
                 <FieldLabel
                   key="private"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-private"
                 >
                   <RadioGroupItem value="private" id="radio-0-private" />
@@ -258,7 +268,7 @@ export default function AccountSettings() {
                     return (
                       <FieldLabel
                         key="newsletter"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-newsletter"
@@ -296,7 +306,7 @@ export default function AccountSettings() {
                     return (
                       <FieldLabel
                         key="updates"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-updates"
@@ -334,7 +344,7 @@ export default function AccountSettings() {
                     return (
                       <FieldLabel
                         key="marketing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-marketing"

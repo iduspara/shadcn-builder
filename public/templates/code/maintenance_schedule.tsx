@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function MaintenanceScheduleRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -54,12 +53,11 @@ export default function MaintenanceScheduleRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
       "select-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.328Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.552Z"),
       "radio-group-0": "",
       "textarea-0": "",
     },
@@ -149,6 +147,14 @@ export default function MaintenanceScheduleRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "HVAC System", value: "hvac" },
+                  { label: "Plumbing", value: "plumbing" },
+                  { label: "Electrical", value: "electrical" },
+                  { label: "Appliances", value: "appliances" },
+                  { label: "Security System", value: "security" },
+                  { label: "Other Equipment", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -199,6 +205,13 @@ export default function MaintenanceScheduleRequest() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Routine Maintenance", value: "routine" },
+                  { label: "Safety Inspection", value: "inspection" },
+                  { label: "Deep Cleaning", value: "cleaning" },
+                  { label: "Repair Service", value: "repair" },
+                  { label: "Emergency Service", value: "emergency" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -244,23 +257,30 @@ export default function MaintenanceScheduleRequest() {
               <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -288,7 +308,7 @@ export default function MaintenanceScheduleRequest() {
               >
                 <FieldLabel
                   key="morning"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-morning"
                 >
                   <RadioGroupItem value="morning" id="radio-group-0-morning" />
@@ -304,7 +324,7 @@ export default function MaintenanceScheduleRequest() {
 
                 <FieldLabel
                   key="afternoon"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-afternoon"
                 >
                   <RadioGroupItem
@@ -323,7 +343,7 @@ export default function MaintenanceScheduleRequest() {
 
                 <FieldLabel
                   key="evening"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-evening"
                 >
                   <RadioGroupItem value="evening" id="radio-group-0-evening" />
@@ -339,7 +359,7 @@ export default function MaintenanceScheduleRequest() {
 
                 <FieldLabel
                   key="flexible"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-flexible"
                 >
                   <RadioGroupItem

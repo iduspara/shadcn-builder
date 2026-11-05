@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function EmailFrequencySettings() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -52,7 +51,6 @@ export default function EmailFrequencySettings() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "radio-group-0": "",
       "radio-group-1": "",
@@ -132,7 +130,7 @@ export default function EmailFrequencySettings() {
               >
                 <FieldLabel
                   key="daily"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-daily"
                 >
                   <RadioGroupItem value="daily" id="radio-group-0-daily" />
@@ -148,7 +146,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="weekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-weekly"
                 >
                   <RadioGroupItem value="weekly" id="radio-group-0-weekly" />
@@ -164,7 +162,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="monthly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-monthly"
                 >
                   <RadioGroupItem value="monthly" id="radio-group-0-monthly" />
@@ -180,7 +178,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="never"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-never"
                 >
                   <RadioGroupItem value="never" id="radio-group-0-never" />
@@ -219,7 +217,7 @@ export default function EmailFrequencySettings() {
               >
                 <FieldLabel
                   key="weekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-weekly"
                 >
                   <RadioGroupItem value="weekly" id="radio-group-1-weekly" />
@@ -235,7 +233,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="monthly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-monthly"
                 >
                   <RadioGroupItem value="monthly" id="radio-group-1-monthly" />
@@ -251,7 +249,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="quarterly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-quarterly"
                 >
                   <RadioGroupItem
@@ -270,7 +268,7 @@ export default function EmailFrequencySettings() {
 
                 <FieldLabel
                   key="never"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-never"
                 >
                   <RadioGroupItem value="never" id="radio-group-1-never" />
@@ -309,7 +307,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="account-updates"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-account-updates"
@@ -350,7 +348,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="security-alerts"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-security-alerts"
@@ -391,7 +389,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="product-news"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-product-news"
@@ -429,7 +427,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="special-offers"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-special-offers"
@@ -470,7 +468,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="event-invites"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-event-invites"
@@ -509,7 +507,7 @@ export default function EmailFrequencySettings() {
                     return (
                       <FieldLabel
                         key="survey-requests"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-survey-requests"

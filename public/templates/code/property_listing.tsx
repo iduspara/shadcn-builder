@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function PropertyListingForm() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
@@ -65,7 +64,6 @@ export default function PropertyListingForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "select-1": "",
@@ -143,6 +141,15 @@ export default function PropertyListingForm() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "House", value: "house" },
+                  { label: "Apartment", value: "apartment" },
+                  { label: "Condominium", value: "condo" },
+                  { label: "Townhouse", value: "townhouse" },
+                  { label: "Land", value: "land" },
+                  { label: "Commercial", value: "commercial" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -197,6 +204,11 @@ export default function PropertyListingForm() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "For Sale", value: "sale" },
+                  { label: "For Rent", value: "rent" },
+                  { label: "For Lease", value: "lease" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -373,7 +385,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="parking"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-parking"
@@ -411,7 +423,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="garden"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-garden"
@@ -449,7 +461,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="balcony"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-balcony"
@@ -487,7 +499,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="fireplace"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-fireplace"
@@ -525,7 +537,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="pool"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-pool"
@@ -563,7 +575,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="gym"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-gym"
@@ -601,7 +613,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="elevator"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-elevator"
@@ -639,7 +651,7 @@ export default function PropertyListingForm() {
                     return (
                       <FieldLabel
                         key="security"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-security"

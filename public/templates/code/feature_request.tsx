@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function FeatureRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "textarea-0": z
@@ -55,7 +54,6 @@ export default function FeatureRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "textarea-0": "",
@@ -126,6 +124,13 @@ export default function FeatureRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "User Interface", value: "ui" },
+                  { label: "Functionality", value: "functionality" },
+                  { label: "Performance", value: "performance" },
+                  { label: "Integration", value: "integration" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -226,7 +231,7 @@ export default function FeatureRequest() {
               >
                 <FieldLabel
                   key="high"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-high"
                 >
                   <RadioGroupItem value="high" id="radio-0-high" />
@@ -239,7 +244,7 @@ export default function FeatureRequest() {
 
                 <FieldLabel
                   key="medium"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-medium"
                 >
                   <RadioGroupItem value="medium" id="radio-0-medium" />
@@ -255,7 +260,7 @@ export default function FeatureRequest() {
 
                 <FieldLabel
                   key="low"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-low"
                 >
                   <RadioGroupItem value="low" id="radio-0-low" />

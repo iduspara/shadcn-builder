@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function AccountDeletionRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -68,7 +67,6 @@ export default function AccountDeletionRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "password-input-0": "",
       "radio-group-0": "",
@@ -173,7 +171,7 @@ export default function AccountDeletionRequest() {
               >
                 <FieldLabel
                   key="no-longer-needed"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-no-longer-needed"
                 >
                   <RadioGroupItem
@@ -192,7 +190,7 @@ export default function AccountDeletionRequest() {
 
                 <FieldLabel
                   key="privacy-concerns"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-privacy-concerns"
                 >
                   <RadioGroupItem
@@ -211,7 +209,7 @@ export default function AccountDeletionRequest() {
 
                 <FieldLabel
                   key="found-alternative"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-found-alternative"
                 >
                   <RadioGroupItem
@@ -230,7 +228,7 @@ export default function AccountDeletionRequest() {
 
                 <FieldLabel
                   key="temporary-break"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-temporary-break"
                 >
                   <RadioGroupItem
@@ -249,7 +247,7 @@ export default function AccountDeletionRequest() {
 
                 <FieldLabel
                   key="other"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-other"
                 >
                   <RadioGroupItem value="other" id="radio-group-0-other" />
@@ -306,7 +304,7 @@ export default function AccountDeletionRequest() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"
@@ -342,7 +340,7 @@ export default function AccountDeletionRequest() {
 
               <div
                 key="checkbox-1"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-1"

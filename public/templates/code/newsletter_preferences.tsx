@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function NewsletterPreferences() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -53,7 +52,6 @@ export default function NewsletterPreferences() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "radio-group-0": "",
       "checkbox-group-0": [],
@@ -135,7 +133,7 @@ export default function NewsletterPreferences() {
               >
                 <FieldLabel
                   key="active"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-active"
                 >
                   <RadioGroupItem value="active" id="radio-group-0-active" />
@@ -151,7 +149,7 @@ export default function NewsletterPreferences() {
 
                 <FieldLabel
                   key="pause"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-pause"
                 >
                   <RadioGroupItem value="pause" id="radio-group-0-pause" />
@@ -167,7 +165,7 @@ export default function NewsletterPreferences() {
 
                 <FieldLabel
                   key="unsubscribe"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-unsubscribe"
                 >
                   <RadioGroupItem
@@ -209,7 +207,7 @@ export default function NewsletterPreferences() {
                     return (
                       <FieldLabel
                         key="news"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-news"
@@ -247,7 +245,7 @@ export default function NewsletterPreferences() {
                     return (
                       <FieldLabel
                         key="weekly"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-weekly"
@@ -285,7 +283,7 @@ export default function NewsletterPreferences() {
                     return (
                       <FieldLabel
                         key="products"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-products"
@@ -323,7 +321,7 @@ export default function NewsletterPreferences() {
                     return (
                       <FieldLabel
                         key="offers"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-offers"
@@ -381,7 +379,7 @@ export default function NewsletterPreferences() {
               >
                 <FieldLabel
                   key="daily"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-daily"
                 >
                   <RadioGroupItem value="daily" id="radio-group-1-daily" />
@@ -397,7 +395,7 @@ export default function NewsletterPreferences() {
 
                 <FieldLabel
                   key="weekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-weekly"
                 >
                   <RadioGroupItem value="weekly" id="radio-group-1-weekly" />
@@ -413,7 +411,7 @@ export default function NewsletterPreferences() {
 
                 <FieldLabel
                   key="monthly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-monthly"
                 >
                   <RadioGroupItem value="monthly" id="radio-group-1-monthly" />
@@ -444,6 +442,12 @@ export default function NewsletterPreferences() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "English", value: "en" },
+                  { label: "Spanish", value: "es" },
+                  { label: "French", value: "fr" },
+                  { label: "German", value: "de" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

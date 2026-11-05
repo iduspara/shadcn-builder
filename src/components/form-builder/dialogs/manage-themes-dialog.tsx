@@ -7,7 +7,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -46,13 +45,13 @@ import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { Badge } from "@/components/ui/badge";
 
 interface ManageThemesDialogProps {
-  children: React.ReactNode;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 type Theme = Doc<"userThemes">;
 
-export function ManageThemesDialog({ children }: ManageThemesDialogProps) {
-  const [open, setOpen] = useState(false);
+export function ManageThemesDialog({ open, onOpenChange: setOpen }: ManageThemesDialogProps) {
   const { themes, isLoading: isLoadingThemes } = useUserThemes();
   const { applyTheme } = useApplyTheme();
 
@@ -96,7 +95,6 @@ const currentTheme = useFormBuilderStore((state) => state.currentTheme);
 
   return (
     <Dialog open={open} onOpenChange={handleDialogStateChange}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="lg:max-w-4xl p-0 gap-0">
         <DialogHeader className="px-6 py-4 border-b grow-0 self-start">
           <DialogTitle className="flex items-center gap-2">
@@ -148,15 +146,17 @@ const currentTheme = useFormBuilderStore((state) => state.currentTheme);
                       </TableCell>
                       <TableCell>
                         <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
+                          <AlertDialogTrigger
+                            render={
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                                onClick={(e) => e.stopPropagation()}
+                              />
+                            }
+                          >
+                            <Trash2 className="h-4 w-4" />
                           </AlertDialogTrigger>
                           <AlertDialogContent>
                             <AlertDialogHeader>

@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function FleetVehicleFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
@@ -50,7 +49,6 @@ export default function FleetVehicleFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "radio-group-0": "",
@@ -156,7 +154,7 @@ export default function FleetVehicleFeedback() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-excellent"
                 >
                   <RadioGroupItem
@@ -175,7 +173,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-group-0-good" />
@@ -191,7 +189,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="fair"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-fair"
                 >
                   <RadioGroupItem value="fair" id="radio-group-0-fair" />
@@ -207,7 +205,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-group-0-poor" />
@@ -248,7 +246,7 @@ export default function FleetVehicleFeedback() {
               >
                 <FieldLabel
                   key="very-clean"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-very-clean"
                 >
                   <RadioGroupItem
@@ -267,7 +265,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="clean"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-clean"
                 >
                   <RadioGroupItem value="clean" id="radio-group-1-clean" />
@@ -283,7 +281,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="acceptable"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-acceptable"
                 >
                   <RadioGroupItem
@@ -302,7 +300,7 @@ export default function FleetVehicleFeedback() {
 
                 <FieldLabel
                   key="dirty"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-dirty"
                 >
                   <RadioGroupItem value="dirty" id="radio-group-1-dirty" />
@@ -341,7 +339,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="mechanical"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-mechanical"
@@ -379,7 +377,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="electrical"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-electrical"
@@ -417,7 +415,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="comfort"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-comfort"
@@ -455,7 +453,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="navigation"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-navigation"
@@ -493,7 +491,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="fuel"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-fuel"
@@ -531,7 +529,7 @@ export default function FleetVehicleFeedback() {
                     return (
                       <FieldLabel
                         key="none"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-none"

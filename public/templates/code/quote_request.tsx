@@ -36,7 +36,6 @@ import { CalendarIcon } from "lucide-react";
 
 export default function RequestaQuote() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -57,7 +56,6 @@ export default function RequestaQuote() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -195,6 +193,14 @@ export default function RequestaQuote() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Consulting Services", value: "consulting" },
+                  { label: "Custom Development", value: "development" },
+                  { label: "Maintenance & Support", value: "maintenance" },
+                  { label: "Training Services", value: "training" },
+                  { label: "System Integration", value: "integration" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -245,6 +251,11 @@ export default function RequestaQuote() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Urgent (1-2 weeks)", value: "urgent" },
+                  { label: "Standard (1-3 months)", value: "standard" },
+                  { label: "Flexible (3+ months)", value: "flexible" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

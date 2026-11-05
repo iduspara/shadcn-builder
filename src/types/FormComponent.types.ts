@@ -22,7 +22,18 @@ export type FormComponentTypes =
   | "button"
   | "submit-button"
   | "reset-button"
-  | "credit-card";
+  | "credit-card"
+  | "combobox"
+  | "slider"
+  | "input-otp"
+  | "toggle-group"
+  | "input-group"
+  | "separator"
+  | "alert"
+  | "badge"
+  | "kbd"
+  | "spinner"
+  | "button-group";
 export interface FormComponentModelInput {
   id: string;
   label: string;
@@ -43,6 +54,7 @@ export interface FormComponentModelInput {
 
 export type FormComponentProperties = {
   style?: FormComponentStyles;
+  settings?: FormComponentSettings;
   variant?:
     | "default"
     | "outline"
@@ -91,6 +103,32 @@ export interface FormComponentStyles {
   icon?: keyof typeof icons | "";
   iconPosition?: "left" | "right";
   iconStrokeWidth?: number;
+}
+
+/** Component-specific settings that are neither styles nor HTML attributes. */
+export interface FormComponentSettings {
+  /** slider */
+  min?: number;
+  max?: number;
+  step?: number;
+  range?: "yes" | "no";
+  /** input-otp */
+  length?: number;
+  pattern?: "digits" | "alphanumeric" | "any";
+  /** toggle-group */
+  multiple?: "yes" | "no";
+  /** input-group */
+  prefix?: string;
+  suffix?: string;
+  prefixIcon?: keyof typeof icons | "";
+  suffixIcon?: keyof typeof icons | "";
+  addonButton?: string;
+  /** alert */
+  title?: string;
+  /** spinner, toggle-group */
+  size?: "sm" | "default" | "lg";
+  /** separator, button-group */
+  orientation?: "horizontal" | "vertical";
 }
 
 export type FormComponentAttributes = Partial<HTMLAttributes<HTMLElement>> & {

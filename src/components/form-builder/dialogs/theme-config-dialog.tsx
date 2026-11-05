@@ -7,7 +7,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -49,7 +48,8 @@ import { cn } from "@/lib/utils";
 import { Id, Doc } from "../../../../convex/_generated/dataModel";
 
 interface ThemeConfigDialogProps {
-  children: React.ReactNode;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 const defaultThemeTemplate = ``;
@@ -81,8 +81,7 @@ function validateThemeCSS(css: string): { isValid: boolean; error?: string } {
 
 type Theme = Doc<"userThemes">;
 
-export function ThemeConfigDialog({ children }: ThemeConfigDialogProps) {
-  const [open, setOpen] = useState(false);
+export function ThemeConfigDialog({ open, onOpenChange: setOpen }: ThemeConfigDialogProps) {
   const [selectedTheme, setSelectedTheme] = useState<Theme | null>(null);
   const [themeName, setThemeName] = useState("");
   const [themeCSS, setThemeCSS] = useState(defaultThemeTemplate);
@@ -144,9 +143,6 @@ export function ThemeConfigDialog({ children }: ThemeConfigDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <div>{children}</div>
-      </DialogTrigger>
       <DialogContent className="lg:max-w-4xl p-0 gap-0">
         <DialogHeader className="px-6 py-4 border-b grow-0 self-start">
           <DialogTitle className="flex items-center gap-2">

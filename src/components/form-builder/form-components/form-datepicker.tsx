@@ -25,20 +25,24 @@ export function FormDatePicker(component: FormComponentModel, form: UseFormRetur
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn(
-            "justify-start text-left font-normal w-full",
-            !field.value && "text-muted-foreground",
-            component.getField("attributes.class")
-          )}
-          id={component.getField("attributes.id")}
-          {...field}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {field.value ? field.value.toLocaleDateString() : <span className="text-muted-foreground">{component.getField("attributes.placeholder")}</span>}
-        </Button>
+      <PopoverTrigger
+        render={
+          <Button
+            variant={"outline"}
+            className={cn(
+              "justify-start text-left font-normal w-full",
+              !field.value && "text-muted-foreground",
+              component.getField("attributes.class")
+            )}
+            id={component.getField("attributes.id")}
+            name={field.name}
+            ref={field.ref}
+            onBlur={field.onBlur}
+          />
+        }
+      >
+        <CalendarIcon className="mr-2 h-4 w-4" />
+        {field.value ? field.value.toLocaleDateString() : <span className="text-muted-foreground">{component.getField("attributes.placeholder")}</span>}
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
@@ -59,24 +63,27 @@ export function getReactCode(component: FormComponentModel): ReactCode {
   return {
     template: `
       <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className="${escapeHtml(cn(
-            "justify-start text-left font-normal w-full",
-            component.getField("attributes.class")
-          ))}"
-          id="${escapeHtml(componentId)}"
-          name="${escapeHtml(component.getField("attributes.name"))}"
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {field.value ? format(field.value, "PPP") : <span className="text-muted-foreground">${escapeHtml(component.getField("attributes.placeholder"))}</span>}
-        </Button>
+      <PopoverTrigger
+        render={
+          <Button
+            variant={"outline"}
+            className="${escapeHtml(cn(
+              "justify-start text-left font-normal w-full",
+              component.getField("attributes.class")
+            ))}"
+            id="${escapeHtml(componentId)}"
+            name="${escapeHtml(component.getField("attributes.name"))}"
+          />
+        }
+      >
+        <CalendarIcon className="mr-2 h-4 w-4" />
+        {field.value ? format(field.value, "PPP") : <span className="text-muted-foreground">${escapeHtml(component.getField("attributes.placeholder"))}</span>}
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single" 
           autoFocus
+          selected={field.value}
           onSelect={field.onChange}
         />
       </PopoverContent>

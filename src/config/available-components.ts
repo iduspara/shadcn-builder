@@ -43,7 +43,42 @@ import {
   getReactCodeCheckboxGroup,
   getReactCodeCreditCard,
   FormCreditCard,
-  } from "@/components/form-builder/form-components";
+  // New field components
+  FormCombobox,
+  FormSlider,
+  FormInputOtp,
+  FormToggleGroup,
+  FormInputGroup,
+  ComboboxDesignProperties,
+  SliderDesignProperties,
+  InputOtpDesignProperties,
+  ToggleGroupDesignProperties,
+  InputGroupDesignProperties,
+  getReactCodeCombobox,
+  getReactCodeSlider,
+  getReactCodeInputOtp,
+  getReactCodeToggleGroup,
+  getReactCodeInputGroup,
+  // New content components
+  FormSeparator,
+  FormAlert,
+  FormBadge,
+  FormKbd,
+  FormSpinner,
+  FormButtonGroup,
+  SeparatorDesignProperties,
+  AlertDesignProperties,
+  BadgeDesignProperties,
+  KbdDesignProperties,
+  SpinnerDesignProperties,
+  ButtonGroupDesignProperties,
+  getReactCodeSeparator,
+  getReactCodeAlert,
+  getReactCodeBadge,
+  getReactCodeKbd,
+  getReactCodeSpinner,
+  getReactCodeButtonGroup,
+} from "@/components/form-builder/form-components";
 import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
 import { FieldValues } from "react-hook-form";
 import { CreditCardDesignProperties } from "@/components/form-builder/form-components/form-credit-card";
@@ -57,7 +92,57 @@ const typographyComponents: FormComponentModel[] = [
     category: "content",
     icon: "TextAlignStart",
     content: "Text",
-  })
+  }),
+  new FormComponentModel({
+    id: "separator",
+    label: "Separator",
+    label_info: "Horizontal or vertical divider",
+    type: "separator",
+    category: "content",
+    icon: "SeparatorHorizontal",
+    properties: { settings: { orientation: "horizontal" } },
+  }),
+  new FormComponentModel({
+    id: "alert",
+    label: "Alert",
+    label_info: "Callout with title and description",
+    type: "alert",
+    category: "content",
+    icon: "Info",
+    content: "You can add components to your app using the cli.",
+    properties: {
+      style: { icon: "Info" },
+      settings: { title: "Heads up!" },
+    },
+  }),
+  new FormComponentModel({
+    id: "badge",
+    label: "Badge",
+    label_info: "Small status label",
+    type: "badge",
+    category: "content",
+    icon: "Tag",
+    content: "Badge",
+  }),
+  new FormComponentModel({
+    id: "kbd",
+    label: "Keyboard Key",
+    label_info: "Keyboard shortcut hint",
+    type: "kbd",
+    category: "content",
+    icon: "Keyboard",
+    content: "Ctrl+K",
+  }),
+  new FormComponentModel({
+    id: "spinner",
+    label: "Spinner",
+    label_info: "Loading indicator",
+    type: "spinner",
+    category: "content",
+    icon: "LoaderCircle",
+    content: "Loading...",
+    properties: { settings: { size: "default" } },
+  }),
 ];
 
 const formComponents: FormComponentModel[] = [
@@ -144,6 +229,25 @@ const formComponents: FormComponentModel[] = [
     },
   }),
   new FormComponentModel({
+    id: "input-group",
+    label: "Input Group",
+    label_info: "Input with prefix, suffix or button",
+    type: "input-group",
+    category: "form",
+    icon: "AtSign",
+    attributes: { placeholder: "example" },
+    properties: { settings: { prefix: "https://", suffix: ".com" } },
+  }),
+  new FormComponentModel({
+    id: "input-otp",
+    label: "One-Time Code",
+    label_info: "OTP / verification code input",
+    type: "input-otp",
+    category: "form",
+    icon: "RectangleEllipsis",
+    properties: { settings: { length: 6, pattern: "digits" } },
+  }),
+  new FormComponentModel({
     id: "select",
     label: "Select",
     label_info: "Dropdown select",
@@ -153,6 +257,20 @@ const formComponents: FormComponentModel[] = [
     options: [
       { value: "option1", label: "Option 1", labelDescription: "Option 1 Description" },
       { value: "option2", label: "Option 2", labelDescription: "Option 2 Description" },
+    ],
+  }),
+  new FormComponentModel({
+    id: "combobox",
+    label: "Combobox",
+    label_info: "Searchable select",
+    type: "combobox",
+    category: "form",
+    icon: "TextSearch",
+    attributes: { placeholder: "Search..." },
+    options: [
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
     ],
   }),
   new FormComponentModel({
@@ -214,6 +332,30 @@ const formComponents: FormComponentModel[] = [
     ],
   }),
   new FormComponentModel({
+    id: "toggle-group",
+    label: "Toggle Group",
+    label_info: "Set of toggle buttons",
+    type: "toggle-group",
+    category: "form",
+    icon: "SquareSplitHorizontal",
+    properties: { variant: "outline", settings: { multiple: "no" } },
+    options: [
+      { value: "option1", label: "Option 1", checked: true },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+  }),
+  new FormComponentModel({
+    id: "slider",
+    label: "Slider",
+    label_info: "Pick a number from a range",
+    type: "slider",
+    category: "form",
+    icon: "SlidersHorizontal",
+    value: 50,
+    properties: { settings: { min: 0, max: 100, step: 1, range: "no" } },
+  }),
+  new FormComponentModel({
     id: "date",
     label: "Date Picker",
     label_info: "Date picker input",
@@ -269,14 +411,49 @@ const formComponents: FormComponentModel[] = [
     properties: { style: { showLabel: "no" }, variant: "outline" },
     attributes: { type: "reset" }
   }),
+  new FormComponentModel({
+    id: "button-group",
+    label: "Button Group",
+    label_info: "Row of related buttons",
+    type: "button-group",
+    category: "content",
+    icon: "Group",
+    properties: { variant: "outline", settings: { orientation: "horizontal" } },
+    options: [
+      { value: "reset", label: "Cancel" },
+      { value: "submit", label: "Save" },
+    ],
+  }),
 ];
 
 export const AVAILABLE_COMPONENTS: FormComponentModel[] = [...typographyComponents, ...formComponents];
 
-export const NEW_COMPONENTS: string[] = ["credit-card", "native-select"];
+export const NEW_COMPONENTS: string[] = [
+  "combobox",
+  "slider",
+  "input-otp",
+  "toggle-group",
+  "input-group",
+  "separator",
+  "alert",
+  "badge",
+  "kbd",
+  "spinner",
+  "button-group",
+];
 
 const typographyViews = {
   text: { render: (component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) => Text(component, form, field), renderDesignProperties: TextDesignProperties, reactCode: getReactCodeText },
+};
+
+/** Content components that render from the model alone (no form field). */
+const contentViews = {
+  separator: { render: FormSeparator, renderDesignProperties: SeparatorDesignProperties, reactCode: getReactCodeSeparator },
+  alert: { render: FormAlert, renderDesignProperties: AlertDesignProperties, reactCode: getReactCodeAlert },
+  badge: { render: FormBadge, renderDesignProperties: BadgeDesignProperties, reactCode: getReactCodeBadge },
+  kbd: { render: FormKbd, renderDesignProperties: KbdDesignProperties, reactCode: getReactCodeKbd },
+  spinner: { render: FormSpinner, renderDesignProperties: SpinnerDesignProperties, reactCode: getReactCodeSpinner },
+  "button-group": { render: FormButtonGroup, renderDesignProperties: ButtonGroupDesignProperties, reactCode: getReactCodeButtonGroup },
 };
 
 const formViews = {
@@ -293,10 +470,16 @@ const formViews = {
   "submit-button": { render: FormButton, renderDesignProperties: ButtonDesignProperties, reactCode: getReactCodeButton },
   "reset-button": { render: FormButton, renderDesignProperties: ButtonDesignProperties, reactCode: getReactCodeButton },
   date: { render: FormDatePicker, renderDesignProperties: DatePickerDesignProperties, reactCode: getReactCodeDatePicker },
+  combobox: { render: FormCombobox, renderDesignProperties: ComboboxDesignProperties, reactCode: getReactCodeCombobox },
+  slider: { render: FormSlider, renderDesignProperties: SliderDesignProperties, reactCode: getReactCodeSlider },
+  "input-otp": { render: FormInputOtp, renderDesignProperties: InputOtpDesignProperties, reactCode: getReactCodeInputOtp },
+  "toggle-group": { render: FormToggleGroup, renderDesignProperties: ToggleGroupDesignProperties, reactCode: getReactCodeToggleGroup },
+  "input-group": { render: FormInputGroup, renderDesignProperties: InputGroupDesignProperties, reactCode: getReactCodeInputGroup },
 };
 
 const views = {
   ...typographyViews,
+  ...contentViews,
   ...formViews,
   number: formViews.input,
   email: formViews.input,
@@ -328,4 +511,14 @@ export function renderComponent(component: FormComponentModel, form: UseFormRetu
   if (!componentView) return undefined;
 
   return componentView.render(component, form, field)
+}
+
+/** Whether a content component renders from its model (true) or via the text editor (false). */
+export function isStaticContentComponent(component: FormComponentModel): boolean {
+  return component.type in contentViews;
+}
+
+export function renderContentComponent(component: FormComponentModel): React.ReactNode | undefined {
+  const componentView = contentViews[component.type as keyof typeof contentViews];
+  return componentView?.render(component);
 }

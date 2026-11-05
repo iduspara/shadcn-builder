@@ -35,7 +35,9 @@ This document provides comprehensive information for AI agents working with the 
 
 ### Tech Stack
 - **Frontend**: Next.js 16 (App Router), React 19, TypeScript
-- **Styling**: Tailwind CSS 4, shadcn/ui components
+- **Styling**: Tailwind CSS 4, shadcn/ui components (`base-vega` style)
+- **UI Primitives**: Base UI (`@base-ui/react`); no Radix UI
+- **Class merging**: `cn` package (re-exported from `@/lib/utils`)
 - **State**: Zustand with persistence
 - **Backend**: Convex (database, real-time)
 - **Authentication**: Clerk
@@ -102,6 +104,7 @@ form-builder/
 │   │   │   │   ├── form-input.tsx
 │   │   │   │   ├── form-textarea.tsx
 │   │   │   │   ├── form-select.tsx
+│   │   │   │   ├── shared.ts         # getSetting, getGridClasses, compactTemplate
 │   │   │   │   └── ... (other form components)
 │   │   │   ├── sidebar/              # Left/right sidebars
 │   │   │   │   ├── sidebarLeft.tsx   # Component palette
@@ -394,6 +397,17 @@ export function getComponentReactCode(component: FormComponentModel): ReactCode 
 }
 ```
 
+### Available Component Types
+
+- **Fields** (`category: "form"`): input (+ number/email/password/tel/url/file), textarea, credit-card, input-group, input-otp, select, combobox, native-select, checkbox, checkbox-group, radio, switch, toggle-group, slider, date, button, submit-button, reset-button
+- **Content** (`category: "content"`): text (WYSIWYG), separator, alert, badge, kbd, spinner, button-group
+
+Content components other than `text` live in `contentViews` and render from the model alone (`renderContentComponent`). They have no form field or Zod entry, and their exported template carries its own grid classes (`getGridClasses`).
+
+### Component Settings
+
+Settings that are neither styles nor HTML attributes (slider min/max, OTP length, toggle-group multiple, input-group addons, ...) live in `properties.settings` (`FormComponentSettings`). Read them with `getSetting(component, key, fallback)` and edit them with the declarative `SettingsGroup` in the `settings` slot of `DesignPropertiesViews` (rendered as the "Settings" section).
+
 ### Adding New Components
 
 To add a new component:
@@ -597,6 +611,17 @@ updateComponent(id, field, value, false);
 // Update for all viewports
 updateComponent(id, field, value, true);
 ```
+
+### Base UI Conventions
+
+The app and the exported code target shadcn/ui on Base UI:
+- Compose with `render` instead of `asChild`: `<DialogTrigger render={<Button variant="outline" />}>Open</DialogTrigger>`
+- When `render` targets a non-button (`<a>`, `Link`, `div`), pass `nativeButton={false}` to Button and to Dialog/Menu/Popover triggers
+- State selectors are `data-open`, `data-checked`, `data-pressed` (not `data-[state=...]`)
+- `onValueChange` / `onCheckedChange` / `onOpenChange` receive `(value, eventDetails)`; Select values can be `null`, Slider values can be arrays, ToggleGroup values are always arrays
+- Pass `items` to `Select` so `SelectValue` renders the label instead of the raw value
+- Menu labels (`DropdownMenuLabel`) must be inside a `DropdownMenuGroup`
+- Don't nest a `Dialog` inside a menu item; keep the dialog controlled and render it outside the menu (see `form-builder-menubar.tsx`)
 
 ### Drag & Drop
 

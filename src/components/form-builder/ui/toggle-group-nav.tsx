@@ -22,7 +22,8 @@ export function ToggleGroupNav({
   className,
   name
 }: ToggleGroupNavProps) {
-  const handleValueChange = (value: string) => {
+  const handleValueChange = (groupValue: string[]) => {
+    const value = groupValue[0];
     if (value && value !== defaultValue) {
       onValueChange(value);
     }
@@ -31,8 +32,7 @@ export function ToggleGroupNav({
 
   return (
     <ToggleGroup
-      type="single"
-      value={defaultValue}
+      value={[defaultValue]}
       onValueChange={handleValueChange}
       className={cn("flex border bg-accent dark:bg-transparent rounded-md h-auto shadow-xs", className)}
       size="sm"
@@ -44,7 +44,7 @@ export function ToggleGroupNav({
           key={item.value}
           value={item.value}
           name={toggleName}
-          className="h-auto p-1.5 flex-1 text-muted-foreground data-[state=on]:bg-white dark:data-[state=on]:bg-accent data-[state=on]:text-primary hover:bg-white dark:hover:bg-muted hover:text-accent-foreground cursor-pointer"
+          className="h-auto p-1.5 flex-1 text-muted-foreground data-pressed:bg-white dark:data-pressed:bg-accent data-pressed:text-primary hover:bg-white dark:hover:bg-muted hover:text-accent-foreground cursor-pointer"
         >
           {item.icon && <item.icon className="h-4 w-4" />}
           

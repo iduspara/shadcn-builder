@@ -4,15 +4,7 @@ import {
   getTemplateDefinition,
   getTemplatesCatalog,
 } from "@/lib/templates/server";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { TemplateSelect } from "./template-select";
 import Footer from "@/components/landingpage/footer";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -102,35 +94,18 @@ export default async function PreviewPage({
             <h2 className="ext-lg font-semibold mb-1 md:hidden">
               Select a template
             </h2>
-            <Select value={`${template.category}/${template.formId}`}>
-              <SelectTrigger className="w-full md:hidden">
-                <SelectValue placeholder="Select a template" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(catalogSummary.templatesByCategory)
-                  .sort(([a], [b]) => a.localeCompare(b))
-                  .map(([categoryName, templates]) => (
-                    <SelectGroup key={categoryName}>
-                      <SelectLabel className="capitalize">
-                        {categoryName.replace(/-/g, " ")}
-                      </SelectLabel>
-                      {templates.map((candidate) => (
-                        <SelectItem
-                          key={candidate.formId}
-                          value={`${categoryName}/${candidate.formId}`}
-                        >
-                          <Link
-                            href={`/template/${categoryName}/${candidate.formId}`}
-                            className="text-sm font-medium group-hover:underline group-hover:text-primary transition"
-                          >
-                            {candidate.formTitle}
-                          </Link>
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  ))}
-              </SelectContent>
-            </Select>
+            <TemplateSelect
+              value={`${template.category}/${template.formId}`}
+              groups={Object.entries(catalogSummary.templatesByCategory)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([category, templates]) => ({
+                  category,
+                  templates: templates.map(({ formId, formTitle }) => ({
+                    formId,
+                    formTitle,
+                  })),
+                }))}
+            />
             {Object.entries(catalogSummary.templatesByCategory)
               .sort(([a], [b]) => a.localeCompare(b))
               .map(([categoryName, templates]) => (

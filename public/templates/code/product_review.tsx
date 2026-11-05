@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ProductReview() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
@@ -61,7 +60,6 @@ export default function ProductReview() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "radio-group-0": "",
@@ -167,7 +165,7 @@ export default function ProductReview() {
               >
                 <FieldLabel
                   key="1"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-1"
                 >
                   <RadioGroupItem value="1" id="radio-group-0-1" />
@@ -183,7 +181,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="2"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-2"
                 >
                   <RadioGroupItem value="2" id="radio-group-0-2" />
@@ -199,7 +197,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="3"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-3"
                 >
                   <RadioGroupItem value="3" id="radio-group-0-3" />
@@ -215,7 +213,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="4"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-4"
                 >
                   <RadioGroupItem value="4" id="radio-group-0-4" />
@@ -231,7 +229,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="5"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-5"
                 >
                   <RadioGroupItem value="5" id="radio-group-0-5" />
@@ -270,7 +268,7 @@ export default function ProductReview() {
               >
                 <FieldLabel
                   key="1"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-1"
                 >
                   <RadioGroupItem value="1" id="radio-group-1-1" />
@@ -286,7 +284,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="2"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-2"
                 >
                   <RadioGroupItem value="2" id="radio-group-1-2" />
@@ -302,7 +300,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="3"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-3"
                 >
                   <RadioGroupItem value="3" id="radio-group-1-3" />
@@ -318,7 +316,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="4"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-4"
                 >
                   <RadioGroupItem value="4" id="radio-group-1-4" />
@@ -334,7 +332,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="5"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-5"
                 >
                   <RadioGroupItem value="5" id="radio-group-1-5" />
@@ -373,7 +371,7 @@ export default function ProductReview() {
               >
                 <FieldLabel
                   key="1"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-2-1"
                 >
                   <RadioGroupItem value="1" id="radio-group-2-1" />
@@ -389,7 +387,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="2"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-2-2"
                 >
                   <RadioGroupItem value="2" id="radio-group-2-2" />
@@ -405,7 +403,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="3"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-2-3"
                 >
                   <RadioGroupItem value="3" id="radio-group-2-3" />
@@ -421,7 +419,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="4"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-2-4"
                 >
                   <RadioGroupItem value="4" id="radio-group-2-4" />
@@ -437,7 +435,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="5"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-2-5"
                 >
                   <RadioGroupItem value="5" id="radio-group-2-5" />
@@ -544,7 +542,7 @@ export default function ProductReview() {
               >
                 <FieldLabel
                   key="yes"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-3-yes"
                 >
                   <RadioGroupItem value="yes" id="radio-group-3-yes" />
@@ -560,7 +558,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="no"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-3-no"
                 >
                   <RadioGroupItem value="no" id="radio-group-3-no" />
@@ -576,7 +574,7 @@ export default function ProductReview() {
 
                 <FieldLabel
                   key="maybe"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-3-maybe"
                 >
                   <RadioGroupItem value="maybe" id="radio-group-3-maybe" />
@@ -631,7 +629,7 @@ export default function ProductReview() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

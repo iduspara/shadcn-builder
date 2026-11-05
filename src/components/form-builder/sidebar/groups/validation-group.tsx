@@ -32,7 +32,8 @@ const inputTypeValidationMap: Partial<InputTypeValidationMap> = {
   textarea: ["minLength", "maxLength", "contains", "notContains"],
   email: ["contains", "notContains"],
   password: ["minLength", "maxLength"],
-  tel: ["minLength", "maxLength"]
+  tel: ["minLength", "maxLength"],
+  "input-group": ["minLength", "maxLength", "contains", "notContains"],
 };
 
 const VALIDATION_OPTIONS = [
@@ -169,7 +170,7 @@ export function ValidationGroup() {
                   <Select
                     value={cond.type}
                     onValueChange={(val) =>
-                      handleConditionChange(idx, "type", val)
+                      val && handleConditionChange(idx, "type", val)
                     }
                   >
                     <SelectTrigger className="col-span-1 w-full">

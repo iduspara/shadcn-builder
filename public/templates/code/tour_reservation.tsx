@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function TourReservation() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -62,13 +61,12 @@ export default function TourReservation() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.393Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.621Z"),
       "select-1": "",
       "select-2": "",
       "select-3": "",
@@ -182,6 +180,16 @@ export default function TourReservation() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "City Tour", value: "city-tour" },
+                  { label: "Cultural Tour", value: "cultural" },
+                  { label: "Adventure Tour", value: "adventure" },
+                  { label: "Food & Wine Tour", value: "food" },
+                  { label: "Historical Tour", value: "historical" },
+                  { label: "Nature Tour", value: "nature" },
+                  { label: "Photography Tour", value: "photography" },
+                  { label: "Custom Tour", value: "custom" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -261,23 +269,30 @@ export default function TourReservation() {
               <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -297,6 +312,13 @@ export default function TourReservation() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Morning (9AM - 12PM)", value: "morning" },
+                  { label: "Afternoon (1PM - 4PM)", value: "afternoon" },
+                  { label: "Evening (5PM - 8PM)", value: "evening" },
+                  { label: "Full Day", value: "full-day" },
+                  { label: "Flexible", value: "flexible" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -345,6 +367,15 @@ export default function TourReservation() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "1 Person", value: "1" },
+                  { label: "2 People", value: "2" },
+                  { label: "3 People", value: "3" },
+                  { label: "4 People", value: "4" },
+                  { label: "5 People", value: "5" },
+                  { label: "6-10 People", value: "6-10" },
+                  { label: "10+ People", value: "10+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -399,6 +430,14 @@ export default function TourReservation() {
 
               <Select
                 key="select-3"
+                items={[
+                  { label: "2 Hours", value: "2-hours" },
+                  { label: "4 Hours", value: "4-hours" },
+                  { label: "6 Hours", value: "6-hours" },
+                  { label: "8 Hours", value: "8-hours" },
+                  { label: "Full Day", value: "full-day" },
+                  { label: "Multi-Day", value: "multi-day" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -457,7 +496,7 @@ export default function TourReservation() {
               >
                 <FieldLabel
                   key="included"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-included"
                 >
                   <RadioGroupItem value="included" id="radio-0-included" />
@@ -473,7 +512,7 @@ export default function TourReservation() {
 
                 <FieldLabel
                   key="self"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-self"
                 >
                   <RadioGroupItem value="self" id="radio-0-self" />
@@ -486,7 +525,7 @@ export default function TourReservation() {
 
                 <FieldLabel
                   key="optional"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-optional"
                 >
                   <RadioGroupItem value="optional" id="radio-0-optional" />
@@ -525,7 +564,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="wheelchair"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-wheelchair"
@@ -563,7 +602,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="guide"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-guide"
@@ -601,7 +640,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="language"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-language"
@@ -639,7 +678,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="dietary"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-dietary"
@@ -677,7 +716,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="photography"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-photography"
@@ -715,7 +754,7 @@ export default function TourReservation() {
                     return (
                       <FieldLabel
                         key="none"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-none"

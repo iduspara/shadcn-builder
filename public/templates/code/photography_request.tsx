@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function EventPhotographyRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -56,10 +55,9 @@ export default function EventPhotographyRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.109Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.309Z"),
       "text-input-1": "",
       "checkbox-group-0": [],
       "textarea-0": "",
@@ -128,6 +126,14 @@ export default function EventPhotographyRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Wedding", value: "wedding" },
+                  { label: "Corporate Event", value: "corporate" },
+                  { label: "Birthday Party", value: "birthday" },
+                  { label: "Conference", value: "conference" },
+                  { label: "Graduation", value: "graduation" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -177,23 +183,30 @@ export default function EventPhotographyRequest() {
               <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -241,7 +254,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="photos"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-photos"
@@ -279,7 +292,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="video"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-video"
@@ -317,7 +330,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="editing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-editing"
@@ -355,7 +368,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="prints"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-prints"
@@ -393,7 +406,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="digital"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-digital"
@@ -431,7 +444,7 @@ export default function EventPhotographyRequest() {
                     return (
                       <FieldLabel
                         key="social"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-social"

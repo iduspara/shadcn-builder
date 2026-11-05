@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ParentContactForm() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -59,7 +58,6 @@ export default function ParentContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
@@ -198,6 +196,21 @@ export default function ParentContactForm() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Kindergarten", value: "k" },
+                  { label: "1st Grade", value: "1" },
+                  { label: "2nd Grade", value: "2" },
+                  { label: "3rd Grade", value: "3" },
+                  { label: "4th Grade", value: "4" },
+                  { label: "5th Grade", value: "5" },
+                  { label: "6th Grade", value: "6" },
+                  { label: "7th Grade", value: "7" },
+                  { label: "8th Grade", value: "8" },
+                  { label: "9th Grade", value: "9" },
+                  { label: "10th Grade", value: "10" },
+                  { label: "11th Grade", value: "11" },
+                  { label: "12th Grade", value: "12" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -276,6 +289,15 @@ export default function ParentContactForm() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Academic Performance", value: "academic" },
+                  { label: "Behavioral Concerns", value: "behavior" },
+                  { label: "Attendance Issues", value: "attendance" },
+                  { label: "Health/Medical", value: "health" },
+                  { label: "Schedule Changes", value: "schedule" },
+                  { label: "General Inquiry", value: "general" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -332,6 +354,12 @@ export default function ParentContactForm() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Email", value: "email" },
+                  { label: "Phone Call", value: "phone" },
+                  { label: "Text Message", value: "text" },
+                  { label: "In-Person Meeting", value: "meeting" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -398,7 +426,7 @@ export default function ParentContactForm() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

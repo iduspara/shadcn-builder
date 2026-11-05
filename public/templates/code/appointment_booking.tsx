@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function BookanAppointment() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -57,12 +56,11 @@ export default function BookanAppointment() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-0": new Date("2026-11-05T09:37:38.315Z"),
+      "date-0": new Date("2026-11-05T12:21:24.534Z"),
       "select-1": "",
       "textarea-0": "",
     },
@@ -172,6 +170,12 @@ export default function BookanAppointment() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Initial Consultation", value: "consultation" },
+                  { label: "Follow-up Appointment", value: "follow-up" },
+                  { label: "Emergency Visit", value: "emergency" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -213,23 +217,30 @@ export default function BookanAppointment() {
               <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -249,6 +260,11 @@ export default function BookanAppointment() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Morning (9AM - 12PM)", value: "morning" },
+                  { label: "Afternoon (12PM - 5PM)", value: "afternoon" },
+                  { label: "Evening (5PM - 8PM)", value: "evening" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
