@@ -59,7 +59,7 @@ export default function InvoiceRequest() {
       "text-input-1": "",
       "email-input-0": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-11-07T13:00:39.804Z"),
+      "date-input-0": new Date("2026-11-05T09:37:37.870Z"),
       "textarea-0": "",
     },
   });
@@ -207,11 +207,7 @@ export default function InvoiceRequest() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

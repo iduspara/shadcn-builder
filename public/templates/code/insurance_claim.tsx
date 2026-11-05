@@ -55,7 +55,7 @@ export default function RentalInsuranceClaim() {
       "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-07T13:00:39.961Z"),
+      "date-input-0": new Date("2026-11-05T09:37:37.972Z"),
       "text-input-2": "",
       "textarea-0": "",
       "file-input-0": "",
@@ -161,11 +161,7 @@ export default function RentalInsuranceClaim() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

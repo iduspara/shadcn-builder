@@ -57,7 +57,7 @@ export default function AdditionalDriverVerification() {
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2025-11-07T13:00:39.940Z"),
+      "date-input-0": new Date("2026-11-05T09:37:37.960Z"),
       "text-input-3": "",
       "select-0": "",
       "file-input-0": "",
@@ -191,11 +191,7 @@ export default function AdditionalDriverVerification() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

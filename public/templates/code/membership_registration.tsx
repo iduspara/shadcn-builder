@@ -72,7 +72,7 @@ export default function MembershipRegistration() {
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.352Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.197Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",
@@ -226,11 +226,7 @@ export default function MembershipRegistration() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

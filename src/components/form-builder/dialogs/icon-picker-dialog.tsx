@@ -14,6 +14,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { icons} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { getLucideIcon } from "@/components/form-builder/helpers/icon-render";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useVirtualizer, type VirtualItem } from "@tanstack/react-virtual";
 import { Suspense, useEffect } from "react";
@@ -134,7 +135,7 @@ export function IconPickerDialog({
 
   useEffect(() => {
     setSelectedIconText(selectedIcon || "");
-    setSelectedIconIcon(icons[selectedIcon as keyof typeof icons] as LucideIcon);
+    setSelectedIconIcon(selectedIcon ? getLucideIcon(selectedIcon) : undefined);
   }, [selectedIcon]);
 
   const onIconSelect = (iconName: string) => {

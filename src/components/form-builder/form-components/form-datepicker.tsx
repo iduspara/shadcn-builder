@@ -43,7 +43,7 @@ export function FormDatePicker(component: FormComponentModel, form: UseFormRetur
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          initialFocus
+          autoFocus
           selected={field.value}
           onSelect={field.onChange}
         />
@@ -76,7 +76,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single" 
-          initialFocus
+          autoFocus
           onSelect={field.onChange}
         />
       </PopoverContent>
