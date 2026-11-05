@@ -45,11 +45,13 @@ export function ViewportOverrideIndicator({
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>
-          <MonitorSmartphone
-            className={`text-blue-500 cursor-help ${className}`}
-          />
-        </TooltipTrigger>
+        <TooltipTrigger
+          render={
+            <MonitorSmartphone
+              className={`text-blue-500 cursor-help ${className}`}
+            />
+          }
+        />
         <TooltipContent>
           <div className="font-mono text-sm whitespace-pre">
             {overrideInfo.join("\n")}

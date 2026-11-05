@@ -31,15 +31,15 @@ export function ThemeToggle() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-9">
-          {theme === "dark" ? (
-            <Moon className="size-4" />
-          ) : (
-            <Sun className="size-4" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+      <DropdownMenuTrigger
+        render={<Button variant="ghost" size="icon" className="size-9" />}
+      >
+        {theme === "dark" ? (
+          <Moon className="size-4" />
+        ) : (
+          <Sun className="size-4" />
+        )}
+        <span className="sr-only">Toggle theme</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme("light")}>

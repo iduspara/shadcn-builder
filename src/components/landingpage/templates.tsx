@@ -65,10 +65,8 @@ export default function Templates() {
         
         {/* View All Templates Button */}
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
-            <Link href="/template/business/job_application">
+          <Button variant="outline" size="lg" nativeButton={false} render={<Link href="/template/business/job_application" />}>
               View All Templates
-            </Link>
           </Button>
         </div>
       </div>

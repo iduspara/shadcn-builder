@@ -12,6 +12,7 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
@@ -80,30 +81,33 @@ const ToolbarDropdownMenu = memo(
 
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <div
-            className={cn(
-              buttonVariants({ variant: "ghost", size: "sm" }),
-              activeItem ? "bg-muted" : "bg-white"
-            )}
-          >
-            <Icon
-              name={
-                (activeItem?.type === "option" && activeItem.icon) || defaultIcon
-              }
-              className={"text-primary"}
+        <DropdownMenuTrigger
+          nativeButton={false}
+          render={
+            <div
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "sm" }),
+                activeItem ? "bg-muted" : "bg-white"
+              )}
             />
-            <Icon name="ChevronDown" className="w-2 h-2 text-primary" />
-          </div>
+          }
+        >
+          <Icon
+            name={
+              (activeItem?.type === "option" && activeItem.icon) || defaultIcon
+            }
+            className={"text-primary"}
+          />
+          <Icon name="ChevronDown" className="w-2 h-2 text-primary" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
             {options.map((option) => {
               return (
-                <div key={option.id}>
+                <DropdownMenuGroup key={option.id}>
                   {isOption(option) && (
                     <DropdownMenuItem
                       key={option.id}
-                      onSelect={option.onClick}
+                      onClick={option.onClick}
                       className={option.isActive() ? "bg-accent" : ""}
                     >
                       {option.icon && (
@@ -125,7 +129,7 @@ const ToolbarDropdownMenu = memo(
                       {option.label}
                     </DropdownMenuLabel>
                   )}
-                </div>
+                </DropdownMenuGroup>
               );
             })}
         </DropdownMenuContent>

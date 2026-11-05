@@ -92,15 +92,11 @@ export default async function ChangelogPage() {
         Drag, drop, and customize to create the perfect form for your needs.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" asChild>
-          <a href="/builder">
+        <Button size="lg" nativeButton={false} render={<a href="/builder" />}>
             Open Form Builder <ArrowRight className="h-4 w-4 ml-2" />
-          </a>
         </Button>
-        <Button size="lg" variant="outline" asChild>
-          <Link href="/template/business/job_application">
+        <Button size="lg" variant="outline" nativeButton={false} render={<Link href="/template/business/job_application" />}>
             Browse Templates
-          </Link>
         </Button>
       </div>
     </div>

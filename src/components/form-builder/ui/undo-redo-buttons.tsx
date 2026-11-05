@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -96,16 +97,20 @@ export const UndoRedoButtons: React.FC<UndoRedoButtonsProps> = ({
       </Button>
 
       <DropdownMenu>
-        <DropdownMenuTrigger asChild disabled={snapshots.length === 0}>
-          <Button
-            variant={variant}
-            size={size}
-            className="flex items-center gap-1"
-          >
-            <Clock className="h-4 w-4" />
-          </Button>
+        <DropdownMenuTrigger
+          disabled={snapshots.length === 0}
+          render={
+            <Button
+              variant={variant}
+              size={size}
+              className="flex items-center gap-1"
+            />
+          }
+        >
+          <Clock className="h-4 w-4" />
         </DropdownMenuTrigger>
         <DropdownMenuContent side="bottom" align="end" className="w-80">
+          <DropdownMenuGroup>
           <DropdownMenuLabel className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
@@ -127,6 +132,7 @@ export const UndoRedoButtons: React.FC<UndoRedoButtonsProps> = ({
               </div>
             )}
           </DropdownMenuLabel>
+          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           {subscriptionInfo?.tier !== "pro" && (
             <>

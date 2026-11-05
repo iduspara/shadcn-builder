@@ -99,6 +99,10 @@ export function InputGroup({
           <div className="flex flex-row items-center gap-2">
             {showOptionsDropdown ? (
               <Select
+                items={selectedComponent.options?.map((option: any) => ({
+                  value: String(option.value),
+                  label: option.label,
+                }))}
                 value={currentValue}
                 onValueChange={(value) => handleChange("value", value, true)}
               >
@@ -238,7 +242,7 @@ export function InputGroup({
                     onValueChange={(value) =>
                       handleChange(
                         "properties.style.iconStrokeWidth",
-                        value[0],
+                        Array.isArray(value) ? value[0] : value,
                         true
                       )
                     }

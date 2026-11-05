@@ -169,7 +169,7 @@ export function ValidationGroup() {
                   <Select
                     value={cond.type}
                     onValueChange={(val) =>
-                      handleConditionChange(idx, "type", val)
+                      val && handleConditionChange(idx, "type", val)
                     }
                   >
                     <SelectTrigger className="col-span-1 w-full">

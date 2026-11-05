@@ -69,58 +69,62 @@ export function SidebarUser() {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage
-                  src={user?.imageUrl || undefined}
-                  alt={user?.username || undefined}
-                />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user?.username}</span>
-                <span className="truncate text-xs">
-                  {user?.emailAddresses[0]?.emailAddress}
-                </span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
+          <DropdownMenuTrigger
+            render={
+              <SidebarMenuButton
+                size="lg"
+                className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+              />
+            }
+          >
+            <Avatar className="h-8 w-8 rounded-lg">
+              <AvatarImage
+                src={user?.imageUrl || undefined}
+                alt={user?.username || undefined}
+              />
+              <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+            </Avatar>
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">{user?.username}</span>
+              <span className="truncate text-xs">
+                {user?.emailAddresses[0]?.emailAddress}
+              </span>
+            </div>
+            <ChevronsUpDown className="ml-auto size-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+            className="w-(--anchor-width) min-w-56 rounded-lg"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}
           >
-            <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <div className="flex items-center gap-2 justify-between w-full">
-                  <span className="font-medium">Current Plan:</span>
-                  <div className="flex items-center gap-1 text-xs">
-                    {subscriptionInfo?.tier === "pro" && (
-                      <Crown className="h-3 w-3 text-yellow-500" />
-                    )}
-                    <span
-                      className={cn(
-                        "text-xs px-1.5 py-0.5 rounded",
-                        subscriptionInfo?.tier === "free" &&
-                          "bg-gray-100 text-gray-700",
-                        subscriptionInfo?.tier === "advanced" &&
-                          "bg-blue-100 text-blue-700",
-                        subscriptionInfo?.tier === "pro" &&
-                          "bg-yellow-100 text-yellow-700"
+            <DropdownMenuGroup>
+              <DropdownMenuLabel className="p-0 font-normal">
+                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                  <div className="flex items-center gap-2 justify-between w-full">
+                    <span className="font-medium">Current Plan:</span>
+                    <div className="flex items-center gap-1 text-xs">
+                      {subscriptionInfo?.tier === "pro" && (
+                        <Crown className="h-3 w-3 text-yellow-500" />
                       )}
-                    >
-                      {subscriptionInfo?.tier?.toUpperCase() || "FREE"}
-                    </span>
+                      <span
+                        className={cn(
+                          "text-xs px-1.5 py-0.5 rounded",
+                          subscriptionInfo?.tier === "free" &&
+                            "bg-gray-100 text-gray-700",
+                          subscriptionInfo?.tier === "advanced" &&
+                            "bg-blue-100 text-blue-700",
+                          subscriptionInfo?.tier === "pro" &&
+                            "bg-yellow-100 text-yellow-700",
+                        )}
+                      >
+                        {subscriptionInfo?.tier?.toUpperCase() || "FREE"}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </DropdownMenuLabel>
+              </DropdownMenuLabel>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
 
             <DropdownMenuGroup>

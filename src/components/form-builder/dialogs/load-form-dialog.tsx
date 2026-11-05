@@ -7,7 +7,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -45,11 +44,11 @@ import GenerateCanvasGrid from "@/components/form-builder/canvas/generate-canvas
 import { cn } from "@/lib/utils";
 
 interface LoadFormDialogProps {
-  children: React.ReactNode;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export function LoadFormDialog({ children }: LoadFormDialogProps) {
-  const [open, setOpen] = useState(false);
+export function LoadFormDialog({ open, onOpenChange: setOpen }: LoadFormDialogProps) {
   const [selectedForm, setSelectedForm] = useState<any>(null);
   const { userForms, isLoading } = useSavedForms();
   const { updateComponents, updateFormTitle, updateMode, updateFormId, clearHistory } =
@@ -109,7 +108,6 @@ export function LoadFormDialog({ children }: LoadFormDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleDialogStateChange}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="lg:max-w-4xl p-0 gap-0">
         <DialogHeader className="px-6 py-4 border-b grow-0 self-start">
           <DialogTitle className="flex items-center gap-2">

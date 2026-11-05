@@ -59,10 +59,8 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex flex-1 items-center justify-center lg:justify-end">
           {navigationLinks.map((link) => (
-            <Button asChild key={link.href} variant="ghost">
-              <Link key={link.href} href={link.href}>
+            <Button key={link.href} variant="ghost" nativeButton={false} render={<Link href={link.href} />}>
                 {link.label}
-              </Link>
             </Button>
           ))}
         </div>
@@ -70,11 +68,9 @@ export default function Header() {
         {/* Mobile Navigation */}
         <div className="flex md:hidden items-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <button className="p-2 hover:bg-gray-100 rounded-md transition-colors mr-2">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
-              </button>
+            <SheetTrigger className="p-2 hover:bg-gray-100 rounded-md transition-colors mr-2">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Open menu</span>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[350px]">
               <SheetHeader>
