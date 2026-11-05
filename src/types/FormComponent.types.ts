@@ -1,6 +1,7 @@
 import { icons } from "lucide-react";
-import { Viewports } from "./form-builder.types";
 import { HTMLAttributes, HTMLInputTypeAttribute } from "react";
+
+export type Viewports = "sm" | "md" | "lg";
 
 export type FormComponentTypes =
   | "text"

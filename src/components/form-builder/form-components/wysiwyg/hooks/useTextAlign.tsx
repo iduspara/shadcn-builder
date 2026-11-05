@@ -1,7 +1,7 @@
 import { Editor, useEditorState } from "@tiptap/react";
 import { icons } from "lucide-react";
 
-export type TextAlignOption = {
+type TextAlignOption = {
   label: string;
   id: string;
   type: "option";
@@ -11,13 +11,13 @@ export type TextAlignOption = {
   icon: keyof typeof icons | null;
 };
 
-export type TextAlignCategory = {
+type TextAlignCategory = {
   label: string;
   id: string;
   type: "category";
 };
 
-export type TextAlignOptions = Array<TextAlignOption | TextAlignCategory>;
+type TextAlignOptions = Array<TextAlignOption | TextAlignCategory>;
 
 export const useTextAlign = (editor: Editor) => {
   return useEditorState({

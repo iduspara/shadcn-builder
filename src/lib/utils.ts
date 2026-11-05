@@ -211,13 +211,13 @@ const styleMap: Partial<Record<keyof FormComponentStyles, Record<Viewports, Reco
 
 export { cn } from "cn";
 
-export const transformStyleKeyToClassName = (
+const transformStyleKeyToClassName = (
   styleKey: keyof FormComponentStyles
 ) => {
   return styleKey.replace(/([A-Z])/g, "-$1").toLowerCase();
 };
 
-export const generateTWClassesFromStyleObject = (
+const generateTWClassesFromStyleObject = (
   style: FormComponentStyles
 ) => {
   return Object.entries(style)
@@ -319,7 +319,7 @@ export const replaceClassWithClassName = (text: string): string => {
   });
 };
 
-export const convertStyleToStyleObject = (style: string): Record<string, string> => {
+const convertStyleToStyleObject = (style: string): Record<string, string> => {
   if (!style) return {};
 
   // Split the style string by semicolons and filter out empty strings

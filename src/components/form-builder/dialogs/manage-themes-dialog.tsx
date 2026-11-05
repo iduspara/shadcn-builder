@@ -19,14 +19,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  Loader2,
-  FolderOpen,
   FileText,
   Palette,
   Trash2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useUserThemes, useSetDefaultTheme, useUnsetDefaultTheme, useDeleteTheme, useApplyTheme } from "@/hooks/use-themes";
+import { formatDate, DialogListLoading, DialogListEmpty } from "./dialog-list-states";
+import { useUserThemes, useDeleteTheme, useApplyTheme } from "@/hooks/use-themes";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Doc } from "../../../../convex/_generated/dataModel";
 import { toast } from "sonner";
@@ -77,9 +76,6 @@ const currentTheme = useFormBuilderStore((state) => state.currentTheme);
     setOpen(false);
   };
 
-  const formatDate = (timestamp: number) => {
-    return new Date(timestamp).toLocaleDateString();
-  };
 
   const handleDialogStateChange = (state: boolean) => {
     setOpen(state);
@@ -105,18 +101,9 @@ const currentTheme = useFormBuilderStore((state) => state.currentTheme);
 
         <ScrollArea className={cn("flex-1 ", themes.length !== 0  && "border-r h-[478px]")}>
             {isLoadingThemes ? (
-              <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-6 w-6 animate-spin" />
-                <span className="ml-2">Loading themes...</span>
-              </div>
+              <DialogListLoading label="Loading themes..." />
             ) : themes.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <FolderOpen className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>No themes found.</p>
-                <p className="text-sm">
-                  Create and save a theme to see it here.
-                </p>
-              </div>
+              <DialogListEmpty title="No themes found." hint="Create and save a theme to see it here." />
             ) : (
               <Table>
                 <TableHeader>
