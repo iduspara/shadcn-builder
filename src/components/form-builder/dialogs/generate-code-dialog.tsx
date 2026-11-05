@@ -1,13 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Pre } from "@/components/ui/pre";
-import { Copy, Check } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { generateFormCode } from "../helpers/generate-react-code";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { ReactCode } from "@/types/form-builder.types";
 import { DependenciesImports } from "../helpers/generate-react-code";
+import { CopyButton } from "./copy-button";
 
 const getShadcnInstallInstructions = (
   dependencies: ReactCode["dependencies"]
@@ -45,7 +44,6 @@ export function MainExport() {
     generateCode();
   }, [components]);
 
-  const [copied, setCopied] = useState(false);
   const formTitle = useFormBuilderStore
     .getState()
     .formTitle.replace(/\s+/g, "");
@@ -60,12 +58,6 @@ export function MainExport() {
     a.click();
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-  };
-
-  const handleCopy = async (text: string) => {
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   const installationInstructions = getShadcnInstallInstructions(
@@ -86,18 +78,7 @@ export function MainExport() {
         <h3 className="text-sm text-muted-foreground">
           Run the following commands to add the required components:
         </h3>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute top-2 right-2 text-muted-foreground"
-          onClick={() => handleCopy(installationInstructions)}
-        >
-          {copied ? (
-            <Check className="h-4 w-4" />
-          ) : (
-            <Copy className="h-4 w-4" />
-          )}
-        </Button>
+        <CopyButton content={installationInstructions} />
         <div className="relative overflow-x-auto rounded-md min-h-20 mt-4">
           <Pre language="bash" code={installationInstructions} />
         </div>
@@ -112,20 +93,7 @@ export function MainExport() {
             Run the following commands to add the required third party
             dependencies:
           </h3>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="absolute top-2 right-2 text-muted-foreground"
-            onClick={() =>
-              handleCopy(thirdPartyDependenciesInstallInstructions)
-            }
-          >
-            {copied ? (
-              <Check className="h-4 w-4" />
-            ) : (
-              <Copy className="h-4 w-4" />
-            )}
-          </Button>
+          <CopyButton content={thirdPartyDependenciesInstallInstructions} />
           <div className="relative overflow-x-auto rounded-md min-h-20 mt-4">
             <Pre
               language="bash"
@@ -145,18 +113,7 @@ export function MainExport() {
           .
         </h3>
 
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute top-2 right-2 text-muted-foreground"
-          onClick={() => handleCopy(generatedCode.code)}
-        >
-          {copied ? (
-            <Check className="h-4 w-4" />
-          ) : (
-            <Copy className="h-4 w-4" />
-          )}
-        </Button>
+        <CopyButton content={generatedCode.code} />
       </div>
 
       <div className="flex-1 overflow-y-auto relative">
@@ -168,21 +125,11 @@ export function MainExport() {
         <h3 className="text-sm text-muted-foreground">
           Import the form component and use it in your project.
         </h3>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="absolute top-2 right-2 text-muted-foreground"
-          onClick={() =>
-            handleCopy(`import ${formTitle} from "./${formTitle}";
-<${formTitle} />`)
-          }
-        >
-          {copied ? (
-            <Check className="h-4 w-4" />
-          ) : (
-            <Copy className="h-4 w-4" />
-          )}
-        </Button>
+        <CopyButton
+          content={`import ${formTitle} from "./${formTitle}";
+<${formTitle} />`}
+        />
+
         <div className="relative overflow-auto rounded-md min-h-20 mt-4">
           <Pre
             language="typescript"
