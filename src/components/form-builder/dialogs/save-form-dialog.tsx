@@ -29,8 +29,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  Loader2,
-  FolderOpen,
   Calendar,
   User,
   Eye,
@@ -43,6 +41,7 @@ import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { FormComponentModel } from "@/models/FormComponent";
 import GenerateCanvasGrid from "@/components/form-builder/canvas/generate-canvas-grid";
 import { cn } from "@/lib/utils";
+import { formatDate, DialogListLoading, DialogListEmpty } from "./dialog-list-states";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSaveForm } from "@/hooks/use-save-form";
@@ -86,9 +85,6 @@ export function SaveFormDialog({ open, onOpenChange: setOpen, forceSave }: SaveF
     setOpen(false);
   };
 
-  const formatDate = (timestamp: number) => {
-    return new Date(timestamp).toLocaleDateString();
-  };
 
   // Convert selected form components to FormComponentModel instances for preview
   const previewComponents = selectedForm
@@ -111,18 +107,9 @@ export function SaveFormDialog({ open, onOpenChange: setOpen, forceSave }: SaveF
           {/* Left Panel - Form List */}
           <ScrollArea className={cn("flex-1 ", userForms.length !== 0  && "border-r h-[478px]")}>
             {isLoading ? (
-              <div className="flex items-center justify-center py-8">
-                <Loader2 className="h-6 w-6 animate-spin" />
-                <span className="ml-2">Loading saved forms...</span>
-              </div>
+              <DialogListLoading label="Loading saved forms..." />
             ) : userForms.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <FolderOpen className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>No saved forms found.</p>
-                <p className="text-sm">
-                  Create and save a form to see it here.
-                </p>
-              </div>
+              <DialogListEmpty title="No saved forms found." hint="Create and save a form to see it here." />
             ) : (
               <Table>
                 <TableHeader>

@@ -35,7 +35,85 @@ const DraggableButton = memo(({ attributes, listeners }: any) => (
 
 DraggableButton.displayName = "DraggableButton";
 
-// Memoize the row column component
+const DROP_POSITIONS = ["left", "right", "top", "bottom"] as const;
+
+type BuilderMode = "editor" | "editor-preview" | "preview" | "export";
+
+interface ColumnClassState {
+  component: FormComponentModel;
+  mode: BuilderMode;
+  isDragging: boolean;
+  isHidden: boolean;
+  hasSelection: boolean;
+  isSelected: boolean;
+}
+
+function getColumnClassName({ component, mode, isDragging, isHidden, hasSelection, isSelected }: ColumnClassState) {
+  return cn(
+    "relative group self-end",
+    generateTWClassesForAllViewports(component, "colSpan"),
+    generateTWClassesForAllViewports(component, "colStart"),
+    // Hidden components are only hidden in the plain preview
+    mode === "preview" && generateTWClassesForAllViewports(component, "visible"),
+    mode === "editor" &&
+      "group/component hover:outline-1 hover:outline-offset-6 hover:outline-primary cursor-pointer",
+    isDragging && "cursor-grabbing",
+    hasSelection && "opacity-30",
+    isHidden && "opacity-50",
+    isSelected && "outline-1 outline-offset-6 outline-primary z-20 opacity-100"
+  );
+}
+
+/** Removes a component and lets the rest of its row fill the freed columns. */
+function useDeleteComponent() {
+  const components = useFormBuilderStore((state) => state.components);
+  const viewport = useFormBuilderStore((state) => state.viewport);
+  const removeComponent = useFormBuilderStore((state) => state.removeComponent);
+  const updateComponent = useFormBuilderStore((state) => state.updateComponent);
+
+  return (id: string) => {
+    const row = getGridRows(components, viewport).find((items) => items.some((item) => item.id === id)) || [];
+    updateColSpans(row.filter((item) => item.id !== id)).forEach((item) => {
+      updateComponent(item.id, "properties.style.colSpan", `${item.span}`, false);
+    });
+    removeComponent(id);
+  };
+}
+
+function ColumnToolbar({ component, isSelected, showType }: { component: FormComponentModel; isSelected: boolean; showType: boolean }) {
+  const deleteComponent = useDeleteComponent();
+  return (
+    <>
+      {showType && (
+        <span
+          className={cn(
+            "absolute -top-6.5 -left-1.75 py-0.5 px-1 text-xs opacity-0 bg-primary text-accent",
+            isSelected && "opacity-100"
+          )}
+        >
+          {component.getField("type")}
+        </span>
+      )}
+
+      <Button
+        type="button"
+        variant="link"
+        size="icon"
+        className={cn(
+          "h-4 w-4 absolute -right-1.75 -top-5.5 m-0! hover:bg-primary/50 group-hover/component:opacity-100 opacity-0 cursor-pointer bg-primary text-accent rounded-none",
+          isSelected && "opacity-100"
+        )}
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteComponent(component.id);
+        }}
+      >
+        <Icons.X className="size-3" />
+      </Button>
+    </>
+  );
+}
+
 export const RowColumn = ({ component, index, form }: SortableRowProps) => {
   const {
     attributes: columnAttributes,
@@ -53,42 +131,33 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
     },
   });
 
-  const components = useFormBuilderStore((state) => state.components);
   const viewport = useFormBuilderStore((state) => state.viewport);
-  const selectedComponent = useFormBuilderStore(
-    (state) => state.selectedComponent
-  );
+  const selectedComponent = useFormBuilderStore((state) => state.selectedComponent);
   const selectComponent = useFormBuilderStore((state) => state.selectComponent);
-  const removeComponent = useFormBuilderStore((state) => state.removeComponent);
-  const updateComponent = useFormBuilderStore((state) => state.updateComponent);
   const mode = useFormBuilderStore((state) => state.mode);
   const enableDragging = useFormBuilderStore((state) => state.enableDragging);
+  const isSelected = selectedComponent?.id === component.id;
+
   const columnStyle = useMemo(
     () => ({
       columnTransform,
-      zIndex: columnIsDragging ? 30 : 1,
-      ...(selectedComponent?.id === component.id ? { zIndex: 30 } : undefined),
+      zIndex: columnIsDragging || isSelected ? 30 : 1,
     }),
-    [columnTransform, columnIsDragging, selectedComponent, component]
+    [columnTransform, columnIsDragging, isSelected]
   );
 
-  const colSpanClasses = useMemo(
-    () => generateTWClassesForAllViewports(component, "colSpan"),
-    [component]
+  const className = useMemo(
+    () =>
+      getColumnClassName({
+        component,
+        mode,
+        isDragging: columnIsDragging,
+        isHidden: component.getField("properties.style.visible", viewport) === "no",
+        hasSelection: Boolean(selectedComponent),
+        isSelected,
+      }),
+    [component, mode, columnIsDragging, viewport, selectedComponent, isSelected]
   );
-
-  const colStartClasses = useMemo(
-    () => generateTWClassesForAllViewports(component, "colStart"),
-    [component]
-  );
-
-  const visibilityClasses = useMemo(
-    () => generateTWClassesForAllViewports(component, "visible"),
-    [component]
-  );
-
-  const isHidden =
-    component.getField("properties.style.visible", viewport) === "no";
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
@@ -100,48 +169,16 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
     [component, selectComponent, mode, columnIsDragging]
   );
 
-  const handleDelete = (id: string) => {
-    const gridRows = getGridRows(components, viewport);
-    let activeRowItems =
-      gridRows.find((row) => row.some((item) => item.id === id)) || [];
-
-    activeRowItems = activeRowItems.filter((item) => item.id !== id);
-
-    const updatedActiveItems = updateColSpans([...activeRowItems]);
-
-    updatedActiveItems.forEach((item) => {
-      updateComponent(
-        item.id,
-        "properties.style.colSpan",
-        `${item.span}`,
-        false
-      );
-    });
-
-    removeComponent(id);
-  };
+  const dragProps = enableDragging && mode === "editor" ? { ...columnAttributes, ...columnListeners } : {};
 
   return (
     <div
       ref={setNodeRef}
-      className={cn(
-        "relative group self-end",
-        colSpanClasses,
-        colStartClasses,
-        mode === "editor-preview" || mode === "preview" && visibilityClasses,
-        mode === "editor" &&
-          "group/component hover:outline-1 hover:outline-offset-6 hover:outline-primary cursor-pointer",
-        columnIsDragging && "cursor-grabbing",
-        selectedComponent && "opacity-30",
-        isHidden && "opacity-50",
-        selectedComponent?.id === component.id &&
-          "outline-1 outline-offset-6 outline-primary z-20 opacity-100"
-      )}
+      className={className}
       key={component.id}
       data-component-id={component.id}
       onClick={handleClick}
-      {...(enableDragging && mode === "editor" ? columnAttributes : {})}
-      {...(enableDragging && mode === "editor" ? columnListeners : {})}
+      {...dragProps}
     >
       {/* Blocks interaction with the rendered component while editing; text stays editable */}
       {component.type !== "text" && (
@@ -154,57 +191,17 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
         ></div>
       )}
 
-      <RowColumnDropzone
-        index={index}
-        position={"left"}
-        overColumn={columnOver}
-        component={component}
-      />
-      <RowColumnDropzone
-        index={index}
-        position={"right"}
-        overColumn={columnOver}
-        component={component}
-      />
-      <RowColumnDropzone
-        index={index}
-        position={"top"}
-        overColumn={columnOver}
-        component={component}
-      />
-      <RowColumnDropzone
-        index={index}
-        position={"bottom"}
-        overColumn={columnOver}
-        component={component}
-      />
+      {DROP_POSITIONS.map((position) => (
+        <RowColumnDropzone
+          key={position}
+          index={index}
+          position={position}
+          overColumn={columnOver}
+          component={component}
+        />
+      ))}
 
-      {mode === "editor" && (
-        <span
-          className={cn(
-            "absolute -top-6.5 -left-1.75 py-0.5 px-1 text-xs opacity-0 bg-primary text-accent",
-            component.id === selectedComponent?.id && "opacity-100"
-          )}
-        >
-          {component.getField("type")}
-        </span>
-      )}
-
-      <Button
-        type="button"
-        variant="link"
-        size="icon"
-        className={cn(
-          "h-4 w-4 absolute -right-1.75 -top-5.5 m-0! hover:bg-primary/50 group-hover/component:opacity-100 opacity-0 cursor-pointer bg-primary text-accent rounded-none",
-          component.id === selectedComponent?.id && "opacity-100"
-        )}
-        onClick={(e) => {
-          e.stopPropagation();
-          handleDelete(component.id);
-        }}
-      >
-        <Icons.X className="size-3" />
-      </Button>
+      <ColumnToolbar component={component} isSelected={isSelected} showType={mode === "editor"} />
 
       <RenderEditorComponent
         key={component.id}

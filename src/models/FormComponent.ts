@@ -1,16 +1,14 @@
-import { generateTWClassesForAllViewports } from "@/lib/utils";
-import { Viewports } from "@/types/form-builder.types";
 import {
+  Viewports,
   FormComponentProperties,
   FormComponentAttributes,
   FormComponentModelInput,
-  FormComponentStyles,
   FormComponentValidationTypes,
   FormComponentTypes,
 } from "@/types/FormComponent.types";
 import { icons } from "lucide-react";
 
-export const DEFAULT_PROPERTIES: FormComponentProperties = {
+const DEFAULT_PROPERTIES: FormComponentProperties = {
   style: {
     asCard: "no",
     cardLayout: "vertical",
@@ -38,7 +36,6 @@ export class FormComponentModel {
   content?: string;
   description?: string;
   options?: FormComponentModelInput["options"];
-  required?: boolean;
   category: "form" | "content";
   icon: keyof typeof icons;
   properties?: FormComponentProperties;
@@ -74,6 +71,8 @@ export class FormComponentModel {
     this.validations = input.validations;
   }
 
+  // Called explicitly when saving forms (use-save-form.ts)
+  // fallow-ignore-next-line unused-class-member
   toJSON(): FormComponentModelInput {
     return {
       ...this
@@ -124,9 +123,5 @@ export class FormComponentModel {
 
     // Fall back to base component value
     return getNestedValue(this, fieldPath);
-  }
-
-  getTWClasses(styleKey: keyof FormComponentStyles) {
-    return generateTWClassesForAllViewports(this, styleKey);
   }
 }

@@ -67,11 +67,9 @@ const isCategory = (
 const ToolbarDropdownMenu = memo(
   ({
     options,
-    menuRef,
     defaultIcon = "Pilcrow",
   }: {
     options: ContentTypeOptions;
-    menuRef: React.RefObject<HTMLDivElement | null>;
     defaultIcon?: keyof typeof icons;
   }) => {
     const activeItem = useMemo(
@@ -163,7 +161,7 @@ export function EditorToolbar({
         className="flex gap-2 relative items-center z-20"
         ref={menuRef}
       >
-        <ToolbarDropdownMenu options={options} menuRef={menuRef} />
+        <ToolbarDropdownMenu options={options} />
         <ToolbarSeparator />
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -189,7 +187,7 @@ export function EditorToolbar({
         >
           <Strikethrough />
         </ToolbarButton>
-        <ToolbarDropdownMenu options={textAlign} menuRef={menuRef} defaultIcon="TextAlignStart" />
+        <ToolbarDropdownMenu options={textAlign} defaultIcon="TextAlignStart" />
         <ToolbarSeparator />
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}

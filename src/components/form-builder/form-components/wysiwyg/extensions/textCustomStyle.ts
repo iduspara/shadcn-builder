@@ -10,7 +10,7 @@ declare module '@tiptap/core' {
   }
 }
 
-export const customClass = Extension.create({
+const customClass = Extension.create({
   name: 'customClass',
 
   addOptions() {

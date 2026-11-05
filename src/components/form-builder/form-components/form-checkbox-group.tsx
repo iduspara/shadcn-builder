@@ -7,7 +7,7 @@ import { HtmlGroup } from "../sidebar/groups/html-group";
 import { LabelGroup } from "../sidebar/groups/label-group";
 import { InputGroup } from "../sidebar/groups/input-group";
 import { OptionsGroup } from "../sidebar/groups/options-group";
-import { cn, escapeHtml, generateTWClassesForAllViewports } from "@/lib/utils";
+import { cn, escapeHtml } from "@/lib/utils";
 import {
   UseFormReturn,
   FieldValues,
@@ -16,17 +16,15 @@ import {
 import { ValidationGroup } from "../sidebar/groups/validation-group";
 import { Controller } from "react-hook-form";
 import { FieldLabel } from "@/components/ui/field";
+import { getOptionGroupLayout } from "./shared";
 
 export function FormCheckboxGroup(
   component: FormComponentModel,
   form: UseFormReturn<FieldValues, undefined>,
   field: ControllerRenderProps
 ) {
-  const oneOptionHasLabelDescription = component.options?.some((option) => option.labelDescription);
-  const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
-  const cardLayoutClasses = component.getField("properties.style.cardLayout");
-  const componentId = component.getField("attributes.id") || component.id;
-  const isCard = component.getField("properties.style.asCard") === "yes";
+  const { oneOptionHasLabelDescription, asCardClasses, cardLayoutClasses, componentId, isCard } =
+    getOptionGroupLayout(component);
   const WrapperComponent = isCard ? FieldLabel : "div" as React.ElementType;
   return (
     <div className={cn("grid w-full gap-2", cardLayoutClasses === "horizontal" && "@3xl:grid-cols-2")}>
@@ -74,10 +72,8 @@ export function FormCheckboxGroup(
 }
 
 export function getReactCode(component: FormComponentModel): ReactCode {
-  const oneOptionHasLabelDescription = component.options?.some((option) => option.labelDescription);
-  const cardLayoutClasses = component.getField("properties.style.cardLayout");
-  const asCardClasses = generateTWClassesForAllViewports(component, "asCard");
-  const isCard = component.getField("properties.style.asCard") === "yes";
+  const { oneOptionHasLabelDescription, asCardClasses, cardLayoutClasses, isCard } =
+    getOptionGroupLayout(component);
   const WrapperComponent = isCard ? 'FieldLabel' : "div";
   return {
     template: `

@@ -93,11 +93,9 @@ export function SidebarLeft() {
 
   const ComponentItem = ({
     component,
-    index,
     isNew,
   }: {
     component: (typeof AVAILABLE_COMPONENTS)[0];
-    index: number;
     isNew: boolean;
   }) => {
     const {
@@ -155,11 +153,10 @@ export function SidebarLeft() {
             <SidebarGroup key={group.label}>
               <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
               <SidebarMenu className="gap-2">
-                {group.components.map((component, index) => (
+                {group.components.map((component) => (
                   <ComponentItem
                     key={component.id}
                     component={component}
-                    index={index}
                     isNew={NEW_COMPONENTS.includes(component.type)}
                   />
                 ))}

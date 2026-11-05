@@ -1,0 +1,232 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`handleCanvasDragEnd > adds a new component at every position 1`] = `
+"new -> a@0 left: add new; update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["added","properties.style.colSpan","4",false,true]; move undefined -> 0
+new -> a@0 right: add new; update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["added","properties.style.colSpan","4",false,true]; move undefined -> 1
+new -> a@0 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 0
+new -> a@0 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 2
+new -> b@1 left: add new; update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["added","properties.style.colSpan","4",false,true]; move undefined -> 1
+new -> b@1 right: add new; update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["added","properties.style.colSpan","4",false,true]; move undefined -> 2
+new -> b@1 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 0
+new -> b@1 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 2
+new -> c@2 left: add new; update ["c","properties.style.colSpan","6",false,true]; update ["added","properties.style.colSpan","6",false,true]; move undefined -> 2
+new -> c@2 right: add new; update ["c","properties.style.colSpan","6",false,true]; update ["added","properties.style.colSpan","6",false,true]; move undefined -> 3
+new -> c@2 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 2
+new -> c@2 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 3
+new -> d@3 left: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 3
+new -> d@3 right: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 4
+new -> d@3 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 3
+new -> d@3 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 6
+new -> e@4 left: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 4
+new -> e@4 right: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 5
+new -> e@4 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 3
+new -> e@4 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 6
+new -> f@5 left: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 5
+new -> f@5 right: add new; update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["added","properties.style.colSpan","3",false,true]; move undefined -> 6
+new -> f@5 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 3
+new -> f@5 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 6
+new -> g@6 left: add new; update ["g","properties.style.colSpan","6",false,true]; update ["added","properties.style.colSpan","6",false,true]; move undefined -> 6
+new -> g@6 right: add new; update ["g","properties.style.colSpan","6",false,true]; update ["added","properties.style.colSpan","6",false,true]; move undefined -> 7
+new -> g@6 top: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 6
+new -> g@6 bottom: add new; update ["added","properties.style.colSpan","12",false,true]; move undefined -> 7
+new -> empty-state: add new"
+`;
+
+exports[`handleCanvasDragEnd > moves every component to every position 1`] = `
+"a@0 -> a@0 left: (no-op)
+a@0 -> a@0 right: (no-op)
+a@0 -> a@0 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 0
+a@0 -> a@0 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> b@1 left: move 0 -> 1
+a@0 -> b@1 right: move 0 -> 1
+a@0 -> b@1 top: (no-op)
+a@0 -> b@1 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 1
+a@0 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> c@2 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 1
+a@0 -> c@2 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> d@3 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 3
+a@0 -> d@3 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 3
+a@0 -> d@3 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> d@3 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> e@4 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 4
+a@0 -> e@4 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 4
+a@0 -> e@4 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> e@4 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> f@5 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> f@5 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> f@5 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 2
+a@0 -> f@5 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 6
+a@0 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 6
+a@0 -> g@6 top: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 5
+a@0 -> g@6 bottom: update ["a","properties.style.colSpan","12",false,true]; update ["b","properties.style.colSpan","12",false,true]; move 0 -> 6
+b@1 -> a@0 left: move 1 -> 0
+b@1 -> a@0 right: move 1 -> 1
+b@1 -> a@0 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 0
+b@1 -> a@0 bottom: (no-op)
+b@1 -> b@1 left: (no-op)
+b@1 -> b@1 right: (no-op)
+b@1 -> b@1 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 0
+b@1 -> b@1 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> c@2 top: (no-op)
+b@1 -> c@2 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> d@3 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 3
+b@1 -> d@3 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 3
+b@1 -> d@3 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> d@3 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> e@4 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 4
+b@1 -> e@4 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 4
+b@1 -> e@4 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> e@4 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> f@5 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> f@5 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["b","properties.style.colSpan","3",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> f@5 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 2
+b@1 -> f@5 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 6
+b@1 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["b","properties.style.colSpan","6",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 6
+b@1 -> g@6 top: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 5
+b@1 -> g@6 bottom: update ["b","properties.style.colSpan","12",false,true]; update ["a","properties.style.colSpan","12",false,true]; move 1 -> 6
+c@2 -> a@0 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["c","properties.style.colSpan","4",false,true]; move 2 -> 0
+c@2 -> a@0 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["c","properties.style.colSpan","4",false,true]; move 2 -> 1
+c@2 -> a@0 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 0
+c@2 -> a@0 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 2
+c@2 -> b@1 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["c","properties.style.colSpan","4",false,true]; move 2 -> 1
+c@2 -> b@1 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["c","properties.style.colSpan","4",false,true]; move 2 -> 2
+c@2 -> b@1 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 0
+c@2 -> b@1 bottom: (no-op)
+c@2 -> c@2 left: (no-op)
+c@2 -> c@2 right: (no-op)
+c@2 -> c@2 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 2
+c@2 -> c@2 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 3
+c@2 -> d@3 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 3
+c@2 -> d@3 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 3
+c@2 -> d@3 top: (no-op)
+c@2 -> d@3 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 5
+c@2 -> e@4 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 4
+c@2 -> e@4 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 4
+c@2 -> e@4 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 2
+c@2 -> e@4 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 5
+c@2 -> f@5 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 5
+c@2 -> f@5 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["c","properties.style.colSpan","3",false,true]; move 2 -> 5
+c@2 -> f@5 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 2
+c@2 -> f@5 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 5
+c@2 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["c","properties.style.colSpan","6",false,true]; move 2 -> 6
+c@2 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["c","properties.style.colSpan","6",false,true]; move 2 -> 6
+c@2 -> g@6 top: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 5
+c@2 -> g@6 bottom: update ["c","properties.style.colSpan","12",false,true]; move 2 -> 6
+d@3 -> a@0 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 0
+d@3 -> a@0 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 1
+d@3 -> a@0 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 0
+d@3 -> a@0 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> b@1 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 1
+d@3 -> b@1 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> b@1 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 0
+d@3 -> b@1 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 3
+d@3 -> c@2 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> c@2 bottom: (no-op)
+d@3 -> d@3 left: (no-op)
+d@3 -> d@3 right: (no-op)
+d@3 -> d@3 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 3
+d@3 -> d@3 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 6
+d@3 -> e@4 left: move 3 -> 4
+d@3 -> e@4 right: move 3 -> 4
+d@3 -> e@4 top: (no-op)
+d@3 -> e@4 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 5
+d@3 -> f@5 left: move 3 -> 5
+d@3 -> f@5 right: move 3 -> 5
+d@3 -> f@5 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 2
+d@3 -> f@5 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 5
+d@3 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 6
+d@3 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 6
+d@3 -> g@6 top: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 5
+d@3 -> g@6 bottom: update ["d","properties.style.colSpan","12",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 3 -> 6
+e@4 -> a@0 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 0
+e@4 -> a@0 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 1
+e@4 -> a@0 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 0
+e@4 -> a@0 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 2
+e@4 -> b@1 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 1
+e@4 -> b@1 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["e","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 2
+e@4 -> b@1 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 0
+e@4 -> b@1 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 2
+e@4 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 2
+e@4 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 3
+e@4 -> c@2 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 2
+e@4 -> c@2 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 3
+e@4 -> d@3 left: move 4 -> 3
+e@4 -> d@3 right: move 4 -> 4
+e@4 -> d@3 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 3
+e@4 -> d@3 bottom: (no-op)
+e@4 -> e@4 left: (no-op)
+e@4 -> e@4 right: (no-op)
+e@4 -> e@4 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 3
+e@4 -> e@4 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 6
+e@4 -> f@5 left: move 4 -> 5
+e@4 -> f@5 right: move 4 -> 5
+e@4 -> f@5 top: (no-op)
+e@4 -> f@5 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 5
+e@4 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 6
+e@4 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 6
+e@4 -> g@6 top: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 5
+e@4 -> g@6 bottom: update ["e","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; move 4 -> 6
+f@5 -> a@0 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["f","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 0
+f@5 -> a@0 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["f","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 1
+f@5 -> a@0 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 0
+f@5 -> a@0 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 2
+f@5 -> b@1 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["f","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 1
+f@5 -> b@1 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["f","properties.style.colSpan","4",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 2
+f@5 -> b@1 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 0
+f@5 -> b@1 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 2
+f@5 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 2
+f@5 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 3
+f@5 -> c@2 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 2
+f@5 -> c@2 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 3
+f@5 -> d@3 left: move 5 -> 3
+f@5 -> d@3 right: move 5 -> 4
+f@5 -> d@3 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 3
+f@5 -> d@3 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 6
+f@5 -> e@4 left: move 5 -> 4
+f@5 -> e@4 right: move 5 -> 5
+f@5 -> e@4 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 3
+f@5 -> e@4 bottom: (no-op)
+f@5 -> f@5 left: (no-op)
+f@5 -> f@5 right: (no-op)
+f@5 -> f@5 top: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 3
+f@5 -> f@5 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 6
+f@5 -> g@6 left: update ["g","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 6
+f@5 -> g@6 right: update ["g","properties.style.colSpan","6",false,true]; update ["f","properties.style.colSpan","6",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 6
+f@5 -> g@6 top: (no-op)
+f@5 -> g@6 bottom: update ["f","properties.style.colSpan","12",false,true]; update ["d","properties.style.colSpan","6",false,true]; update ["e","properties.style.colSpan","6",false,true]; move 5 -> 6
+g@6 -> a@0 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["g","properties.style.colSpan","4",false,true]; move 6 -> 0
+g@6 -> a@0 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["g","properties.style.colSpan","4",false,true]; move 6 -> 1
+g@6 -> a@0 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 0
+g@6 -> a@0 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 2
+g@6 -> b@1 left: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["g","properties.style.colSpan","4",false,true]; move 6 -> 1
+g@6 -> b@1 right: update ["a","properties.style.colSpan","4",false,true]; update ["b","properties.style.colSpan","4",false,true]; update ["g","properties.style.colSpan","4",false,true]; move 6 -> 2
+g@6 -> b@1 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 0
+g@6 -> b@1 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 2
+g@6 -> c@2 left: update ["c","properties.style.colSpan","6",false,true]; update ["g","properties.style.colSpan","6",false,true]; move 6 -> 2
+g@6 -> c@2 right: update ["c","properties.style.colSpan","6",false,true]; update ["g","properties.style.colSpan","6",false,true]; move 6 -> 3
+g@6 -> c@2 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 2
+g@6 -> c@2 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 3
+g@6 -> d@3 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 3
+g@6 -> d@3 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 4
+g@6 -> d@3 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 3
+g@6 -> d@3 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 6
+g@6 -> e@4 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 4
+g@6 -> e@4 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 5
+g@6 -> e@4 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 3
+g@6 -> e@4 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 6
+g@6 -> f@5 left: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 5
+g@6 -> f@5 right: update ["d","properties.style.colSpan","3",false,true]; update ["e","properties.style.colSpan","3",false,true]; update ["f","properties.style.colSpan","3",false,true]; update ["g","properties.style.colSpan","3",false,true]; move 6 -> 6
+g@6 -> f@5 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 3
+g@6 -> f@5 bottom: (no-op)
+g@6 -> g@6 left: (no-op)
+g@6 -> g@6 right: (no-op)
+g@6 -> g@6 top: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 6
+g@6 -> g@6 bottom: update ["g","properties.style.colSpan","12",false,true]; move 6 -> 7"
+`;
