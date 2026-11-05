@@ -212,7 +212,7 @@ export const useFormBuilderStore = create<FormBuilderStore>()(
             selectedComponent: component
               ? new FormComponentModel(component)
               : null,
-            editor: component === null || component.category === "form" ? null : get().editor,
+            editor: component === null || component.type !== "text" ? null : get().editor,
           };
         }),
       moveComponent: (oldIndex: number, newIndex: number) => {

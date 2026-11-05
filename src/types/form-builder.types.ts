@@ -24,6 +24,8 @@ export type DesignPropertiesViews = {
   button: React.ReactNode;
   options: React.ReactNode;
   validation: React.ReactNode;
+  /** Component-specific settings (see SettingsGroup). */
+  settings?: React.ReactNode;
 };
 
 export type ReactCode = {

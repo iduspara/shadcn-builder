@@ -62,6 +62,9 @@ export class FormComponentModel {
         ...(input.properties?.style || {})
       },
       variant: input.properties?.variant || DEFAULT_PROPERTIES.variant,
+      ...(input.properties?.settings && {
+        settings: { ...input.properties.settings },
+      }),
     };
     this.content = input.content;
     this.description = input.description;

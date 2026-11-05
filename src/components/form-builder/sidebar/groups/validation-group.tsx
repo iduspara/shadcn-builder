@@ -32,7 +32,8 @@ const inputTypeValidationMap: Partial<InputTypeValidationMap> = {
   textarea: ["minLength", "maxLength", "contains", "notContains"],
   email: ["contains", "notContains"],
   password: ["minLength", "maxLength"],
-  tel: ["minLength", "maxLength"]
+  tel: ["minLength", "maxLength"],
+  "input-group": ["minLength", "maxLength", "contains", "notContains"],
 };
 
 const VALIDATION_OPTIONS = [

@@ -143,7 +143,8 @@ export const RowColumn = ({ component, index, form }: SortableRowProps) => {
       {...(enableDragging && mode === "editor" ? columnAttributes : {})}
       {...(enableDragging && mode === "editor" ? columnListeners : {})}
     >
-      {component.category === "form" && (
+      {/* Blocks interaction with the rendered component while editing; text stays editable */}
+      {component.type !== "text" && (
         <div
           className={cn(
             "absolute top-0 left-0 right-0 bottom-0",

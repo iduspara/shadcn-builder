@@ -13,7 +13,11 @@ import {
   FieldError,
 } from "@/components/ui/field";
 import { cn, generateTWClassesForAllViewports } from "@/lib/utils";
-import { renderComponent } from "@/config/available-components";
+import {
+  isStaticContentComponent,
+  renderComponent,
+  renderContentComponent,
+} from "@/config/available-components";
 import { FormComponentModel } from "@/models/FormComponent";
 import { FormWysiwygEditor } from "../form-components/wysiwyg/form-wysiwyg-editor";
 import { useState } from "react";
@@ -86,6 +90,14 @@ export function RenderEditorComponent({ form, component }: FormComponentProps) {
         );
       }}
     />
+  ) : isStaticContentComponent(component) ? (
+    <div
+      className="relative flex flex-col justify-center h-full"
+      key={component.id}
+      data-item-id={component.id}
+    >
+      {renderContentComponent(component)}
+    </div>
   ) : (
     <div
       className={cn(
