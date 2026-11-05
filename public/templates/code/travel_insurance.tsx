@@ -64,10 +64,10 @@ export default function TravelInsuranceApplication() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.702Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.409Z"),
       "text-input-1": "",
-      "date-input-1": new Date("2025-11-07T13:00:40.702Z"),
-      "date-input-2": new Date("2025-11-07T13:00:40.702Z"),
+      "date-input-1": new Date("2026-11-05T09:37:38.409Z"),
+      "date-input-2": new Date("2026-11-05T09:37:38.409Z"),
       "checkbox-group-0": [],
       "text-input-2": "",
     },
@@ -150,11 +150,7 @@ export default function TravelInsuranceApplication() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 
@@ -213,11 +209,7 @@ export default function TravelInsuranceApplication() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 
@@ -252,11 +244,7 @@ export default function TravelInsuranceApplication() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

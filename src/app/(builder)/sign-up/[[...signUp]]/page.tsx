@@ -33,7 +33,7 @@ export default function SignUpPage() {
                       footerActionLink: "text-blue-600 hover:text-blue-500",
                     },
                   }}
-                  redirectUrl="/"
+                  fallbackRedirectUrl="/"
                   signInUrl="/sign-in"
                 />
                 <div className="space-y-8 p-6 border-l">

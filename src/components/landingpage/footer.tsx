@@ -4,9 +4,7 @@ import {
   Coffee,
   CoffeeIcon,
   ExternalLink,
-  Github,
   Heart,
-  Twitter,
 } from "lucide-react";
 import Link from "next/link";
 import { Button, buttonVariants } from "../ui/button";

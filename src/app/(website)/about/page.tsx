@@ -9,12 +9,12 @@ import {
   Lightbulb,
   Target,
   ArrowRight,
-  Github,
   Coffee,
   Sparkles,
   Clock,
   CheckCircle,
 } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 
 // Real product logos as SVG components
 const ReactLogo = () => (
@@ -500,7 +500,7 @@ export default function AboutPage() {
         </Button>
         <Button size="lg" variant="outline" asChild>
           <Link href="https://github.com/iduspara/shadcn-builder">
-            <Github className="h-4 w-4 mr-2" />
+            <FaGithub className="h-4 w-4 mr-2" />
             View on GitHub
           </Link>
         </Button>

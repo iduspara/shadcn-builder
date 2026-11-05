@@ -59,7 +59,7 @@ export default function MedicalHistoryForm() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.288Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.158Z"),
       "text-input-1": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -147,11 +147,7 @@ export default function MedicalHistoryForm() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

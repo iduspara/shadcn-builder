@@ -8,8 +8,8 @@ import {
 import StarterKit from "@tiptap/starter-kit";
 import { Heading } from "@tiptap/extension-heading";
 import { Underline } from "@tiptap/extension-underline";
-import TextStyle from "@tiptap/extension-text-style";
-import TextAlign from "@tiptap/extension-text-align";
+import { TextStyle } from "@tiptap/extension-text-style";
+import { TextAlign } from "@tiptap/extension-text-align";
 
 import "./form-wysiwyg-editor.css";
 import { EditorToolbar } from "./editor-toolbar";
@@ -28,7 +28,7 @@ export const TextColorStyle = TextStyle.extend({
     return [
       {
         tag: "span",
-        getAttrs: (element) => {
+        getAttrs: (element: HTMLElement) => {
           return {
             class: element.classList.toString(),
           };
@@ -61,6 +61,10 @@ export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
             },
           },
           heading: false,
+          // Tiptap 3 bundles these in StarterKit. Underline is registered
+          // below, and links were never enabled in this editor.
+          underline: false,
+          link: false,
           bulletList: {
             HTMLAttributes: {
               class: "my-6 ml-6 list-disc [&>li]:mt-2",
@@ -73,7 +77,6 @@ export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
           },
         }),
         Heading.configure({ levels: [1, 2, 3, 4] }).extend({
-          levels: [1, 2, 3, 4],
           renderHTML({ node, HTMLAttributes }) {
             const level = this.options.levels.includes(node.attrs.level)
               ? node.attrs.level
@@ -111,6 +114,8 @@ export const FormWysiwygEditor: React.FC<FormWysiwygEditorProps> = memo(
       {
         editable: isEditable,
         immediatelyRender: true,
+        // Tiptap 3 no longer re-renders on every transaction by default.
+        shouldRerenderOnTransaction: true,
         extensions,
         content: value,
         onUpdate: ({ editor }) => {
