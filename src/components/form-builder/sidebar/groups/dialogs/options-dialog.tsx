@@ -107,11 +107,11 @@ export function OptionsDialog({
           </div>
         ))}
       </div>
-      <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="w-full">
-          <ListPlusIcon className="mr-2 h-4 w-4" />
-          Manage Options
-        </Button>
+      <DialogTrigger
+        render={<Button variant="outline" size="sm" className="w-full" />}
+      >
+        <ListPlusIcon className="mr-2 h-4 w-4" />
+        Manage Options
       </DialogTrigger>
       <DialogContent className={cn("sm:max-w-2xl px-0", showLabelDescription && "sm:max-w-4xl")}>
         <DialogHeader className="px-6">

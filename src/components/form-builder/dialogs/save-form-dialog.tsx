@@ -7,7 +7,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -50,12 +49,12 @@ import { useSaveForm } from "@/hooks/use-save-form";
 import { toast } from "sonner";
 
 interface SaveFormDialogProps {
-  children: React.ReactNode;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   forceSave?: boolean;
 }
 
-export function SaveFormDialog({ children, forceSave }: SaveFormDialogProps) {
-  const [open, setOpen] = useState(false);
+export function SaveFormDialog({ open, onOpenChange: setOpen, forceSave }: SaveFormDialogProps) {
   const [selectedForm, setSelectedForm] = useState<any>(null);
   const { userForms, isLoading } = useSavedForms();
   const { updateComponents, updateFormTitle, updateMode, updateFormId, formTitle, formId } =
@@ -83,42 +82,6 @@ export function SaveFormDialog({ children, forceSave }: SaveFormDialogProps) {
     }
   };
 
-  const handleSaveDirectly = async () => {
-    if (!canSave) {
-      toast.error("Please add some components before saving.");
-      return;
-    }
-
-    try {
-      const newFormId = await saveCurrentForm();
-      updateFormId(newFormId);
-      toast.success("Form saved successfully!");
-    } catch (error) {
-      console.error("Error saving form:", error);
-      toast.error(
-        error instanceof Error
-          ? error.message
-          : "Failed to save form. Please try again."
-      );
-    }
-  };
-
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    if (!canSave) {
-      return;
-    }
-
-    // If formId exists, save directly without showing dialog
-    if (formId && !forceSave) {
-      handleSaveDirectly();
-    } else {
-      // If no formId, show the dialog for new form creation
-      setOpen(true);
-    }
-  };
-
   const handleCancel = () => {
     setOpen(false);
   };
@@ -136,11 +99,6 @@ export function SaveFormDialog({ children, forceSave }: SaveFormDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <div onClick={handleClick}>
-          {children}
-        </div>
-      </DialogTrigger>
       <DialogContent className="lg:max-w-4xl p-0 gap-0">
         <DialogHeader className="px-6 py-4 border-b grow-0 self-start">
           <DialogTitle className="flex items-center gap-2">

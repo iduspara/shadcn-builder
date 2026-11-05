@@ -41,11 +41,18 @@ export function WelcomeDialog({ open, onOpenChange }: WelcomeDialogProps) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog
+      open={open}
+      disablePointerDismissal
+      onOpenChange={(nextOpen, eventDetails) => {
+        // The welcome dialog can only be closed through one of its actions
+        if (!nextOpen && eventDetails.reason === "escape-key") return;
+        onOpenChange(nextOpen);
+      }}
+    >
       <DialogContent
-        className="w-full lg:max-w-3xl overflow-y-auto pb-0 [&>button]:hidden"
-        onPointerDownOutside={(e) => e.preventDefault()}
-        onEscapeKeyDown={(e) => e.preventDefault()}
+        className="w-full lg:max-w-3xl overflow-y-auto pb-0"
+        showCloseButton={false}
       >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold flex items-center gap-2">

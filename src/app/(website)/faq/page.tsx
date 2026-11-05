@@ -309,7 +309,7 @@ export default function FAQPage() {
                 <h2 className="text-2xl font-semibold">{label}</h2>
               </div>
               
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion className="w-full">
                 {faqs.map((faq) => (
                   <AccordionItem key={faq.id} value={faq.id}>
                     <AccordionTrigger className="text-left hover:no-underline">
@@ -336,7 +336,7 @@ export default function FAQPage() {
       // Show single category
       <div className="space-y-6">
         {filteredFAQs.length > 0 ? (
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion className="w-full">
             {filteredFAQs.map((faq) => (
               <AccordionItem key={faq.id} value={faq.id}>
                 <AccordionTrigger className="text-left hover:no-underline">
@@ -379,15 +379,11 @@ export default function FAQPage() {
         Can`t find the answer you`re looking for? Feel free to reach out to the community.
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" asChild>
-          <Link href="https://github.com/iduspara/shadcn-builder/discussions">
+        <Button size="lg" nativeButton={false} render={<Link href="https://github.com/iduspara/shadcn-builder/discussions" />}>
             Ask on GitHub <ArrowRight className="h-4 w-4 ml-2" />
-          </Link>
         </Button>
-        <Button size="lg" variant="outline" asChild>
-          <a href="/builder">
+        <Button size="lg" variant="outline" nativeButton={false} render={<a href="/builder" />}>
             Try the Builder
-          </a>
         </Button>
       </div>
     </div>

@@ -12,6 +12,12 @@ import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
 import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 import { ViewportOverrideIndicator } from "@/components/form-builder/helpers/ViewportOverrideIndicator";
 
+const LABEL_POSITION_ITEMS = [
+  { value: "top", label: "Top" },
+  { value: "left", label: "Left" },
+  { value: "right", label: "Right" },
+];
+
 type propertiesWhitelist = "label" | "label_description" | "labelPosition" | "labelAlign" | "showLabel";
 
 export type LabelGroupProps = {
@@ -107,6 +113,7 @@ export function LabelGroup({ whitelist = ["label", "label_description", "labelPo
           <Label className="text-xs text-gray-400 pl-2">Label Position</Label>
           <div className="flex flex-row items-center gap-2">
           <Select
+            items={LABEL_POSITION_ITEMS}
             value={defaultValueLabelPosition}
             onValueChange={(value) =>
               handleChange("properties.style.labelPosition", value)
@@ -116,9 +123,11 @@ export function LabelGroup({ whitelist = ["label", "label_description", "labelPo
               <SelectValue placeholder="Select position" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="top">Top</SelectItem>
-              <SelectItem value="left">Left</SelectItem>
-              <SelectItem value="right">Right</SelectItem>
+              {LABEL_POSITION_ITEMS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           <ViewportOverrideIndicator

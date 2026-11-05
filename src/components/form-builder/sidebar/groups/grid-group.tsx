@@ -10,6 +10,14 @@ import {
 import { ViewportOverrideIndicator } from "@/components/form-builder/helpers/ViewportOverrideIndicator";
 import { ToggleGroupNav } from "@/components/form-builder/ui/toggle-group-nav";
 
+const COL_START_ITEMS = [
+  { value: "auto", label: "Auto" },
+  ...Array.from({ length: 12 }, (_, i) => ({
+    value: `${i + 1}`,
+    label: `${i + 1}`,
+  })),
+];
+
 export function GridGroup() {
   const { updateComponent, selectedComponent, viewport } =
     useFormBuilderStore();
@@ -109,6 +117,7 @@ export function GridGroup() {
         </Label>
         <div className="flex flex-row items-center gap-2">
           <Select
+            items={COL_START_ITEMS}
             value={defaultValueColStart}
             onValueChange={(value) =>
               handleChangeColStart("properties.style.colStart", value)
@@ -118,10 +127,9 @@ export function GridGroup() {
               <SelectValue placeholder="Select column start" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="auto">Auto</SelectItem>
-              {Array.from({ length: 12 }, (_, i) => i + 1).map((num) => (
-                <SelectItem key={num} value={`${num}`}>
-                  {num}
+              {COL_START_ITEMS.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.label}
                 </SelectItem>
               ))}
             </SelectContent>

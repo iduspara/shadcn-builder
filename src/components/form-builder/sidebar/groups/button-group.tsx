@@ -14,6 +14,19 @@ import { cn } from "@/lib/utils";
 import { CornerDownRightIcon } from "lucide-react";
 import { ToggleGroupNav } from "../../ui/toggle-group-nav";
 
+const BUTTON_TYPE_ITEMS = [
+  { value: "button", label: "Button" },
+  { value: "submit", label: "Submit" },
+  { value: "reset", label: "Reset" },
+];
+
+const BUTTON_VARIANT_ITEMS = [
+  { value: "default", label: "Default" },
+  { value: "outline", label: "Outline" },
+  { value: "ghost", label: "Ghost" },
+  { value: "link", label: "Link" },
+];
+
 type propertiesWhitelist = "type" | "content" | "variant" | "icon";
 
 export type ButtonGroupProps = {
@@ -73,6 +86,7 @@ export function ButtonGroup({
           <Label className="text-xs text-gray-400">Type</Label>
           <div className="flex flex-row items-center gap-2">
             <Select
+              items={BUTTON_TYPE_ITEMS}
               value={defaultInputType}
               onValueChange={(value) =>
                 handleChange("attributes.type", value, true)
@@ -82,9 +96,11 @@ export function ButtonGroup({
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="button">Button</SelectItem>
-                <SelectItem value="submit">Submit</SelectItem>
-                <SelectItem value="reset">Reset</SelectItem>
+                {BUTTON_TYPE_ITEMS.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -97,6 +113,7 @@ export function ButtonGroup({
           </Label>
           <div className="flex flex-row items-center gap-2">
             <Select
+              items={BUTTON_VARIANT_ITEMS}
               value={defaultValueVariant}
               onValueChange={(value) =>
                 handleChangeVariant("properties.variant", value)
@@ -106,10 +123,11 @@ export function ButtonGroup({
                 <SelectValue placeholder="Select variant" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="default">Default</SelectItem>
-                <SelectItem value="outline">Outline</SelectItem>
-                <SelectItem value="ghost">Ghost</SelectItem>
-                <SelectItem value="link">Link</SelectItem>
+                {BUTTON_VARIANT_ITEMS.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -138,7 +156,7 @@ export function ButtonGroup({
                     onValueChange={(value) =>
                       handleChange(
                         "properties.style.iconStrokeWidth",
-                        value[0],
+                        Array.isArray(value) ? value[0] : value,
                         true
                       )
                     }
