@@ -21,7 +21,13 @@ import { ValidationGroup } from "../sidebar/groups/validation-group";
 export function FormSelect(component: FormComponentModel, form: UseFormReturn<FieldValues, undefined>, field: ControllerRenderProps) {
   const componentId = component.getField("attributes.id") || component.id;
   return (
-    <Select key={component.id} value={field.value} name={field.name} onValueChange={field.onChange}>
+    <Select
+      key={component.id}
+      items={getSelectItems(component)}
+      value={field.value}
+      name={field.name}
+      onValueChange={field.onChange}
+    >
       <SelectTrigger
         id={componentId}
         className={cn(component.getField("attributes.class"), "w-full")}
@@ -40,12 +46,20 @@ export function FormSelect(component: FormComponentModel, form: UseFormReturn<Fi
 }
 
 
+/** Base UI's SelectValue needs the items to render a label instead of the raw value. */
+function getSelectItems(component: FormComponentModel) {
+  return (component.options ?? []).map((option) => ({
+    label: option.label,
+    value: option.value,
+  }));
+}
+
 export function getReactCode(component: FormComponentModel): ReactCode {
-  const componentId = component.getField("attributes.id") || component.id;
   return {
     template: `
     <Select
       key="${component.id}"
+      items={${JSON.stringify(getSelectItems(component))}}
       value={field.value}
       name={field.name}
       onValueChange={field.onChange}
