@@ -7,6 +7,8 @@ import { renderComponent } from "@/config/available-components";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { Field } from "@/components/ui/field";
+import { getSliderDefaultValue } from "@/components/form-builder/form-components/form-slider";
+import { getToggleGroupDefaultValue } from "@/components/form-builder/form-components/form-toggle-group";
 
 interface ComponentPreviewProps {
   component: FormComponentModel;
@@ -131,6 +133,16 @@ function getDefaultValues(component: FormComponentModel): Record<string, any> {
         [fieldName]: component.getField("attributes.value") || "",
       };
     
+    case "slider":
+      return {
+        [fieldName]: getSliderDefaultValue(component),
+      };
+
+    case "toggle-group":
+      return {
+        [fieldName]: getToggleGroupDefaultValue(component),
+      };
+
     case "credit-card":
       return {
         [fieldName]: {

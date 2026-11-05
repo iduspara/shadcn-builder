@@ -31,8 +31,14 @@ export function SidebarLeft() {
   const componentGroups: ComponentGroup[] = [
     {
       label: "Typography",
-      components: AVAILABLE_COMPONENTS.filter(
-        (comp) => comp.category === "content"
+      components: AVAILABLE_COMPONENTS.filter((comp) =>
+        ["text"].includes(comp.type)
+      ),
+    },
+    {
+      label: "Display",
+      components: AVAILABLE_COMPONENTS.filter((comp) =>
+        ["separator", "alert", "badge", "kbd", "spinner"].includes(comp.type)
       ),
     },
     {
@@ -48,15 +54,25 @@ export function SidebarLeft() {
           "url",
           "file",
           "credit-card",
+          "input-group",
+          "input-otp",
         ].includes(comp.type)
       ),
     },
     {
       label: "Selection Fields",
       components: AVAILABLE_COMPONENTS.filter((comp) =>
-        ["select", "native-select", "checkbox", "checkbox-group", "radio", "switch"].includes(
-          comp.type
-        )
+        [
+          "select",
+          "combobox",
+          "native-select",
+          "checkbox",
+          "checkbox-group",
+          "radio",
+          "switch",
+          "toggle-group",
+          "slider",
+        ].includes(comp.type)
       ),
     },
     {
@@ -68,7 +84,9 @@ export function SidebarLeft() {
     {
       label: "Buttons",
       components: AVAILABLE_COMPONENTS.filter((comp) =>
-        ["button", "submit-button", "reset-button"].includes(comp.type)
+        ["button", "submit-button", "reset-button", "button-group"].includes(
+          comp.type
+        )
       ),
     },
   ];

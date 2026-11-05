@@ -24,8 +24,13 @@ export function OptionsGroup() {
     }
   };
 
-  const showCheckbox =
-    selectedComponent.type !== "radio" && selectedComponent.type !== "select";
+  // "checked" marks default selections; meaningless for single-value pickers
+  const showCheckbox = ![
+    "radio",
+    "select",
+    "combobox",
+    "button-group",
+  ].includes(selectedComponent.type);
 
   return (
     <OptionsDialog

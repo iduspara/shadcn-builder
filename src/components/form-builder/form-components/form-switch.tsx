@@ -48,7 +48,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     <${WrapperComponent}
       key="${component.id}"
       className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-checked]]:border-primary"))}"
-      htmlFor="${escapeHtml(componentId)}"
+      ${isCard ? `htmlFor="${escapeHtml(componentId)}"` : ""}
     >
       <div className="grid gap-1.5 leading-none">
         <FieldLabel>

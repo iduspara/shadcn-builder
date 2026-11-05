@@ -83,7 +83,7 @@ export function InputGroup({
     updateComponent(selectedComponent.id, field, value, isValidForAllViewports);
   };
 
-  const showOptionsDropdown = ["radio", "select", "native-select"].includes(
+  const showOptionsDropdown = ["radio", "select", "native-select", "combobox"].includes(
     selectedComponent.type
   );
   const currentValue = String(selectedComponent.value ?? "");

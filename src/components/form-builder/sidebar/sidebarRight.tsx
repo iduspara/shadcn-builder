@@ -47,6 +47,7 @@ function PropertySection({ title, children, index }: PropertySectionProps) {
 
 const PROPERTY_SECTIONS = [
   { key: "options", title: "Data Options" },
+  { key: "settings", title: "Settings" },
   { key: "input", title: "Input" },
   { key: "label", title: "Label & Description" },
   { key: "button", title: "Button" },
@@ -83,7 +84,7 @@ export function SidebarRight() {
       );
     } else {
       const filteredPropertySections = PROPERTY_SECTIONS.filter((section) => {
-        return componentSidebarOptions[section.key] !== null;
+        return componentSidebarOptions[section.key] != null;
       });
 
       sidebarContent = (
