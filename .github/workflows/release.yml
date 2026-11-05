@@ -44,9 +44,12 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4
         with:
           semantic_version: 22
+          # semantic-release 22 bundles conventional-changelog-writer 7; newer
+          # conventionalcommits presets crash it ("RangeError: Invalid time value")
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
+            conventional-changelog-conventionalcommits@7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

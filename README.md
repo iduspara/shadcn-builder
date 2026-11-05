@@ -35,9 +35,13 @@ Have a suggestion, bug report, or feature idea?
 
 - [React](https://reactjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
+- [shadcn/ui](https://ui.shadcn.com/) (`base-vega` style)
+- [Base UI](https://base-ui.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 
+### Exported code
+
+Exported forms target shadcn/ui on Base UI, the `npx shadcn@latest init` default. They compose with `render` instead of `asChild` and use `data-open` / `data-checked` style selectors. In a project still on Radix, adapt the generated code before use.
 
 ## Contributing
 
