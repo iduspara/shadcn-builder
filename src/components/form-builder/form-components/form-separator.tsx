@@ -8,7 +8,7 @@ import { cn, escapeHtml } from "@/lib/utils";
 import { getComponentId, getGridClasses, getSetting, compactTemplate } from "./shared";
 
 const WRAPPER_CLASSES = {
-  horizontal: "flex items-center py-2",
+  horizontal: "flex w-full items-center py-2",
   vertical: "flex justify-center self-stretch",
 };
 
