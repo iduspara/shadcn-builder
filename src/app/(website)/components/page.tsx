@@ -27,6 +27,7 @@ import Link from "next/link";
 import * as LucideIcons from "lucide-react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ComponentPreview } from "@/components/form-builder/ui/component-preview";
+import CupertinoUIBanner from "@/components/landingpage/cupertino-ui-banner";
 
 type ViewMode = "grid" | "list";
 type FilterCategory = "all" | "form" | "content";
@@ -182,6 +183,7 @@ export default function ComponentsPage() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <CupertinoUIBanner variant="card" campaign="components" />
             {(allFilteredComponents).map((component) => (
               <ComponentCard key={component.id} component={component} />
             ))}

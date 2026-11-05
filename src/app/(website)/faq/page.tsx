@@ -24,6 +24,7 @@ import Header from "@/components/landingpage/header";
 import Footer from "@/components/landingpage/footer";
 import { cn } from "@/lib/utils";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import CupertinoUIBanner from "@/components/landingpage/cupertino-ui-banner";
 
 interface FAQItem {
   id: string;
@@ -366,8 +367,13 @@ export default function FAQPage() {
       </div>
     )}
 
+    <CupertinoUIBanner
+      campaign="faq"
+      className="mt-12 max-w-none px-0"
+    />
+
     {/* Contact Section */}
-    <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
+    <div className="bg-dotted border rounded-lg p-8 text-center space-y-4">
       <h3 className="text-2xl font-semibold">Still have questions?</h3>
       <p className="text-muted-foreground max-w-2xl mx-auto">
         Can`t find the answer you`re looking for? Feel free to reach out to the community.
