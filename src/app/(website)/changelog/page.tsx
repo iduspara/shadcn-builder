@@ -14,6 +14,7 @@ import { ArrowRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import CupertinoUIBanner from "@/components/landingpage/cupertino-ui-banner";
 
 async function fetchChangelog(): Promise<string> {
   // Use raw GitHub URL to fetch plain Markdown content
@@ -79,7 +80,12 @@ export default async function ChangelogPage() {
       </article>
     </section>
 
-    <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
+    <CupertinoUIBanner
+      campaign="changelog"
+      className="mt-12 max-w-none px-0"
+    />
+
+    <div className="bg-dotted border rounded-lg p-8 text-center space-y-4">
       <h3 className="text-2xl font-semibold">Ready to start building?</h3>
       <p className="text-muted-foreground max-w-2xl mx-auto">
         Take these components for a spin in our interactive form builder. 
