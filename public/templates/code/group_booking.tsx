@@ -64,7 +64,7 @@ export default function GroupTravelBooking() {
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.777Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.418Z"),
       "checkbox-group-0": [],
     },
   });
@@ -262,11 +262,7 @@ export default function GroupTravelBooking() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

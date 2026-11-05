@@ -63,9 +63,9 @@ export default function TelemedicineConsultation() {
     defaultValues: {
       "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.315Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.175Z"),
       "select-0": "",
-      "date-input-1": new Date("2025-11-07T13:00:40.315Z"),
+      "date-input-1": new Date("2026-11-05T09:37:38.175Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "checkbox-0": false,
@@ -149,11 +149,7 @@ export default function TelemedicineConsultation() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 
@@ -236,11 +232,7 @@ export default function TelemedicineConsultation() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

@@ -61,7 +61,7 @@ export default function LabTestRequest() {
       "text-input-1": "",
       "checkbox-group-0": [],
       "select-0": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.324Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.179Z"),
       "textarea-0": "",
     },
   });
@@ -445,11 +445,7 @@ export default function LabTestRequest() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

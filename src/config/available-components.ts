@@ -55,7 +55,7 @@ const typographyComponents: FormComponentModel[] = [
     label_info: "WYSIWYG Editor",
     type: "text",
     category: "content",
-    icon: "Text",
+    icon: "TextAlignStart",
     content: "Text",
   })
 ];
@@ -76,7 +76,7 @@ const formComponents: FormComponentModel[] = [
     label_info: "Multi-line text input",
     type: "textarea",
     category: "form",
-    icon: "AlignLeft",
+    icon: "TextAlignStart",
   }),
   new FormComponentModel({
     id: "number-input",

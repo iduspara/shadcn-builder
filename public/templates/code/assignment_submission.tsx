@@ -65,7 +65,7 @@ export default function AssignmentSubmission() {
       "text-input-1": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.096Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.049Z"),
       "textarea-0": "",
       "file-input-0": "",
       "checkbox-0": false,
@@ -213,11 +213,7 @@ export default function AssignmentSubmission() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 

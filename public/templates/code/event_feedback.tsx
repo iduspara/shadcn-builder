@@ -58,7 +58,7 @@ export default function EventFeedback() {
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2025-11-07T13:00:40.157Z"),
+      "date-input-0": new Date("2026-11-05T09:37:38.079Z"),
       "radio-0": "",
       "radio-1": "",
       "textarea-0": "",
@@ -185,11 +185,7 @@ export default function EventFeedback() {
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar
-                    mode="single"
-                    initialFocus
-                    onSelect={field.onChange}
-                  />
+                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
                 </PopoverContent>
               </Popover>
 
