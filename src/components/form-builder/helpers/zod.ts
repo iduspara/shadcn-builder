@@ -482,6 +482,24 @@ const createSliderSchemaAsString = (component: FormComponentModel): string => {
 
 const getOtpMessage = (length: number) => `Enter all ${length} characters`;
 
+const UNSAFE_JS_CHAR_MAP: Record<string, string> = {
+  "<": "\\u003C",
+  ">": "\\u003E",
+  "/": "\\u002F",
+  "\\": "\\\\",
+  "\b": "\\b",
+  "\f": "\\f",
+  "\n": "\\n",
+  "\r": "\\r",
+  "\t": "\\t",
+  "\0": "\\0",
+  "\u2028": "\\u2028",
+  "\u2029": "\\u2029",
+};
+
+const escapeUnsafeChars = (value: string): string =>
+  value.replace(/[<>\/\\\b\f\n\r\t\0\u2028\u2029]/g, (char) => UNSAFE_JS_CHAR_MAP[char] ?? char);
+
 const createInputOtpSchema = (
   component: FormComponentModel,
   isRequired: boolean
@@ -498,7 +516,7 @@ const createInputOtpSchemaAsString = (
   isRequired: boolean
 ): string => {
   const { length } = getInputOtpConfig(component);
-  const message = JSON.stringify(getOtpMessage(length));
+  const message = escapeUnsafeChars(JSON.stringify(getOtpMessage(length)));
   return isRequired
     ? `z.string().length(${length}, { message: ${message} })`
     : `z.string().refine((val) => val === "" || val.length === ${length}, { message: ${message} })`;
