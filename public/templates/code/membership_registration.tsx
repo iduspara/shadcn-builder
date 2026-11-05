@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function MembershipRegistration() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -67,12 +66,11 @@ export default function MembershipRegistration() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.197Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.403Z"),
       "select-0": "",
       "select-1": "",
       "textarea-0": "",
@@ -210,23 +208,30 @@ export default function MembershipRegistration() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -246,6 +251,12 @@ export default function MembershipRegistration() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Basic Membership", value: "basic" },
+                  { label: "Premium Membership", value: "premium" },
+                  { label: "VIP Membership", value: "vip" },
+                  { label: "Lifetime Membership", value: "lifetime" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -288,6 +299,12 @@ export default function MembershipRegistration() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Monthly", value: "monthly" },
+                  { label: "Quarterly", value: "quarterly" },
+                  { label: "Annual", value: "annual" },
+                  { label: "One-time Payment", value: "one-time" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -358,7 +375,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="events"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-events"
@@ -396,7 +413,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="networking"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-networking"
@@ -434,7 +451,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="resources"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-resources"
@@ -472,7 +489,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="discounts"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-discounts"
@@ -510,7 +527,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="newsletter"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-newsletter"
@@ -548,7 +565,7 @@ export default function MembershipRegistration() {
                     return (
                       <FieldLabel
                         key="community"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-community"
@@ -622,7 +639,7 @@ export default function MembershipRegistration() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"
@@ -655,7 +672,7 @@ export default function MembershipRegistration() {
 
               <div
                 key="checkbox-1"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-1"

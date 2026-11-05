@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function NewsletterSignup() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -67,7 +66,6 @@ export default function NewsletterSignup() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "text-input-0": "",
       "text-input-1": "",
@@ -192,7 +190,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="technology"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-technology"
@@ -230,7 +228,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="business"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-business"
@@ -268,7 +266,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="products"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-products"
@@ -306,7 +304,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="insights"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-insights"
@@ -344,7 +342,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="offers"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-offers"
@@ -382,7 +380,7 @@ export default function NewsletterSignup() {
                     return (
                       <FieldLabel
                         key="events"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-events"
@@ -440,7 +438,7 @@ export default function NewsletterSignup() {
               >
                 <FieldLabel
                   key="daily"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-daily"
                 >
                   <RadioGroupItem value="daily" id="radio-group-0-daily" />
@@ -456,7 +454,7 @@ export default function NewsletterSignup() {
 
                 <FieldLabel
                   key="weekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-weekly"
                 >
                   <RadioGroupItem value="weekly" id="radio-group-0-weekly" />
@@ -472,7 +470,7 @@ export default function NewsletterSignup() {
 
                 <FieldLabel
                   key="biweekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-biweekly"
                 >
                   <RadioGroupItem
@@ -491,7 +489,7 @@ export default function NewsletterSignup() {
 
                 <FieldLabel
                   key="monthly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-monthly"
                 >
                   <RadioGroupItem value="monthly" id="radio-group-0-monthly" />
@@ -530,7 +528,7 @@ export default function NewsletterSignup() {
               >
                 <FieldLabel
                   key="html"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-html"
                 >
                   <RadioGroupItem value="html" id="radio-group-1-html" />
@@ -546,7 +544,7 @@ export default function NewsletterSignup() {
 
                 <FieldLabel
                   key="text"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-text"
                 >
                   <RadioGroupItem value="text" id="radio-group-1-text" />
@@ -579,7 +577,7 @@ export default function NewsletterSignup() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"
@@ -614,7 +612,7 @@ export default function NewsletterSignup() {
 
               <div
                 key="checkbox-1"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-1"

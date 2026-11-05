@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function BugReport() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
@@ -57,7 +56,6 @@ export default function BugReport() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "select-1": "",
@@ -130,6 +128,13 @@ export default function BugReport() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Bug", value: "bug" },
+                  { label: "Crash", value: "crash" },
+                  { label: "Performance Issue", value: "performance" },
+                  { label: "UI/UX Issue", value: "ui" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -176,6 +181,12 @@ export default function BugReport() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Critical", value: "critical" },
+                  { label: "High", value: "high" },
+                  { label: "Medium", value: "medium" },
+                  { label: "Low", value: "low" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -266,6 +277,14 @@ export default function BugReport() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Windows", value: "windows" },
+                  { label: "macOS", value: "macos" },
+                  { label: "Linux", value: "linux" },
+                  { label: "iOS", value: "ios" },
+                  { label: "Android", value: "android" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

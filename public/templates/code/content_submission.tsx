@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ContentSubmission() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -54,7 +53,6 @@ export default function ContentSubmission() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
@@ -177,7 +175,7 @@ export default function ContentSubmission() {
               >
                 <FieldLabel
                   key="article"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-article"
                 >
                   <RadioGroupItem value="article" id="radio-group-0-article" />
@@ -193,7 +191,7 @@ export default function ContentSubmission() {
 
                 <FieldLabel
                   key="tutorial"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-tutorial"
                 >
                   <RadioGroupItem
@@ -212,7 +210,7 @@ export default function ContentSubmission() {
 
                 <FieldLabel
                   key="case-study"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-case-study"
                 >
                   <RadioGroupItem
@@ -231,7 +229,7 @@ export default function ContentSubmission() {
 
                 <FieldLabel
                   key="review"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-review"
                 >
                   <RadioGroupItem value="review" id="radio-group-0-review" />
@@ -284,6 +282,12 @@ export default function ContentSubmission() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "300-500 words", value: "500" },
+                  { label: "500-800 words", value: "800" },
+                  { label: "800-1200 words", value: "1200" },
+                  { label: "1200+ words", value: "2000+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

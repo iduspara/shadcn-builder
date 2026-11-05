@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function FeedbackForm() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string(),
     "email-input-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -52,7 +51,6 @@ export default function FeedbackForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "select-0": "",
@@ -146,6 +144,13 @@ export default function FeedbackForm() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Praise", value: "praise" },
+                  { label: "Suggestion", value: "suggestion" },
+                  { label: "Complaint", value: "complaint" },
+                  { label: "Question", value: "question" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -202,7 +207,7 @@ export default function FeedbackForm() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-excellent"
                 >
                   <RadioGroupItem value="excellent" id="radio-0-excellent" />
@@ -218,7 +223,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-0-good" />
@@ -231,7 +236,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="average"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-average"
                 >
                   <RadioGroupItem value="average" id="radio-0-average" />
@@ -247,7 +252,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-0-poor" />
@@ -283,7 +288,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="ease-of-use"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-ease-of-use"
@@ -321,7 +326,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="design"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-design"
@@ -359,7 +364,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="features"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-features"
@@ -397,7 +402,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="performance"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-performance"
@@ -435,7 +440,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="support"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-support"
@@ -491,7 +496,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="ease-of-use"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-ease-of-use"
@@ -529,7 +534,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="design"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-design"
@@ -567,7 +572,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="features"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-features"
@@ -605,7 +610,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="performance"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-performance"
@@ -643,7 +648,7 @@ export default function FeedbackForm() {
                     return (
                       <FieldLabel
                         key="support"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-support"
@@ -725,7 +730,7 @@ export default function FeedbackForm() {
               >
                 <FieldLabel
                   key="definitely"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-definitely"
                 >
                   <RadioGroupItem value="definitely" id="radio-1-definitely" />
@@ -741,7 +746,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="probably"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-probably"
                 >
                   <RadioGroupItem value="probably" id="radio-1-probably" />
@@ -757,7 +762,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="maybe"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-maybe"
                 >
                   <RadioGroupItem value="maybe" id="radio-1-maybe" />
@@ -770,7 +775,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="probably-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-probably-not"
                 >
                   <RadioGroupItem
@@ -789,7 +794,7 @@ export default function FeedbackForm() {
 
                 <FieldLabel
                   key="definitely-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-definitely-not"
                 >
                   <RadioGroupItem

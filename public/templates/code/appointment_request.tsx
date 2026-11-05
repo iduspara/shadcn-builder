@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function AppointmentRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -60,7 +59,6 @@ export default function AppointmentRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
@@ -204,6 +202,17 @@ export default function AppointmentRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Primary Care", value: "primary" },
+                  { label: "Cardiology", value: "cardiology" },
+                  { label: "Dermatology", value: "dermatology" },
+                  { label: "Orthopedics", value: "orthopedics" },
+                  { label: "Pediatrics", value: "pediatrics" },
+                  { label: "Gynecology", value: "gynecology" },
+                  { label: "Neurology", value: "neurology" },
+                  { label: "Psychiatry", value: "psychiatry" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -266,6 +275,14 @@ export default function AppointmentRequest() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Consultation", value: "consultation" },
+                  { label: "Follow-up", value: "follow-up" },
+                  { label: "Emergency", value: "emergency" },
+                  { label: "Routine Check-up", value: "routine" },
+                  { label: "Procedure", value: "procedure" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -316,6 +333,13 @@ export default function AppointmentRequest() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "As Soon As Possible", value: "asap" },
+                  { label: "This Week", value: "this-week" },
+                  { label: "Next Week", value: "next-week" },
+                  { label: "This Month", value: "this-month" },
+                  { label: "Flexible", value: "flexible" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -370,7 +394,7 @@ export default function AppointmentRequest() {
               >
                 <FieldLabel
                   key="morning"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-morning"
                 >
                   <RadioGroupItem value="morning" id="radio-0-morning" />
@@ -386,7 +410,7 @@ export default function AppointmentRequest() {
 
                 <FieldLabel
                   key="afternoon"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-afternoon"
                 >
                   <RadioGroupItem value="afternoon" id="radio-0-afternoon" />
@@ -402,7 +426,7 @@ export default function AppointmentRequest() {
 
                 <FieldLabel
                   key="evening"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-evening"
                 >
                   <RadioGroupItem value="evening" id="radio-0-evening" />
@@ -418,7 +442,7 @@ export default function AppointmentRequest() {
 
                 <FieldLabel
                   key="anytime"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-anytime"
                 >
                   <RadioGroupItem value="anytime" id="radio-0-anytime" />

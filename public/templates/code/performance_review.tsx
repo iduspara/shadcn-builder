@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function PerformanceReview() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -54,11 +53,10 @@ export default function PerformanceReview() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2026-11-05T09:37:37.930Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.114Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "textarea-1": "",
@@ -169,23 +167,30 @@ export default function PerformanceReview() {
               <FieldLabel className="flex w-auto!">Review Period</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -215,7 +220,7 @@ export default function PerformanceReview() {
               >
                 <FieldLabel
                   key="exceeds"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-exceeds"
                 >
                   <RadioGroupItem value="exceeds" id="radio-group-0-exceeds" />
@@ -231,7 +236,7 @@ export default function PerformanceReview() {
 
                 <FieldLabel
                   key="meets"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-meets"
                 >
                   <RadioGroupItem value="meets" id="radio-group-0-meets" />
@@ -247,7 +252,7 @@ export default function PerformanceReview() {
 
                 <FieldLabel
                   key="below"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-below"
                 >
                   <RadioGroupItem value="below" id="radio-group-0-below" />
@@ -263,7 +268,7 @@ export default function PerformanceReview() {
 
                 <FieldLabel
                   key="unsatisfactory"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-unsatisfactory"
                 >
                   <RadioGroupItem

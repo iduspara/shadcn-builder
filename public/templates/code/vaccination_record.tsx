@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function VaccinationRecordRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
       error: "This field is required.",
@@ -56,9 +55,8 @@ export default function VaccinationRecordRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.186Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.392Z"),
       "checkbox-group-0": [],
       "select-0": "",
       "radio-group-0": "",
@@ -128,23 +126,30 @@ export default function VaccinationRecordRequest() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -170,7 +175,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="covid"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-covid"
@@ -208,7 +213,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="flu"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-flu"
@@ -246,7 +251,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="childhood"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-childhood"
@@ -284,7 +289,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="travel"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-travel"
@@ -322,7 +327,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="all"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-all"
@@ -360,7 +365,7 @@ export default function VaccinationRecordRequest() {
                     return (
                       <FieldLabel
                         key="other"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-other"
@@ -410,6 +415,14 @@ export default function VaccinationRecordRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "School/University", value: "school" },
+                  { label: "Employment", value: "employment" },
+                  { label: "Travel Requirements", value: "travel" },
+                  { label: "Healthcare Provider", value: "healthcare" },
+                  { label: "Personal Records", value: "personal" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -468,7 +481,7 @@ export default function VaccinationRecordRequest() {
               >
                 <FieldLabel
                   key="email"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-email"
                 >
                   <RadioGroupItem value="email" id="radio-group-0-email" />
@@ -484,7 +497,7 @@ export default function VaccinationRecordRequest() {
 
                 <FieldLabel
                   key="mail"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-mail"
                 >
                   <RadioGroupItem value="mail" id="radio-group-0-mail" />
@@ -500,7 +513,7 @@ export default function VaccinationRecordRequest() {
 
                 <FieldLabel
                   key="pickup"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-pickup"
                 >
                   <RadioGroupItem value="pickup" id="radio-group-0-pickup" />
@@ -516,7 +529,7 @@ export default function VaccinationRecordRequest() {
 
                 <FieldLabel
                   key="fax"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-fax"
                 >
                   <RadioGroupItem value="fax" id="radio-group-0-fax" />

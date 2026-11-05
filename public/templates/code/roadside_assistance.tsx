@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function RoadsideAssistance() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "tel-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
@@ -49,7 +48,6 @@ export default function RoadsideAssistance() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "tel-input-0": "",
       "text-input-1": "",
@@ -172,7 +170,7 @@ export default function RoadsideAssistance() {
               >
                 <FieldLabel
                   key="flat-tire"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-flat-tire"
                 >
                   <RadioGroupItem
@@ -191,7 +189,7 @@ export default function RoadsideAssistance() {
 
                 <FieldLabel
                   key="battery"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-battery"
                 >
                   <RadioGroupItem value="battery" id="radio-group-0-battery" />
@@ -207,7 +205,7 @@ export default function RoadsideAssistance() {
 
                 <FieldLabel
                   key="lockout"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-lockout"
                 >
                   <RadioGroupItem value="lockout" id="radio-group-0-lockout" />
@@ -223,7 +221,7 @@ export default function RoadsideAssistance() {
 
                 <FieldLabel
                   key="engine"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-engine"
                 >
                   <RadioGroupItem value="engine" id="radio-group-0-engine" />

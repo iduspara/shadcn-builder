@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function SpeakerApplication() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -53,7 +52,6 @@ export default function SpeakerApplication() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
@@ -189,6 +187,12 @@ export default function SpeakerApplication() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "15 minutes", value: "15" },
+                  { label: "30 minutes", value: "30" },
+                  { label: "45 minutes", value: "45" },
+                  { label: "60 minutes", value: "60" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

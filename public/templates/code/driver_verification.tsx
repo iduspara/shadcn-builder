@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function AdditionalDriverVerification() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -53,11 +52,10 @@ export default function AdditionalDriverVerification() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
-      "date-input-0": new Date("2026-11-05T09:37:37.960Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.140Z"),
       "text-input-3": "",
       "select-0": "",
       "file-input-0": "",
@@ -175,23 +173,30 @@ export default function AdditionalDriverVerification() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -237,6 +242,14 @@ export default function AdditionalDriverVerification() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "California", value: "us-ca" },
+                  { label: "New York", value: "us-ny" },
+                  { label: "Texas", value: "us-tx" },
+                  { label: "Florida", value: "us-fl" },
+                  { label: "Canada", value: "canada" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

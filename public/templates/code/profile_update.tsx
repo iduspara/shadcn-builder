@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function UpdateProfile() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -54,7 +53,6 @@ export default function UpdateProfile() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",

@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function UnsubscribeRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -51,7 +50,6 @@ export default function UnsubscribeRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "radio-group-0": "",
       "textarea-0": "",
@@ -130,7 +128,7 @@ export default function UnsubscribeRequest() {
               >
                 <FieldLabel
                   key="too-frequent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-too-frequent"
                 >
                   <RadioGroupItem
@@ -149,7 +147,7 @@ export default function UnsubscribeRequest() {
 
                 <FieldLabel
                   key="not-relevant"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-not-relevant"
                 >
                   <RadioGroupItem
@@ -168,7 +166,7 @@ export default function UnsubscribeRequest() {
 
                 <FieldLabel
                   key="never-signed"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-never-signed"
                 >
                   <RadioGroupItem
@@ -187,7 +185,7 @@ export default function UnsubscribeRequest() {
 
                 <FieldLabel
                   key="temporary"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-temporary"
                 >
                   <RadioGroupItem
@@ -206,7 +204,7 @@ export default function UnsubscribeRequest() {
 
                 <FieldLabel
                   key="other"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-other"
                 >
                   <RadioGroupItem value="other" id="radio-group-0-other" />
@@ -263,7 +261,7 @@ export default function UnsubscribeRequest() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function PatientRegistration() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -59,10 +58,9 @@ export default function PatientRegistration() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.146Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.348Z"),
       "email-input-0": "",
       "tel-input-0": "",
       "textarea-0": "",
@@ -155,23 +153,30 @@ export default function PatientRegistration() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -307,6 +312,15 @@ export default function PatientRegistration() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Blue Cross Blue Shield", value: "bluecross" },
+                  { label: "Aetna", value: "aetna" },
+                  { label: "Cigna", value: "cigna" },
+                  { label: "UnitedHealth", value: "unitedhealth" },
+                  { label: "Medicare", value: "medicare" },
+                  { label: "Medicaid", value: "medicaid" },
+                  { label: "No Insurance", value: "none" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

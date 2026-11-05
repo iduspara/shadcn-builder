@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function FlightBooking() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -69,15 +68,14 @@ export default function FlightBooking() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
       "text-input-2": "",
       "text-input-3": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.380Z"),
-      "date-input-1": new Date("2026-11-05T09:37:38.380Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.603Z"),
+      "date-input-1": new Date("2026-11-05T12:21:24.603Z"),
       "select-0": "",
       "select-1": "",
       "radio-0": "",
@@ -255,23 +253,30 @@ export default function FlightBooking() {
               <FieldLabel className="flex w-auto!">Departure Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -290,23 +295,30 @@ export default function FlightBooking() {
               <FieldLabel className="flex w-auto!">Return Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-1"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-1"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -326,6 +338,14 @@ export default function FlightBooking() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "1 Passenger", value: "1" },
+                  { label: "2 Passengers", value: "2" },
+                  { label: "3 Passengers", value: "3" },
+                  { label: "4 Passengers", value: "4" },
+                  { label: "5 Passengers", value: "5" },
+                  { label: "6+ Passengers", value: "6+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -376,6 +396,12 @@ export default function FlightBooking() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Economy", value: "economy" },
+                  { label: "Premium Economy", value: "premium-economy" },
+                  { label: "Business", value: "business" },
+                  { label: "First Class", value: "first" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -426,7 +452,7 @@ export default function FlightBooking() {
               >
                 <FieldLabel
                   key="round-trip"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-round-trip"
                 >
                   <RadioGroupItem value="round-trip" id="radio-0-round-trip" />
@@ -442,7 +468,7 @@ export default function FlightBooking() {
 
                 <FieldLabel
                   key="one-way"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-one-way"
                 >
                   <RadioGroupItem value="one-way" id="radio-0-one-way" />
@@ -458,7 +484,7 @@ export default function FlightBooking() {
 
                 <FieldLabel
                   key="multi-city"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-multi-city"
                 >
                   <RadioGroupItem value="multi-city" id="radio-0-multi-city" />
@@ -513,7 +539,7 @@ export default function FlightBooking() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

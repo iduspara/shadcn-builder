@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function SoftwareLicenseRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z
@@ -55,7 +54,6 @@ export default function SoftwareLicenseRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "checkbox-group-0": [],
@@ -155,7 +153,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="office"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-office"
@@ -193,7 +191,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="adobe"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-adobe"
@@ -231,7 +229,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="autocad"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-autocad"
@@ -269,7 +267,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="jira"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-jira"
@@ -307,7 +305,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="slack"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-slack"
@@ -345,7 +343,7 @@ export default function SoftwareLicenseRequest() {
                     return (
                       <FieldLabel
                         key="other"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-other"
@@ -393,6 +391,12 @@ export default function SoftwareLicenseRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Monthly", value: "monthly" },
+                  { label: "Annual", value: "annual" },
+                  { label: "Perpetual", value: "perpetual" },
+                  { label: "Trial/Evaluation", value: "trial" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -435,6 +439,12 @@ export default function SoftwareLicenseRequest() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Low", value: "low" },
+                  { label: "Medium", value: "medium" },
+                  { label: "High", value: "high" },
+                  { label: "Urgent", value: "urgent" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

@@ -36,7 +36,6 @@ import { CalendarIcon } from "lucide-react";
 
 export default function ClientOnboarding() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -58,7 +57,6 @@ export default function ClientOnboarding() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -196,6 +194,14 @@ export default function ClientOnboarding() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Technology", value: "technology" },
+                  { label: "Healthcare", value: "healthcare" },
+                  { label: "Finance", value: "finance" },
+                  { label: "Retail", value: "retail" },
+                  { label: "Manufacturing", value: "manufacturing" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -246,6 +252,13 @@ export default function ClientOnboarding() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "1-10 employees", value: "1-10" },
+                  { label: "11-50 employees", value: "11-50" },
+                  { label: "51-200 employees", value: "51-200" },
+                  { label: "201-500 employees", value: "201-500" },
+                  { label: "500+ employees", value: "500+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -300,7 +313,7 @@ export default function ClientOnboarding() {
                     return (
                       <FieldLabel
                         key="consulting"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-consulting"
@@ -338,7 +351,7 @@ export default function ClientOnboarding() {
                     return (
                       <FieldLabel
                         key="implementation"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-implementation"
@@ -379,7 +392,7 @@ export default function ClientOnboarding() {
                     return (
                       <FieldLabel
                         key="support"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-support"
@@ -417,7 +430,7 @@ export default function ClientOnboarding() {
                     return (
                       <FieldLabel
                         key="training"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-training"
@@ -455,7 +468,7 @@ export default function ClientOnboarding() {
                     return (
                       <FieldLabel
                         key="maintenance"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-maintenance"

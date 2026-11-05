@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function EventBooking() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -61,7 +60,6 @@ export default function EventBooking() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
@@ -179,6 +177,14 @@ export default function EventBooking() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "1 Ticket", value: "1" },
+                  { label: "2 Tickets", value: "2" },
+                  { label: "3 Tickets", value: "3" },
+                  { label: "4 Tickets", value: "4" },
+                  { label: "5 Tickets", value: "5" },
+                  { label: "6+ Tickets", value: "6+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -229,6 +235,13 @@ export default function EventBooking() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "General Admission", value: "general" },
+                  { label: "VIP", value: "vip" },
+                  { label: "Student", value: "student" },
+                  { label: "Senior", value: "senior" },
+                  { label: "Early Bird", value: "early-bird" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -283,7 +296,7 @@ export default function EventBooking() {
                     return (
                       <FieldLabel
                         key="wheelchair"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-wheelchair"
@@ -321,7 +334,7 @@ export default function EventBooking() {
                     return (
                       <FieldLabel
                         key="dietary"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-dietary"
@@ -359,7 +372,7 @@ export default function EventBooking() {
                     return (
                       <FieldLabel
                         key="interpreter"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-interpreter"
@@ -397,7 +410,7 @@ export default function EventBooking() {
                     return (
                       <FieldLabel
                         key="none"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-none"
@@ -469,7 +482,7 @@ export default function EventBooking() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

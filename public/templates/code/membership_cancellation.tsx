@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function MembershipCancellation() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -62,12 +61,11 @@ export default function MembershipCancellation() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
       "radio-group-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.227Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.436Z"),
       "textarea-0": "",
       "checkbox-0": false,
     },
@@ -191,7 +189,7 @@ export default function MembershipCancellation() {
               >
                 <FieldLabel
                   key="cost"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-cost"
                 >
                   <RadioGroupItem value="cost" id="radio-group-0-cost" />
@@ -207,7 +205,7 @@ export default function MembershipCancellation() {
 
                 <FieldLabel
                   key="not-using"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-not-using"
                 >
                   <RadioGroupItem
@@ -226,7 +224,7 @@ export default function MembershipCancellation() {
 
                 <FieldLabel
                   key="moving"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-moving"
                 >
                   <RadioGroupItem value="moving" id="radio-group-0-moving" />
@@ -242,7 +240,7 @@ export default function MembershipCancellation() {
 
                 <FieldLabel
                   key="dissatisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-dissatisfied"
                 >
                   <RadioGroupItem
@@ -261,7 +259,7 @@ export default function MembershipCancellation() {
 
                 <FieldLabel
                   key="other"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-other"
                 >
                   <RadioGroupItem value="other" id="radio-group-0-other" />
@@ -293,23 +291,30 @@ export default function MembershipCancellation() {
               </FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -355,7 +360,7 @@ export default function MembershipCancellation() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

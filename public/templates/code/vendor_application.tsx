@@ -36,7 +36,6 @@ import { CalendarIcon } from "lucide-react";
 
 export default function VendorApplication() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -57,7 +56,6 @@ export default function VendorApplication() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -224,7 +222,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="consulting"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-consulting"
@@ -262,7 +260,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="software"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-software"
@@ -300,7 +298,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="marketing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-marketing"
@@ -338,7 +336,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="manufacturing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-manufacturing"
@@ -377,7 +375,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="logistics"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-logistics"
@@ -415,7 +413,7 @@ export default function VendorApplication() {
                     return (
                       <FieldLabel
                         key="other"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-other"

@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function PushNotificationSettings() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
@@ -49,7 +48,6 @@ export default function PushNotificationSettings() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "checkbox-group-0": [],
@@ -119,6 +117,12 @@ export default function PushNotificationSettings() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Mobile Device", value: "mobile" },
+                  { label: "Desktop Computer", value: "desktop" },
+                  { label: "Tablet", value: "tablet" },
+                  { label: "Web Browser", value: "browser" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -169,7 +173,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="messages"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-messages"
@@ -207,7 +211,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="reminders"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-reminders"
@@ -245,7 +249,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="updates"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-updates"
@@ -283,7 +287,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="social"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-social"
@@ -321,7 +325,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="news"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-news"
@@ -359,7 +363,7 @@ export default function PushNotificationSettings() {
                     return (
                       <FieldLabel
                         key="emergency"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-emergency"
@@ -415,7 +419,7 @@ export default function PushNotificationSettings() {
               >
                 <FieldLabel
                   key="none"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-none"
                 >
                   <RadioGroupItem value="none" id="radio-group-0-none" />
@@ -431,7 +435,7 @@ export default function PushNotificationSettings() {
 
                 <FieldLabel
                   key="night"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-night"
                 >
                   <RadioGroupItem value="night" id="radio-group-0-night" />
@@ -447,7 +451,7 @@ export default function PushNotificationSettings() {
 
                 <FieldLabel
                   key="work"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-work"
                 >
                   <RadioGroupItem value="work" id="radio-group-0-work" />
@@ -463,7 +467,7 @@ export default function PushNotificationSettings() {
 
                 <FieldLabel
                   key="custom"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-custom"
                 >
                   <RadioGroupItem value="custom" id="radio-group-0-custom" />

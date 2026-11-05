@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function StudentEnrollment() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -59,10 +58,9 @@ export default function StudentEnrollment() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.019Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.210Z"),
       "select-0": "",
       "text-input-2": "",
       "email-input-0": "",
@@ -158,23 +156,30 @@ export default function StudentEnrollment() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -194,6 +199,21 @@ export default function StudentEnrollment() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Kindergarten", value: "k" },
+                  { label: "1st Grade", value: "1" },
+                  { label: "2nd Grade", value: "2" },
+                  { label: "3rd Grade", value: "3" },
+                  { label: "4th Grade", value: "4" },
+                  { label: "5th Grade", value: "5" },
+                  { label: "6th Grade", value: "6" },
+                  { label: "7th Grade", value: "7" },
+                  { label: "8th Grade", value: "8" },
+                  { label: "9th Grade", value: "9" },
+                  { label: "10th Grade", value: "10" },
+                  { label: "11th Grade", value: "11" },
+                  { label: "12th Grade", value: "12" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -394,7 +414,7 @@ export default function StudentEnrollment() {
                     return (
                       <FieldLabel
                         key="iep"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-iep"
@@ -432,7 +452,7 @@ export default function StudentEnrollment() {
                     return (
                       <FieldLabel
                         key="504"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-504"
@@ -470,7 +490,7 @@ export default function StudentEnrollment() {
                     return (
                       <FieldLabel
                         key="esl"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-esl"
@@ -508,7 +528,7 @@ export default function StudentEnrollment() {
                     return (
                       <FieldLabel
                         key="gifted"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-gifted"
@@ -546,7 +566,7 @@ export default function StudentEnrollment() {
                     return (
                       <FieldLabel
                         key="none"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-none"

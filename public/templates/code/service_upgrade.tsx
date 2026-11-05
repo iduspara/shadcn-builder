@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function ServiceUpgradeRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -54,13 +53,12 @@ export default function ServiceUpgradeRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
       "select-1": "",
       "checkbox-group-0": [],
-      "date-input-0": new Date("2026-11-05T09:37:38.323Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.546Z"),
       "textarea-0": "",
     },
   });
@@ -149,6 +147,13 @@ export default function ServiceUpgradeRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Basic Plan", value: "basic" },
+                  { label: "Standard Plan", value: "standard" },
+                  { label: "Premium Plan", value: "premium" },
+                  { label: "Enterprise Plan", value: "enterprise" },
+                  { label: "Custom Plan", value: "custom" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -195,6 +200,12 @@ export default function ServiceUpgradeRequest() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Standard Plan", value: "standard" },
+                  { label: "Premium Plan", value: "premium" },
+                  { label: "Enterprise Plan", value: "enterprise" },
+                  { label: "Custom Solution", value: "custom" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -245,7 +256,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="priority-support"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-priority-support"
@@ -286,7 +297,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="extra-storage"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-extra-storage"
@@ -325,7 +336,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="api-access"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-api-access"
@@ -363,7 +374,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="analytics"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-analytics"
@@ -401,7 +412,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="integrations"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-integrations"
@@ -439,7 +450,7 @@ export default function ServiceUpgradeRequest() {
                     return (
                       <FieldLabel
                         key="backup"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-backup"
@@ -488,23 +499,30 @@ export default function ServiceUpgradeRequest() {
               </FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 

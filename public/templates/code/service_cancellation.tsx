@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function ServiceCancellation() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -56,12 +55,11 @@ export default function ServiceCancellation() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
       "radio-group-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.319Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.538Z"),
       "textarea-0": "",
     },
   });
@@ -180,7 +178,7 @@ export default function ServiceCancellation() {
               >
                 <FieldLabel
                   key="cost"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-cost"
                 >
                   <RadioGroupItem value="cost" id="radio-group-0-cost" />
@@ -196,7 +194,7 @@ export default function ServiceCancellation() {
 
                 <FieldLabel
                   key="moving"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-moving"
                 >
                   <RadioGroupItem value="moving" id="radio-group-0-moving" />
@@ -212,7 +210,7 @@ export default function ServiceCancellation() {
 
                 <FieldLabel
                   key="dissatisfied"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-dissatisfied"
                 >
                   <RadioGroupItem
@@ -231,7 +229,7 @@ export default function ServiceCancellation() {
 
                 <FieldLabel
                   key="competitor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-competitor"
                 >
                   <RadioGroupItem
@@ -250,7 +248,7 @@ export default function ServiceCancellation() {
 
                 <FieldLabel
                   key="other"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-other"
                 >
                   <RadioGroupItem value="other" id="radio-group-0-other" />
@@ -282,23 +280,30 @@ export default function ServiceCancellation() {
               </FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 

@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function EventCateringRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -53,10 +52,9 @@ export default function EventCateringRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.103Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.299Z"),
       "select-0": "",
       "checkbox-group-0": [],
       "text-input-2": "",
@@ -147,23 +145,30 @@ export default function EventCateringRequest() {
               <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -183,6 +188,14 @@ export default function EventCateringRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Breakfast", value: "breakfast" },
+                  { label: "Lunch", value: "lunch" },
+                  { label: "Dinner", value: "dinner" },
+                  { label: "Cocktail Reception", value: "cocktail" },
+                  { label: "Buffet Service", value: "buffet" },
+                  { label: "Light Refreshments", value: "snacks" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -241,7 +254,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="vegetarian"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-vegetarian"
@@ -279,7 +292,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="vegan"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-vegan"
@@ -317,7 +330,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="gluten-free"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-gluten-free"
@@ -355,7 +368,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="halal"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-halal"
@@ -393,7 +406,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="kosher"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-kosher"
@@ -431,7 +444,7 @@ export default function EventCateringRequest() {
                     return (
                       <FieldLabel
                         key="allergies"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-allergies"
