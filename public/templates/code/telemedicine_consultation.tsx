@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function TelemedicineConsultation() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
       error: "This field is required.",
@@ -61,11 +60,10 @@ export default function TelemedicineConsultation() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.175Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.377Z"),
       "select-0": "",
-      "date-input-1": new Date("2026-11-05T09:37:38.175Z"),
+      "date-input-1": new Date("2026-11-05T12:21:24.377Z"),
       "radio-group-0": "",
       "textarea-0": "",
       "checkbox-0": false,
@@ -133,23 +131,30 @@ export default function TelemedicineConsultation() {
               <FieldLabel className="flex w-auto!">Date of Birth</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -171,6 +176,13 @@ export default function TelemedicineConsultation() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "General Consultation", value: "general" },
+                  { label: "Follow-up Visit", value: "follow-up" },
+                  { label: "Mental Health", value: "mental-health" },
+                  { label: "Dermatology", value: "dermatology" },
+                  { label: "Nutrition Counseling", value: "nutrition" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -216,23 +228,30 @@ export default function TelemedicineConsultation() {
               <FieldLabel className="flex w-auto!">Preferred Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-1"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-1"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -260,7 +279,7 @@ export default function TelemedicineConsultation() {
               >
                 <FieldLabel
                   key="morning"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-morning"
                 >
                   <RadioGroupItem value="morning" id="radio-group-0-morning" />
@@ -276,7 +295,7 @@ export default function TelemedicineConsultation() {
 
                 <FieldLabel
                   key="afternoon"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-afternoon"
                 >
                   <RadioGroupItem
@@ -295,7 +314,7 @@ export default function TelemedicineConsultation() {
 
                 <FieldLabel
                   key="evening"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-evening"
                 >
                   <RadioGroupItem value="evening" id="radio-group-0-evening" />
@@ -352,7 +371,7 @@ export default function TelemedicineConsultation() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

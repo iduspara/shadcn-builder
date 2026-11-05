@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function HotelBooking() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -63,13 +62,12 @@ export default function HotelBooking() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.386Z"),
-      "date-input-1": new Date("2026-11-05T09:37:38.386Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.609Z"),
+      "date-input-1": new Date("2026-11-05T12:21:24.609Z"),
       "select-0": "",
       "select-1": "",
       "select-2": "",
@@ -203,23 +201,30 @@ export default function HotelBooking() {
               <FieldLabel className="flex w-auto!">Check-in Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -238,23 +243,30 @@ export default function HotelBooking() {
               <FieldLabel className="flex w-auto!">Check-out Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-1"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-1"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -274,6 +286,14 @@ export default function HotelBooking() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Single Room", value: "single" },
+                  { label: "Double Room", value: "double" },
+                  { label: "Twin Room", value: "twin" },
+                  { label: "Triple Room", value: "triple" },
+                  { label: "Suite", value: "suite" },
+                  { label: "Family Room", value: "family" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -324,6 +344,14 @@ export default function HotelBooking() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "1 Guest", value: "1" },
+                  { label: "2 Guests", value: "2" },
+                  { label: "3 Guests", value: "3" },
+                  { label: "4 Guests", value: "4" },
+                  { label: "5 Guests", value: "5" },
+                  { label: "6+ Guests", value: "6+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -374,6 +402,13 @@ export default function HotelBooking() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Standard", value: "standard" },
+                  { label: "Deluxe", value: "deluxe" },
+                  { label: "Premium", value: "premium" },
+                  { label: "Executive", value: "executive" },
+                  { label: "Presidential", value: "presidential" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -426,7 +461,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="early-checkin"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-early-checkin"
@@ -465,7 +500,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="late-checkout"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-late-checkout"
@@ -504,7 +539,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="non-smoking"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-non-smoking"
@@ -542,7 +577,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="accessible"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-accessible"
@@ -580,7 +615,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="connecting"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-connecting"
@@ -618,7 +653,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="high-floor"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-high-floor"
@@ -656,7 +691,7 @@ export default function HotelBooking() {
                     return (
                       <FieldLabel
                         key="quiet"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-quiet"

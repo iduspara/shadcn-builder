@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function StudentFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -52,7 +51,6 @@ export default function StudentFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "select-0": "",
@@ -146,6 +144,12 @@ export default function StudentFeedback() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Elementary School", value: "elementary" },
+                  { label: "Middle School", value: "middle" },
+                  { label: "High School", value: "high" },
+                  { label: "College/University", value: "college" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -188,6 +192,15 @@ export default function StudentFeedback() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Mathematics", value: "math" },
+                  { label: "Science", value: "science" },
+                  { label: "English/Language Arts", value: "english" },
+                  { label: "History/Social Studies", value: "history" },
+                  { label: "Arts & Music", value: "arts" },
+                  { label: "Physical Education", value: "physical" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -252,7 +265,7 @@ export default function StudentFeedback() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-excellent"
                 >
                   <RadioGroupItem value="excellent" id="radio-0-excellent" />
@@ -268,7 +281,7 @@ export default function StudentFeedback() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-0-good" />
@@ -281,7 +294,7 @@ export default function StudentFeedback() {
 
                 <FieldLabel
                   key="average"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-average"
                 >
                   <RadioGroupItem value="average" id="radio-0-average" />
@@ -297,7 +310,7 @@ export default function StudentFeedback() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-0-poor" />

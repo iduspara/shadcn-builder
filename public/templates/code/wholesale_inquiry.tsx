@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function WholesaleInquiry() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -54,7 +53,6 @@ export default function WholesaleInquiry() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -193,6 +191,12 @@ export default function WholesaleInquiry() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "$1,000 - $5,000", value: "1k-5k" },
+                  { label: "$5,000 - $10,000", value: "5k-10k" },
+                  { label: "$10,000 - $25,000", value: "10k-25k" },
+                  { label: "$25,000+", value: "25k+" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -243,7 +247,7 @@ export default function WholesaleInquiry() {
                     return (
                       <FieldLabel
                         key="electronics"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-electronics"
@@ -281,7 +285,7 @@ export default function WholesaleInquiry() {
                     return (
                       <FieldLabel
                         key="clothing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-clothing"
@@ -319,7 +323,7 @@ export default function WholesaleInquiry() {
                     return (
                       <FieldLabel
                         key="home"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-home"
@@ -357,7 +361,7 @@ export default function WholesaleInquiry() {
                     return (
                       <FieldLabel
                         key="sports"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-sports"

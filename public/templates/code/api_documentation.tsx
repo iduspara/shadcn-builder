@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function APIDocumentationFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
@@ -55,7 +54,6 @@ export default function APIDocumentationFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "select-1": "",
@@ -130,6 +128,14 @@ export default function APIDocumentationFeedback() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Getting Started", value: "getting-started" },
+                  { label: "Authentication", value: "authentication" },
+                  { label: "API Endpoints", value: "endpoints" },
+                  { label: "Code Examples", value: "examples" },
+                  { label: "Troubleshooting", value: "troubleshooting" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -180,6 +186,14 @@ export default function APIDocumentationFeedback() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Unclear Explanation", value: "unclear" },
+                  { label: "Missing Information", value: "missing" },
+                  { label: "Outdated Information", value: "outdated" },
+                  { label: "Error in Documentation", value: "error" },
+                  { label: "Suggestion", value: "suggestion" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

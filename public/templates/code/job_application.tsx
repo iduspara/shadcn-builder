@@ -28,7 +28,6 @@ import { Button } from "@/components/ui/button";
 
 export default function JobApplication() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -55,7 +54,6 @@ export default function JobApplication() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
@@ -173,6 +171,12 @@ export default function JobApplication() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Software Developer", value: "developer" },
+                  { label: "UI/UX Designer", value: "designer" },
+                  { label: "Project Manager", value: "manager" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -285,7 +289,7 @@ export default function JobApplication() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

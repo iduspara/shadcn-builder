@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function PropertyInquiry() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -60,7 +59,6 @@ export default function PropertyInquiry() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -201,6 +199,13 @@ export default function PropertyInquiry() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Schedule Viewing", value: "viewing" },
+                  { label: "Pricing Information", value: "pricing" },
+                  { label: "More Details", value: "details" },
+                  { label: "Financing Options", value: "financing" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -249,6 +254,11 @@ export default function PropertyInquiry() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Email", value: "email" },
+                  { label: "Phone Call", value: "phone" },
+                  { label: "Text Message", value: "text" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -295,7 +305,7 @@ export default function PropertyInquiry() {
               >
                 <FieldLabel
                   key="immediate"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-immediate"
                 >
                   <RadioGroupItem value="immediate" id="radio-0-immediate" />
@@ -311,7 +321,7 @@ export default function PropertyInquiry() {
 
                 <FieldLabel
                   key="1-3-months"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-1-3-months"
                 >
                   <RadioGroupItem value="1-3-months" id="radio-0-1-3-months" />
@@ -327,7 +337,7 @@ export default function PropertyInquiry() {
 
                 <FieldLabel
                   key="3-6-months"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-3-6-months"
                 >
                   <RadioGroupItem value="3-6-months" id="radio-0-3-6-months" />
@@ -343,7 +353,7 @@ export default function PropertyInquiry() {
 
                 <FieldLabel
                   key="6-plus-months"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-6-plus-months"
                 >
                   <RadioGroupItem
@@ -403,7 +413,7 @@ export default function PropertyInquiry() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

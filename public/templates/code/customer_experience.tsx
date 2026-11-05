@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function CustomerExperienceSurvey() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
@@ -49,7 +48,6 @@ export default function CustomerExperienceSurvey() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "radio-group-0": "",
       "radio-group-1": "",
       "checkbox-group-0": [],
@@ -108,7 +106,7 @@ export default function CustomerExperienceSurvey() {
               >
                 <FieldLabel
                   key="5"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-5"
                 >
                   <RadioGroupItem value="5" id="radio-group-0-5" />
@@ -124,7 +122,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="4"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-4"
                 >
                   <RadioGroupItem value="4" id="radio-group-0-4" />
@@ -140,7 +138,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="3"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-3"
                 >
                   <RadioGroupItem value="3" id="radio-group-0-3" />
@@ -156,7 +154,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="2"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-2"
                 >
                   <RadioGroupItem value="2" id="radio-group-0-2" />
@@ -172,7 +170,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="1"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-1"
                 >
                   <RadioGroupItem value="1" id="radio-group-0-1" />
@@ -213,7 +211,7 @@ export default function CustomerExperienceSurvey() {
               >
                 <FieldLabel
                   key="10"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-10"
                 >
                   <RadioGroupItem value="10" id="radio-group-1-10" />
@@ -229,7 +227,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="9"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-9"
                 >
                   <RadioGroupItem value="9" id="radio-group-1-9" />
@@ -245,7 +243,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="8"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-8"
                 >
                   <RadioGroupItem value="8" id="radio-group-1-8" />
@@ -261,7 +259,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="7"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-7"
                 >
                   <RadioGroupItem value="7" id="radio-group-1-7" />
@@ -277,7 +275,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="6"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-6"
                 >
                   <RadioGroupItem value="6" id="radio-group-1-6" />
@@ -293,7 +291,7 @@ export default function CustomerExperienceSurvey() {
 
                 <FieldLabel
                   key="0-5"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-0-5"
                 >
                   <RadioGroupItem value="0-5" id="radio-group-1-0-5" />
@@ -332,7 +330,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="customer-service"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-customer-service"
@@ -373,7 +371,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="product-quality"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-product-quality"
@@ -414,7 +412,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="pricing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-pricing"
@@ -452,7 +450,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="delivery"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-delivery"
@@ -490,7 +488,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="website"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-website"
@@ -528,7 +526,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="communication"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-communication"
@@ -585,7 +583,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="response-time"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-response-time"
@@ -624,7 +622,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="product-range"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-product-range"
@@ -663,7 +661,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="user-interface"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-user-interface"
@@ -704,7 +702,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="support-hours"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-support-hours"
@@ -743,7 +741,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="documentation"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-documentation"
@@ -782,7 +780,7 @@ export default function CustomerExperienceSurvey() {
                     return (
                       <FieldLabel
                         key="billing"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-billing"

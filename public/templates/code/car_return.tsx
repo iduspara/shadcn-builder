@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function CarReturn() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -49,7 +48,6 @@ export default function CarReturn() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "select-0": "",
@@ -140,6 +138,12 @@ export default function CarReturn() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Full", value: "full" },
+                  { label: "Half", value: "half" },
+                  { label: "Quarter", value: "quarter" },
+                  { label: "Empty", value: "empty" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -192,7 +196,7 @@ export default function CarReturn() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-excellent"
                 >
                   <RadioGroupItem
@@ -211,7 +215,7 @@ export default function CarReturn() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-group-0-good" />
@@ -227,7 +231,7 @@ export default function CarReturn() {
 
                 <FieldLabel
                   key="fair"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-fair"
                 >
                   <RadioGroupItem value="fair" id="radio-group-0-fair" />
@@ -243,7 +247,7 @@ export default function CarReturn() {
 
                 <FieldLabel
                   key="damaged"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-damaged"
                 >
                   <RadioGroupItem value="damaged" id="radio-group-0-damaged" />

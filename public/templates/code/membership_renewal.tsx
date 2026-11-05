@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function MembershipRenewal() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -66,13 +65,12 @@ export default function MembershipRenewal() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
       "tel-input-0": "",
       "select-0": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.204Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.410Z"),
       "select-1": "",
       "select-2": "",
       "radio-0": "",
@@ -209,6 +207,12 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Basic Membership", value: "basic" },
+                  { label: "Premium Membership", value: "premium" },
+                  { label: "VIP Membership", value: "vip" },
+                  { label: "Lifetime Membership", value: "lifetime" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -252,23 +256,30 @@ export default function MembershipRenewal() {
               </FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -288,6 +299,13 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "1 Month", value: "1-month" },
+                  { label: "3 Months", value: "3-months" },
+                  { label: "6 Months", value: "6-months" },
+                  { label: "12 Months", value: "12-months" },
+                  { label: "Lifetime", value: "lifetime" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -334,6 +352,13 @@ export default function MembershipRenewal() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Credit Card", value: "credit-card" },
+                  { label: "Debit Card", value: "debit-card" },
+                  { label: "PayPal", value: "paypal" },
+                  { label: "Bank Transfer", value: "bank-transfer" },
+                  { label: "Check", value: "check" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -388,7 +413,7 @@ export default function MembershipRenewal() {
               >
                 <FieldLabel
                   key="yes"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-yes"
                 >
                   <RadioGroupItem value="yes" id="radio-0-yes" />
@@ -401,7 +426,7 @@ export default function MembershipRenewal() {
 
                 <FieldLabel
                   key="no"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-no"
                 >
                   <RadioGroupItem value="no" id="radio-0-no" />
@@ -455,7 +480,7 @@ export default function MembershipRenewal() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

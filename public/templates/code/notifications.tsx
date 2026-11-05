@@ -38,9 +38,7 @@ import { Switch } from "@/components/ui/switch";
 
 export default function Notifications() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "radio-0": z.string(),
-    "text-1": z.string(),
     "switch-0": z.boolean().default(false).optional(),
     "switch-1": z.boolean().default(false).optional(),
     "switch-2": z.boolean().default(false).optional(),
@@ -52,9 +50,7 @@ export default function Notifications() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "radio-0": "all",
-      "text-1": "",
       "switch-0": true,
       "switch-1": false,
       "switch-2": false,
@@ -111,7 +107,7 @@ export default function Notifications() {
               >
                 <div
                   key="all"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full space-x-3 border-0 p-0"
                 >
                   <RadioGroupItem value="all" id="radio-0-all" />
                   <div className="grid gap-2 leading-none">
@@ -123,7 +119,7 @@ export default function Notifications() {
 
                 <div
                   key="direct"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full space-x-3 border-0 p-0"
                 >
                   <RadioGroupItem value="direct" id="radio-0-direct" />
                   <div className="grid gap-2 leading-none">
@@ -138,7 +134,7 @@ export default function Notifications() {
 
                 <div
                   key="none"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3 border-0 p-0"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full space-x-3 border-0 p-0"
                 >
                   <RadioGroupItem value="none" id="radio-0-none" />
                   <div className="grid gap-2 leading-none">
@@ -174,7 +170,7 @@ export default function Notifications() {
 
               <FieldLabel
                 key="switch-0"
-                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"
+                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-checked]]:border-primary"
                 htmlFor="switch-0"
               >
                 <div className="grid gap-1.5 leading-none">
@@ -209,7 +205,7 @@ export default function Notifications() {
 
               <FieldLabel
                 key="switch-1"
-                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"
+                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-checked]]:border-primary"
                 htmlFor="switch-1"
               >
                 <div className="grid gap-1.5 leading-none">
@@ -242,7 +238,7 @@ export default function Notifications() {
 
               <FieldLabel
                 key="switch-2"
-                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"
+                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-checked]]:border-primary"
                 htmlFor="switch-2"
               >
                 <div className="grid gap-1.5 leading-none">
@@ -277,7 +273,7 @@ export default function Notifications() {
 
               <FieldLabel
                 key="switch-3"
-                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"
+                className="rounded-md border p-4 space-x-2 w-full flex justify-between items-center has-[[data-checked]]:border-primary"
                 htmlFor="switch-3"
               >
                 <div className="grid gap-1.5 leading-none">
@@ -312,7 +308,7 @@ export default function Notifications() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 @3xl:border-0 @3xl:p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 @3xl:border-0 @3xl:p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

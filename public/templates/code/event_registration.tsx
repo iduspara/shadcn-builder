@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function EventRegistration() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -56,7 +55,6 @@ export default function EventRegistration() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -243,6 +241,13 @@ export default function EventRegistration() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Attendee", value: "attendee" },
+                  { label: "Speaker", value: "speaker" },
+                  { label: "Sponsor", value: "sponsor" },
+                  { label: "Volunteer", value: "volunteer" },
+                  { label: "Press/Media", value: "press" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -291,6 +296,14 @@ export default function EventRegistration() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "No Restrictions", value: "none" },
+                  { label: "Vegetarian", value: "vegetarian" },
+                  { label: "Vegan", value: "vegan" },
+                  { label: "Gluten-Free", value: "gluten-free" },
+                  { label: "Dairy-Free", value: "dairy-free" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

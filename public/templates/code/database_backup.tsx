@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function DatabaseBackupRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "radio-group-0": z.string().min(1, { message: "This field is required" }),
@@ -49,7 +48,6 @@ export default function DatabaseBackupRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "radio-group-0": "",
@@ -119,6 +117,12 @@ export default function DatabaseBackupRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Create Backup", value: "backup" },
+                  { label: "Data Restore", value: "restore" },
+                  { label: "Database Migration", value: "migration" },
+                  { label: "Data Export", value: "export" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -169,7 +173,7 @@ export default function DatabaseBackupRequest() {
               >
                 <FieldLabel
                   key="low"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-low"
                 >
                   <RadioGroupItem value="low" id="radio-group-0-low" />
@@ -185,7 +189,7 @@ export default function DatabaseBackupRequest() {
 
                 <FieldLabel
                   key="medium"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-medium"
                 >
                   <RadioGroupItem value="medium" id="radio-group-0-medium" />
@@ -201,7 +205,7 @@ export default function DatabaseBackupRequest() {
 
                 <FieldLabel
                   key="high"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-high"
                 >
                   <RadioGroupItem value="high" id="radio-group-0-high" />
@@ -217,7 +221,7 @@ export default function DatabaseBackupRequest() {
 
                 <FieldLabel
                   key="emergency"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-emergency"
                 >
                   <RadioGroupItem

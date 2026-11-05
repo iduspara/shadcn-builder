@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function MaintenanceRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -62,7 +61,6 @@ export default function MaintenanceRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "tel-input-0": "",
@@ -229,6 +227,16 @@ export default function MaintenanceRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Plumbing", value: "plumbing" },
+                  { label: "Electrical", value: "electrical" },
+                  { label: "HVAC/Heating", value: "hvac" },
+                  { label: "Appliances", value: "appliances" },
+                  { label: "Structural", value: "structural" },
+                  { label: "Pest Control", value: "pest-control" },
+                  { label: "Cleaning", value: "cleaning" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -287,6 +295,12 @@ export default function MaintenanceRequest() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Emergency (24 hours)", value: "emergency" },
+                  { label: "Urgent (3-5 days)", value: "urgent" },
+                  { label: "Normal (1-2 weeks)", value: "normal" },
+                  { label: "Low Priority (when convenient)", value: "low" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -377,6 +391,12 @@ export default function MaintenanceRequest() {
 
               <Select
                 key="select-2"
+                items={[
+                  { label: "Morning (9AM - 12PM)", value: "morning" },
+                  { label: "Afternoon (1PM - 4PM)", value: "afternoon" },
+                  { label: "Evening (5PM - 7PM)", value: "evening" },
+                  { label: "Any Time", value: "anytime" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -421,7 +441,7 @@ export default function MaintenanceRequest() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

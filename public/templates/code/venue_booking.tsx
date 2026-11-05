@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function VenueBookingRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string(),
     "text-input-2": z.string().min(1, { message: "This field is required" }),
@@ -54,13 +53,12 @@ export default function VenueBookingRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "text-input-2": "",
       "select-0": "",
       "text-input-3": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.092Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.287Z"),
       "text-input-4": "",
       "checkbox-group-0": [],
     },
@@ -170,6 +168,14 @@ export default function VenueBookingRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Conference", value: "conference" },
+                  { label: "Workshop", value: "workshop" },
+                  { label: "Business Meeting", value: "meeting" },
+                  { label: "Celebration/Party", value: "celebration" },
+                  { label: "Training Session", value: "training" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -243,23 +249,30 @@ export default function VenueBookingRequest() {
               <FieldLabel className="flex w-auto!">Event Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -309,7 +322,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="projector"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-projector"
@@ -347,7 +360,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="microphone"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-microphone"
@@ -385,7 +398,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="tables"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-tables"
@@ -423,7 +436,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="catering"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-catering"
@@ -461,7 +474,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="wifi"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-wifi"
@@ -499,7 +512,7 @@ export default function VenueBookingRequest() {
                     return (
                       <FieldLabel
                         key="parking"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-parking"

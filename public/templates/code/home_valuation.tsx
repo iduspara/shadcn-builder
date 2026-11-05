@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function HomeValuationRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -59,7 +58,6 @@ export default function HomeValuationRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -203,6 +201,14 @@ export default function HomeValuationRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Single Family Home", value: "single-family" },
+                  { label: "Condominium", value: "condo" },
+                  { label: "Townhouse", value: "townhouse" },
+                  { label: "Multi-Family", value: "multi-family" },
+                  { label: "Land/Lot", value: "land" },
+                  { label: "Commercial", value: "commercial" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -351,7 +357,7 @@ export default function HomeValuationRequest() {
               >
                 <FieldLabel
                   key="selling"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-selling"
                 >
                   <RadioGroupItem value="selling" id="radio-group-0-selling" />
@@ -367,7 +373,7 @@ export default function HomeValuationRequest() {
 
                 <FieldLabel
                   key="refinancing"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-refinancing"
                 >
                   <RadioGroupItem
@@ -386,7 +392,7 @@ export default function HomeValuationRequest() {
 
                 <FieldLabel
                   key="curiosity"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-curiosity"
                 >
                   <RadioGroupItem
@@ -405,7 +411,7 @@ export default function HomeValuationRequest() {
 
                 <FieldLabel
                   key="insurance"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-insurance"
                 >
                   <RadioGroupItem
@@ -424,7 +430,7 @@ export default function HomeValuationRequest() {
 
                 <FieldLabel
                   key="estate"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-estate"
                 >
                   <RadioGroupItem value="estate" id="radio-group-0-estate" />

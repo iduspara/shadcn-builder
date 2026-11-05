@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function NotificationPreferences() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "email-input-0": z
       .string()
       .email({ message: "Invalid email address" })
@@ -54,7 +53,6 @@ export default function NotificationPreferences() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "email-input-0": "",
       "checkbox-group-0": [],
       "checkbox-group-1": [],
@@ -134,7 +132,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="security"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-security"
@@ -172,7 +170,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="updates"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-updates"
@@ -210,7 +208,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="newsletter"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-newsletter"
@@ -248,7 +246,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="promotions"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-promotions"
@@ -286,7 +284,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="reminders"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-reminders"
@@ -342,7 +340,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="urgent"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-urgent"
@@ -380,7 +378,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="appointments"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-appointments"
@@ -418,7 +416,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="delivery"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-delivery"
@@ -456,7 +454,7 @@ export default function NotificationPreferences() {
                     return (
                       <FieldLabel
                         key="account"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-1-account"
@@ -536,7 +534,7 @@ export default function NotificationPreferences() {
               >
                 <FieldLabel
                   key="immediate"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-immediate"
                 >
                   <RadioGroupItem
@@ -555,7 +553,7 @@ export default function NotificationPreferences() {
 
                 <FieldLabel
                   key="daily"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-daily"
                 >
                   <RadioGroupItem value="daily" id="radio-group-0-daily" />
@@ -571,7 +569,7 @@ export default function NotificationPreferences() {
 
                 <FieldLabel
                   key="weekly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-weekly"
                 >
                   <RadioGroupItem value="weekly" id="radio-group-0-weekly" />
@@ -587,7 +585,7 @@ export default function NotificationPreferences() {
 
                 <FieldLabel
                   key="monthly"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-monthly"
                 >
                   <RadioGroupItem value="monthly" id="radio-group-0-monthly" />
@@ -620,7 +618,7 @@ export default function NotificationPreferences() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

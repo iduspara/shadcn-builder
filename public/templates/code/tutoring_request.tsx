@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function TutoringServiceRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z
@@ -53,7 +52,6 @@ export default function TutoringServiceRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "select-0": "",
       "checkbox-group-0": [],
@@ -124,6 +122,13 @@ export default function TutoringServiceRequest() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Elementary School", value: "elementary" },
+                  { label: "Middle School", value: "middle" },
+                  { label: "High School", value: "high" },
+                  { label: "College/University", value: "college" },
+                  { label: "Graduate School", value: "graduate" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -176,7 +181,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="math"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-math"
@@ -214,7 +219,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="science"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-science"
@@ -252,7 +257,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="english"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-english"
@@ -290,7 +295,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="history"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-history"
@@ -328,7 +333,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="languages"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-languages"
@@ -366,7 +371,7 @@ export default function TutoringServiceRequest() {
                     return (
                       <FieldLabel
                         key="other"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-other"
@@ -424,7 +429,7 @@ export default function TutoringServiceRequest() {
               >
                 <FieldLabel
                   key="individual"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-individual"
                 >
                   <RadioGroupItem
@@ -443,7 +448,7 @@ export default function TutoringServiceRequest() {
 
                 <FieldLabel
                   key="group"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-group"
                 >
                   <RadioGroupItem value="group" id="radio-group-0-group" />
@@ -459,7 +464,7 @@ export default function TutoringServiceRequest() {
 
                 <FieldLabel
                   key="online"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-online"
                 >
                   <RadioGroupItem value="online" id="radio-group-0-online" />
@@ -475,7 +480,7 @@ export default function TutoringServiceRequest() {
 
                 <FieldLabel
                   key="flexible"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-flexible"
                 >
                   <RadioGroupItem

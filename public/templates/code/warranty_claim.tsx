@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function WarrantyClaim() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "date-input-0": z.date({
@@ -54,10 +53,9 @@ export default function WarrantyClaim() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.332Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.556Z"),
       "text-input-2": "",
       "select-0": "",
       "textarea-0": "",
@@ -150,23 +148,30 @@ export default function WarrantyClaim() {
               <FieldLabel className="flex w-auto!">Purchase Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -210,6 +215,14 @@ export default function WarrantyClaim() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Defective Product", value: "defective" },
+                  { label: "Not Working Properly", value: "not-working" },
+                  { label: "Arrived Damaged", value: "damaged" },
+                  { label: "Missing Parts", value: "missing-parts" },
+                  { label: "Poor Service Quality", value: "poor-service" },
+                  { label: "Other Issue", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

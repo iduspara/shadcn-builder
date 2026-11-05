@@ -37,7 +37,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export default function ReturnRequest() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -53,7 +52,6 @@ export default function ReturnRequest() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "text-input-1": "",
@@ -177,7 +175,7 @@ export default function ReturnRequest() {
               >
                 <FieldLabel
                   key="defective"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-defective"
                 >
                   <RadioGroupItem
@@ -196,7 +194,7 @@ export default function ReturnRequest() {
 
                 <FieldLabel
                   key="wrong-item"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-wrong-item"
                 >
                   <RadioGroupItem
@@ -215,7 +213,7 @@ export default function ReturnRequest() {
 
                 <FieldLabel
                   key="not-described"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-not-described"
                 >
                   <RadioGroupItem
@@ -234,7 +232,7 @@ export default function ReturnRequest() {
 
                 <FieldLabel
                   key="changed-mind"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-0-changed-mind"
                 >
                   <RadioGroupItem
@@ -278,7 +276,7 @@ export default function ReturnRequest() {
               >
                 <FieldLabel
                   key="refund"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-refund"
                 >
                   <RadioGroupItem value="refund" id="radio-group-1-refund" />
@@ -294,7 +292,7 @@ export default function ReturnRequest() {
 
                 <FieldLabel
                   key="exchange"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-exchange"
                 >
                   <RadioGroupItem
@@ -313,7 +311,7 @@ export default function ReturnRequest() {
 
                 <FieldLabel
                   key="credit"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-group-1-credit"
                 >
                   <RadioGroupItem value="credit" id="radio-group-1-credit" />

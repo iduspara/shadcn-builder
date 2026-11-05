@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function UserPreferences() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
     "select-1": z.string().min(1, { message: "This field is required" }),
     "checkbox-group-0": z.array(z.string()).optional(),
@@ -49,7 +48,6 @@ export default function UserPreferences() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "select-0": "",
       "select-1": "",
       "checkbox-group-0": [],
@@ -95,6 +93,11 @@ export default function UserPreferences() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Light", value: "light" },
+                  { label: "Dark", value: "dark" },
+                  { label: "Auto", value: "auto" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -133,6 +136,11 @@ export default function UserPreferences() {
 
               <Select
                 key="select-1"
+                items={[
+                  { label: "Small", value: "small" },
+                  { label: "Medium", value: "medium" },
+                  { label: "Large", value: "large" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -179,7 +187,7 @@ export default function UserPreferences() {
                     return (
                       <FieldLabel
                         key="high-contrast"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-high-contrast"
@@ -218,7 +226,7 @@ export default function UserPreferences() {
                     return (
                       <FieldLabel
                         key="screen-reader"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-screen-reader"
@@ -257,7 +265,7 @@ export default function UserPreferences() {
                     return (
                       <FieldLabel
                         key="reduced-motion"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-reduced-motion"
@@ -318,7 +326,7 @@ export default function UserPreferences() {
               >
                 <FieldLabel
                   key="on"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-on"
                 >
                   <RadioGroupItem value="on" id="radio-0-on" />
@@ -331,7 +339,7 @@ export default function UserPreferences() {
 
                 <FieldLabel
                   key="off"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-off"
                 >
                   <RadioGroupItem value="off" id="radio-0-off" />
@@ -344,7 +352,7 @@ export default function UserPreferences() {
 
                 <FieldLabel
                   key="vibrate"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-vibrate"
                 >
                   <RadioGroupItem value="vibrate" id="radio-0-vibrate" />

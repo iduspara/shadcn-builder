@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function TravelFeedback() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z.string(),
     "select-0": z.string().min(1, { message: "This field is required" }),
@@ -59,12 +58,11 @@ export default function TravelFeedback() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "select-0": "",
       "text-input-1": "",
-      "date-input-0": new Date("2026-11-05T09:37:38.401Z"),
+      "date-input-0": new Date("2026-11-05T12:21:24.630Z"),
       "radio-0": "",
       "radio-1": "",
       "radio-2": "",
@@ -157,6 +155,14 @@ export default function TravelFeedback() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Flight Booking", value: "flight" },
+                  { label: "Hotel Booking", value: "hotel" },
+                  { label: "Tour/Excursion", value: "tour" },
+                  { label: "Car Rental", value: "car-rental" },
+                  { label: "Travel Package", value: "package" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}
@@ -230,23 +236,30 @@ export default function TravelFeedback() {
               <FieldLabel className="flex w-auto!">Travel Date</FieldLabel>
 
               <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant={"outline"}
-                    className="justify-start text-left font-normal w-full"
-                    id="date-input-0"
-                    name=""
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span className="text-muted-foreground"></span>
-                    )}
-                  </Button>
+                <PopoverTrigger
+                  render={
+                    <Button
+                      variant={"outline"}
+                      className="justify-start text-left font-normal w-full"
+                      id="date-input-0"
+                      name=""
+                    />
+                  }
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {field.value ? (
+                    format(field.value, "PPP")
+                  ) : (
+                    <span className="text-muted-foreground"></span>
+                  )}
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" autoFocus onSelect={field.onChange} />
+                  <Calendar
+                    mode="single"
+                    autoFocus
+                    selected={field.value}
+                    onSelect={field.onChange}
+                  />
                 </PopoverContent>
               </Popover>
 
@@ -276,7 +289,7 @@ export default function TravelFeedback() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-excellent"
                 >
                   <RadioGroupItem value="excellent" id="radio-0-excellent" />
@@ -292,7 +305,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-good"
                 >
                   <RadioGroupItem value="good" id="radio-0-good" />
@@ -305,7 +318,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="average"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-average"
                 >
                   <RadioGroupItem value="average" id="radio-0-average" />
@@ -321,7 +334,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-0-poor" />
@@ -334,7 +347,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="terrible"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-0-terrible"
                 >
                   <RadioGroupItem value="terrible" id="radio-0-terrible" />
@@ -373,7 +386,7 @@ export default function TravelFeedback() {
               >
                 <FieldLabel
                   key="excellent"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-excellent"
                 >
                   <RadioGroupItem value="excellent" id="radio-1-excellent" />
@@ -389,7 +402,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="good"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-good"
                 >
                   <RadioGroupItem value="good" id="radio-1-good" />
@@ -402,7 +415,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="average"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-average"
                 >
                   <RadioGroupItem value="average" id="radio-1-average" />
@@ -418,7 +431,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="poor"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-poor"
                 >
                   <RadioGroupItem value="poor" id="radio-1-poor" />
@@ -431,7 +444,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="terrible"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-1-terrible"
                 >
                   <RadioGroupItem value="terrible" id="radio-1-terrible" />
@@ -472,7 +485,7 @@ export default function TravelFeedback() {
               >
                 <FieldLabel
                   key="definitely"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-2-definitely"
                 >
                   <RadioGroupItem value="definitely" id="radio-2-definitely" />
@@ -488,7 +501,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="probably"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-2-probably"
                 >
                   <RadioGroupItem value="probably" id="radio-2-probably" />
@@ -504,7 +517,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="maybe"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-2-maybe"
                 >
                   <RadioGroupItem value="maybe" id="radio-2-maybe" />
@@ -517,7 +530,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="probably-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-2-probably-not"
                 >
                   <RadioGroupItem
@@ -536,7 +549,7 @@ export default function TravelFeedback() {
 
                 <FieldLabel
                   key="definitely-not"
-                  className="flex items-center has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                  className="flex items-center has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                   htmlFor="radio-2-definitely-not"
                 >
                   <RadioGroupItem
@@ -644,7 +657,7 @@ export default function TravelFeedback() {
 
               <div
                 key="checkbox-0"
-                className="border-0 p-0 w-full flex items-start has-[[data-state=checked]]:border-primary"
+                className="border-0 p-0 w-full flex items-start has-[[data-checked]]:border-primary"
               >
                 <Checkbox
                   id="checkbox-0"

@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function AlertSubscription() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
       .string()
@@ -57,7 +56,6 @@ export default function AlertSubscription() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "email-input-0": "",
       "checkbox-group-0": [],
@@ -155,7 +153,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="weather"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-weather"
@@ -193,7 +191,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="traffic"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-traffic"
@@ -231,7 +229,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="stock"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-stock"
@@ -269,7 +267,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="sports"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-sports"
@@ -307,7 +305,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="tech"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-tech"
@@ -345,7 +343,7 @@ export default function AlertSubscription() {
                     return (
                       <FieldLabel
                         key="health"
-                        className="flex items-start has-[[data-state=checked]]:border-primary w-full rounded-md border p-4 space-x-2"
+                        className="flex items-start has-[[data-checked]]:border-primary w-full rounded-md border p-4 space-x-2"
                       >
                         <Checkbox
                           id="checkbox-group-0-health"
@@ -393,6 +391,12 @@ export default function AlertSubscription() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "Email Only", value: "email" },
+                  { label: "SMS Only", value: "sms" },
+                  { label: "Email + SMS", value: "both" },
+                  { label: "Push Notifications", value: "push" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

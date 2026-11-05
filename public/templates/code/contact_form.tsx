@@ -28,7 +28,6 @@ import { Button } from "@/components/ui/button";
 
 export default function ContactUs() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "text-input-0": z.string().min(1, { message: "This field is required" }),
     "text-input-1": z.string().min(1, { message: "This field is required" }),
     "email-input-0": z
@@ -47,7 +46,6 @@ export default function ContactUs() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "text-input-0": "",
       "text-input-1": "",
       "email-input-0": "",
@@ -183,6 +181,13 @@ export default function ContactUs() {
 
               <Select
                 key="select-0"
+                items={[
+                  { label: "General Inquiry", value: "general" },
+                  { label: "Technical Support", value: "support" },
+                  { label: "Sales Question", value: "sales" },
+                  { label: "Billing Question", value: "billing" },
+                  { label: "Other", value: "other" },
+                ]}
                 value={field.value}
                 name={field.name}
                 onValueChange={field.onChange}

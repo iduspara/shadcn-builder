@@ -38,7 +38,6 @@ import { Switch } from "@/components/ui/switch";
 
 export default function ChangePassword() {
   const formSchema = z.object({
-    "text-0": z.string(),
     "password-input-0": z
       .string()
       .min(1, { message: "This field is required" }),
@@ -56,7 +55,6 @@ export default function ChangePassword() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      "text-0": "",
       "password-input-0": "",
       "password-input-1": "",
       "password-input-2": "",
