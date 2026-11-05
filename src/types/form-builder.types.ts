@@ -1,19 +1,10 @@
 import { FormComponentModel } from "@/models/FormComponent";
 import { Editor } from "@tiptap/react";
-import { icons } from "lucide-react";
 import { HTMLAttributes, HTMLInputTypeAttribute } from 'react';
 import { SubscriptionInfo } from './subscription.types';
-import { TemplateDefinition } from "./template.types";
-import { FormComponentModelInput } from "./FormComponent.types";
 
-export type SelectableComponents = {
-  id: string;
-  label: string;
-  type: string;
-  icon: keyof typeof icons;
-};
-
-export type Viewports = 'sm' | 'md' | 'lg';
+import type { Viewports } from "./FormComponent.types";
+export type { Viewports };
 
 export type DesignPropertiesViews = {
   base: React.ReactNode;
@@ -43,13 +34,6 @@ export type TemplateData = {
   category: string;
   image?: string;
 };
-
-export interface TemplateHydrationPayload extends Omit<TemplateDefinition, "components"> {
-  components: Array<FormComponentModelInput | FormComponentModel>;
-  templateId?: string | null;
-  mode?: 'editor' | 'editor-preview' | 'preview' | 'export';
-  resetHistory?: boolean;
-}
 
 export type HistorySnapshot = {
   components: FormComponentModel[];

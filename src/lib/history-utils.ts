@@ -1,5 +1,5 @@
 import { SubscriptionInfo, DEFAULT_HISTORY_SIZE } from '@/types/subscription.types';
-import { getHistorySizeForTier, hasReachedHistoryLimit, getRemainingHistorySlots } from './subscription';
+import { getRemainingHistorySlots } from './subscription';
 
 /**
  * Get the appropriate history size based on subscription information

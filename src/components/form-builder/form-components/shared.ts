@@ -46,3 +46,16 @@ export function compactTemplate(template: string): string {
     .filter((line) => line.trim() !== "")
     .join("\n");
 }
+
+/** Layout settings shared by option groups (radio, checkbox group). */
+export function getOptionGroupLayout(component: FormComponentModel) {
+  return {
+    oneOptionHasLabelDescription: !!component.options?.some(
+      (option) => option.labelDescription
+    ),
+    asCardClasses: generateTWClassesForAllViewports(component, "asCard"),
+    cardLayoutClasses: component.getField("properties.style.cardLayout"),
+    componentId: getComponentId(component),
+    isCard: component.getField("properties.style.asCard") === "yes",
+  };
+}

@@ -1,14 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Undo2,
-  Redo2,
-  Ellipsis,
-  Clock,
-  Check,
-  AlertTriangle,
-  Crown,
-} from "lucide-react";
+import { Undo2, Redo2, Clock, Check, AlertTriangle } from "lucide-react";
 import { useHistory } from "@/hooks/use-history";
 import { cn } from "@/lib/utils";
 import {
@@ -20,14 +12,71 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { formatDate, formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { PlanBadge } from "./plan-badge";
+
+type HistoryState = ReturnType<typeof useHistory>;
 
 interface UndoRedoButtonsProps {
   className?: string;
   size?: "sm" | "default" | "lg";
   variant?: "default" | "outline" | "ghost";
+}
+
+function HistoryUsage({ historyUsage, limitInfo, warningMessage }: Pick<HistoryState, "historyUsage" | "limitInfo" | "warningMessage">) {
+  return (
+    <>
+      <div className="px-2 py-1.5 text-xs text-muted-foreground">
+        <div className="flex items-center justify-between">
+          <span>Usage: {historyUsage}</span>
+          <span>Limit: {limitInfo.maxSize}</span>
+        </div>
+      </div>
+
+      {warningMessage && (
+        <div className="px-2 py-1">
+          <Alert className="py-2">
+            <AlertTriangle className="h-3 w-3" />
+            <AlertDescription className="text-xs">{warningMessage}</AlertDescription>
+          </Alert>
+        </div>
+      )}
+
+      <DropdownMenuSeparator />
+    </>
+  );
+}
+
+interface SnapshotItemProps {
+  snapshot: HistoryState["snapshots"][number];
+  number: number;
+  isCurrent: boolean;
+  onSelect: () => void;
+}
+
+function SnapshotItem({ snapshot, number, isCurrent, onSelect }: SnapshotItemProps) {
+  return (
+    <DropdownMenuItem
+      onClick={onSelect}
+      className={cn("flex items-center gap-2", isCurrent && "bg-accent")}
+    >
+      <div className="flex items-center justify-center w-4 h-4">
+        {isCurrent && <Check className="h-3 w-3 text-primary" />}
+      </div>
+      <div className="flex flex-col w-full">
+        <div className="flex items-center justify-between">
+          <span className="text-sm">{snapshot.formTitle || "Untitled Form"}</span>
+          <span className="text-xs opacity-70">#{number}</span>
+        </div>
+        <div className="flex items-center justify-between text-xs opacity-70">
+          <span>{snapshot.components.length} components</span>
+          <span>{formatDistanceToNow(new Date(snapshot.timestamp), { addSuffix: true })}</span>
+        </div>
+      </div>
+    </DropdownMenuItem>
+  );
 }
 
 /**
@@ -39,45 +88,16 @@ export const UndoRedoButtons: React.FC<UndoRedoButtonsProps> = ({
   size = "default",
   variant = "outline",
 }) => {
-  const {
-    undo,
-    redo,
-    canUndo,
-    canRedo,
-    snapshots,
-    jumpToSnapshot,
-    currentIndex,
-    subscriptionInfo,
-    historyUsage,
-    limitInfo,
-    warningMessage,
-  } = useHistory();
-
-  const formatTimestamp = (timestamp: number) => {
-    return formatDistanceToNow(new Date(timestamp), { addSuffix: true });
-  };
-  const handleUndo = () => {
-    if (canUndo) {
-      undo();
-    }
-  };
-
-  const handleRedo = () => {
-    if (canRedo) {
-      redo();
-    }
-  };
-
-  const handleJumpToSnapshot = (index: number) => {
-    jumpToSnapshot(index);
-  };
+  const history = useHistory();
+  const { undo, redo, canUndo, canRedo, snapshots, jumpToSnapshot, currentIndex, subscriptionInfo } = history;
+  const showLimits = subscriptionInfo?.tier !== "pro";
 
   return (
     <div className={cn("flex gap-1", className)}>
       <Button
         variant={variant}
         size={size}
-        onClick={handleUndo}
+        onClick={() => canUndo && undo()}
         disabled={!canUndo}
         className="flex items-center gap-1"
         title={canUndo ? "Undo last action" : "Nothing to undo"}
@@ -88,7 +108,7 @@ export const UndoRedoButtons: React.FC<UndoRedoButtonsProps> = ({
       <Button
         variant={variant}
         size={size}
-        onClick={handleRedo}
+        onClick={() => canRedo && redo()}
         disabled={!canRedo}
         className="flex items-center gap-1"
         title={canRedo ? "Redo last undone action" : "Nothing to redo"}
@@ -111,84 +131,25 @@ export const UndoRedoButtons: React.FC<UndoRedoButtonsProps> = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent side="bottom" align="end" className="w-80">
           <DropdownMenuGroup>
-          <DropdownMenuLabel className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              History
-            </div>
-            {subscriptionInfo?.tier !== "pro" && (
-              <div className="flex items-center gap-1 text-xs">
-                <span
-                  className={cn(
-                    "text-xs px-1.5 py-0.5 rounded",
-                    subscriptionInfo?.tier === "free" &&
-                      "bg-gray-100 text-gray-700",
-                    subscriptionInfo?.tier === "advanced" &&
-                      "bg-blue-100 text-blue-700"
-                  )}
-                >
-                  {subscriptionInfo?.tier?.toUpperCase() || "FREE"}
-                </span>
+            <DropdownMenuLabel className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                History
               </div>
-            )}
-          </DropdownMenuLabel>
+              {showLimits && <PlanBadge tier={subscriptionInfo?.tier} />}
+            </DropdownMenuLabel>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          {subscriptionInfo?.tier !== "pro" && (
-            <>
-              {/* History usage info */}
-              <div className="px-2 py-1.5 text-xs text-muted-foreground">
-                <div className="flex items-center justify-between">
-                  <span>Usage: {historyUsage}</span>
-                  <span>Limit: {limitInfo.maxSize}</span>
-                </div>
-              </div>
-
-              {/* Warning message */}
-              {warningMessage && (
-                <div className="px-2 py-1">
-                  <Alert className="py-2">
-                    <AlertTriangle className="h-3 w-3" />
-                    <AlertDescription className="text-xs">
-                      {warningMessage}
-                    </AlertDescription>
-                  </Alert>
-                </div>
-              )}
-
-              <DropdownMenuSeparator />
-            </>
-          )}
+          {showLimits && <HistoryUsage {...history} />}
           <ScrollArea className="h-[300px]">
             {snapshots.map((snapshot, index) => (
-              <DropdownMenuItem
+              <SnapshotItem
                 key={snapshot.timestamp}
-                onClick={() => handleJumpToSnapshot(index)}
-                className={cn(
-                  "flex items-center gap-2",
-                  index === currentIndex && "bg-accent"
-                )}
-              >
-                <div className="flex items-center justify-center w-4 h-4">
-                  {index === currentIndex && (
-                    <Check className="h-3 w-3 text-primary" />
-                  )}
-                </div>
-                <div className="flex flex-col w-full">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm">
-                      {snapshot.formTitle || "Untitled Form"}
-                    </span>
-                    <span className="text-xs opacity-70">
-                      #{snapshots.length - index}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs opacity-70">
-                    <span>{snapshot.components.length} components</span>
-                    <span>{formatTimestamp(snapshot.timestamp)}</span>
-                  </div>
-                </div>
-              </DropdownMenuItem>
+                snapshot={snapshot}
+                number={snapshots.length - index}
+                isCurrent={index === currentIndex}
+                onSelect={() => jumpToSnapshot(index)}
+              />
             ))}
           </ScrollArea>
         </DropdownMenuContent>

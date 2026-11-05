@@ -23,7 +23,7 @@ interface FormWysiwygEditorProps {
   onBlur?: (editor: Editor) => void;
 }
 
-export const TextColorStyle = TextStyle.extend({
+const TextColorStyle = TextStyle.extend({
   parseHTML() {
     return [
       {

@@ -39,7 +39,7 @@ import {
   X,
   Upload,
 } from "lucide-react";
-import { useUserThemes, useSaveTheme, useDeleteTheme, useSetDefaultTheme, useApplyTheme } from "@/hooks/use-themes";
+import { useUserThemes, useSaveTheme, useDeleteTheme, useApplyTheme } from "@/hooks/use-themes";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -54,30 +54,31 @@ interface ThemeConfigDialogProps {
 
 const defaultThemeTemplate = ``;
 
-function validateThemeCSS(css: string): { isValid: boolean; error?: string } {
-  if (!css.trim()) {
-    return { isValid: false, error: "Theme CSS cannot be empty" };
-  }
-  
-  // Check for required selectors
-  if (!css.includes(":root")) {
-    return { isValid: false, error: "Theme must include :root selector" };
-  }
-  
-  if (!css.includes(".dark")) {
-    return { isValid: false, error: "Theme must include .dark selector" };
-  }
-  
+const countMatches = (text: string, pattern: RegExp) => (text.match(pattern) || []).length;
+
+const THEME_CSS_RULES: { error: string; isBroken: (css: string) => boolean }[] = [
+  { error: "Theme CSS cannot be empty", isBroken: (css) => !css.trim() },
+  { error: "Theme must include :root selector", isBroken: (css) => !css.includes(":root") },
+  { error: "Theme must include .dark selector", isBroken: (css) => !css.includes(".dark") },
   // Basic CSS validation - check for balanced braces
-  const openBraces = (css.match(/\{/g) || []).length;
-  const closeBraces = (css.match(/\}/g) || []).length;
-  
-  if (openBraces !== closeBraces) {
-    return { isValid: false, error: "CSS has unbalanced braces" };
-  }
-  
-  return { isValid: true };
+  {
+    error: "CSS has unbalanced braces",
+    isBroken: (css) => countMatches(css, /\{/g) !== countMatches(css, /\}/g),
+  },
+];
+
+/** First problem with the theme CSS, or null when it looks valid. */
+export function getThemeCSSError(css: string): string | null {
+  return THEME_CSS_RULES.find((rule) => rule.isBroken(css))?.error ?? null;
 }
+
+/** Validation error for the save form: CSS first, then the theme name. */
+export function getThemeFormError(css: string, name: string): string | null {
+  return getThemeCSSError(css) ?? (name.trim() ? null : "Theme name is required");
+}
+
+const getErrorMessage = (err: unknown, fallback: string) =>
+  err instanceof Error ? err.message : fallback;
 
 type Theme = Doc<"userThemes">;
 
@@ -92,20 +93,18 @@ export function ThemeConfigDialog({ open, onOpenChange: setOpen }: ThemeConfigDi
   const { applyTheme } = useApplyTheme();
 
 
+  const resetForm = () => {
+    setSelectedTheme(null);
+    setThemeName("");
+    setThemeCSS(defaultThemeTemplate);
+    setIsEditing(false);
+  };
+
   const handleSaveTheme = async () => {
-    setError(null);
-    
-    const validation = validateThemeCSS(themeCSS);
-    if (!validation.isValid) {
-      setError(validation.error || "Invalid theme CSS");
-      return;
-    }
-    
-    if (!themeName.trim()) {
-      setError("Theme name is required");
-      return;
-    }
-    
+    const formError = getThemeFormError(themeCSS, themeName);
+    setError(formError);
+    if (formError) return;
+
     try {
       await saveTheme({
         id: selectedTheme?._id,
@@ -113,33 +112,26 @@ export function ThemeConfigDialog({ open, onOpenChange: setOpen }: ThemeConfigDi
         css: themeCSS.trim(),
         isDefault: selectedTheme?.isDefault || false,
       });
-      
+
       toast.success(selectedTheme ? "Theme updated successfully!" : "Theme saved successfully!");
-      setSelectedTheme(null);
-      setThemeName("");
-      setThemeCSS(defaultThemeTemplate);
-      setIsEditing(false);
+      resetForm();
       applyTheme(themeCSS.trim());
     } catch (err) {
       console.error("Error saving theme:", err);
-      toast.error(
-        err instanceof Error ? err.message : "Failed to save theme. Please try again."
-      );
+      toast.error(getErrorMessage(err, "Failed to save theme. Please try again."));
     }
   };
 
-
   const handleApplyTheme = () => {
-    const validation = validateThemeCSS(themeCSS);
-    if (!validation.isValid) {
-      setError(validation.error || "Invalid theme CSS");
+    const cssError = getThemeCSSError(themeCSS);
+    if (cssError) {
+      setError(cssError);
       return;
     }
-    
+
     applyTheme(themeCSS.trim());
     toast.success("Theme applied to canvas!");
   };
-
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

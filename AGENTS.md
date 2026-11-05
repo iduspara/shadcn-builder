@@ -182,7 +182,6 @@ The core data structure representing a form component. Located in `src/models/Fo
 
 **Key Methods:**
 - `getField(field, viewport?)`: Get field value with viewport override support
-- `getTWClasses(styleKey)`: Generate Tailwind classes for all viewports
 - `toJSON()`: Serialize to JSON
 
 **Example:**
@@ -378,7 +377,7 @@ Each form component follows this pattern:
 Components are registered in `src/config/available-components.ts`:
 
 ```typescript
-export const AVAILABLE_COMPONENTS: SelectableComponents[] = [
+export const AVAILABLE_COMPONENTS: FormComponentModel[] = [
   {
     id: "input",
     label: "Input",
@@ -774,8 +773,17 @@ await loadForm(formId);
 
 ### Testing
 
-- History system has unit tests (`src/hooks/__tests__/use-history.test.ts`)
-- Component tests should test render and code generation
+- Vitest: `yarn test` (config: `vitest.config.mts`, tests in `tests/`)
+- Snapshot tests lock down behavior: generated code for every template and component variant (`codegen-*.test.ts`), Zod schema results for every validation combination (`zod-schemas.test.ts`), canvas/preview rendering in jsdom (`render-*.test.tsx`) and drag-and-drop span/move logic (`canvas-drag-end.test.ts`)
+- `tests/component-variants.ts` builds a plain and a "rich" variant of every registered component; new components are picked up automatically
+- After an intentional output change, review the diff and update snapshots with `yarn test -u`
+
+### Static Analysis (Fallow)
+
+- Run `yarn fallow` for dead code, duplication, import cycles and complexity (config: `.fallowrc.json`)
+- Generated code (`public/**`, `convex/_generated/**`) is ignored; shadcn `src/components/ui/**` exports and per-component `getReactCode` exports are exempt by design
+- Canvas drop logic lives in `canvas/handle-canvas-drag-end.ts`
+- Shared helpers: option-group layout lives in `form-components/shared.ts` (`getOptionGroupLayout`), dialog list states in `dialogs/dialog-list-states.tsx`
 
 ### Deployment
 

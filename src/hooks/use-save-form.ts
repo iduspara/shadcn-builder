@@ -4,6 +4,29 @@ import { api } from "../../convex/_generated/api";
 import { useFormBuilderStore } from "@/stores/form-builder-store";
 import { useAuthState } from "@/hooks/use-auth";
 
+export interface SaveFormOptions {
+  title?: string;
+  description?: string;
+  tags?: string[];
+  category?: string;
+  forceNew?: boolean;
+}
+
+/** Form fields sent to Convex, with defaults for anything the caller left out. */
+export function buildFormPayload<T>(
+  options: SaveFormOptions | undefined,
+  formTitle: string,
+  components: T[]
+) {
+  return {
+    title: options?.title || formTitle,
+    description: options?.description || "Form created with Form Builder",
+    components,
+    tags: options?.tags || [],
+    category: options?.category || "custom",
+  };
+}
+
 export function useSaveForm() {
   const [isSaving, setIsSaving] = useState(false);
   const { user } = useAuthState();
@@ -14,13 +37,7 @@ export function useSaveForm() {
   const formTitle = useFormBuilderStore((state) => state.formTitle);
   const formId = useFormBuilderStore((state) => state.formId);
 
-  const saveCurrentForm = async (options?: {
-    title?: string;
-    description?: string;
-    tags?: string[];
-    category?: string;
-    forceNew?: boolean;
-  }) => {
+  const saveCurrentForm = async (options?: SaveFormOptions) => {
     if (components.length === 0) {
       throw new Error("Please add some components before saving.");
     }
@@ -28,33 +45,19 @@ export function useSaveForm() {
     setIsSaving(true);
     try {
       // Convert FormComponentModel instances to plain objects for storage
-      const componentsData = components.map(component => component.toJSON());
+      const payload = buildFormPayload(
+        options,
+        formTitle,
+        components.map((component) => component.toJSON())
+      );
 
-      // If formId exists and forceNew is not true, update the existing form
+      // Update the existing form unless a new copy is requested
       if (formId && !options?.forceNew) {
-        await updateForm({
-          id: formId as any, // Type assertion needed for Convex ID
-          title: options?.title || formTitle,
-          description: options?.description || "Form created with Form Builder",
-          components: componentsData,
-          tags: options?.tags || [],
-          category: options?.category || "custom",
-        });
-
+        await updateForm({ id: formId as any, ...payload }); // Type assertion needed for Convex ID
         return formId;
-      } else {
-        // Create a new form
-        const newFormId = await saveForm({
-          title: options?.title || formTitle,
-          description: options?.description || "Form created with Form Builder",
-          components: componentsData,
-          tags: options?.tags || [],
-          category: options?.category || "custom",
-          userId: user?.id,
-        });
-
-        return newFormId;
       }
+
+      return await saveForm({ ...payload, userId: user?.id });
     } finally {
       setIsSaving(false);
     }

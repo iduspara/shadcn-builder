@@ -1,0 +1,25 @@
+{
+  // This file is JSONC: fallow reads these comments; generic JSON tools may not.
+  "$schema": "./node_modules/fallow/schema.json",
+  // Next.js, Convex, ESLint, etc. entry points are detected by plugins.
+  "entry": ["scripts/*.ts"],
+  "ignorePatterns": [
+    // Generated template code (scripts/generate-template-code.ts) and static assets
+    "public/**",
+    // Convex codegen
+    "convex/_generated/**"
+  ],
+  "ignoreExports": [
+    // shadcn/ui primitives intentionally export the full component API
+    { "file": "src/components/ui/**", "exports": ["*"] },
+    // Every form component exposes getReactCode by convention; importers alias it
+    { "file": "src/components/form-builder/form-components/**/*.tsx", "exports": ["getReactCode"] }
+  ],
+  "duplicates": {
+    // Hide pair-only clones; focus on widespread copy-paste
+    // worth refactoring. Lower to 2 to report every duplicate pair.
+    "minOccurrences": 3,
+    "ignore": ["src/components/ui/**"]
+  },
+  "rules": {}
+}

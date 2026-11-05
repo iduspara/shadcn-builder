@@ -16,7 +16,7 @@ interface ComponentPreviewProps {
 
 export function ComponentPreview({ component }: ComponentPreviewProps) {
   const form = useForm({
-    defaultValues: getDefaultValues(component),
+    defaultValues: getPreviewDefaultValues(component),
     mode: "onSubmit",
   });
 
@@ -61,109 +61,33 @@ export function ComponentPreview({ component }: ComponentPreviewProps) {
   );
 }
 
-function getDefaultValues(component: FormComponentModel): Record<string, any> {
-  const fieldName = `preview_${component.id}`;
-  
-  switch (component.type) {
-    case "input":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "email":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "password":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "tel":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "url":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "number":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "textarea":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "select":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "checkbox":
-      return {
-        [fieldName]: component.getField("attributes.checked") || false,
-      };
-    
-    case "checkbox-group":
-      return {
-        [fieldName]: component.options
-          ?.filter(option => option.checked)
-          .map(option => option.value) || [],
-      };
-    
-    case "radio":
-      return {
-        [fieldName]: component.getField("attributes.value") || 
-          (component.options?.[0]?.value) || "",
-      };
-    
-    case "switch":
-      return {
-        [fieldName]: component.getField("attributes.checked") || false,
-      };
-    
-    case "date":
-      return {
-        [fieldName]: component.getField("attributes.value") || "",
-      };
-    
-    case "slider":
-      return {
-        [fieldName]: getSliderDefaultValue(component),
-      };
+type PreviewDefault = (component: FormComponentModel) => unknown;
 
-    case "toggle-group":
-      return {
-        [fieldName]: getToggleGroupDefaultValue(component),
-      };
+const attributeValue: PreviewDefault = (component) => component.getField("attributes.value") || "";
+const attributeChecked: PreviewDefault = (component) => component.getField("attributes.checked") || false;
 
-    case "credit-card":
-      return {
-        [fieldName]: {
-          number: "",
-          expiry: "",
-          cvc: "",
-          name: "",
-        },
-      };
-    
-    case "button":
-    case "submit-button":
-    case "reset-button":
-    case "text":
-      return {
-        [fieldName]: "",
-      };
-    
-    default:
-      return {
-        [fieldName]: "",
-      };
-  }
+const PREVIEW_DEFAULTS: Partial<Record<string, PreviewDefault>> = {
+  input: attributeValue,
+  email: attributeValue,
+  password: attributeValue,
+  tel: attributeValue,
+  url: attributeValue,
+  number: attributeValue,
+  textarea: attributeValue,
+  select: attributeValue,
+  date: attributeValue,
+  checkbox: attributeChecked,
+  switch: attributeChecked,
+  "checkbox-group": (component) =>
+    component.options?.filter((option) => option.checked).map((option) => option.value) || [],
+  radio: (component) =>
+    component.getField("attributes.value") || component.options?.[0]?.value || "",
+  slider: getSliderDefaultValue,
+  "toggle-group": getToggleGroupDefaultValue,
+  "credit-card": () => ({ number: "", expiry: "", cvc: "", name: "" }),
+};
+
+export function getPreviewDefaultValues(component: FormComponentModel): Record<string, any> {
+  const resolve = PREVIEW_DEFAULTS[component.type];
+  return { [`preview_${component.id}`]: resolve ? resolve(component) : "" };
 }
