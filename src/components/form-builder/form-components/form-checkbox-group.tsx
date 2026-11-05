@@ -37,7 +37,7 @@ export function FormCheckboxGroup(
           control={form.control}
           render={({ field: OptionField }) => {
             return (
-              <WrapperComponent key={option.value} className={cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses)}>
+              <WrapperComponent key={option.value} className={cn("flex items-start has-[[data-checked]]:border-primary w-full space-x-3", asCardClasses)}>
                 <Checkbox
                   id={`${componentId}-${option.value}`}
                   checked={OptionField.value?.includes(option.value)}
@@ -90,7 +90,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
           control={form.control}
           render={({ field: OptionField }) => {
             return (
-              <${WrapperComponent} key="${option.value}" className="${escapeHtml(cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}">
+              <${WrapperComponent} key="${option.value}" className="${escapeHtml(cn("flex items-start has-[[data-checked]]:border-primary w-full space-x-3", asCardClasses))}">
                   <Checkbox
                     id="${component.getField("attributes.id")}-${escapeHtml(option.value)}"
                     checked={OptionField.value?.includes("${option.value}")}

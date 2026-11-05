@@ -29,7 +29,7 @@ export function FormCheckbox(
     <WrapperComponent
       key={component.id}
       className={cn(
-        "w-full flex items-start has-[[data-state=checked]]:border-primary space-x-3",
+        "w-full flex items-start has-[[data-checked]]:border-primary space-x-3",
         asCardClasses,
       )}
       htmlFor={componentId}
@@ -61,7 +61,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     template: `
     <${WrapperComponent}
       key="${component.id}"
-      className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-state=checked]]:border-primary"))}"
+      className="${escapeHtml(cn(asCardClasses, "w-full flex items-start has-[[data-checked]]:border-primary"))}"
       ${isCard ? `htmlFor="${escapeHtml(componentId)}"` : ""}
     >
       <Checkbox id="${escapeHtml(componentId)}" name={field.name} className="${escapeHtml(component.getField("attributes.class"))}" checked={field.value} onCheckedChange={field.onChange} />

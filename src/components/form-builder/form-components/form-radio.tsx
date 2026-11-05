@@ -41,7 +41,7 @@ export function FormRadio(
       {component.options?.map((option) => (
         <WrapperComponent
           key={option.value}
-          className={cn("flex items-start has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses)}
+          className={cn("flex items-start has-[[data-checked]]:border-primary w-full space-x-3", asCardClasses)}
           htmlFor={`${componentId}-${option.value}`}
         >
           <RadioGroupItem
@@ -93,7 +93,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
       ${component.options
         ?.map(
           (option) => `
-        <${WrapperComponent} key="${escapeHtml(option.value)}" className="${escapeHtml(cn("flex items-center has-[[data-state=checked]]:border-primary w-full space-x-3", asCardClasses))}" ${WrapperComponent === 'FieldLabel' ? `htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}"` : ""}>
+        <${WrapperComponent} key="${escapeHtml(option.value)}" className="${escapeHtml(cn("flex items-center has-[[data-checked]]:border-primary w-full space-x-3", asCardClasses))}" ${WrapperComponent === 'FieldLabel' ? `htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}"` : ""}>
           <RadioGroupItem value="${escapeHtml(option.value)}" id="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" />
           <div className="grid gap-2 leading-none">
             <FieldLabel htmlFor="${escapeHtml(component.getField("attributes.id"))}-${escapeHtml(option.value)}" className="${oneOptionHasLabelDescription ? "font-medium" : "font-normal"}">

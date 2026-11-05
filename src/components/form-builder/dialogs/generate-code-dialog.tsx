@@ -78,6 +78,12 @@ export function MainExport() {
         <h3 className="text-sm text-muted-foreground">
           Run the following commands to add the required components:
         </h3>
+        <p className="text-xs text-muted-foreground mt-1">
+          The generated code targets shadcn/ui on Base UI (the{" "}
+          <code className="font-mono">npx shadcn@latest init</code> default).
+          Projects still on Radix need to swap <code className="font-mono">render</code>{" "}
+          props back to <code className="font-mono">asChild</code>.
+        </p>
         <CopyButton content={installationInstructions} />
         <div className="relative overflow-x-auto rounded-md min-h-20 mt-4">
           <Pre language="bash" code={installationInstructions} />

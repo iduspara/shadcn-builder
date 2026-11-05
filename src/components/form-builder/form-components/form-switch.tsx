@@ -21,7 +21,7 @@ export function FormSwitch(component: FormComponentModel, form: UseFormReturn<Fi
   return (
     <WrapperComponent
       key={component.id}
-      className={cn(asCardClasses, "flex justify-between items-center w-full has-[[data-state=checked]]:border-primary")}
+      className={cn(asCardClasses, "flex justify-between items-center w-full has-[[data-checked]]:border-primary")}
       htmlFor={componentId}
     >
       <div className="grid gap-1 leading-none">
@@ -47,7 +47,7 @@ export function getReactCode(component: FormComponentModel): ReactCode {
     template: `
     <${WrapperComponent}
       key="${component.id}"
-      className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-state=checked]]:border-primary"))}"
+      className="${escapeHtml(cn(asCardClasses, "w-full flex justify-between items-center has-[[data-checked]]:border-primary"))}"
       htmlFor="${escapeHtml(componentId)}"
     >
       <div className="grid gap-1.5 leading-none">
