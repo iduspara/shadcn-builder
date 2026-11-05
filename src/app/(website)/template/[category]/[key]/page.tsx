@@ -24,6 +24,7 @@ import {
 import { useLoadTemplates } from "@/hooks/useLoadTemplates";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CopyButton } from "@/components/form-builder/dialogs/copy-button";
+import CupertinoUIBanner from "@/components/landingpage/cupertino-ui-banner";
 
 const viewportEditorStyles = {
   sm: "w-[370px]",
@@ -176,7 +177,12 @@ export default function TemplatePage({
         </TabsContent>
       </Tabs>
 
-      <div className="bg-dotted border rounded-lg p-8 text-center space-y-4 mt-12">
+      <CupertinoUIBanner
+        campaign="templates"
+        className="mt-12 max-w-none px-0"
+      />
+
+      <div className="bg-dotted border rounded-lg p-8 text-center space-y-4">
         <h3 className="text-2xl font-semibold">Ready to start building?</h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           Start building your form now with our interactive form builder. Drag,

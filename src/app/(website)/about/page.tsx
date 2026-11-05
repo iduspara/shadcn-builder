@@ -176,6 +176,7 @@ import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Header from "@/components/landingpage/header";
 import Footer from "@/components/landingpage/footer";
+import CupertinoUIBanner from "@/components/landingpage/cupertino-ui-banner";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -482,6 +483,8 @@ export default function AboutPage() {
         </Link>
       </div>
     </section>
+
+    <CupertinoUIBanner campaign="about" className="max-w-none px-0" />
 
     {/* Call to Action */}
     <section className="text-center space-y-6 py-12 bg-dotted rounded-lg border">
